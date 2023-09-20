@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { faTwitter, faGithub, faLinkedin, faDiscord, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'rovisor-ui';
+  faGithub = faGithub;
+  faTwitter = faTwitter;
+  faLinkedin = faLinkedin;
+  faDiscord = faDiscord; 
+  faInstagram = faInstagram;
 }
