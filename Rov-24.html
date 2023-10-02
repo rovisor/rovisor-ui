@@ -11,17 +11,79 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="css/styles.css" rel="stylesheet" />
     <title>Login Page </title>
+    <style>
+        .headre {
+            background-color: #3DCDAF;
+            min-height: 814px;
+
+        }
+
+        .col {
+            margin-top: 30px;
+        }
+
+        .col10 {
+            min-height: 660px;
+        }
+
+        .p {
+            font-family: 'Franklin Gothic Medium' 'Arial Narrow', Arial, sans-serif;
+            margin: 100px;
+            text-align: left;
+            font-size: 40px;
+            color: white;
+        }
+
+        .p2 {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-align: center;
+            font-size: 10px;
+            color: white;
+            margin-top: 70px;
+        }
+        .p3{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+              text-align: right;
+              font-size: 50px;
+               color: white;
+        }
+        .h1{
+            margin-top: 100px;  
+            text-align: center;
+            font-size: 50px; 
+            color: white;
+        }
+        .login{
+            color:rgb(243, 16, 16); 
+            margin-left: 150px; 
+            font-size: 20px; 
+            background-color: #3DCDAF; 
+            text-align: center;
+             padding:10px;
+        }
+        .col11{
+            background-color: #3DCDAF;
+             min-height: 660px; 
+             margin-top: 80px;
+
+        }
+        .Create {
+            margin-top: 30px; 
+            text-align: center;
+            font-size: 30px;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container-fluid">
-        <div class="row" style="background-color: #3DCDAF;min-height: 814px; ">
+        <div class="row headre">
             <div class="col-4">
-                <div class="row " style="margin-top: 30px;">
+                <div class="row col">
                     <div class="col-2">
                         <img class="logo" src="assets/img/logo/image.png" alt="logo">
                     </div>
-                    <div class="col-10 bg-light mt-5" style="min-height: 660px;">
+                    <div class="col-10 bg-light mt-5 col10">
                         <div class="toast show">
                             <div class="toast-header" style="background-color: #d88e93; color: black;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="color: red;"
@@ -32,27 +94,26 @@
                                         d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z" />
                                 </svg>
                                 <b>Error</b>
-                                <button class="close" data-dissmiss="toast" style="position: absolute;right:1232px;">
+                                <button class="close" data-dissmiss="toast" style="position;">
                                     <span>&times;</span>
                                 </button>
                             </div>
                             <div class="toast-body" style="background-color: rgb(211, 5, 5); color: white;">
-                                Either email I'd or Password or both are incorrect
+                                Either e-mail I'd or Password or both are incorrect
                             </div>
                         </div>
                         <h1 style="text-align: center; color:#3DCDAF ; margin-top: 30px; font-size: 60px;">Login</h1>
 
-                        <input type="email" class="form-control mt-5 custom-text-field bg-light"
-                            id="exampleFormControlInput1" placeholder="Email or phone number">
+                        <input type="email" class="form-control mt-5 custom-text-field bg-light" id="exampl"
+                            placeholder="Email or phone number">
 
                         <input type="password" class="form-control custom-text-field bg-light"
                             id="exampleFormControlInput2" style="margin-top: 50px;" placeholder="Enter password">
                         <p style="text-align: right;"> <a href="#" target="_blank">Forget Password </a></p>
-                        <button type="button "
-                            style="color:rgb(243, 16, 16); margin-left: 150px; font-size: 20px; background-color: #3DCDAF; text-align: center; padding:10px;"><a
+                        <button type="button" class="login"><a
                                 href="#" target="_blank" style="color: white; font-size: 25px;">
                                 Login </a></button>
-                        <p style="margin-top: 30px; text-align: center;font-size: 30px;"> <a href="#"
+                        <p class="Create "> <a href="#"
                                 target="_blank">Create a new
                                 account </a><br>
                         </p>
@@ -66,20 +127,17 @@
 
             <div class="col-8 bg-light">
                 <div class="row">
-                    <div class="col-11 " style="background-color: #3DCDAF; min-height: 660px; margin-top: 80px;">
-                        <h1 class="pt-6" style="margin-top: 100px;  text-align: center;font-size: 50px; color: white;">
+                    <div class="col-11 col11">
+                        <h1 class="pt-6 h1">
                             MOMENTS </h1>
-                        <p class="pt-6"
-                            style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; margin: 100px;  text-align: left;font-size: 40px; color: white;">
+                        <p class="pt-6 p">
                             "Formal education will make you a living;
                             self-education will make you a fortune."
 
                         </p>
-                        <p class="pt-6"
-                            style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;   text-align: right;font-size: 50px; color: white;">
+                        <p class="pt-6 p3">
                             — Jim Rohn, Entrepreneur</p>
-                        <p class="pt-6"
-                            style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;   text-align:center;font-size: 10px; color: white; margin-top: 70px;">
+                        <p class="pt-6 p2">
                             Rovisor Moments provides you the right amount of financial education while working as an AI
                             accountant for you. </p>
                     </div>
