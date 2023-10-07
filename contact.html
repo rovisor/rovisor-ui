@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!-- ... (head section remains the same) ... -->
+
 
   <body>
-    <!-- ... (navbar section remains the same) ... -->
-
-    <!-- Content Section -->
+ 
     <section id="moments" class="py-5">
-      <!-- Your content for 'MOMENTS' goes here -->
+   
     </section>
 
     <section id="contact" class="py-5">
-      <!-- Contact Form using Bootstrap -->
+   
       <div class="container form-container">
         <h2
           style="
@@ -75,7 +73,7 @@
             class="btn btn-success"
             id="sendButton" <!-- Add an ID to the button -->
             style="background-color: #1bba9b; color: white"
-            disabled <!-- Initially disable the button -->
+            disabled
           >
             Send
           </button>
@@ -83,9 +81,9 @@
       </div>
     </section>
 
-    <!-- About Section -->
+
     <section id="about" class="py-5">
-      <!-- Your content for 'ABOUT' goes here -->
+     
     </section>
 
     <script>
@@ -95,16 +93,17 @@
         var email = document.getElementById("email").value;
         var phone = document.getElementById("phone").value;
         var message = document.getElementById("message").value;
-
-        // Check if all fields have valid values
+fullName = fullName.trim();
+message = message.trim();
+       
         if (fullName && email && phone && message) {
-          // Enable the "Send" button
+          
           document.getElementById("sendButton").removeAttribute("disabled");
-          return true; // Allow form submission
+          return true; 
         } else {
-          // If any field is empty, disable the "Send" button
+        
           document.getElementById("sendButton").setAttribute("disabled", "disabled");
-          return false; // Prevent form submission
+          return false;
         }
       }
     </script>
