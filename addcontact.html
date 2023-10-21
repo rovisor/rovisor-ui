@@ -46,7 +46,6 @@
 
         margin: 0 auto;
       }
-
       .form-control::placeholder {
         font-size: 25px;
       }
@@ -54,50 +53,9 @@
   </head>
 
   <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand text1" href="#">ROVISOR MOMENTS</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#moments">MOMENTS</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#about">ABOUT</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact">
-              <button
-                type="button"
-                class="btn btn-success"
-                style="background-color: #1bba9b; color: white"
-              >
-                CONTACT
-              </button>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-    <!-- Content Section -->
-    <section id="moments" class="py-5">
-      <!-- Your content for 'MOMENTS' goes here -->
-    </section>
+    <section id="moments" class="py-5"></section>
 
     <section id="contact" class="py-5">
-      <!-- Contact Form using Bootstrap -->
       <div class="container form-container">
         <h2
           style="
@@ -115,7 +73,7 @@
           />
         </h2>
 
-        <form>
+        <form onsubmit="return validateForm()">
           <div class="form-group">
             <label for="fullName"></label>
             <input
@@ -123,6 +81,7 @@
               class="form-control"
               id="fullName"
               placeholder="Full name"
+              required
             />
           </div>
           <div class="form-group">
@@ -132,6 +91,7 @@
               class="form-control"
               id="email"
               placeholder="Email address"
+              required
             />
           </div>
           <div class="form-group">
@@ -140,7 +100,8 @@
               type="tel"
               class="form-control"
               id="phone"
-              placeholder="Phone Number"
+              placeholder="Phone number"
+              required
             />
           </div>
           <div class="form-group">
@@ -150,6 +111,7 @@
               id="message"
               rows="3"
               placeholder="Message"
+              required
             ></textarea>
           </div>
           <button
@@ -163,13 +125,44 @@
       </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-5">
-      <!-- Your content for 'ABOUT' goes here -->
-    </section>
+    <section id="about" class="py-5"></section>
+
+    <script>
+      function validateForm() {
+        // Get references to form fields
+        var fullName = document.getElementById("fullName").value;
+        var email = document.getElementById("email").value.trim();
+        var phone = document.getElementById("phone").value.trim();
+        var message = document.getElementById("message").value;
+
+        fullName = fullName.trim();
+        message = message.trim();
+
+        var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+        var phonePattern = /^\d{10}$/;
+
+        if (
+          fullName &&
+          email.match(emailPattern) &&
+          phone &&
+          phone.match(phonePattern) &&
+          message
+        ) {
+          document.getElementById("sendButton").removeAttribute("disabled");
+          return true;
+        } else {
+          document
+            .getElementById("sendButton")
+            .setAttribute("disabled", "disabled");
+          return false;
+        }
+      }
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </body>
 </html>
+
