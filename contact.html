@@ -131,9 +131,9 @@
       function validateForm() {
         // Get references to form fields
         var fullName = document.getElementById("fullName").value;
-        var email = document.getElementById("email").value;
-        var phone = document.getElementById("phone").value;
-        var message = document.getElementById("message").value;
+    var email = document.getElementById("email").value.trim(); // Trim the email input
+    var phone = document.getElementById("phone").value.trim(); // Trim the phone input
+    var message = document.getElementById("message").value;
 fullName = fullName.trim();
 message = message.trim();
        
