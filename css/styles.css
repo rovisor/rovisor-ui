@@ -11066,3 +11066,80 @@ html {
   width: 225px;
   height: 60px;
 }
+.header {
+  background-color: #3DCDAF;
+  min-height: 814px;
+
+}
+
+.col {
+  margin-top: 30px;
+}
+
+.col10 {
+  min-height: 660px;
+}
+
+.p {
+  font-family: 'Franklin Gothic Medium' 'Arial Narrow', Arial, sans-serif;
+  margin: 100px;
+  text-align: left;
+  font-size: 40px;
+  color: white;
+}
+
+.p2 {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align: center;
+  font-size: 10px;
+  color: white;
+  margin-top: 70px;
+}
+
+.p3 {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align: right;
+  font-size: 50px;
+  color: white;
+}
+
+.h1 {
+  margin-top: 100px;
+  text-align: center;
+  font-size: 50px;
+  color: white;
+}
+
+.login {
+  color: rgb(243, 16, 16);
+  margin-left: 150px;
+  font-size: 20px;
+  background-color: #3DCDAF;
+  text-align: center;
+  padding: 10px;
+  color: white;
+  margin-top: 60px;
+}
+
+.col11 {
+  background-color: #3DCDAF;
+  min-height: 660px;
+  margin-top: 80px;
+
+}
+
+.Create {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 30px;
+}
+
+.pa {
+  padding-top: 20px;
+  padding-left: 30px;
+}
+
+.toast {
+  background-color: rgb(211, 5, 5);
+  color: white;
+}
