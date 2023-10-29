@@ -1,8 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
 html, body {
     font-size: 0.825rem;
+    height: 100%;
 }
 .footer {
     position: absolute;
     bottom: 0;
+}
+
+.bg-green {
+    background-color: #1BBC9B;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.text-green {
+    color: #1BBC9B;
 }

@@ -4,17 +4,16 @@ import { AppComponent } from './app.component';
 
 const routes: Routes = [{
   path: '', 
-  component: AppComponent, 
-  children: [ 
-      { 
-          path: 'auth', 
-          loadChildren: () => import('./auth/auth.module').then(module => module.AuthModule)
-      }, 
-      { 
-          path: 'dashboard', 
-          loadChildren: () => import('./dashboard/dashboard.module').then(module => module.DashboardModule) 
-      }] 
-}];;
+  component: AppComponent,
+},  
+{ 
+  path: 'auth', 
+  loadChildren: () => import('./auth/auth.module').then(module => module.AuthModule)
+}, 
+{ 
+  path: 'dashboard', 
+  loadChildren: () => import('./dashboard/dashboard.module').then(module => module.DashboardModule) 
+}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
