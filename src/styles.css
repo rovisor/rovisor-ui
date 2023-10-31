@@ -12,10 +12,23 @@ html, body {
     background-color: #1BBC9B;
 }
 
-.full-height {
-    height: 100%;
-}
-
 .text-green {
     color: #1BBC9B;
+}
+
+.logo {
+    height: 50px;
+    width: 100px;
+}
+
+.btn-green {
+    background-color: #1BBC9B;
+    border-color: #1BBC9B;
+    color: #fff;
+}
+
+.btn-green:hover {
+    background-color: #16a085;
+    border-color: #16a085;
+    color: #fff;
 }
