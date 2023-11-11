@@ -1,0 +1,10 @@
+.full-screen{
+    min-height: calc(100vh - 60px);
+    height:100%;
+    width:200px;
+    border-right: 1capx solid #29da73;
+}
+
+.bg-rov-primary-sidebar{
+    background-image: linear-gradient(rgb(0 0 0/10%) 0 0);
+}

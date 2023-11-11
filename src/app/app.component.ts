@@ -13,4 +13,6 @@ export class AppComponent {
   faLinkedin = faLinkedin;
   faDiscord = faDiscord; 
   faInstagram = faInstagram;
+  year = new Date().getFullYear();
+  version = "0.0.28";
 }
