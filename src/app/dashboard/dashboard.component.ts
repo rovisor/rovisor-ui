@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { UploadStatementComponent } from '../upload-statement/upload-statement.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-  title = 'rovisor-ui';
+  
+  constructor(private modalService: NgbModal) { }
+
+  uploadStatement() {
+    this.modalService.open(UploadStatementComponent);
+  }
 }
