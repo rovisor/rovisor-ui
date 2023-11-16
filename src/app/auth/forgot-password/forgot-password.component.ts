@@ -8,11 +8,3 @@ import { Component } from '@angular/core';
 export class ForgotPasswordComponent {
   title = 'rovisor-ui';
 }
-if ()
-{
-  console.log("")
-}
-else ()
-{
-  console.log("")
-}
