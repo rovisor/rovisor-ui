@@ -11,12 +11,12 @@ const routes: Routes = [{
   loadChildren: () => import('./auth/auth.module').then(module => module.AuthModule)
 }, 
 { 
-  path: 'dashboard', 
-  loadChildren: () => import('./dashboard/dashboard.module').then(module => module.DashboardModule) 
+  path: 'application', 
+  loadChildren: () => import('./application/application.module').then(module => module.ApplicationModule) 
 }];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { enableTracing: false })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
