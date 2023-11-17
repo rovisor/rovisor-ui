@@ -28,7 +28,37 @@ html, body {
 }
 
 .btn-green:hover {
-    background-color: #16a085;
+    background-color: #0e7b65;
     border-color: #16a085;
     color: #fff;
+}
+
+.bg-rov-primary{
+    background-color: #154f43;
+}
+
+.bg-rov-secondary{
+    background-color: rgb(233, 236, 228);
+}
+
+.btn-primary {
+    background-color: #16a085 !important;
+    color: #fff !important;
+}
+
+.btn-primary:hover {
+    background-image: linear-gradient(rgb(0 0 0/20%) 0 0);
+}
+
+
+.btn-outline-primary {
+    color: #16a085 !important;
+    border-color: #16a085 !important;
+    color: #fff !important;
+}
+
+.btn-outline-primary:hover {
+    background-color: #16a085 !important;
+    border-color: #16a085 !important;
+    color: #fff !important;
 }

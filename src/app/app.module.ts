@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedComponentsModule } from './shared-components/shared-components.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     NgbModule,
     FontAwesomeModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedComponentsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
