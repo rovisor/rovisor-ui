@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class ApplicationComponent {
   title = 'rovisor-ui';
+  year = new Date().getFullYear();
+  version = "0.0.28";
 }
