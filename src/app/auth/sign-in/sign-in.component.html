@@ -1,33 +1,51 @@
-<div class="row justify-content-center h-100">
-    <div class="col-md-12">
-        <div class="card login-box">
-            <div class="card-body">
-                <h4 class="text-green text-center mb-5">Login</h4>
-                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                    <div class="form-floating mb-4">
-                        <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email">
-                        <label for="email">Email address</label>
-                      </div>
-                      <div class="form-floating">
-                        <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password">
-                        <label for="password">Password</label>
-                      </div>
-                      <div class="row mb-4">
-                        <div class="col-12 text-end">
-                            <a href="#" class="text-green">Forgot Password?</a>
-                        </div>
-                      </div>
-                      <div class="row mb-4">
-                          <div class="col-12 text-center">
-                              <button type="submit" class="btn btn-primary btn-green">Login</button>
+<div class="row">
+    <div class="col-4 bg-green ps-5">
+        <img src="assets/images/logo.png" alt="logo" class="logo">
+    </div>
+</div>
+<div class="row h-100">
+    <div class="col-sm-8 col-md-4 bg-green h-100 pe-0 ps-5">
+        <div class="d-flex align-items-center h-100 justify-content-end">
+            <div class="card login-box">
+                <div class="card-body">
+                    <h4 class="text-green text-center mb-5">Login</h4>
+                    <form [formGroup]="loginForm">
+                        <div class="form-floating mb-4">
+                            <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email">
+                            <label for="email">Email address</label>
                           </div>
-                      </div>
-                        <div class="row">
-                            <div class="col-12 text-center">
-                                <a href="#" class="text-green">Create a new account</a>
+                          <div class="form-floating mb-2">
+                            <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password">
+                            <label for="password">Password</label>
+                          </div>
+                          <div class="row mb-4">
+                            <div class="col-12 text-end">
+                                <a routerLink="../forgot-password" class="text-green">Forgot Password?</a>
                             </div>
-                        </div>
-                </form>
+                          </div>
+                          <div class="row mb-4">
+                              <div class="col-12 text-center">
+                                  <button type="submit" class="btn btn-primary btn-green" [disabled]="!loginForm.valid">Login</button>
+                              </div>
+                          </div>
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <a routerLink="../sign-up" class="text-green">Create a new account</a>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4 col-md-8 h-100 ps-0 pe-5">
+        <div class="d-flex align-items-center h-100 justify-content-start">
+            <div class="card bg-green text-white quote-box">
+                <div class="card-body">
+                    <h2 class="text-center mb-4 text-bold">MOMENTS</h2>
+                    <h3> "Formal education will make you a living; self-education will make you a fortune." </h3>
+                    <h3 class="justify-content-end"> -- Jim Rohn, Entrepreneur</h3>
+                </div>
             </div>
         </div>
     </div>
