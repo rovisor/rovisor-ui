@@ -3,19 +3,25 @@ import { RouterModule, Routes } from '@angular/router';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { AuthComponent } from './auth.component';
 const routes: Routes = [
   {
-    path: 'login',
-    component: SignInComponent,
-  },
-  {
-    path: 'sign-up',
-    component: SignUpComponent,
-  },
-  {
-    path: 'forgot-password',
-    component: ForgotPasswordComponent,
-  },
+    path:'',
+    component:AuthComponent,
+    children: [
+        {
+          path: 'sign-in',
+          component: SignInComponent,
+        },
+        {
+          path: 'sign-up',
+          component: SignUpComponent,
+        },
+        {
+          path: 'forgot-password',
+          component: ForgotPasswordComponent,
+        }]
+}
 ];
 
 @NgModule({

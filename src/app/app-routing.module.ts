@@ -4,20 +4,24 @@ import { AppComponent } from './app.component';
 
 const routes: Routes = [{
   path: '', 
-  component: AppComponent, 
-  children: [ 
-      { 
-          path: 'auth', 
-          loadChildren: () => import('./auth/auth.module').then(module => module.AuthModule)
-      }, 
-      { 
-          path: 'dashboard', 
-          loadChildren: () => import('./dashboard/dashboard.module').then(module => module.DashboardModule) 
-      }] 
-}];;
+  redirectTo: 'auth/sign-in',
+  pathMatch: 'full'
+},  
+{ 
+  path: 'auth', 
+  loadChildren: () => import('./auth/auth.module').then(module => module.AuthModule)
+}, 
+{ 
+  path: 'app', 
+  loadChildren: () => import('./application/application.module').then(module => module.ApplicationModule) 
+}, 
+{ 
+  path: '**', 
+  loadChildren: () => import('./not-found/not-found.module').then(module => module.NotFoundModule) 
+}];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { enableTracing: false })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

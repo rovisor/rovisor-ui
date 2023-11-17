@@ -1,8 +1,64 @@
 /* You can add global styles to this file, and also import other style files */
 html, body {
     font-size: 0.825rem;
+    height: 100%;
 }
 .footer {
     position: absolute;
     bottom: 0;
+}
+
+.bg-green {
+    background-color: #1BBC9B;
+}
+
+.text-green {
+    color: #1BBC9B;
+}
+
+.logo {
+    height: 50px;
+    width: 100px;
+}
+
+.btn-green {
+    background-color: #1BBC9B;
+    border-color: #1BBC9B;
+    color: #fff;
+}
+
+.btn-green:hover {
+    background-color: #0e7b65;
+    border-color: #16a085;
+    color: #fff;
+}
+
+.bg-rov-primary{
+    background-color: #154f43;
+}
+
+.bg-rov-secondary{
+    background-color: rgb(233, 236, 228);
+}
+
+.btn-primary {
+    background-color: #16a085 !important;
+    color: #fff !important;
+}
+
+.btn-primary:hover {
+    background-image: linear-gradient(rgb(0 0 0/20%) 0 0);
+}
+
+
+.btn-outline-primary {
+    color: #16a085 !important;
+    border-color: #16a085 !important;
+    color: #fff !important;
+}
+
+.btn-outline-primary:hover {
+    background-color: #16a085 !important;
+    border-color: #16a085 !important;
+    color: #fff !important;
 }
