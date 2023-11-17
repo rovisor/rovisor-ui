@@ -4,7 +4,8 @@ import { AppComponent } from './app.component';
 
 const routes: Routes = [{
   path: '', 
-  component: AppComponent,
+  redirectTo: 'auth/sign-in',
+  pathMatch: 'full'
 },  
 { 
   path: 'auth', 
@@ -13,6 +14,10 @@ const routes: Routes = [{
 { 
   path: 'app', 
   loadChildren: () => import('./application/application.module').then(module => module.ApplicationModule) 
+}, 
+{ 
+  path: '**', 
+  loadChildren: () => import('./not-found/not-found.module').then(module => module.NotFoundModule) 
 }];
 
 @NgModule({
