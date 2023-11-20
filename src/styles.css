@@ -9,11 +9,11 @@ html, body {
 }
 
 .bg-green {
-    background-color: #1BBC9B;
+    background-color: #1ABC9B;
 }
 
 .text-green {
-    color: #1BBC9B;
+    color: #1ABC9B;
 }
 
 .logo {
@@ -22,8 +22,8 @@ html, body {
 }
 
 .btn-green {
-    background-color: #1BBC9B;
-    border-color: #1BBC9B;
+    background-color: #1ABC9B;
+    border-color: #1ABC9B;
     color: #fff;
 }
 

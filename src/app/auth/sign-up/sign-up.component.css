@@ -1,0 +1,27 @@
+.signup-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    height:  calc(100vh - 50px);
+}
+
+.signup-box {
+    width: 30vw;
+    height: 60vh;
+    border-radius: 10px 0px 0px 10px;
+}
+
+.quote-box-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    height:  calc(100vh - 50px);
+}
+
+.quote-box {
+    width: 65vw;
+    height: 60vh;
+    border-radius: 0px 10px 10px 0px;
+}

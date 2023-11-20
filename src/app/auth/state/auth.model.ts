@@ -4,3 +4,15 @@ export interface LoginResponseModel {
     Id: string;
     name: string;
 }
+
+export interface SignupRequestModel {
+    email: string;
+    password: string;
+    name: string;
+}
+
+export interface SignupResponseModel {
+    email: string;
+    id: string;
+    name: string;
+}
