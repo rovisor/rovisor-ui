@@ -7,9 +7,11 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedComponentsModule } from './shared-components/shared-components.module';
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+   registrationComponent
   ],
   imports: [
     BrowserModule,
