@@ -1,29 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import {  FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-my-form',
   templateUrl: './my-form.component.html',
   styleUrls: ['./my-form.component.css']
 })
-export class MyFormComponent implements OnInit {
+export class MyFormComponent  {
+  title = 'Angular Reactive Form';
 
- myForm: FormGroup = new FormGroup({}); 
-
-  constructor(private formBuilder: FormBuilder) { }
-
-  ngOnInit(): void {
-    this.createForm();
+  myForm = new FormGroup({
+   user:new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(16), Validators.pattern(/^[a-zA-Z]+$/)])
+   
+ })
+  formUser()
+  {
+    console.warn(this.myForm.value)
+  }
+  get user()
+  {
+    return this.myForm.get('user')
   }
 
-  createForm(): void {
-    this.myForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(16), Validators.pattern(/^[a-zA-Z]+$/)]]
-    });
-  }
- onSubmit(): void {
-    // Handle form submission logic here
-    console.log('Form submitted!', this.myForm.value);
-  }
-  // You can add additional methods or handle form submission here
 }

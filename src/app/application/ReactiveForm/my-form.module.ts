@@ -5,12 +5,12 @@ import { MyFormComponent } from './my-form.component';
 @NgModule({
   declarations: [
      MyFormComponent,
-    // your components here
+    
   ],
   imports: [
     ReactiveFormsModule,
-    // other modules
+    MyFormComponent,
   ],
-  // other configurations
+ 
 })
 export class YourModule { }
