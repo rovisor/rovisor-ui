@@ -5,35 +5,39 @@
 
 <div class="container-fluid">
   <div class="row" style="min-height: 500px;">
-    <div class="col-2"></div>
-    <div class="col-8 bg-dark mt-5 ">
-      <h1 style="text-align: center; color: #ff5100; margin-top: 40px;">
+    <div class="col-3"></div>
+    <div class="col-6 bg-dark mt-5 ">
+      <h1 class="text-center mb-5 font-weight-bold text-danger mt-4">
         Registration-2
       </h1>
 
-      <div style="text-align: center; color:#3DCDAF ; margin-top: 30px; font-size: 20px;">
-
-
-        <label class="form-group"> Name </label>
-        <input class="form-control mt-4 custom-text-field bg-light" type="text" placeholder="Name " required><br>
-        <div class="btn-group">
-          <button type="button" class="btn btn-secondary"  >
-            Country
-          </button>
-          <div class="dropdown-menu dropdown-menu-right">
-            <button class="dropdown-item" type="button">Action</button>
-            <button class="dropdown-item" type="button">Another action</button>
-            <button class="dropdown-item" type="button">Something else here</button>
+      <div class="color- bg-light mb-5">
+        <form>
+          <div class="form-row">
+            <div class="col mb-3 mt-3 ml-3 mr-4">
+              <label for="validationDefault01">First name</label>
+              <input type="text" class="form-control" id="validationDefault01" placeholder="Name " required>
+            </div>
+          </div>
+          <div class="form-group  mb-3 mt-3 ml-3 mr-4">
+            <label for="inputState">State</label>
+            <select id="inputState" class="form-control">
+              <option selected>Country</option>
+              <option>India</option>
+              <option>US</option>
+              <option>Uk</option>
+              <option>Australia</option>
+              <option>France</option>
+            </select>
           </div>
           
-        </div>
-        <div style="margin: 10px;">
-        <button type="button" class="btn btn-primary btn-sm" style="margin-top: 30px; ">
-          Submit
-        </button>
-      </div>
-      </div>
-      <div class="col-2 " style="text-align: center;">
-
+          <div class="text-center ">
+          <button class="btn btn-primary" type="submit">Submit form</button>
+          </div>
+        </form>
       </div>
     </div>
+    <div class="col-3">
+
+    </div> 
+  </div>
