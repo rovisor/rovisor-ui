@@ -3,12 +3,18 @@ import { ApplicationRoutingModule } from './application-routing.module';
 import { ApplicationComponent } from './application.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedComponentsModule } from '../shared-components/shared-components.module';
+import { RegistrationV2Component } from './registration-v2/registration-v2.component';
 
 
 @NgModule({
-  declarations: [ApplicationComponent],
-  imports: [ApplicationRoutingModule,
+  declarations: [
+    ApplicationComponent,
+    RegistrationV2Component
+  ],
+  imports: [
+    ApplicationRoutingModule,
     HttpClientModule,
-    SharedComponentsModule],
+    SharedComponentsModule
+  ],
 })
 export class ApplicationModule { }
