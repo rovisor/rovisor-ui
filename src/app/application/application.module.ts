@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedComponentsModule } from '../shared-components/shared-components.module';
 import { RegistrationV2Component } from './registration-v2/registration-v2.component';
 
+
 @NgModule({
   declarations: [
     ApplicationComponent,
