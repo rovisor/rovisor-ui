@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
     styleUrls: ['./registration 2.component.css']
   })
 
-export class registration {
+export class registration_2 {
 
 }
