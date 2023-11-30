@@ -6,15 +6,22 @@ import { SharedComponentsModule } from '../shared-components/shared-components.m
 import { RegistrationV2Component } from './registration-v2/registration-v2.component';
 
 
+
+import { Registration1Component } from './registration-1/registration-1.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
-    ApplicationComponent,
+    ApplicationComponent, 
+    Registration1Component, 
     RegistrationV2Component
   ],
   imports: [
     ApplicationRoutingModule,
     HttpClientModule,
-    SharedComponentsModule
+    SharedComponentsModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
 })
-export class ApplicationModule { }
+export class ApplicationModule {}
