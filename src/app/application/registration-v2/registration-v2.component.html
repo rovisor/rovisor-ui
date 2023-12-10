@@ -8,22 +8,25 @@
             <label for="name">Phone Number</label>
             <input type="text" class="form-control" id="phone" placeholder="Phone Number/Mobile ">
         </div>
-        <div class="form-group col-4 mb-3 mt-3 ml-3 mr-4 ">
-            <label for="name">Password</label>
-            <input type="password" class="form-control" formcontrolname="password">
-            <div *ngif="submitted && registerForm.get('password').errors" class="alert alert-danger">
-              <div *ngif="registerForm.get('password').errors.required">
-                Password is required
-              </div>
-            </div>
-          </div>
+        <div class="col-4 mb-3 mt-3 ml-3 mr-4">
+          <label for="name">email </label>
+          <input type="email" class="form-control" id="email" placeholder="Email">
+      </div>
+      <div class="col-4 mb-3 mt-3 ml-3 mr-4">
+        <label for="name">Password </label>
+        <input type="password" class="form-control" id="Password" placeholder="password">
+    </div>
+    <div class="col-4 mb-3 mt-3 ml-3 mr-4">
+      <label for="name">Date of Birth</label>
+      <input type="date" class="form-control" id="date" >
+  </div>
           <div class="col-4 mb-3 mt-3 ml-3 mr-4">
           <label for="cars">Country :</label>
-          <select>
+          <select type="dropdown" class="form-control" id="dropdown">
             <option value="India">India</option>
             <option value="US">US</option>
             <option value="UK">UK</option>
-            <option value="Australia">AAustralia</option>
+            <option value="Australia">Australia</option>
             <option value="France">France</option>
           </select>
         </div>
