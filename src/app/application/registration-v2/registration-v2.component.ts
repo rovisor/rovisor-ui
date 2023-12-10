@@ -10,7 +10,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 export class RegistrationV2Component implements OnInit {
 public registrationForm!: FormGroup;
-submitted: boolean = false;
 constructor() { }
 ngOnInit(): void {
   this.registrationForm = new FormGroup({
