@@ -2,33 +2,34 @@
     <div class="form-row">
         <div class="col-4 mb-3 mt-3 ml-3 mr-4">
             <label for="name">First name</label>
-            <input type="text" class="form-control" id="name" placeholder="Name">
+            <input type="text" formControlName="name" formControlName="name" class="form-control"  placeholder="Name">
         </div>
         <div class="col-4 mb-3 mt-3 ml-3 mr-4">
             <label for="name">Phone Number</label>
-            <input type="text" class="form-control" id="phone" placeholder="Phone Number/Mobile ">
+            <input type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"formControlName="phone" class="form-control" placeholder="Phone Number/Mobile ">
         </div>
         <div class="col-4 mb-3 mt-3 ml-3 mr-4">
           <label for="name">email </label>
-          <input type="email" class="form-control" id="email" placeholder="Email">
+          <input type="email" formControlName="email" class="form-control" placeholder="Email">
       </div>
       <div class="col-4 mb-3 mt-3 ml-3 mr-4">
         <label for="name">Password </label>
-        <input type="password" class="form-control" id="Password" placeholder="password">
+        <input type="password" formControlName="password" class="form-control" placeholder="password">
     </div>
     <div class="col-4 mb-3 mt-3 ml-3 mr-4">
       <label for="name">Date of Birth</label>
-      <input type="date" class="form-control" id="date" >
+      <input type="date" class="form-control">
   </div>
-          <div class="col-4 mb-3 mt-3 ml-3 mr-4">
-          <label for="cars">Country :</label>
-          <select type="dropdown" class="form-control" id="dropdown">
-            <option value="India">India</option>
-            <option value="US">US</option>
-            <option value="UK">UK</option>
-            <option value="Australia">Australia</option>
-            <option value="France">France</option>
-          </select>
-        </div>
+         
+        <div  ngbDropdown > 
+          <button  ngbDropdownToggle class="col-4 mb-3 mt-3 ml-3 mr-4 bg-light ">Country </button> 
+          <div ngbDropdownMenu="gfg" class="col-4 mb-3 mt-3 ml-3 mr-4"> 
+            <button ngbDropdownItem>India</button> 
+            <button ngbDropdownItem>US</button> 
+            <button ngbDropdownItem>UK</button>
+            <button ngbDropdownItem>Australia</button>  
+            <button ngbDropdownItem>France</button> 
+          </div> 
+        </div> 
     </div>
 </form>
