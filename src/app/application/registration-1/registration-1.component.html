@@ -19,7 +19,11 @@
         <div *ngIf="userForm.get('name').hasError('pattern')">
           Name should only contain alphabets.
         </div>
+        <label for="name">Phone Number</label>
+<input class="form-control"type="tel"placeholder="Phone Number"id="phoneNumber"formControlName="phoneNumber"/>
       </div>
+      <label for="name">Password</label>
+<input class="form-control"type="t"placeholder="Enter password"id="password"formControlName="password"/>
     </div>
   </div>
 </form>

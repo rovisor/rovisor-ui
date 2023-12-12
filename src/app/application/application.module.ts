@@ -9,19 +9,21 @@ import { RegistrationV2Component } from './registration-v2/registration-v2.compo
 
 import { Registration1Component } from './registration-1/registration-1.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
-    ApplicationComponent, 
-    Registration1Component, 
-    RegistrationV2Component
+    ApplicationComponent,
+    Registration1Component,
+    RegistrationV2Component,
   ],
   imports: [
     ApplicationRoutingModule,
     HttpClientModule,
     SharedComponentsModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgSelectModule
   ],
 })
 export class ApplicationModule {}
