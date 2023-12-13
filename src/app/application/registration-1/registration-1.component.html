@@ -19,11 +19,24 @@
         <div *ngIf="userForm.get('name').hasError('pattern')">
           Name should only contain alphabets.
         </div>
+
+        <label for="name">Email</label>
+<input class="form-control"type="text"placeholder="Enter email"id="email"formControlName="email"/>
+
         <label for="name">Phone Number</label>
 <input class="form-control"type="tel"placeholder="Phone Number"id="phoneNumber"formControlName="phoneNumber"/>
+
+<label for="name">Password</label>
+<input class="form-control"type="text"placeholder="Enter password"id="password"formControlName="password"/>
+<input type="text" ngbDatepicker #d="ngbDatepicker"/>
+<button (click)="d.toggle()">Toggle</button>
+<label for="country">Country</label>
+        <ng-select [items]="countriesInfo" 
+                   bindLabel="name" 
+                   bindValue="id" 
+                   formControlName="country">
+        </ng-select>
       </div>
-      <label for="name">Password</label>
-<input class="form-control"type="t"placeholder="Enter password"id="password"formControlName="password"/>
     </div>
   </div>
 </form>
