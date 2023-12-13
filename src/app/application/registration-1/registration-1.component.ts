@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { NgSelectConfig } from '@ng-select/ng-select';
 
 interface CountryInfo {
   id: number;
@@ -38,6 +37,7 @@ export class Registration1Component implements OnInit {
       ]),
       password: new FormControl('', [Validators.required]),
       country: new FormControl('', [Validators.required]),
+
     });
   }
 }
