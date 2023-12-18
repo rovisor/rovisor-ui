@@ -35,9 +35,7 @@ ngOnInit(): void {
     calendar: new FormControl('',[
       Validators.required,
     ]),
-    dropdown: new FormControl('',[
-      Validators.required,
-    ]),
+    
   });
 }
 }
