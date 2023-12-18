@@ -28,4 +28,4 @@ import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
     NgSelectModule,
   ],
 })
-export class ApplicationModule {}
+export class ApplicationModule { }
