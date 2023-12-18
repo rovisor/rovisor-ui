@@ -5,3 +5,5 @@ export enum Countries {
   Australia,
   France,
 }
+
+export const ARRAY = Object.values(Countries);
