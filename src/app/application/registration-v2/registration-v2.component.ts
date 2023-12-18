@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -9,6 +10,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   })
 
 export class RegistrationV2Component implements OnInit {
+onDateSelect($event: NgbDate) {
+throw new Error('Method not implemented.');
+}
 public registrationForm!: FormGroup;
 constructor() { }
 minDate = "2022-12-15";
