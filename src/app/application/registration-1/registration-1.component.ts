@@ -32,9 +32,7 @@ export class Registration1Component implements OnInit {
     });
   }
   submitForm(): void {
-    // Checking the validation of form
     if (this.userForm.valid) {
-      // Access form values and assign them to variables
       const name = this.userForm.get('name')?.value;
       const email = this.userForm.get('email')?.value;
       const phoneNumber = this.userForm.get('phoneNumber')?.value;
@@ -42,7 +40,6 @@ export class Registration1Component implements OnInit {
       const birthdate = this.userForm.get('birthdate')?.value;
       const country = this.userForm.get('country')?.value;
     } else {
-      //  invalid form
       console.log('Form is not valid');
     }
   }
