@@ -52,28 +52,28 @@
           id="password"
           formControlName="password"
         />
-        <label for="birthDate">Birth Date</label>
-        <input
-          class="form-control"
-          type="date"
-          id="birthDate"
-          formControlName="birthDate"
-        />
+
+        <label for="birthDate">Birth Date:</label>
+        <div class="input-group">
+          <input
+            type="date"
+            class="form-control"
+            ngbDatepicker
+            #d="ngbDatepicker"
+            formControlName="birthDate"
+          />
+        </div>
 
         <label for="country">Country</label>
         <ng-select
-          [items]="countriesInfo"
-          bindLabel="name"
-          bindValue="id"
-          formControlName="country"
           class="form-control"
-        >
-          <ng-template ng-option-tmp let-country="item">
-            <div class="form-control">{{ country.name }}</div>
-          </ng-template>
+          [items]="countries"
+          [(ngModel)]="selectedCountry"
+          name="country"
+          formControlName="country"
+          >
         </ng-select>
       </div>
     </div>
   </div>
 </form>
-<!-- have taken help from internet for the last subcode -->

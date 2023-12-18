@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
-interface CountryInfo {
-  id: number;
-  name: string;
-}
+import { ARRAY } from './countries-list';
 @Component({
   selector: 'application-registration-1',
   templateUrl: './registration-1.component.html',
@@ -13,13 +9,8 @@ interface CountryInfo {
 export class Registration1Component implements OnInit {
   public userForm!: FormGroup;
   title = 'Angular Reactive Form';
-  countriesInfo: CountryInfo[] = [
-    { id: 1, name: 'India' },
-    { id: 2, name: 'US' },
-    { id: 3, name: 'UK' },
-    { id: 4, name: 'Australia' },
-    { id: 5, name: 'France' },
-  ];
+  selectedCountry: any;
+  countries = ARRAY;
   ngOnInit(): void {
     this.userForm = new FormGroup({
       name: new FormControl('', [
@@ -36,8 +27,8 @@ export class Registration1Component implements OnInit {
         Validators.minLength(10),
       ]),
       password: new FormControl('', [Validators.required]),
+      birthdate: new FormControl('', [Validators.required]),
       country: new FormControl('', [Validators.required]),
-
     });
   }
 }
