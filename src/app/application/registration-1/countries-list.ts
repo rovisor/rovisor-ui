@@ -1,7 +1,9 @@
 export enum Countries {
-  India,
-  US,
-  UK,
-  Australia,
-  France,
+  India = 'India',
+  US = 'United States',
+  UK = 'United Kingdom',
+  Australia = 'Australia',
+  France = 'France',
 }
+
+export const CountryArray = Object.values(Countries);
