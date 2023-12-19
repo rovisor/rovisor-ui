@@ -22,16 +22,17 @@
       <input  class="col-12 mb-3 mt-3 ml-3 mr-4" type="date"  ngbDatepicker (dateSelect)="onDateSelect($event)"/>
     </div>
 
-      <div >
-        <label>Country</label><br />
-        <select aria-label="ngSelected demo" class="col-4 mb-3 mt-3 ml-3 mr-4">
-          <option>India</option>
-          <option>US</option>
-          <option>UK</option>
-          <option>Australia</option>
-          <option>France</option>
-          <option id="greet" ng-selected="selected">Greetings!</option>
-        </select>
+      <div class="col-4 mb-3 mt-3 ml-3 mr-4" >
+        <label for="country">Country</label>
+        <ng-select
+        
+          class="form-control"
+          [items]="countries"
+          [(ngModel)]="selectedCountry"
+          name="country"
+          formControlName="country"
+        >
+        </ng-select>
       </div>
     </div>
   

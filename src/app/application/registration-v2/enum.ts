@@ -1,4 +1,10 @@
-export enum Enum {
-    India,US,UK,Australia,France
-}
+export enum Countries {
+    India = 'India',
+    US = 'United States',
+    UK = 'United Kingdom',
+    Australia = 'Australia',
+    France = 'France',
+  }
+  
+  export const ARRAY = Object.values(Countries);
  

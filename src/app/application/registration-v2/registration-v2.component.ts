@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
-
+import { ARRAY} from './enum';
 
 @Component({
     selector: 'app-registration',
@@ -10,6 +10,8 @@ import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
   })
 
 export class RegistrationV2Component implements OnInit {
+selectedCountry: any;
+  countries= ARRAY;
 onDateSelect($event: NgbDate) {
 throw new Error('Method not implemented.');
 }
