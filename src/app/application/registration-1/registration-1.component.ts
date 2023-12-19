@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ARRAY } from './countries-list';
+
+
 @Component({
   selector: 'application-registration-1',
   templateUrl: './registration-1.component.html',
@@ -8,14 +11,42 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class Registration1Component implements OnInit {
   public userForm!: FormGroup;
   title = 'Angular Reactive Form';
+  selectedCountry: any;
+  countries = ARRAY;
   ngOnInit(): void {
     this.userForm = new FormGroup({
       name: new FormControl('', [
         Validators.required,
         Validators.minLength(6),
         Validators.maxLength(16),
-        Validators.pattern(/^[a-zA-Z]+$/),
+        Validators.pattern(/^[a-zA-Z-'']+$/),
       ]),
+      email: new FormControl('', [
+        Validators.required,
+        
+      ]),
+      phoneNumber: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^\+[1-9]\d{9}$/),
+      ]),
+      password: new FormControl('', [Validators.required]),
+      birthdate: new FormControl('', [Validators.required]),
+      country: new FormControl('', [Validators.required]),
     });
+  }
+  submitForm(): void {
+    
+    if (this.userForm.valid) {
+      
+      const name = this.userForm.get('name')?.value;
+      const email = this.userForm.get('email')?.value;
+      const phoneNumber = this.userForm.get('phoneNumber')?.value;
+      const password = this.userForm.get('password')?.value;
+      const birthdate = this.userForm.get('birthdate')?.value;
+      const country = this.userForm.get('country')?.value;
+    } else {
+      
+      console.log('Form is not valid');
+    }
   }
 }
