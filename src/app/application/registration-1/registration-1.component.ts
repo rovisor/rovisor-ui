@@ -31,4 +31,22 @@ export class Registration1Component implements OnInit {
       country: new FormControl('', [Validators.required]),
     });
   }
+  submitForm(): void {
+    
+    if (this.userForm.valid)
+    {
+      
+      const name = this.userForm.get('name')?.value;
+      const email = this.userForm.get('email')?.value;
+      const phoneNumber = this.userForm.get('phoneNumber')?.value;
+      const password = this.userForm.get('password')?.value;
+      const birthdate = this.userForm.get('birthdate')?.value;
+      const country = this.userForm.get('country')?.value;
+    }
+    else
+    {
+      
+      console.log('Form is not valid');
+    }
+  }
 }
