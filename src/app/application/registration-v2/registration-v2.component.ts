@@ -38,4 +38,8 @@ ngOnInit(): void {
     
   });
 }
+get name()
+{
+  return this.registrationForm.get("name");
+}
 }

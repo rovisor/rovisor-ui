@@ -3,6 +3,7 @@
     <div class="col-4 mb-3 mt-3 ml-3 mr-4">
       <label for="name">First name</label>
       <input class="form-control" type="text" placeholder="Enter Name" id="name" formControlName="name" />
+      <span *ngIf="name &&  name.invalid  && name.touched">hllo</span>
     </div>
     <div class="col-4 mb-3 mt-3 ml-3 mr-4">
       <label for="name">Phone Number</label>
