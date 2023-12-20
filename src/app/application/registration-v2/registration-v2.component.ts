@@ -12,7 +12,7 @@ import { ARRAY} from './enum';
 export class RegistrationV2Component implements OnInit {
 selectedCountry: any;
   countries= ARRAY;
-onDateSelect($event: NgbDate) {
+onDateSelect() {
 throw new Error('Method not implemented.');
 }
 public registrationForm!: FormGroup;
@@ -39,6 +39,9 @@ ngOnInit(): void {
       Validators.required,
     ]),
     calendar: new FormControl('',[
+      Validators.required,
+    ]),
+    country: new FormControl('',[
       Validators.required,
     ]),
     

@@ -19,11 +19,11 @@
     </div>
     <div class="col-4 mb-3 mt-3 ml-3 mr-4">
       <label for="name">Date of Birth</label>
-      <input  class="col-12 mb-3 mt-3 ml-3 mr-4" type="date"  ngbDatepicker (dateSelect)="onDateSelect($event)"/>
+      <input  class="col-12 mb-3 mt-3 ml-3 mr-4" type="date"  ngbDatepicker (dateSelect)="onDateSelect()"/>
     </div>
 
-      <div class="col-4 mb-3 mt-3 ml-3 mr-4" >
-        <label for="country">Country</label>
+      <div class="col-4" id="country">
+        <label for="country" class="mb-3 mt-1 ml-3 mr-4">Country</label>
         <ng-select
         
           class="form-control"
