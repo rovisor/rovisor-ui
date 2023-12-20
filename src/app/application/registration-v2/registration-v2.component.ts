@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators,FormBuilder, } from '@angular/forms';
 
 
 @Component({
@@ -9,8 +9,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   })
 
 export class RegistrationV2Component implements OnInit {
+
 public registrationForm!: FormGroup;
-constructor() { }
+constructor(private fb: FormBuilder) { }
 minDate = "2022-12-15";
 maxDate = "2180-12-15"
 ngOnInit(): void {
@@ -41,5 +42,11 @@ ngOnInit(): void {
 get name()
 {
   return this.registrationForm.get("name");
+}
+onSubmit(){
+  if  (this.registrationForm.valid){
+    console.log('Form submitted:', this.registrationForm.value);
+  }
+
 }
 }
