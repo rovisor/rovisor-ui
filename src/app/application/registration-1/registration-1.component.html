@@ -63,20 +63,22 @@
             formControlName="birthDate"
           />
           <div *ngIf="userForm.get('birthdate').hasError('lessthen87')">
-            Birth date cannot be earlier than 87 years from today.
+            Birth date cannot be earlier than 87 years.
           </div>
         </div>
 
-        <div class="form-group">
-          <label for="country">Country</label>
-          <ng-select
-            class="form-control"
-            [items]="countries"
-            name="country"
-            formControlName="country"
-          >
-          </ng-select>
+        <label for="country">Country</label>
+        <ng-select
+          class="form-control"
+          [items]="countries"
+          name="country"
+          formControlName="country"
+        >
+        </ng-select>
+        <div *ngIf="userForm.get('country').hasError('invalidCountryId')">
+          Invalid Country ID.
         </div>
+
       </div>
     </div>
   </div>

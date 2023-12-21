@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ARRAY } from './countries-list';
-import { Enum } from '../registration-v2/enum';
+import { Countries } from './countries-list';
 
 @Component({
   selector: 'application-registration-1',
@@ -11,6 +11,7 @@ import { Enum } from '../registration-v2/enum';
 export class Registration1Component implements OnInit {
   public userForm!: FormGroup;
   title = 'Angular Reactive Form';
+  selectedCountry: any;
   countries = ARRAY;
   ngOnInit(): void {
     this.userForm = new FormGroup({
@@ -32,17 +33,24 @@ export class Registration1Component implements OnInit {
       ]),
       password: new FormControl('', [Validators.required]),
       birthdate: new FormControl('', [Validators.required, this.validatedob]),
-      country: new FormControl('', [Validators.required]),
+      country: new FormControl('', [
+        Validators.required,
+        this.validateCountryId,
+      ]),
     });
   }
   submitForm(): void {
     if (this.userForm.valid) {
-      const name = this.userForm.get('name')?.value;
-      const email = this.userForm.get('email')?.value;
-      const phoneNumber = this.userForm.get('phoneNumber')?.value;
-      const password = this.userForm.get('password')?.value;
-      const birthdate = this.userForm.get('birthdate')?.value;
-      const country = this.userForm.get('country')?.value;
+      const val = {
+        name: this.userForm.get('name')?.value,
+        email: this.userForm.get('email')?.value,
+        phoneNumber: this.userForm.get('phoneNumber')?.value,
+        password: this.userForm.get('password')?.value,
+        birthdate: this.userForm.get('birthdate')?.value,
+        country: this.userForm.get('country')?.value,
+      };
+
+      console.log(val);
     } else {
       console.log('Form is not valid');
     }
@@ -56,4 +64,11 @@ export class Registration1Component implements OnInit {
     }
     return null;
   }
+  validateCountryId(control: FormControl): { [key: string]: boolean } | null {
+    if (!Countries[control.value as keyof typeof Countries]) {
+      return { invalidCountryId: true };
+    }
+    return null;
+  }
 }
+//keyof typeof:-to ensure that control.value is used as a valid key for indexing the enum.
