@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ARRAY } from './countries-list';
-
+import { Enum } from '../registration-v2/enum';
 
 @Component({
   selector: 'application-registration-1',
@@ -11,7 +11,6 @@ import { ARRAY } from './countries-list';
 export class Registration1Component implements OnInit {
   public userForm!: FormGroup;
   title = 'Angular Reactive Form';
-  selectedCountry: any;
   countries = ARRAY;
   ngOnInit(): void {
     this.userForm = new FormGroup({
@@ -23,21 +22,21 @@ export class Registration1Component implements OnInit {
       ]),
       email: new FormControl('', [
         Validators.required,
-        
+        Validators.pattern(
+          /^[a-zA-Z0-9._%+-]+@(?:[a-zA-Z0-9-]+\.)+(com|in|ai|io)$/
+        ),
       ]),
       phoneNumber: new FormControl('', [
         Validators.required,
         Validators.pattern(/^\+[1-9]\d{9}$/),
       ]),
       password: new FormControl('', [Validators.required]),
-      birthdate: new FormControl('', [Validators.required]),
+      birthdate: new FormControl('', [Validators.required, this.validatedob]),
       country: new FormControl('', [Validators.required]),
     });
   }
   submitForm(): void {
-    
     if (this.userForm.valid) {
-      
       const name = this.userForm.get('name')?.value;
       const email = this.userForm.get('email')?.value;
       const phoneNumber = this.userForm.get('phoneNumber')?.value;
@@ -45,8 +44,16 @@ export class Registration1Component implements OnInit {
       const birthdate = this.userForm.get('birthdate')?.value;
       const country = this.userForm.get('country')?.value;
     } else {
-      
       console.log('Form is not valid');
     }
+  }
+  validatedob(control: FormControl): { [key: string]: boolean } | null {
+    const maxdob = new Date();
+    maxdob.setFullYear(maxdob.getFullYear() - 87);
+
+    if (control.value && new Date(control.value) < maxdob) {
+      return { lessthen87: true };
+    }
+    return null;
   }
 }

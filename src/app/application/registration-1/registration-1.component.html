@@ -62,19 +62,25 @@
             #d="ngbDatepicker"
             formControlName="birthDate"
           />
+          <div *ngIf="userForm.get('birthdate').hasError('lessthen87')">
+            Birth date cannot be earlier than 87 years from today.
+          </div>
         </div>
 
-        <label for="country">Country</label>
-        <ng-select
-          class="form-control"
-          [items]="countries"
-          [(ngModel)]="selectedCountry"
-          name="country"
-          formControlName="country"
+        <div class="form-group">
+          <label for="country">Country</label>
+          <ng-select
+            class="form-control"
+            [items]="countries"
+            name="country"
+            formControlName="country"
           >
-        </ng-select>
+          </ng-select>
+        </div>
       </div>
     </div>
   </div>
-  <button type="button" class="btn btn-primary" (click)="submitForm()">Submit</button>
+  <button type="button" class="btn btn-primary" (click)="submitForm()">
+    Submit
+  </button>
 </form>
