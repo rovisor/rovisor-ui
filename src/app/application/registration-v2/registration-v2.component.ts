@@ -15,33 +15,13 @@ constructor(private fb: FormBuilder) { }
 minDate = "2022-12-15";
 maxDate = "2180-12-15"
 ngOnInit(): void {
-  this.registrationForm = new FormGroup({
-    name: new FormControl('', [
-      Validators.required,
-      Validators.minLength(6),
-      Validators.maxLength(16),
-      Validators.pattern(/^[a-zA-Z]+$/),
-    ]),
-    phone: new FormControl('', [Validators.required, 
-      Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$") ,
-      Validators.maxLength(10),
-      Validators.minLength(10)
-    ]),
-    email: new FormControl('',[
-      Validators.required,
-    ]),
-    password: new FormControl('',[
-      Validators.required,
-    ]),
-    calendar: new FormControl('',[
-      Validators.required,
-    ]),
-    
-  });
+  this.createForm();
 }
-get name()
-{
-  return this.registrationForm.get("name");
+createForm() {
+  this.registrationForm = this.fb.group({
+    firstName: ['', [Validators.required, Validators.minLength(3)]],
+    lastName: ['', [Validators.required, Validators.minLength(3)]]
+  });
 }
 onSubmit(){
   if  (this.registrationForm.valid){
