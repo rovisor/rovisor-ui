@@ -1,25 +1,87 @@
 <h1>Registration-1</h1>
 
 <h1>{{ title }}</h1>
-<form [formGroup]="userForm">
-  <div class="row">
-    <div class="col-8">
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input class="form-control"type="text"placeholder="Enter Name"id="name"formControlName="name"/>
-        <div *ngIf="userForm.get('name').hasError('required')">
-          Name is required.
-        </div>
-        <div *ngIf="userForm.get('name').hasError('minlength')">
-          Name must be at least 6 characters long.
-        </div>
-        <div *ngIf="userForm.get('name').hasError('maxlength')">
-          Name cannot be more than 16 characters long.
-        </div>
-        <div *ngIf="userForm.get('name').hasError('pattern')">
-          Name should only contain alphabets.
-        </div>
-      </div>
+<form [formGroup]="userForm" novalidate>
+ <div class="row">
+  <div class="col-8">
+   <div class="form-group">
+    <label for="name">Name</label>
+    <input
+     class="form-control"
+     type="text"
+     placeholder="Enter Name"
+     id="name"
+     formControlName="name"
+
+    />
+    <div *ngIf="userForm.get('name').hasError('required')">
+     Name is required.
     </div>
+    <div *ngIf="userForm.get('name').hasError('minlength')">
+     Name must be at least 6 characters long.
+    </div>
+    <div *ngIf="userForm.get('name').hasError('maxlength')">
+     Name cannot be more than 16 characters long.
+    </div>
+    <div *ngIf="userForm.get('name').hasError('pattern')">
+     Name should only contain alphabets.
+    </div>
+
+    <label for="email">Email</label>
+    <input
+     class="form-control"
+     type="text"
+     placeholder="Enter email"
+     id="email"
+     formControlName="email"
+    />
+
+    <label for="phoneNumber">Phone Number</label>
+    <input
+     class="form-control"
+     type="tel"
+     placeholder="Phone Number"
+     id="phoneNumber"
+     formControlName="phoneNumber"
+    />
+
+    <label for="password">Password</label>
+    <input
+     class="form-control"
+     type="text"
+     placeholder="Enter password"
+     id="password"
+     formControlName="password"
+    />
+
+    <label for="birthDate">Birth Date:</label>
+
+    <input
+     type="date"
+     class="form-control"
+     ngbDatepicker
+     #d="ngbDatepicker"
+     formControlName="birthDate"
+    />
+    <div *ngIf="userForm.get('birthdate').hasError('lessthen87')">
+     Birth date cannot be earlier than 87 years.
+    </div>
+
+    <label for="country">Country</label>
+    <ng-select
+     class="form-control"
+     [items]="countries"
+     formControlName="country"
+    >
+    </ng-select>
+    <div *ngIf="userForm.get('country').hasError('invalidCountryId')">
+     Invalid Country ID.
+    </div>
+     
+   </div>
   </div>
+ </div>
+ <button type="button" class="btn btn-primary" (click)="submitForm()">
+  Submit
+ </button>
 </form>
