@@ -43,6 +43,7 @@ export class Registration1Component implements OnInit {
   }
   submitForm(): void {
     if (this.userForm.valid) {
+      const user = this.userForm.value;
       const val = {
         name: this.userForm.get('name')?.value,
         email: this.userForm.get('email')?.value,

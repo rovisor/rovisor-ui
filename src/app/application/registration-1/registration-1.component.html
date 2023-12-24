@@ -12,7 +12,7 @@
      placeholder="Enter Name"
      id="name"
      formControlName="name"
-[(ngModel)]="user.name"
+
     />
     <div *ngIf="userForm.get('name').hasError('required')">
      Name is required.
