@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ARRAY } from './countries-list';
+import { Countries } from './countries-list';
+
 @Component({
   selector: 'application-registration-1',
   templateUrl: './registration-1.component.html',
@@ -8,14 +11,70 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class Registration1Component implements OnInit {
   public userForm!: FormGroup;
   title = 'Angular Reactive Form';
+  countries = ARRAY;
+  user = {
+    name: '',
+    email: '',
+    phoneNumber: '',
+    password: ' ',
+    birthdate: ' ',
+    country: ' ',
+  };
   ngOnInit(): void {
     this.userForm = new FormGroup({
       name: new FormControl('', [
         Validators.required,
         Validators.minLength(6),
         Validators.maxLength(16),
-        Validators.pattern(/^[a-zA-Z]+$/),
+        Validators.pattern(/^[a-zA-Z-'']+$/),
+      ]),
+      email: new FormControl('', [
+        Validators.required,
+        Validators.pattern(
+          /^[a-zA-Z0-9._%+-]+@(?:[a-zA-Z0-9-]+\.)+(com|in|ai|io)$/
+        ),
+      ]),
+      phoneNumber: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^\+[1-9]\d{9}$/),
+      ]),
+      password: new FormControl('', [Validators.required]),
+      birthdate: new FormControl('', [Validators.required, this.validatedob]),
+      country: new FormControl('', [
+        Validators.required,
+        this.validateCountryId,
       ]),
     });
+  }
+  submitForm(): void {
+    if (this.userForm.valid) {
+     this.user = {
+       name: this.userForm.get('name')?.value,
+       email: this.userForm.get('email')?.value,
+       phoneNumber: this.userForm.get('phoneNumber')?.value,
+       password: this.userForm.get('password')?.value,
+       birthdate: this.userForm.get('birthdate')?.value,
+       country: this.userForm.get('country')?.value,
+     };
+
+      console.log(this.user);
+    } else {
+      console.log('Form is not valid');
+    }
+  }
+  validatedob(control: FormControl): { [key: string]: boolean } | null {
+    const maxdob = new Date();
+    maxdob.setFullYear(maxdob.getFullYear() - 87);
+
+    if (control.value && new Date(control.value) < maxdob) {
+      return { lessthen87: true };
+    }
+    return null;
+  }
+  validateCountryId(control: FormControl): { [key: string]: boolean } | null {
+    if (!Countries[control.value as keyof typeof Countries]) {
+      return { invalidCountryId: true };
+    }
+    return null;
   }
 }
