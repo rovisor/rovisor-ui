@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ARRAY } from './countries-list';
+import { Countries } from './countries-list';
+
 @Component({
   selector: 'application-registration-1',
   templateUrl: './registration-1.component.html',
@@ -8,15 +11,33 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class Registration1Component implements OnInit {
   public userForm!: FormGroup;
   title = 'Angular Reactive Form';
-  selectedCountry: any;
   countries = ARRAY;
+  user = {
+    name: "",
+  };
   ngOnInit(): void {
     this.userForm = new FormGroup({
       name: new FormControl('', [
         Validators.required,
         Validators.minLength(6),
         Validators.maxLength(16),
-        Validators.pattern(/^[a-zA-Z]+$/),
+        Validators.pattern(/^[a-zA-Z-'']+$/),
+      ]),
+      email: new FormControl('', [
+        Validators.required,
+        Validators.pattern(
+          /^[a-zA-Z0-9._%+-]+@(?:[a-zA-Z0-9-]+\.)+(com|in|ai|io)$/
+        ),
+      ]),
+      phoneNumber: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^\+[1-9]\d{9}$/),
+      ]),
+      password: new FormControl('', [Validators.required]),
+      birthdate: new FormControl('', [Validators.required, this.validatedob]),
+      country: new FormControl('', [
+        Validators.required,
+        this.validateCountryId,
       ]),
     });
   }
@@ -52,4 +73,3 @@ export class Registration1Component implements OnInit {
     return null;
   }
 }
-//keyof typeof:-to ensure that control.value is used as a valid key for indexing the enum.
