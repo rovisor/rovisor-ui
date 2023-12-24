@@ -47,4 +47,19 @@ ngOnInit(): void {
     
   });
 }
+submitForm(): void {
+  if (this.registrationForm .valid) {
+    const val = {
+      name: this.registrationForm .get('name')?.value,
+      email: this.registrationForm .get('email')?.value,
+      phone: this.registrationForm .get('phoneNumber')?.value,
+      password: this.registrationForm .get('password')?.value,
+      
+    };
+
+    console.log(val);
+  } else {
+    console.log('Form is not valid');
+  }
+}
 }
