@@ -34,7 +34,12 @@
           id="email"
           formControlName="email"
         />
-
+        <div *ngIf="userForm.get('email').hasError('required')">
+          Email is required.
+        </div>
+        <div *ngIf="userForm.get('email').hasError('pattern')">
+          Please enter a valid email address with TLCs: .com, .in, .ai, or .io
+        </div>
         <label for="phoneNumber">Phone Number</label>
         <input
           class="form-control"
@@ -43,7 +48,13 @@
           id="phoneNumber"
           formControlName="phoneNumber"
         />
-
+        <div *ngIf="userForm.get('phoneNumber').hasError('required')">
+          Phone Number is required.
+        </div>
+        <div *ngIf="userForm.get('phoneNumber').hasError('pattern')">
+          Please enter a valid phone number with the country code beginning with
+          a plus (+) sign, no leading zeros, and exactly 10 digits.
+        </div>
         <label for="password">Password</label>
         <input
           class="form-control"
@@ -62,6 +73,9 @@
             #d="ngbDatepicker"
             formControlName="birthDate"
           />
+          <div *ngIf="userForm.get('birthDate').hasError('required')">
+            Birth Date is required.
+          </div>
           <div *ngIf="userForm.get('birthdate').hasError('lessthen87')">
             Birth date cannot be earlier than 87 years.
           </div>
@@ -78,11 +92,15 @@
         <div *ngIf="userForm.get('country').hasError('invalidCountryId')">
           Invalid Country ID.
         </div>
-
       </div>
     </div>
   </div>
-  <button type="button" class="btn btn-primary" (click)="submitForm()">
+  <button
+    type="button"
+    class="btn btn-primary"
+    [disabled]="userForm.invalid"
+    (click)="submitForm()"
+  >
     Submit
   </button>
 </form>
