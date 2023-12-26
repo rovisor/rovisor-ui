@@ -33,19 +33,18 @@ export class Registration1Component implements OnInit {
   }
   submitForm(): void {
     
-    if (this.userForm.valid)
-    {
-      
-      const name = this.userForm.get('name')?.value;
-      const email = this.userForm.get('email')?.value;
-      const phoneNumber = this.userForm.get('phoneNumber')?.value;
-      const password = this.userForm.get('password')?.value;
-      const birthdate = this.userForm.get('birthdate')?.value;
-      const country = this.userForm.get('country')?.value;
-    }
-    else
-    {
-      
+    if (this.userForm.valid) {
+      const val = {
+        name: this.userForm.get('name')?.value,
+        email: this.userForm.get('email')?.value,
+        phoneNumber: this.userForm.get('phoneNumber')?.value,
+        password: this.userForm.get('password')?.value,
+        birthdate: this.userForm.get('birthdate')?.value,
+        country: this.userForm.get('country')?.value,
+      };
+
+      console.log(val);
+    } else {
       console.log('Form is not valid');
     }
   }
