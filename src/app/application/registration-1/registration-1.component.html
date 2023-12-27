@@ -13,16 +13,16 @@
           id="name"
           formControlName="name"
         />
-        <div *ngIf="userForm.get('name').hasError('required')">
+        <div *ngIf="userForm.get('name')?.hasError('required')">
           Name is required.
         </div>
-        <div *ngIf="userForm.get('name').hasError('minlength')">
+        <div *ngIf="userForm.get('name')?.hasError('minlength')">
           Name must be at least 6 characters long.
         </div>
-        <div *ngIf="userForm.get('name').hasError('maxlength')">
+        <div *ngIf="userForm.get('name')?.hasError('maxlength')">
           Name cannot be more than 16 characters long.
         </div>
-        <div *ngIf="userForm.get('name').hasError('pattern')">
+        <div *ngIf="userForm.get('name')?.hasError('pattern')">
           Name should only contain alphabets.
         </div>
 
@@ -47,7 +47,7 @@
         <label for="password">Password</label>
         <input
           class="form-control"
-          type="text"
+          type="password"
           placeholder="Enter password"
           id="password"
           formControlName="password"
@@ -60,7 +60,7 @@
             class="form-control"
             ngbDatepicker
             #d="ngbDatepicker"
-            formControlName="birthDate"
+            formControlName="birthdate"
           />
         </div>
 
