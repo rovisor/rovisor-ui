@@ -13,16 +13,16 @@
           id="name"
           formControlName="name"
         />
-        <div *ngIf="userForm.get('name').hasError('required')">
+        <div *ngIf="userForm.get('name')?.hasError('required')">
           Name is required.
         </div>
-        <div *ngIf="userForm.get('name').hasError('minlength')">
+        <div *ngIf="userForm.get('name')?.hasError('minlength')">
           Name must be at least 6 characters long.
         </div>
-        <div *ngIf="userForm.get('name').hasError('maxlength')">
+        <div *ngIf="userForm.get('name')?.hasError('maxlength')">
           Name cannot be more than 16 characters long.
         </div>
-        <div *ngIf="userForm.get('name').hasError('pattern')">
+        <div *ngIf="userForm.get('name')?.hasError('pattern')">
           Name should only contain alphabets.
         </div>
 
@@ -34,10 +34,10 @@
           id="email"
           formControlName="email"
         />
-        <div *ngIf="userForm.get('email').hasError('required')">
+        <div *ngIf="userForm.get('email')?.hasError('required')">
           Email is required.
         </div>
-        <div *ngIf="userForm.get('email').hasError('pattern')">
+        <div *ngIf="userForm.get('email')?.hasError('pattern')">
           Please enter a valid email address with TLCs: .com, .in, .ai, or .io
         </div>
         <label for="phoneNumber">Phone Number</label>
@@ -48,49 +48,47 @@
           id="phoneNumber"
           formControlName="phoneNumber"
         />
-        <div *ngIf="userForm.get('phoneNumber').hasError('required')">
+        <div *ngIf="userForm.get('phoneNumber')?.hasError('required')">
           Phone Number is required.
         </div>
-        <div *ngIf="userForm.get('phoneNumber').hasError('pattern')">
+        <div *ngIf="userForm.get('phoneNumber')?.hasError('pattern')">
           Please enter a valid phone number with the country code beginning with
           a plus (+) sign, no leading zeros, and exactly 10 digits.
         </div>
         <label for="password">Password</label>
         <input
           class="form-control"
-          type="text"
+          type="password"
           placeholder="Enter password"
           id="password"
           formControlName="password"
         />
 
-        <label for="birthDate">Birth Date:</label>
-        <div class="input-group">
-          <input
-            type="date"
-            class="form-control"
-            ngbDatepicker
-            #d="ngbDatepicker"
-            formControlName="birthDate"
-          />
-          <div *ngIf="userForm.get('birthDate').hasError('required')">
-            Birth Date is required.
-          </div>
-          <div *ngIf="userForm.get('birthdate').hasError('lessthen87')">
-            Birth date cannot be earlier than 87 years.
-          </div>
+        <label for="birthdate">Birth Date:</label>
+        <input
+          type="date"
+          class="form-control"
+          ngbDatepicker
+          #d="ngbDatepicker"
+          id="birthdate"
+          formControlName="birthdate"
+          max="{{ maxDate | date : 'yyyy-MM-dd' }}"
+        />
+        <div *ngIf="userForm.get('birthdate')?.hasError('required')">
+          Birth Date is required.
+        </div>
+        <div *ngIf="userForm.get('birthdate')?.hasError('lessthen87')">
+          Birth date cannot be earlier than 87 years
+        </div>
+        <div *ngIf="userForm.get('birthdate')?.hasError('futureDate')">
+          Birth date cannot be a future date.
         </div>
 
         <label for="country">Country</label>
-        <ng-select
-        
-          [items]="countries"
-          name="country"
-          formControlName="country"
-        >
+        <ng-select [items]="Countries" name="country" formControlName="country">
         </ng-select>
-        <div *ngIf="userForm.get('country').hasError('invalidCountryId')">
-          Invalid Country ID.
+        <div *ngIf="userForm.get('country')?.hasError('invalidCountry')">
+          Country is required.
         </div>
       </div>
     </div>
