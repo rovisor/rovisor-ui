@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CountryArray } from './countries-list';
+import { ARRAY } from './countries-list';
 @Component({
   selector: 'application-registration-1',
   templateUrl: './registration-1.component.html',
@@ -9,8 +9,8 @@ import { CountryArray } from './countries-list';
 export class Registration1Component implements OnInit {
   public userForm!: FormGroup;
   title = 'Angular Reactive Form';
-  selectedCountry: any;
-  countries = CountryArray;
+  
+  countries = ARRAY;
   ngOnInit(): void {
     this.userForm = new FormGroup({
       name: new FormControl('', [
@@ -31,7 +31,8 @@ export class Registration1Component implements OnInit {
       country: new FormControl('', [Validators.required]),
     });
   }
-  submit(): void {
+  submitForm(): void {
+    
     if (this.userForm.valid) {
       const val = {
         name: this.userForm.get('name')?.value,

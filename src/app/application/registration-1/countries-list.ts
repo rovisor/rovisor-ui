@@ -6,4 +6,4 @@ export enum Countries {
   France = 'France',
 }
 
-export const CountryArray = Object.values(Countries);
+export const ARRAY = Object.values(Countries);
