@@ -48,25 +48,41 @@
         </div>
       </div>
 
-      <div class="row mb-3">
-        <div class="col form-group">
-          <label for="phoneNumber" class="col-form-label">Phone Number</label>
-          <input
-            class="form-control"
-            type="tel"
-            placeholder="Phone Number"
-            id="phoneNumber"
-            formControlName="phoneNumber"
-          />
-          <div *ngIf="userForm.get('phoneNumber')?.hasError('required')">
+     <div class="row mb-3">
+  <div class="col form-group">
+    <label for="countryCode" class="col-form-label">Country Code</label>
+    <input
+      class="form-control"
+      type="text"
+      placeholder="Enter Country Code"
+      id="countryCode"
+      formControlName="countryCode"
+    />
+    <div *ngIf="userForm.get('countryCode')?.hasError('required')">
+         Country Code  is required.
+        </div>
+    <div *ngIf="userForm.get('countryCode')?.hasError('pattern')">
+      Please enter a valid country code with the plus (+) sign and no leading zeros.
+    </div>
+  </div>
+
+  <div class="col form-group">
+    <label for="phoneNumber" class="col-form-label">Phone Number</label>
+    <input
+      class="form-control"
+      type="text"
+      placeholder="Enter Phone Number"
+      id="phoneNumber"
+      formControlName="phoneNumber"
+    />
+    <div *ngIf="userForm.get('phoneNumber')?.hasError('required')">
           Phone Number is required.
         </div>
-        <div *ngIf="userForm.get('phoneNumber')?.hasError('pattern')">
-          Please enter a valid phone number with the country code beginning with
-          a plus (+) sign, no leading zeros, and exactly 10 digits.
-        </div>
-        </div>
-      </div>
+    <div *ngIf="userForm.get('phoneNumber')?.hasError('pattern')">
+      Please enter a valid phone number with no leading zeros and exactly 10 digits.
+    </div>
+  </div>
+</div>
 
       <div class="row mb-3">
         <div class="col form-group">
@@ -91,7 +107,7 @@
           #d="ngbDatepicker"
           id="birthdate"
           formControlName="birthdate"
-          max="{{ maxDate | date : 'yyyy-MM-dd' }}"
+          [max]=" maxDate | date : 'yyyy-MM-dd' "
           />
           
         <div *ngIf="userForm.get('birthdate')?.hasError('required')">
@@ -116,8 +132,9 @@
           >
           </ng-select>
           <div *ngIf="userForm.get('country')?.hasError('invalidCountry')">
-          Country is required.
-        </div>
+  Country is required.
+</div>
+
         </div>
       </div>
 

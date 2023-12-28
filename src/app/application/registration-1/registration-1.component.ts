@@ -13,7 +13,7 @@ export class Registration1Component implements OnInit {
   countries = ARRAY;
   maxDate: string = new Date().toISOString().split('T')[0];
   user = {
-    name: "",
+    name: '',
   };
   ngOnInit(): void {
     this.userForm = new FormGroup({
@@ -27,18 +27,23 @@ export class Registration1Component implements OnInit {
         Validators.required,
         Validators.pattern(
           /^[a-zA-Z0-9._%+-]+@(?:[a-zA-Z0-9-]+\.)+(com|in|ai|io)$/
-        )
+        ),
       ]),
+      countryCode: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^\+[1-9]\d{0,2}$/),
+      ]),
+
       phoneNumber: new FormControl('', [
         Validators.required,
-        Validators.pattern(/^\+[1-9]\d{9}$/),
+        Validators.pattern(/^\d{10}$/),
       ]),
       password: new FormControl('', [Validators.required]),
       birthdate: new FormControl('', [Validators.required, this.validatedob]),
       country: new FormControl('', [
         Validators.required,
         this.validateCountryId,
-      ])
+      ]),
     });
   }
   submitForm(): void {
@@ -64,21 +69,24 @@ export class Registration1Component implements OnInit {
 
     const selectedDate = new Date(control.value);
 
-    if (control.value &&(selectedDate > maxdob || isNaN(selectedDate.getTime()))
+    if (
+      control.value &&
+      (selectedDate > maxdob || isNaN(selectedDate.getTime()))
     ) {
       return { lessthen87: true };
-    } else if (control.value && new Date(control.value) > new Date()) {
-      return { futureDate: true };
     }
+
     return null;
   }
 
+
   validateCountryId(control: FormControl): { [key: string]: boolean } | null {
-    if (!Countries[control.value as keyof typeof Countries]) {
+    const selectedCountry = control.value;
+
+    if (!selectedCountry || selectedCountry === '') {
       return { invalidCountry: true };
     }
+
     return null;
   }
 }
-//keyof typeof:-to ensure that control.value is used as a valid key for indexing the enum.
-
