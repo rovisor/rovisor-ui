@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ARRAY } from './countries-list';
 import { Countries } from './countries-list';
-
 @Component({
   selector: 'application-registration-1',
   templateUrl: './registration-1.component.html',
@@ -12,6 +11,7 @@ export class Registration1Component implements OnInit {
   public userForm!: FormGroup;
   title = 'Angular Reactive Form';
   countries = ARRAY;
+  maxDate: string = new Date().toISOString().split('T')[0];
   user = {
     name: "",
   };
@@ -38,7 +38,7 @@ export class Registration1Component implements OnInit {
       country: new FormControl('', [
         Validators.required,
         this.validateCountryId,
-      ]),
+      ])
     });
   }
   submitForm(): void {
@@ -62,15 +62,22 @@ export class Registration1Component implements OnInit {
     const maxdob = new Date();
     maxdob.setFullYear(maxdob.getFullYear() - 87);
 
-    if (control.value && new Date(control.value) < maxdob) {
+    const selectedDate = new Date(control.value);
+
+    if (control.value &&(selectedDate > maxdob || isNaN(selectedDate.getTime()))
+    ) {
       return { lessthen87: true };
+    } else if (control.value && new Date(control.value) > new Date()) {
+      return { futureDate: true };
     }
     return null;
   }
+
   validateCountryId(control: FormControl): { [key: string]: boolean } | null {
     if (!Countries[control.value as keyof typeof Countries]) {
-      return { invalidCountryId: true };
+      return { invalidCountry: true };
     }
     return null;
   }
 }
+//keyof typeof:-to ensure that control.value is used as a valid key for indexing the enum.
