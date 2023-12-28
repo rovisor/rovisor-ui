@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ARRAY } from './countries-list';
 import { Countries } from './countries-list';
-
 @Component({
   selector: 'application-registration-1',
   templateUrl: './registration-1.component.html',
@@ -13,7 +12,6 @@ export class Registration1Component implements OnInit {
   title = 'Angular Reactive Form';
   Countries = ARRAY;
   maxDate: string = new Date().toISOString().split('T')[0];
-
   ngOnInit(): void {
     this.userForm = new FormGroup({
       name: new FormControl('', [
@@ -38,6 +36,16 @@ export class Registration1Component implements OnInit {
         Validators.required,
         this.validateCountryId,
       ]),
+      email: new FormControl('', [Validators.required]),
+      phoneNumber: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^[1-9]\d{9}$/),
+        Validators.maxLength(10),
+        Validators.minLength(10),
+      ]),
+      password: new FormControl('', [Validators.required]),
+      birthdate: new FormControl('', [Validators.required]),
+      country: new FormControl('', [Validators.required]),
     });
   }
   submitForm(): void {
