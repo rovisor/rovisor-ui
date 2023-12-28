@@ -23,8 +23,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SharedComponentsModule,
     ReactiveFormsModule,
     FormsModule,
-    NgbDatepickerModule,
-    NgSelectModule,
     NgSelectModule,
     CommonModule
   ],

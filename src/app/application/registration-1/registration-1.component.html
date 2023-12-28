@@ -39,6 +39,12 @@
             id="email"
             formControlName="email"
           />
+          <div *ngIf="userForm.get('email')?.hasError('required')">
+            Email is required.
+          </div>
+          <div *ngIf="userForm.get('email')?.hasError('pattern')">
+            Please enter a valid email address with TLCs: .com, .in, .ai, or .io
+          </div>
         </div>
       </div>
 
@@ -52,6 +58,13 @@
             id="phoneNumber"
             formControlName="phoneNumber"
           />
+          <div *ngIf="userForm.get('phoneNumber')?.hasError('required')">
+          Phone Number is required.
+        </div>
+        <div *ngIf="userForm.get('phoneNumber')?.hasError('pattern')">
+          Please enter a valid phone number with the country code beginning with
+          a plus (+) sign, no leading zeros, and exactly 10 digits.
+        </div>
         </div>
       </div>
 
@@ -71,15 +84,25 @@
       <div class="row mb-3">
         <div class="col form-group">
           <label for="birthDate" class="col-form-label">Birth Date:</label>
-          <div class="input-group">
-            <input
-              type="date"
-              class="form-control"
-              ngbDatepicker
-              #d="ngbDatepicker"
-              formControlName="birthdate"
-            />
-          </div>
+          <input
+          type="date"
+          class="form-control"
+          ngbDatepicker
+          #d="ngbDatepicker"
+          id="birthdate"
+          formControlName="birthdate"
+          max="{{ maxDate | date : 'yyyy-MM-dd' }}"
+          />
+          
+        <div *ngIf="userForm.get('birthdate')?.hasError('required')">
+          Birth Date is required.
+        </div>
+        <div *ngIf="userForm.get('birthdate')?.hasError('lessthen87')">
+          Birth date cannot be earlier than 87 years
+        </div>
+        <div *ngIf="userForm.get('birthdate')?.hasError('futureDate')">
+          Birth date cannot be a future date.
+        </div>
         </div>
       </div>
 
@@ -92,6 +115,9 @@
             formControlName="country"
           >
           </ng-select>
+          <div *ngIf="userForm.get('country')?.hasError('invalidCountry')">
+          Country is required.
+        </div>
         </div>
       </div>
 
