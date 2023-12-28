@@ -27,7 +27,7 @@ export class Registration1Component implements OnInit {
         Validators.required,
         Validators.pattern(
           /^[a-zA-Z0-9._%+-]+@(?:[a-zA-Z0-9-]+\.)+(com|in|ai|io)$/
-        ),
+        )
       ]),
       phoneNumber: new FormControl('', [
         Validators.required,
@@ -81,3 +81,4 @@ export class Registration1Component implements OnInit {
   }
 }
 //keyof typeof:-to ensure that control.value is used as a valid key for indexing the enum.
+
