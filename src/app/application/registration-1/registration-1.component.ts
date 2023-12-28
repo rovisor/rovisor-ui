@@ -10,7 +10,7 @@ import { Countries } from './countries-list';
 export class Registration1Component implements OnInit {
   public userForm!: FormGroup;
   title = 'Angular Reactive Form';
-  Countries = ARRAY;
+  countries = ARRAY;
   maxDate: string = new Date().toISOString().split('T')[0];
   ngOnInit(): void {
     this.userForm = new FormGroup({
