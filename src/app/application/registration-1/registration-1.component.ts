@@ -9,7 +9,7 @@ import { ARRAY } from './countries-list';
 export class Registration1Component implements OnInit {
   public userForm!: FormGroup;
   title = 'Angular Reactive Form';
-  selectedCountry: any;
+  
   countries = ARRAY;
   ngOnInit(): void {
     this.userForm = new FormGroup({
