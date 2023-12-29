@@ -10,7 +10,7 @@ import { Countries } from './countries-list';
 export class Registration1Component implements OnInit {
   public userForm!: FormGroup;
   title = 'Angular Reactive Form';
-  Countries = ARRAY;
+  countries = ARRAY;
   maxDate: string = new Date().toISOString().split('T')[0];
   ngOnInit(): void {
     this.userForm = new FormGroup({
@@ -36,16 +36,6 @@ export class Registration1Component implements OnInit {
         Validators.required,
         this.validateCountryId,
       ]),
-      email: new FormControl('', [Validators.required]),
-      phoneNumber: new FormControl('', [
-        Validators.required,
-        Validators.pattern(/^[1-9]\d{9}$/),
-        Validators.maxLength(10),
-        Validators.minLength(10),
-      ]),
-      password: new FormControl('', [Validators.required]),
-      birthdate: new FormControl('', [Validators.required]),
-      country: new FormControl('', [Validators.required]),
     });
   }
   submitForm(): void {
