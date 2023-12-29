@@ -6,7 +6,7 @@ import { SharedComponentsModule } from '../shared-components/shared-components.m
 import { RegistrationV2Component } from './registration-v2/registration-v2.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { CommonModule } from '@angular/common';
 import { Registration1Component } from './registration-1/registration-1.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -24,6 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     NgbDatepickerModule,
     NgSelectModule,
+    CommonModule
   ],
 })
-export class ApplicationModule {}
+export class ApplicationModule { }
