@@ -76,6 +76,7 @@ export class Registration1Component implements OnInit {
       const val = {
         name: this.userForm.get('name')?.value,
         email: this.userForm.get('email')?.value,
+        countryCode: this.userForm.get('countryCode')?.value,
         phoneNumber: this.userForm.get('phoneNumber')?.value,
         password: this.userForm.get('password')?.value,
         birthdate: this.userForm.get('birthdate')?.value,
