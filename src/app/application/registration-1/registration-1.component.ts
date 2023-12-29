@@ -21,7 +21,7 @@ export class Registration1Component implements OnInit {
     countryCode: "+91",
     phoneNumber: "9856728910",
     password: "8899020010 ",
-    birthdate: "28082001 ",
+    birthdate: { year: 2020, month: 12, day: 6 },
     country: "India",
   };
 
