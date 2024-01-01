@@ -101,8 +101,13 @@ export class Registration1Component implements OnInit {
     const maxdob = new Date();
     maxdob.setFullYear(maxdob.getFullYear() - 87);
 
-    if (control.value && new Date(control.value) < maxdob) {
+    const selectedDate = new Date(control.value);
+
+    if (control.value &&(selectedDate > maxdob || isNaN(selectedDate.getTime()))
+    ) {
       return { lessthen87: true };
+    } else if (control.value && new Date(control.value) > new Date()) {
+      return { futureDate: true };
     }
     return null;
   }
