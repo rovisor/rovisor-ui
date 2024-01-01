@@ -24,7 +24,6 @@ export class Registration1Component implements OnInit {
     birthdate: { year: 2020, month: 12, day: 6 },
     country: "India",
   };
-
   ngOnInit(): void {
     const minDob = new Date();
     minDob.setFullYear(minDob.getFullYear() - 87);
@@ -69,7 +68,7 @@ export class Registration1Component implements OnInit {
 
     });
   }
-
+  
   submitForm(): void {
     if (this.userForm.valid) {
       const user = this.userForm.value;
@@ -88,7 +87,7 @@ export class Registration1Component implements OnInit {
       console.log('Form is not valid');
     }
   }
-
+  
   validateCountryId(control: FormControl): { [key: string]: boolean } | null {
     const selectedCountry = control.value;
 
