@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ARRAY } from './countries-list';
-import { Countries } from './countries-list';
 
 @Component({
   selector: 'application-registration-1',
@@ -87,6 +86,7 @@ export class Registration1Component implements OnInit {
       console.log('Form is not valid');
     }
   }
+
   validateCountryId(control: FormControl): { [key: string]: boolean } | null {
     const selectedCountry = control.value;
 
@@ -94,6 +94,21 @@ export class Registration1Component implements OnInit {
       return { invalidCountry: true };
     }
 
+    return null;
+  }
+
+  validatedob(control: FormControl): { [key: string]: boolean } | null {
+    const maxdob = new Date();
+    maxdob.setFullYear(maxdob.getFullYear() - 87);
+
+    const selectedDate = new Date(control.value);
+
+    if (control.value &&(selectedDate > maxdob || isNaN(selectedDate.getTime()))
+    ) {
+      return { lessthen87: true };
+    } else if (control.value && new Date(control.value) > new Date()) {
+      return { futureDate: true };
+    }
     return null;
   }
 }
