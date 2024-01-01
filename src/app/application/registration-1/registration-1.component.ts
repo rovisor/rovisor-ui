@@ -12,13 +12,18 @@ export class Registration1Component implements OnInit {
   public userForm!: FormGroup;
   title = 'Angular Reactive Form';
   countries = ARRAY;
-  minDate: string='';
+  minDate: string = '';
   maxDate: string = new Date().toISOString().split('T')[0];
-  
+
   user = {
-    name: 'Varun',
+    name: 'VarunTyagi',
+    email: "varunx@gmail.com",
+    countryCode: "+91",
+    phoneNumber: "9856728910",
+    password: "8899020010 ",
+    birthdate: { year: 2020, month: 12, day: 6 },
+    country: "India",
   };
-  
   ngOnInit(): void {
     const minDob = new Date();
     minDob.setFullYear(minDob.getFullYear() - 87);
@@ -46,7 +51,7 @@ export class Registration1Component implements OnInit {
         Validators.pattern(/^\d{10}$/),
       ]),
       password: new FormControl('', [Validators.required]),
-      birthdate: new FormControl('', [Validators.required, ]),
+      birthdate: new FormControl('', [Validators.required,]),
       country: new FormControl('', [
         Validators.required,
         this.validateCountryId,
@@ -54,6 +59,13 @@ export class Registration1Component implements OnInit {
     });
     this.userForm.patchValue({
       name: this.user.name,
+      email: this.user.email,
+      countryCode: this.user.countryCode,
+      phoneNumber: this.user.phoneNumber,
+      password: this.user.password,
+      birthdate: this.user.birthdate,
+      country: this.user.country
+
     });
   }
   
@@ -63,6 +75,7 @@ export class Registration1Component implements OnInit {
       const val = {
         name: this.userForm.get('name')?.value,
         email: this.userForm.get('email')?.value,
+        countryCode: this.userForm.get('countryCode')?.value,
         phoneNumber: this.userForm.get('phoneNumber')?.value,
         password: this.userForm.get('password')?.value,
         birthdate: this.userForm.get('birthdate')?.value,
@@ -74,11 +87,7 @@ export class Registration1Component implements OnInit {
       console.log('Form is not valid');
     }
   }
-
-
-
-
-
+  
   validateCountryId(control: FormControl): { [key: string]: boolean } | null {
     const selectedCountry = control.value;
 
