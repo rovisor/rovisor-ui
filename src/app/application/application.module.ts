@@ -9,12 +9,14 @@ import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { Registration1Component } from './registration-1/registration-1.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UploadStatementComponent } from './upload-statement/upload-statement.component';
 
 @NgModule({
   declarations: [
     ApplicationComponent,
     Registration1Component,
     RegistrationV2Component,
+    UploadStatementComponent
   ],
   imports: [
     NgbDatepickerModule,
