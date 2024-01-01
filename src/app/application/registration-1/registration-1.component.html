@@ -2,108 +2,154 @@
 
 <h1>{{ title }}</h1>
 <form [formGroup]="userForm" novalidate>
-  <div class="row">
+  <div class="row p-4">
     <div class="col-8">
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input
-          class="form-control"
-          type="text"
-          placeholder="Enter Name"
-          id="name"
-          formControlName="name"
-          required
-          pattern="^[a-zA-Z-'']+$"
-        />
-        <div *ngIf="userForm.get('name').hasError('required')">
-          Name is required.
+      <div class="row mb-3">
+        <div class="col form-group">
+          <label for="name" class="col-form-label">Name</label>
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Enter Name"
+            id="name"
+            formControlName="name"
+            required
+            pattern="^[a-zA-Z-'']+$"
+          />
+          <div *ngIf="userForm.get('name')?.hasError('required')">
+            Name is required.
+          </div>
+          <div *ngIf="userForm.get('name')?.hasError('minlength')">
+            Name must be at least 6 characters long.
+          </div>
+          <div *ngIf="userForm.get('name')?.hasError('maxlength')">
+            Name cannot be more than 16 characters long.
+          </div>
+          <div *ngIf="userForm.get('name')?.hasError('pattern')">
+            Name should only contain alphabets.
+          </div>
         </div>
-        <div *ngIf="userForm.get('name').hasError('minlength')">
-          Name must be at least 6 characters long.
+      </div>
+
+      <div class="row mb-3">
+        <div class="col form-group">
+          <label for="email" class="col-form-label">Email</label>
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Enter email"
+            id="email"
+            formControlName="email"
+            required
+            pattern="^[a-zA-Z0-9._%+-]+@(?:[a-zA-Z0-9-]+\.)+(com|in|ai|io)$"
+          />
+          <div *ngIf="userForm.get('email')?.hasError('required')">
+            Email is required.
+          </div>
+          <div *ngIf="userForm.get('email')?.hasError('pattern')">
+            Please enter a valid email address with TLCs: .com, .in, .ai, or .io
+          </div>
         </div>
-        <div *ngIf="userForm.get('name').hasError('maxlength')">
-          Name cannot be more than 16 characters long.
-        </div>
-        <div *ngIf="userForm.get('name').hasError('pattern')">
-          Name should only contain alphabets,hyphens (-), and apostrophes (').
+      </div>
+
+      <div class="row mb-3">
+        <div class="col form-group">
+          <label for="countryCode" class="col-form-label">Country Code</label>
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Enter Country Code"
+            id="countryCode"
+            formControlName="countryCode"
+          />
+          <div *ngIf="userForm.get('countryCode')?.hasError('required')">
+            Country Code is required.
+          </div>
+          <div *ngIf="userForm.get('countryCode')?.hasError('pattern')">
+            Please enter a valid country code with the plus (+) sign and no
+            leading zeros.
+          </div>
         </div>
 
-        <label for="email">Email</label>
-        <input
-          class="form-control"
-          type="text"
-          placeholder="Enter email"
-          id="email"
-          formControlName="email"
-          required
-          pattern="^[a-zA-Z0-9._%+-]+@(?:[a-zA-Z0-9-]+\.)+(com|in|ai|io)$"
-        />
-        <div *ngIf="userForm.get('email').hasError('required')">
-          Email is required.
+        <div class="col form-group">
+          <label for="phoneNumber" class="col-form-label">Phone Number</label>
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Enter Phone Number"
+            id="phoneNumber"
+            formControlName="phoneNumber"
+          />
+          <div *ngIf="userForm.get('phoneNumber')?.hasError('required')">
+            Phone Number is required.
+          </div>
+          <div *ngIf="userForm.get('phoneNumber')?.hasError('pattern')">
+            Please enter a valid phone number with no leading zeros and exactly
+            10 digits.
+          </div>
         </div>
-        <div *ngIf="userForm.get('email').hasError('pattern')">
-          Please enter a valid email address with TLCs: .com, .in, .ai, or .io
-        </div>
+      </div>
 
-        <label for="phoneNumber">Phone Number</label>
-        <input
-          class="form-control"
-          type="tel"
-          placeholder="Phone Number"
-          id="phoneNumber"
-          formControlName="phoneNumber"
-          required
-          pattern="^\+[1-9]\d{9}$"
-        />
-        <div *ngIf="userForm.get('phoneNumber').hasError('required')">
-          Phone Number is required.
+      <div class="row mb-3">
+        <div class="col form-group">
+          <label for="password" class="col-form-label">Password</label>
+          <input
+            class="form-control"
+            type="password"
+            placeholder="Enter password"
+            id="password"
+            formControlName="password"
+          />
         </div>
-        <div *ngIf="userForm.get('phoneNumber').hasError('pattern')">
-          Please enter a valid phone number with the country code beginning with
-          a plus (+) sign, no leading zeros, and exactly 10 digits.
-        </div>
-        <label for="password">Password</label>
-        <input
-          class="form-control"
-          type="text"
-          placeholder="Enter password"
-          id="password"
-          formControlName="password"
-        />
+      </div>
 
-        <label for="birthDate">Birth Date:</label>
+      <div class="row mb-3">
+        <div class="col form-group">
+          <label for="birthDate" class="col-form-label">Birth Date:</label>
+          <input
+            type="date"
+            class="form-control"
+            ngbDatepicker
+            #d="ngbDatepicker"
+            id="birthdate"
+            formControlName="birthdate"
+            [max]="maxDate"
+            [min]="minDate"
+          />
 
-        <input
-          type="date"
-          class="form-control"
-          ngbDatepicker
-          #d="ngbDatepicker"
-          formControlName="birthDate"
-        />
-        <div *ngIf="userForm.get('birthDate').hasError('required')">
-          Birth Date is required.
+          <div *ngIf="userForm.get('birthdate')?.hasError('required')">
+            Birth Date is required.
+          </div>
         </div>
-        <div *ngIf="userForm.get('birthdate').hasError('lessthen87')">
-          Birth date cannot be earlier than 87 years.
-        </div>
+      </div>
 
-        <label for="country">Country</label>
-        <ng-select
-          class="form-control"
-          [items]="countries"
-          formControlName="country"
-        >
-        </ng-select>
-        <div *ngIf="userForm.get('country').hasError('required')">
-          Country is required.
+      <div class="row mb-3">
+        <div class="col form-group">
+          <label for="country" class="col-form-label">Country</label>
+          <ng-select
+            [items]="countries"
+            name="country"
+            formControlName="country"
+          >
+          </ng-select>
+          <div *ngIf="userForm.get('country')?.hasError('invalidCountry')">
+            Country is required.
+          </div>
         </div>
-        <div *ngIf="userForm.get('country').hasError('invalidCountryId')">
-          Invalid Country ID.
+      </div>
+
+      <div class="row mb-3">
+        <div class="col text-center">
+          <button
+            type="button"
+            class="btn btn-primary btn-lg"
+            [disabled]="userForm.invalid"
+            (click)="submitForm()"
+          >
+            Submit
+          </button>
         </div>
       </div>
     </div>
   </div>
-  <button type="button" class="btn btn-primary" (click)="submitForm()">
-    Submit
-  </button>
 </form>
