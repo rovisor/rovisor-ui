@@ -3,3 +3,16 @@
     min-height: 100px;
     overflow-y: auto;
 }
+.cancel-button {
+    color: #007BFF;
+    /* Set the desired text color */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.cancel-button:hover {
+    text-decoration: none;
+    /* Remove underline on hover */
+    color: #0056b3;
+    /* Set the desired text color on hover */
+}
