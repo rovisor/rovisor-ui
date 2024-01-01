@@ -17,12 +17,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RegistrationV2Component,
   ],
   imports: [
+    NgbDatepickerModule,
     ApplicationRoutingModule,
     HttpClientModule,
     SharedComponentsModule,
     ReactiveFormsModule,
     FormsModule,
-    NgbDatepickerModule,
     NgSelectModule,
     CommonModule
   ],

@@ -69,10 +69,11 @@ export class Registration1Component implements OnInit {
 
     });
   }
-
+  
   submitForm(): void {
     if (this.userForm.valid) {
-      this.user = {
+      const user = this.userForm.value;
+      const val = {
         name: this.userForm.get('name')?.value,
         email: this.userForm.get('email')?.value,
         countryCode: this.userForm.get('countryCode')?.value,
@@ -81,13 +82,11 @@ export class Registration1Component implements OnInit {
         birthdate: this.userForm.get('birthdate')?.value,
         country: this.userForm.get('country')?.value,
       };
-
       console.log(this.user);
     } else {
       console.log('Form is not valid');
     }
   }
-
   validateCountryId(control: FormControl): { [key: string]: boolean } | null {
     const selectedCountry = control.value;
 
