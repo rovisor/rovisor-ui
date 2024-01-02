@@ -1,11 +1,15 @@
-<div class="modal-header">
-  <h4 class="modal-title">Upload Statement</h4>
-</div>
-<div class="modal-body">
-  <input type="file" accept=".csv" />
-  
-<button type="button" class="cancel-button">Cancel</button>
-
-  <button type="button" class="btn btn-primary"disabled>Submit</button>
- 
-</div>
+<form>
+  <div class="modal-header">
+    <h4 class="modal-title">Upload Statement</h4>
+  </div>
+  <div class="modal-body">
+    <input type="file" accept=".csv" />
+    <p style="margin-top: 20px;">Preview</p>
+  </div>
+  <div class="modal-footer"style="margin-right:60px">
+    <button type="button" class="cancel-button" >Cancel</button>
+    <button type="button" class="btn btn-primary" id="submit-button"disabled>
+      Submit
+    </button>
+  </div>
+</form>
