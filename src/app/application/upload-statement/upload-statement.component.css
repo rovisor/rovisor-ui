@@ -4,15 +4,9 @@
     overflow-y: auto;
 }
 .cancel-button {
-    color: #007BFF;
-    /* Set the desired text color */
-    text-decoration: none;
+    color: blue;
+    border: none;
+    background-color: transparent;
     cursor: pointer;
-}
-
-.cancel-button:hover {
-    text-decoration: none;
-    /* Remove underline on hover */
-    color: #0056b3;
-    /* Set the desired text color on hover */
+    font-size: 16px;
 }
