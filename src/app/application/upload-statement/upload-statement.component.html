@@ -1,3 +1,9 @@
+<style>
+  .cancel-button,
+  #submit-button {
+    display: none;
+  }
+</style>
 <form>
   <div class="modal-header" style="background-color: #d9d9d9; height: 30px">
     <h4 class="modal-title" style="margin-left: 20px">Upload Statement</h4>
@@ -40,3 +46,18 @@
     </button>
   </div>
 </form>
+<script>
+  
+  function validateForm() {
+    //empty function for rov-101 card
+    return true;
+  }
+
+  document.getElementById("submit-button").addEventListener("click", function () {
+   
+    if (validateForm()) {
+      document.getElementById("cancel-button").style.display = "inline-block";
+      document.getElementById("submit-button").style.display = "inline-block";
+    } 
+  });
+</script>
