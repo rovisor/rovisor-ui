@@ -4,10 +4,17 @@
     overflow-y: auto;
 }
 .cancel-button {
-    color: blue;
+    color: var(--Theme-Primary, #0D6EFD);
+    font-family: Roboto;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
     border: none;
     background-color: transparent;
     cursor: pointer;
-    font-size: 16px;
+    border-radius: 3.2px;
+        border: 1px solid var(--HitBox, rgba(255, 255, 255, 0.00));
+        background: var(--HitBox, rgba(255, 255, 255, 0.00));
 }
 
