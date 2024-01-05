@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 import { Registration1Component } from './registration-1/registration-1.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UploadStatementComponent } from './upload-statement/upload-statement.component';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     ApplicationComponent,
@@ -26,7 +26,8 @@ import { UploadStatementComponent } from './upload-statement/upload-statement.co
     ReactiveFormsModule,
     FormsModule,
     NgSelectModule,
-    CommonModule
+    CommonModule,
+    NgbModule
   ],
 })
 export class ApplicationModule { }

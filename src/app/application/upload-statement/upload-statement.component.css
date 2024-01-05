@@ -3,18 +3,25 @@
     min-height: 100px;
     overflow-y: auto;
 }
-.cancel-button {
-    color: var(--Theme-Primary, #0D6EFD);
-    font-family: Roboto;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 150%;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    border-radius: 3.2px;
-        border: 1px solid var(--HitBox, rgba(255, 255, 255, 0.00));
-        background: var(--HitBox, rgba(255, 255, 255, 0.00));
+.modal-header {
+    background-color: #d9d9d9;
+    height: 30px;
 }
 
+.preview {
+    margin-top: 20px;
+}
+
+.modal-title {
+    margin-left: 20px;
+}
+
+#fileInput {
+    border: 1px solid #000;
+    margin-left: 30px;
+    width: 700px;
+}
+
+.modal-footer {
+    margin-right: 60px;
+}
