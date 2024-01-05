@@ -1,19 +1,18 @@
 <form [formGroup]="uploadForm">
   <div class="modal-header">
-    <h4 class="modal-title">Upload Statement</h4>
+    <h4 class="modal-title">
+      <i class="bi bi-upload me-2"></i>Upload Statement</h4>
+      <button type="button" class="btn close" aria-label="Close" (click)="cancel()">
+        <i class="bi bi-x-circle"></i>
+      </button>
   </div>
   <div class="modal-body">
     <label for="fileInput"></label>
     <input type="file" accept=".csv" id="fileInput" formControlName="file" />
     <p class="preview">Preview</p>
   </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-link" *ngIf="isButtonsVisible" (click)="cancel()">
-      Cancel
-    </button>
-    <button type="button" class="btn btn-primary" *ngIf="isButtonsVisible" (click)="upload()"
-      [disabled]="!isButtonsVisible">
-      Upload
-    </button>
+  <div class="modal-footer" *ngIf="isButtonsVisible">
+    <button type="button" class="btn btn-link" (click)="cancel()"> Cancel </button>
+    <button type="button" class="btn btn-primary" (click)="upload()" [disabled]="!uploadForm.valid"> Upload </button>
   </div>
 </form>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-upload-statement',
@@ -10,22 +11,16 @@ export class UploadStatementComponent implements OnInit {
   public uploadForm!: FormGroup;
   isButtonsVisible: boolean = false;
 
-
-  validateForm(): boolean {
-
-    return true;
-  }
+  constructor(private formBuilder: FormBuilder, private activeModal: NgbActiveModal) { }
 
   upload(): void {
-    if (this.validateForm()) {
+    if (this.uploadForm?.valid) {
 
     }
   }
 
   cancel(): void {
-    if (this.validateForm()) {
-    }
-
+    this.activeModal.close();
   }
 
   ngOnInit(): void {
@@ -34,9 +29,5 @@ export class UploadStatementComponent implements OnInit {
 
     });
 
-  }
-
-  updateButtonsVisibility(): void {
-    this.isButtonsVisible = this.validateForm();
   }
 }
