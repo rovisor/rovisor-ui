@@ -10,6 +10,7 @@
 
 .preview {
     margin-top: 20px;
+     margin-bottom: 200px;
 }
 
 #fileInput {
@@ -20,4 +21,8 @@
 
 .modal-footer {
     margin-right: 60px;
+}
+.line {
+  border-top: 1px solid black;
+  padding-top: 60px;
 }
