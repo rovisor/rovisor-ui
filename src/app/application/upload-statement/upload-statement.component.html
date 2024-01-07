@@ -7,16 +7,20 @@
       </button>
   </div>
   <div class="modal-body">
-    <label for="fileInput"></label>
-    <input class="form-control" type="file" accept=".csv" id="fileInput" formControlName="file"  />
-    <p class="preview">Preview</p>
+    <div class="row mb-3">
+      <div class="col">
+        <input class="form-control" type="file" accept=".csv" formControlName="file"  />
+        <div id="fileHelp" class="form-text">Choose a valid csv to upload data.</div>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col">
+        <h5>Preview</h5>
+      </div>
+    </div>
   </div>
-
-   <div class="line"></div>
-
   <div class="modal-footer" *ngIf="isButtonsVisible">   
     <button type="button" class="btn btn-link" (click)="cancel()"> Cancel </button>
     <button type="button" class="btn btn-primary" (click)="upload()" [disabled]="!uploadForm.valid"> Upload </button>
     </div>
-  
 </form>

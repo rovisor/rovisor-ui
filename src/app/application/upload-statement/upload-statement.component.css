@@ -1,23 +1,10 @@
 .modal-body {
     max-height: calc(100vh - 210px);
-    min-height: 100px;
+    min-height: 300px;
     overflow-y: auto;
 }
+
 .modal-header {
     background-color: #d9d9d9;
     height: 30px;
-}
-
-.preview {
-    margin-top: 20px;
-     margin-bottom: 200px;
-}
-
-
-.modal-footer {
-    margin-right: 60px;
-}
-.line {
-  border-top: 1px solid black;
-  padding-top: 60px;
 }
