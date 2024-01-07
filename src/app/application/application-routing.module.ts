@@ -22,7 +22,8 @@ const routes: Routes = [
      {
         path: 'registration-v2',
         component: RegistrationV2Component,
-      }
+      },
+      
     ],
   }
 ];
