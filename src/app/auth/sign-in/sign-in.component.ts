@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../state/auth.service';
 import { Subscription } from 'rxjs';
 import { LoginResponseModel } from '../state/auth.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -13,7 +14,8 @@ export class SignInComponent implements OnInit {
   public loginForm!: FormGroup;
   private subscription: Subscription = new Subscription();
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) {}
+  constructor(private formBuilder: FormBuilder, private authService: AuthService,
+    private router: Router) {}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -32,6 +34,7 @@ export class SignInComponent implements OnInit {
 
     this.subscription.add(this.authService.login(email, password).subscribe((response: LoginResponseModel) => {
       console.log(response);
+      this.router.navigate(['/app/dashboard']);
     }));
 
   }
