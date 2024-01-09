@@ -59,7 +59,21 @@ export class UploadStatementComponent implements OnInit {
 
   ngOnInit(): void {
     this.uploadForm = new FormGroup({
-      file: new FormControl('', [Validators.required]),
+      file: new FormControl('', [Validators.required, this.csvFileValidator]),
     });
   }
+
+
+  csvFileValidator = (control: FormControl): { [key: string]: boolean } | null => {
+    if (control.value) {
+      const fileName = control.value.name;
+      const extensionIndex = fileName.lastIndexOf('.') + 1;
+      const extension = fileName.slice(extensionIndex); // extracts a portion of the string.
+
+      if (extension !== 'csv') {
+        return { 'invalidExtension': true };
+      }
+    }
+    return null;
+  };
 }

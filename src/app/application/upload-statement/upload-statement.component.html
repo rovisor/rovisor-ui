@@ -3,14 +3,31 @@
     <h4 class="modal-title">
       <i class="bi bi-upload me-2"></i>Upload Statement
     </h4>
-    <button type="button" class="btn close" aria-label="Close" (click)="cancel()">
+    <button
+      type="button"
+      class="btn close"
+      aria-label="Close"
+      (click)="cancel()"
+    >
       <i class="bi bi-x-circle"></i>
     </button>
   </div>
   <div class="modal-body">
     <div class="row mb-3">
       <div class="col">
-        <input class="form-control" type="file" accept=".csv" formControlName="file" (change)="onFileChange($event)" />
+        <input
+          class="form-control"
+          type="file"
+          accept=".csv"
+          formControlName="file"
+          (change)="onFileChange($event)"
+        />
+        <div *ngIf="uploadForm.get('file')?.hasError('required')">
+          CSV File is required
+        </div>
+        <div *ngIf="uploadForm.get('file')?.hasError('invalidExtension')">
+          Invalid file type. Please choose a valid CSV file.
+        </div>
         <div id="fileHelp" class="form-text">
           Choose a valid csv to upload data.
         </div>
@@ -40,7 +57,12 @@
     <button type="button" class="btn btn-link" (click)="cancel()">
       Cancel
     </button>
-    <button type="button" class="btn btn-primary" (click)="upload()" [disabled]="!uploadForm.valid">
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="upload()"
+      [disabled]="!uploadForm.valid"
+    >
       Upload
     </button>
   </div>
