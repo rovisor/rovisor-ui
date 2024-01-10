@@ -89,7 +89,41 @@ export class UploadStatementComponent implements OnInit {
     const validColumns = ['Date', 'Activity', 'Source/Destination', 'Debit', 'Credit', 'Wallet Txn ID'];
     const missingColumns = validColumns.filter(column => !this.csvHeaders.includes(column));
     this.missingColumns = missingColumns;
-    return missingColumns.length == 0;
+
+    if (missingColumns.length > 0) {
+      return false;
+    }
+
+
+    for (let rowIndex = 0; rowIndex < this.csvData.length; rowIndex++) {
+      const row = this.csvData[rowIndex];
+
+      for (let columnIndex = 0; columnIndex < validColumns.length; columnIndex++) {
+
+        const column = validColumns[columnIndex];
+        const columnIndexInRow = this.csvHeaders.indexOf(column);
+
+        if (column == 'Debit' || column == 'Credit') {
+          continue;
+        }
+
+        if (!row[columnIndexInRow]) {
+          return false;
+        }
+      }
+
+
+      const debitIndex = this.csvHeaders.indexOf('Debit');
+      const creditIndex = this.csvHeaders.indexOf('Credit');
+      const debitValue = row[debitIndex];
+      const creditValue = row[creditIndex];
+
+      if ((debitValue && creditValue) || (!debitValue && !creditValue)) {
+        console.error(`There should be data in only one column either Debit or Credit per row.`);
+        return false;
+      }
+    }
+    return true;
   }
 
 
