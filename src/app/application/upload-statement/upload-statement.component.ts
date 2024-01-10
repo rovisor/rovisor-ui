@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
+
 @Component({
   selector: 'app-upload-statement',
   templateUrl: './upload-statement.component.html',
@@ -36,6 +37,12 @@ export class UploadStatementComponent implements OnInit {
     const file = event.target.files[0]; // Retrieve the selected file from the input event
 
     if (file) {
+      const maxFileSize = 10 * 1024 * 1024;
+      if (file.size > maxFileSize) {
+
+        console.error('File size exceeds the limit');
+        return;
+      }
       const reader = new FileReader();
 
       reader.onload = (e: any) => {
@@ -59,11 +66,9 @@ export class UploadStatementComponent implements OnInit {
 
   ngOnInit(): void {
     this.uploadForm = new FormGroup({
-      file: new FormControl('', [Validators.required, this.csvFileValidator]),
+      file: new FormControl('', [Validators.required,]),
     });
   }
-
-
   csvFileValidator = (control: FormControl): { [key: string]: boolean } | null => {
     if (control.value) {
       const fileName = control.value.name;
@@ -76,4 +81,5 @@ export class UploadStatementComponent implements OnInit {
     }
     return null;
   };
+
 }

@@ -22,14 +22,18 @@
           formControlName="file"
           (change)="onFileChange($event)"
         />
+
         <div *ngIf="uploadForm.get('file')?.hasError('required')">
           CSV File is required
         </div>
         <div *ngIf="uploadForm.get('file')?.hasError('invalidExtension')">
           Invalid file type. Please choose a valid CSV file.
         </div>
+        <div *ngIf="uploadForm.get('file')?.hasError('maxFileSize')">
+          File size exceeds the limit (max size: 10 MB).
+        </div>
         <div id="fileHelp" class="form-text">
-          Choose a valid csv to upload data.
+          Choose a valid csv to upload data(max size: 10 MB).
         </div>
       </div>
     </div>
