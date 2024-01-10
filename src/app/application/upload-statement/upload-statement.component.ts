@@ -18,6 +18,7 @@ export class UploadStatementComponent implements OnInit {
   isButtonsVisible: boolean = false;
   csvData: any[] = [];
   csvHeaders: any[] = [];
+  missingColumns: string[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -25,7 +26,10 @@ export class UploadStatementComponent implements OnInit {
   ) { }
 
   upload(): void {
-    if (this.uploadForm?.valid) {
+    if (this.uploadForm?.valid && this.validateRequiredColumns()) {
+    }
+    else {
+      // Focus the file input if errors exist
     }
   }
 
@@ -81,5 +85,12 @@ export class UploadStatementComponent implements OnInit {
     }
     return null;
   };
+  validateRequiredColumns(): boolean {
+    const validColumns = ['Date', 'Activity', 'Source/Destination', 'Debit', 'Credit', 'Wallet Txn ID'];
+    const missingColumns = validColumns.filter(column => !this.csvHeaders.includes(column));
+    this.missingColumns = missingColumns;
+    return missingColumns.length == 0;
+  }
+
 
 }
