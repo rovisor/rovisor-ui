@@ -18,8 +18,7 @@ throw new Error('Method not implemented.');
 }
 public registrationForm!: FormGroup;
 constructor() { }
-minDate = "2022-12-15";
-maxDate = "2180-12-15"
+
 ngOnInit(): void {
   this.registrationForm = new FormGroup({
     name: new FormControl('', [
