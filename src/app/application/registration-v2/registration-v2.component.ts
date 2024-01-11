@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { ARRAY} from './enum';
+import { log } from 'console';
 
 @Component({
     selector: 'app-registration',
@@ -47,19 +48,20 @@ ngOnInit(): void {
     
   });
 }
-submitForm(): void {
-  if (this.registrationForm .valid) {
+submit(): void {
+  if (this.registrationForm.valid) {
     const val = {
-      name: this.registrationForm .get('name')?.value,
-      email: this.registrationForm .get('email')?.value,
-      phone: this.registrationForm .get('phoneNumber')?.value,
-      password: this.registrationForm .get('password')?.value,
-      
+      name: this.registrationForm.get('name')?.value,
+      email: this.registrationForm.get('email')?.value,
+      phoneNumber: this.registrationForm.get('phoneNumber')?.value,
+      password: this.registrationForm.get('password')?.value,
+      birthdate: this.registrationForm.get('birthdate')?.value,
+      country: this.registrationForm.get('country')?.value,
     };
 
     console.log(val);
   } else {
-    console.log('Form is not valid');
+    log('Form is not valid');
   }
 }
 }

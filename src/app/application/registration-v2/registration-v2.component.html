@@ -3,39 +3,43 @@
     <div class="col-4 mb-3 mt-3 ml-3 mr-4">
       <label for="name">First name</label>
       <input class="form-control" type="text" placeholder="Enter Name" id="name" formControlName="name" />
-    </div>
-    <div class="col-4 mb-3 mt-3 ml-3 mr-4">
-      <label for="name">Phone Number</label>
-      <input type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" formControlName="phone" id="phone" class="form-control"
-        placeholder="Phone Number/Mobile ">
-    </div>
-    <div class="col-4 mb-3 mt-3 ml-3 mr-4">
-      <label for="name">email </label>
-      <input type="email" id="email" formControlName="email" class="form-control" placeholder="Email">
-    </div>
-    <div class="col-4 mb-3 mt-3 ml-3 mr-4">
-      <label for="name">Password </label>
-      <input type="password" id="password" formControlName="password" class="form-control" placeholder="password">
-    </div>
-    <div class="col-4 mb-3 mt-3 ml-3 mr-4">
-      <label for="name">Date of Birth</label>
-      <input  class="col-12 mb-3 mt-3 ml-3 mr-4" type="date"  ngbDatepicker (dateSelect)="onDateSelect()"/>
-    </div>
+      <div *ngIf="registrationForm.get('name').hasError('required')">
+        Name is required.
+      </div>
+      <div *ngIf="registrationForm.get('name').hasError('minlength')">
+        Name must be at least 6 characters long.
+      </div>
+      <div *ngIf="registrationForm.get('name').hasError('maxlength')">
+        Name cannot be more than 16 characters long.
+      </div>
+      <div *ngIf="registrationForm.get('name').hasError('pattern')">
+        Name should only contain alphabets.
+      </div>
+      <div class="col-4 mb-3 mt-3 ml-3 mr-4">
+        <label for="name">Phone Number</label>
+        <input type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" formControlName="phone" id="phone" class="form-control"
+          placeholder="Phone Number/Mobile ">
+      </div>
+      <div class="col-4 mb-3 mt-3 ml-3 mr-4">
+        <label for="name">email </label>
+        <input type="email" id="email" formControlName="email" class="form-control" placeholder="Email">
+      </div>
+      <div class="col-4 mb-3 mt-3 ml-3 mr-4">
+        <label for="name">Password </label>
+        <input type="password" id="password" formControlName="password" class="form-control" placeholder="password">
+      </div>
+      <div class="col-4 mb-3 mt-3 ml-3 mr-4">
+        <label for="name">Date of Birth</label>
+        <input class="col-12 mb-3 mt-3 ml-3 mr-4" type="date" ngbDatepicker (dateSelect)="onDateSelect()" />
+      </div>
 
       <div class="col-4" id="country">
         <label for="country" class="mb-3 mt-1 ml-3 mr-4">Country</label>
-        <ng-select
-        
-          class="form-control"
-          [items]="countries"
-          [(ngModel)]="selectedCountry"
-          name="country"
-          formControlName="country"
-        >
-        </ng-select>
+        <ng-select class="form-control" [items]="countries" [(ngModel)]="selectedCountry" name="country"
+          formControlName="country">
+              </ng-select>
       </div>
     </div>
-    <button type="button" class="btn btn-primary" (click)="submitForm()">
-      Submit
-    </button>
+    <button type="button" class="btn btn-primary" (click)="submit()">Submit</button>
+  </div>
 </form>
