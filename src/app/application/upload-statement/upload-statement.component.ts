@@ -7,7 +7,6 @@ import {
 } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
-
 @Component({
   selector: 'app-upload-statement',
   templateUrl: './upload-statement.component.html',
@@ -29,7 +28,7 @@ export class UploadStatementComponent implements OnInit {
     if (this.uploadForm?.valid && this.validateRequiredColumns()) {
     }
     else {
-      // Focus the file input if errors exist
+
     }
   }
 
@@ -43,8 +42,6 @@ export class UploadStatementComponent implements OnInit {
     if (file) {
       const maxFileSize = 10 * 1024 * 1024;
       if (file.size > maxFileSize) {
-
-        console.error('File size exceeds the limit');
         return;
       }
       const reader = new FileReader();
@@ -94,24 +91,38 @@ export class UploadStatementComponent implements OnInit {
       return false;
     }
 
-
     for (let rowIndex = 0; rowIndex < this.csvData.length; rowIndex++) {
       const row = this.csvData[rowIndex];
 
       for (let columnIndex = 0; columnIndex < validColumns.length; columnIndex++) {
-
         const column = validColumns[columnIndex];
         const columnIndexInRow = this.csvHeaders.indexOf(column);
 
-        if (column == 'Debit' || column == 'Credit') {
-          continue;
+        if (column == 'Debit') {
+          const debitValue = row[columnIndexInRow];
+          if (isNaN(parseFloat(debitValue))) {
+            return false;
+          }
+        } else if (column == 'Credit') {
+          const creditValue = row[columnIndexInRow];
+          if (isNaN(parseFloat(creditValue))) {
+            return false;
+          }
+        } else {
+          if (!row[columnIndexInRow]) {
+            return false;
+          }
         }
 
-        if (!row[columnIndexInRow]) {
-          return false;
+        if (column === 'Date') {
+          const dateValue = row[columnIndexInRow];
+          if (!this.isValidDate(dateValue)) {
+            return false;
+          }
         }
+
+
       }
-
 
       const debitIndex = this.csvHeaders.indexOf('Debit');
       const creditIndex = this.csvHeaders.indexOf('Credit');
@@ -119,7 +130,6 @@ export class UploadStatementComponent implements OnInit {
       const creditValue = row[creditIndex];
 
       if ((debitValue && creditValue) || (!debitValue && !creditValue)) {
-        console.error(`There should be data in only one column either Debit or Credit per row.`);
         return false;
       }
     }
@@ -127,4 +137,13 @@ export class UploadStatementComponent implements OnInit {
   }
 
 
+  isValidDate(dateValue: string): boolean {
+    const currentDate = new Date();
+    const inputDate = new Date(dateValue);
+
+
+    return (!isNaN(inputDate.getTime()) && inputDate <= currentDate && !isNaN(inputDate.getHours()) && !isNaN(inputDate.getMinutes()) && !isNaN(inputDate.getSeconds()) && inputDate.getMilliseconds() === 0);
+  }
 }
+
+
