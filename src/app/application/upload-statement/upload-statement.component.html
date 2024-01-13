@@ -23,20 +23,23 @@
           (change)="onFileChange($event)"
         />
 
-        <div *ngIf="uploadForm.get('file')?.hasError('required')">
-          
-        </div>
-        <div *ngIf="uploadForm.get('file')?.hasError('invalidExtension')">
-          Invalid file type. Please choose a valid CSV file.
-        </div>
-        <div *ngIf="uploadForm.get('file')?.hasError('maxFileSize')">
-          File size exceeds the limit (max size: 10 MB).
-        </div>
-        <div *ngIf="!validateRequiredColumns()">
-    The CSV file is missing required columns: {{ missingColumns }}
-  </div>
-        <div id="fileHelp" class="form-text">
+        <div
+          id="fileHelp"
+          class="form-text"
+          *ngIf="uploadForm.get('file')?.pristine"
+        >
           Choose a valid csv to upload data(max size: 10 MB).
+        </div>
+        <div *ngIf="uploadForm.get('file')?.value">
+          <div *ngIf="uploadForm.get('file')?.hasError('invalidExtension')">
+            Invalid file type. Please choose a valid CSV file.
+          </div>
+          <div *ngIf="missingColumns.length > 0">
+            The CSV file is missing required columns: {{ missingColumns }}
+          </div>
+          <div *ngIf="uploadForm.get('file')?.hasError('maxFileSize')">
+            File size exceeds the limit (max size: 10 MB).
+          </div>
         </div>
       </div>
     </div>

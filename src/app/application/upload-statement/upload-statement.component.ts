@@ -25,35 +25,42 @@ export class UploadStatementComponent implements OnInit {
   ) { }
 
   upload(): void {
-    if (this.uploadForm?.valid && this.validateRequiredColumns()) {
-    }
-    else {
-
+    
+    if (this.uploadForm.valid ) {
+      this.isButtonsVisible = true;
+    } else {
+      this.isButtonsVisible = false;
     }
   }
 
   cancel(): void {
+
     this.activeModal.close();
+
   }
 
   onFileChange(event: any): void {
-    const file = event.target.files[0]; // Retrieve the selected file from the input event
+    const file = event.target.files[0];
 
     if (file) {
       const maxFileSize = 10 * 1024 * 1024;
       if (file.size > maxFileSize) {
+        
         return;
       }
+
       const reader = new FileReader();
 
       reader.onload = (e: any) => {
-        const content = e.target.result; // Get the content of the file
+        const content = e.target.result;
         this.parseCSV(content);
       };
 
-      reader.readAsText(file); // Read the file as text
+      reader.readAsText(file);
     }
   }
+
+
 
   parseCSV(content: string): void {
     const rows = content.split('\n'); // Split the content into rows using newline as the delimiter
@@ -66,6 +73,7 @@ export class UploadStatementComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isButtonsVisible = false;
     this.uploadForm = new FormGroup({
       file: new FormControl('', [Validators.required,]),
     });
@@ -86,6 +94,7 @@ export class UploadStatementComponent implements OnInit {
     const validColumns = ['Date', 'Activity', 'Source/Destination', 'Debit', 'Credit', 'Wallet Txn ID'];
     const missingColumns = validColumns.filter(column => !this.csvHeaders.includes(column));
     this.missingColumns = missingColumns;
+
 
     if (missingColumns.length > 0) {
       return false;
@@ -133,6 +142,7 @@ export class UploadStatementComponent implements OnInit {
         return false;
       }
     }
+
     return true;
   }
 
@@ -145,5 +155,3 @@ export class UploadStatementComponent implements OnInit {
     return (!isNaN(inputDate.getTime()) && inputDate <= currentDate && !isNaN(inputDate.getHours()) && !isNaN(inputDate.getMinutes()) && !isNaN(inputDate.getSeconds()) && inputDate.getMilliseconds() === 0);
   }
 }
-
-
