@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { ARRAY} from './enum';
-import { log } from 'console';
+
 
 @Component({
     selector: 'app-registration',
@@ -60,7 +60,7 @@ submit(): void {
 
     console.log(val);
   } else {
-    log('Form is not valid');
+    console.log('Form is not valid');
   }
 }
 }
