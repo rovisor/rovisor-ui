@@ -6,11 +6,14 @@ import {
   Validators,
 } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-upload-statement',
   templateUrl: './upload-statement.component.html',
   styleUrls: ['./upload-statement.component.css'],
+
 })
 export class UploadStatementComponent implements OnInit {
   public uploadForm!: FormGroup;
@@ -25,8 +28,8 @@ export class UploadStatementComponent implements OnInit {
   ) { }
 
   upload(): void {
-    
-    if (this.uploadForm.valid ) {
+
+    if (this.uploadForm.valid && this.validateRequiredColumns()) {
       this.isButtonsVisible = true;
     } else {
       this.isButtonsVisible = false;
@@ -45,11 +48,13 @@ export class UploadStatementComponent implements OnInit {
     if (file) {
       const maxFileSize = 10 * 1024 * 1024;
       if (file.size > maxFileSize) {
-        
+
         return;
       }
 
       const reader = new FileReader();
+
+
 
       reader.onload = (e: any) => {
         const content = e.target.result;
@@ -59,8 +64,6 @@ export class UploadStatementComponent implements OnInit {
       reader.readAsText(file);
     }
   }
-
-
 
   parseCSV(content: string): void {
     const rows = content.split('\n'); // Split the content into rows using newline as the delimiter
@@ -91,67 +94,86 @@ export class UploadStatementComponent implements OnInit {
     return null;
   };
   validateRequiredColumns(): boolean {
-    const validColumns = ['Date', 'Activity', 'Source/Destination', 'Debit', 'Credit', 'Wallet Txn ID'];
-    const missingColumns = validColumns.filter(column => !this.csvHeaders.includes(column));
-    this.missingColumns = missingColumns;
+    const requiredColumns = ['Date', 'Activity', 'Source/Destination', 'Debit', 'Credit', 'Wallet Txn ID'];
+    this.missingColumns = [];
 
-
-    if (missingColumns.length > 0) {
-      return false;
-    }
+    this.missingColumns = requiredColumns.filter(requiredColumn => !this.csvHeaders.includes(requiredColumn.trim()));
 
     for (let rowIndex = 0; rowIndex < this.csvData.length; rowIndex++) {
       const row = this.csvData[rowIndex];
 
-      for (let columnIndex = 0; columnIndex < validColumns.length; columnIndex++) {
-        const column = validColumns[columnIndex];
-        const columnIndexInRow = this.csvHeaders.indexOf(column);
-
-        if (column == 'Debit') {
-          const debitValue = row[columnIndexInRow];
-          if (isNaN(parseFloat(debitValue))) {
-            return false;
-          }
-        } else if (column == 'Credit') {
-          const creditValue = row[columnIndexInRow];
-          if (isNaN(parseFloat(creditValue))) {
-            return false;
-          }
-        } else {
-          if (!row[columnIndexInRow]) {
-            return false;
-          }
-        }
-
-        if (column === 'Date') {
-          const dateValue = row[columnIndexInRow];
-          if (!this.isValidDate(dateValue)) {
-            return false;
-          }
-        }
-
-
-      }
-
+      // Check if there are data in all required columns
+      const missingDataColumns = requiredColumns.filter(requiredColumn => {
+        const columnIndexInRow = this.csvHeaders.indexOf(requiredColumn.trim());
+        return !row[columnIndexInRow]?.trim();
+      });
       const debitIndex = this.csvHeaders.indexOf('Debit');
       const creditIndex = this.csvHeaders.indexOf('Credit');
-      const debitValue = row[debitIndex];
-      const creditValue = row[creditIndex];
+      const debitValue = row[debitIndex]?.trim();
+      const creditValue = row[creditIndex]?.trim();
 
-      if ((debitValue && creditValue) || (!debitValue && !creditValue)) {
-        return false;
+      if (!debitValue && !creditValue) {
+        this.missingColumns.push(`Missing Debit or Credit (Row ${rowIndex + 2})`);
+      } else if (debitValue && creditValue) {
+        this.missingColumns.push(`Invalid Debit/Credit (Row ${rowIndex + 2})`);
+
+      }
+      else {
+        missingDataColumns.length--;
+      }
+
+
+      if (debitValue && isNaN(parseFloat(debitValue))) {
+        this.missingColumns.push(`Invalid Debit (Row ${rowIndex + 2})`);
+      }
+
+      if (creditValue && isNaN(parseFloat(creditValue))) {
+        this.missingColumns.push(`Invalid Credit (Row ${rowIndex + 2})`);
+      }
+      if (missingDataColumns.length > 0) {
+        this.missingColumns.push(`Missing data in ${missingDataColumns.join(', ')} (Row ${rowIndex + 2})`);
+      }
+
+
+
+      const dateIndex = this.csvHeaders.indexOf('Date');
+      const dateValue = row[dateIndex];
+      if (!this.isValidDate(dateValue)) {
+        this.missingColumns.push(`Invalid Date (Row ${rowIndex + 2})`);
       }
     }
+
+    return this.missingColumns.length === 0;
+  }
+
+  isValidDate(dateValue: string): boolean {
+    const dateFormats = [
+      'DD/MM/YYYY HH:mm:ss',
+      'DD/MM/YY HH:mm'
+    ];
+
+    for (const format of dateFormats) {
+      if (this.parseDate(dateValue, format)) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  parseDate(dateValue: string, format: string): Date | null {
+    const momentDate = moment(dateValue, format, true);
+    return momentDate.isValid() ? momentDate.toDate() : null;
+  }
+
+  isValidRow(row: any[]): boolean {
+    const isValidColumns = this.validateRequiredColumns();
+    if (!isValidColumns) {
+      return false;
+    }
+
 
     return true;
   }
 
-
-  isValidDate(dateValue: string): boolean {
-    const currentDate = new Date();
-    const inputDate = new Date(dateValue);
-
-
-    return (!isNaN(inputDate.getTime()) && inputDate <= currentDate && !isNaN(inputDate.getHours()) && !isNaN(inputDate.getMinutes()) && !isNaN(inputDate.getSeconds()) && inputDate.getMilliseconds() === 0);
-  }
 }
