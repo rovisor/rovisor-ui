@@ -33,7 +33,7 @@ export class SignInComponent implements OnInit {
     const password = this.loginForm.value.password;
 
     this.subscription.add(this.authService.login(email, password).subscribe((response: LoginResponseModel) => {
-      console.log(response);
+      localStorage.setItem('user', JSON.stringify(response));
       this.router.navigate(['/app/dashboard']);
     }));
 
