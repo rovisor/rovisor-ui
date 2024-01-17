@@ -21,19 +21,20 @@ export class UploadStatementComponent implements OnInit {
   csvData: any[] = [];
   csvHeaders: any[] = [];
   missingColumns: string[] = [];
-
+  invalidRow: any[] = [];
   constructor(
     private formBuilder: FormBuilder,
     private activeModal: NgbActiveModal
   ) { }
+  ngOnInit(): void {
+
+    this.uploadForm = new FormGroup({
+      file: new FormControl('', [Validators.required,]),
+    });
+  }
 
   upload(): void {
 
-    if (this.uploadForm.valid && this.validateRequiredColumns()) {
-      this.isButtonsVisible = true;
-    } else {
-      this.isButtonsVisible = false;
-    }
   }
 
   cancel(): void {
@@ -53,9 +54,6 @@ export class UploadStatementComponent implements OnInit {
       }
 
       const reader = new FileReader();
-
-
-
       reader.onload = (e: any) => {
         const content = e.target.result;
         this.parseCSV(content);
@@ -73,14 +71,14 @@ export class UploadStatementComponent implements OnInit {
       const cells = rows[i].split(',');
       this.csvData.push(cells);
     }
+    if (this.uploadForm.valid && this.validateRequiredColumns()) {
+      this.isButtonsVisible = true;
+    } else {
+      this.isButtonsVisible = false;
+    }
   }
 
-  ngOnInit(): void {
-    this.isButtonsVisible = false;
-    this.uploadForm = new FormGroup({
-      file: new FormControl('', [Validators.required,]),
-    });
-  }
+
   csvFileValidator = (control: FormControl): { [key: string]: boolean } | null => {
     if (control.value) {
       const fileName = control.value.name;
@@ -101,7 +99,7 @@ export class UploadStatementComponent implements OnInit {
 
     for (let rowIndex = 0; rowIndex < this.csvData.length; rowIndex++) {
       const row = this.csvData[rowIndex];
-
+      let invalidRowIndex = rowIndex;
       // Check if there are data in all required columns
       const missingDataColumns = requiredColumns.filter(requiredColumn => {
         const columnIndexInRow = this.csvHeaders.indexOf(requiredColumn.trim());
@@ -113,43 +111,51 @@ export class UploadStatementComponent implements OnInit {
       const creditValue = row[creditIndex]?.trim();
 
       if (!debitValue && !creditValue) {
-        this.missingColumns.push(`Missing Debit or Credit (Row ${rowIndex + 2})`);
+        this.missingColumns.push(`Missing Debit or Credit (Row ${rowIndex + 1})`);
+        this.invalidRow.push(invalidRowIndex)
       } else if (debitValue && creditValue) {
-        this.missingColumns.push(`Invalid Debit/Credit (Row ${rowIndex + 2})`);
+        this.missingColumns.push(`Invalid Debit/Credit (Row ${rowIndex + 1})`);
+        this.invalidRow.push(invalidRowIndex)
 
       }
       else {
         missingDataColumns.length--;
       }
 
-
       if (debitValue && isNaN(parseFloat(debitValue))) {
-        this.missingColumns.push(`Invalid Debit (Row ${rowIndex + 2})`);
+        this.missingColumns.push(`Invalid Debit (Row ${rowIndex + 1})`);
+        this.invalidRow.push(invalidRowIndex)
       }
 
       if (creditValue && isNaN(parseFloat(creditValue))) {
-        this.missingColumns.push(`Invalid Credit (Row ${rowIndex + 2})`);
+        this.missingColumns.push(`Invalid Credit (Row ${rowIndex + 1})`);
+        this.invalidRow.push(invalidRowIndex)
+
       }
       if (missingDataColumns.length > 0) {
-        this.missingColumns.push(`Missing data in ${missingDataColumns.join(', ')} (Row ${rowIndex + 2})`);
+        this.missingColumns.push(`Missing data in ${missingDataColumns.join(', ')} (Row ${rowIndex + 1})`);
+        this.invalidRow.push(invalidRowIndex)
+
       }
-
-
 
       const dateIndex = this.csvHeaders.indexOf('Date');
       const dateValue = row[dateIndex];
       if (!this.isValidDate(dateValue)) {
-        this.missingColumns.push(`Invalid Date (Row ${rowIndex + 2})`);
+        this.missingColumns.push(`Invalid Date (Row ${rowIndex + 1})`);
+        this.invalidRow.push(invalidRowIndex)
+
       }
     }
 
-    return this.missingColumns.length === 0;
+    return false;
   }
 
   isValidDate(dateValue: string): boolean {
     const dateFormats = [
       'DD/MM/YYYY HH:mm:ss',
-      'DD/MM/YY HH:mm'
+      'DD/MM/YY HH:mm',
+      'DD-MM-YY HH:mm',
+      'DD-MM-YYYY HH:mm',
     ];
 
     for (const format of dateFormats) {
@@ -164,16 +170,6 @@ export class UploadStatementComponent implements OnInit {
   parseDate(dateValue: string, format: string): Date | null {
     const momentDate = moment(dateValue, format, true);
     return momentDate.isValid() ? momentDate.toDate() : null;
-  }
-
-  isValidRow(row: any[]): boolean {
-    const isValidColumns = this.validateRequiredColumns();
-    if (!isValidColumns) {
-      return false;
-    }
-
-
-    return true;
   }
 
 }

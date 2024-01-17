@@ -35,7 +35,15 @@
             Invalid file type. Please choose a valid CSV file.
           </div>
           <div *ngIf="!validateRequiredColumns() && missingColumns.length > 0">
-            {{ missingColumns }}
+            <div
+              class="alert alert-danger"
+              role="alert"
+              *ngFor="let missingColumn of missingColumns"
+            >
+              <div *ngFor="let error of missingColumn.split(',')">
+                {{ error }}
+              </div>
+            </div>
           </div>
           <div *ngIf="uploadForm.get('file')?.hasError('maxFileSize')">
             File size exceeds the limit (max size: 10 MB).
@@ -46,6 +54,7 @@
     <div class="row mb-3">
       <div class="col">
         <h5>Preview</h5>
+
         <div *ngIf="csvData">
           <table class="table table-bordered">
             <thead>
@@ -54,11 +63,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr
-                *ngFor="let row of csvData; let rowIndex = index"
-                [class.invalid-row]="!isValidRow(row)"
-              >
-                <td *ngFor="let cell of row">{{ cell }}</td>
+              <tr *ngFor="let row of csvData; let rowIndex = index">
+                <td
+                  *ngFor="let cell of row; let cellIndex = index"
+                  [ngClass]="{ 'invalid-row': invalidRow.includes(rowIndex) }"
+                >
+                  {{ cell }}
+                </td>
               </tr>
             </tbody>
           </table>
