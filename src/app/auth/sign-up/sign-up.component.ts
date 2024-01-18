@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../state/auth.service';
+
 
 @Component({
   selector: 'app-sign-up',
@@ -7,4 +10,16 @@ import { Component } from '@angular/core';
 })
 export class SignUpComponent {
   title = 'rovisor-ui';
+  public SignupForm!: FormGroup;
+ 
+
+  constructor(private formBuilder: FormBuilder, private authService: AuthService) { }
+
+
+  ngOnInit(): void {
+    this.SignupForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
+  }
 }

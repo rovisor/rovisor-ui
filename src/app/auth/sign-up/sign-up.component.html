@@ -1,1 +1,79 @@
-<p>Sign Up Works</p>
+<div class="row">
+  <div class="col-4 bg-green ps-5">
+    <img src="assets/images/logo.png" alt="logo" class="logo" />
+  </div>
+</div>
+<div class="row h-100">
+  <div class="col-sm-8 col-md-4 bg-green h-100 pe-0 ps-5">
+    <div class="d-flex align-items-center h-100 justify-content-end">
+      <div class="card Signup-box">
+        <div class="card-body">
+          <h4 class="text-green text-center mb-5">Sign up</h4>
+          <form [formGroup]="SignupForm">
+            <div>
+              <input
+                type="name"
+                class="form-control"
+                id="name"
+                formControlName="name"
+                placeholder="name"
+              />
+              <label for="email"></label>
+            </div>
+            <div>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                formControlName="email"
+                placeholder="Email"
+              />
+              <label for="email"></label>
+            </div>
+            <div>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                formControlName="password"
+                placeholder="*******"
+              />
+              <label for="password"></label>
+            </div>
+            <div class="row mb-4">
+              <div class="col-12 text-center pt-3">
+                <button
+                  type="submit"
+                  class="btn btn-primary btn-green"
+                  [disabled]="!SignupForm.valid"
+                >
+                  Sign up
+                </button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 text-center">
+                Already have an account?
+                <a routerLink="../sign-in" class="text-blue">Login</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4 col-md-8 h-100 ps-0 pe-5">
+    <div class="d-flex align-items-center h-100 justify-content-start">
+      <div class="card bg-green text-white quote-box">
+        <div class="card-body">
+          <h2 class="text-center mb-4 text-bold">MOMENTS</h2>
+          <h3 class="d-flex justify-content-center">
+            "Formal education will make you a living; self-education will make
+            you a fortune."
+          </h3>
+          <h3 class="d-flex justify-content-end">-- Jim Rohn, Entrepreneur</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
