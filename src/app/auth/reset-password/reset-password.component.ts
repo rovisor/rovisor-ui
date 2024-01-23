@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { LoginResponseModel } from '../state/auth.model';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../state/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -16,13 +17,16 @@ export class ResetPasswordComponent {
 
   private subscription: Subscription = new Subscription();
   
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) {}
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private toastr: ToastrService) {}
 
 
   ngOnInit(): void {
     this.resetPasswordForm = new FormGroup({
       email: new FormControl('',[Validators.required,  Validators.email])
     });
+  }
+  showToast() {
+    this.toastr.success('The email has been sent sueccefully ');
   }
   onSubmit() {
     if (this.resetPasswordForm!.invalid) {
