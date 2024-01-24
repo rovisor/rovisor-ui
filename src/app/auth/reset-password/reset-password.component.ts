@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../state/auth.service';
+import { LoginResponseModel } from '../state/auth.model';
 
 @Component({
   selector: 'app-reset-password',
@@ -22,4 +23,14 @@ export class ResetPasswordComponent {
       confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
-}
+ 
+  onSubmit() {
+    if (this.resetPasswordForm!.invalid) {
+      return;
+    }
+
+    this.subscription.add(this.authService.signup(this.resetPasswordForm!.value).subscribe((response: LoginResponseModel) => {
+      console.log(response);
+    }));
+
+  }}
