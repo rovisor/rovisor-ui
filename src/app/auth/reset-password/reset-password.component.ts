@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoginResponseModel } from '../state/auth.model';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../state/auth.service';
-import { LoginResponseModel } from '../state/auth.model';
 
 @Component({
   selector: 'app-reset-password',
@@ -15,7 +14,7 @@ export class ResetPasswordComponent {
   private subscription: Subscription = new Subscription();
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService,
-    private router: Router) {}
+    ) {}
 
   ngOnInit(): void {
     this.resetPasswordForm = this.formBuilder.group({
@@ -25,12 +24,14 @@ export class ResetPasswordComponent {
   }
  
   onSubmit() {
-    if (this.resetPasswordForm!.invalid) {
+    if (this.resetPasswordForm.invalid) {
       return;
     }
 
-    this.subscription.add(this.authService.signup(this.resetPasswordForm!.value).subscribe((response: LoginResponseModel) => {
+    this.subscription.add(this.authService.signup(this.resetPasswordForm.value).subscribe((response: LoginResponseModel) => {
       console.log(response);
     }));
 
-  }}
+  }
+
+  }

@@ -5,6 +5,9 @@ import { LoginResponseModel, SignUpRequestModel, SignUpResponseModel } from "./a
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
+    resetPassword(value: any) {
+      throw new Error('Method not implemented.');
+    }
     constructor(private httpClient: HttpClient) {
 
     }
