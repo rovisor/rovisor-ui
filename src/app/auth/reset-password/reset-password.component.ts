@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { LoginResponseModel } from '../state/auth.model';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../state/auth.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
@@ -13,7 +13,7 @@ export class ResetPasswordComponent {
   public resetPasswordForm!: FormGroup;
   private subscription: Subscription = new Subscription();
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService,
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private toastr: ToastrService
     ) {}
 
   ngOnInit(): void {
@@ -22,16 +22,8 @@ export class ResetPasswordComponent {
       confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
- 
-  onSubmit() {
-    if (this.resetPasswordForm.invalid) {
-      return;
-    }
-
-    this.subscription.add(this.authService.signup(this.resetPasswordForm.value).subscribe((response: LoginResponseModel) => {
-      console.log(response);
-    }));
-
+  showToast() {
+    this.toastr.success('Your password has been changed  sueccefully ');
   }
-
+  
   }
