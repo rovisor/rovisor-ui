@@ -18,8 +18,8 @@ export class ResetPasswordComponent {
 
   ngOnInit(): void {
     this.resetPasswordForm = this.formBuilder.group({
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+      confirmPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
     });
   }
   showToast() {
