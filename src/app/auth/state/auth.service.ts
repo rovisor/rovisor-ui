@@ -19,7 +19,7 @@ export class AuthService {
         .pipe(map((response: any) => {return response}));
     }
 
-    sendrestepasswordmail(email: string): Observable<SignUpResponseModel> {
+    sendrestepasswordemail(email: string): Observable<SignUpResponseModel> {
         let params = new HttpParams();
 
     
