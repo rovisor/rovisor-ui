@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { LoginResponseModel } from '../state/auth.model';
+import { LoginResponseModel, SignUpResponseModel } from '../state/auth.model';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../state/auth.service';
 import { ToastrService } from 'ngx-toastr';
@@ -31,7 +31,7 @@ export class ForgotPasswordComponent {
       return;
     }
 
-    this.subscription.add(this.authService.signup(this.forgotPasswordForm!.value).subscribe((response: LoginResponseModel) => {
+    this.subscription.add(this.authService.sendrestepasswordmail(this.forgotPasswordForm!.value).subscribe((response: SignUpResponseModel) => {
       console.log(response);
     }));
 
