@@ -22,19 +22,31 @@ export class ResetPasswordComponent {
     this.resetPasswordForm = this.formBuilder.group({
       password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
       confirmPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
-    });
-    {
-    Validators: this.passwordMatchValidator
+    }, { validator: this.passwordMatchValidator });
+
+
+  }
+  passwordMatchValidator(formGroup: FormGroup) {
+    const passwordControl = formGroup.get('password');
+    const confirmPasswordControl = formGroup.get('confirmPassword');
+
+  if (passwordControl!.value === confirmPasswordControl!.value) {
+    confirmPasswordControl!.setErrors(null);
+  } else {
+    confirmPasswordControl!.setErrors({ mismatch: true });
+  }
+}
+  
+onSubmit() {
+  if (this.resetPasswordForm.valid) {
+    if (!this.resetPasswordForm.errors?.['mismatch']) {
+      this.showToast();
+    } else {
+      console.log('Passwords did not match');
+      
     }
-
   }
-  passwordMatchValidator(control: AbstractControl){
-    return control.get('password')?.value==
-    control.get('confirmPassword')?.value
-    ? null
-    : {mismatch: true};
-  }
-
+}
   showToast() {
     this.toastr.success('Your password has been changed  sueccefully ');
   }
