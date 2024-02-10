@@ -31,7 +31,7 @@ export class ForgotPasswordComponent {
       return;
     }
 
-    this.subscription.add(this.authService.sendrestepasswordemail(this.forgotPasswordForm!.value).subscribe((response: SignUpResponseModel) => {
+    this.subscription.add(this.authService.SendResetPasswordEmail(this.forgotPasswordForm!.value.email).subscribe((response: SignUpResponseModel) => {
       console.log(response);
     }));
 

@@ -19,12 +19,12 @@ export class AuthService {
         .pipe(map((response: any) => {return response}));
     }
 
-    sendrestepasswordemail(email: string): Observable<SignUpResponseModel> {
+    SendResetPasswordEmail(email: string): Observable<SignUpResponseModel> {
         let params = new HttpParams();
 
     
     params = params.append('email', email);
-        return this.httpClient.get('http://localhost:5000/api/auth/reste-password',{params} )
+        return this.httpClient.get('http://localhost:5000/api/auth/reset-password',{params} )
         .pipe(map((response: any) => {return response}));
     }
 }
