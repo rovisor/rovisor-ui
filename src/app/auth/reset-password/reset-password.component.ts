@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./reset-password.component.css'],
 })
 export class ResetPasswordComponent {
-[x: string]: any;
+
   public resetPasswordForm!: FormGroup;
   private subscription: Subscription = new Subscription();
 
@@ -40,6 +40,9 @@ export class ResetPasswordComponent {
 onSubmit() {
   if (this.resetPasswordForm.valid) {
     if (!this.resetPasswordForm.errors?.['mismatch']) {
+      this.subscription.add(this.authService.signup(this.resetPasswordForm.value).subscribe((response: LoginResponseModel) => {
+        console.log(response);
+      }));
       this.showToast();
     } else {
       console.log('Passwords did not match');

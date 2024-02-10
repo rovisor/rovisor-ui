@@ -13,12 +13,16 @@ export class AuthService {
     }
 
     login(email: string, password: string): Observable<LoginResponseModel> {
-        return this.httpClient.post('http://localhost:5053/api/auth/login', {email: email, password: password})
+        return this.httpClient.post('http://localhost:5000/api/auth/login', {email: email, password: password})
         .pipe(map((response: any) => {return response}));
     }
 
     signup(signupModel: SignUpRequestModel): Observable<SignUpResponseModel> {
-        return this.httpClient.post('http://localhost:5053/api/auth/register', signupModel)
+        return this.httpClient.post('http://localhost:5000/api/auth/register', signupModel)
+        .pipe(map((response: any) => {return response}));
+    }
+    ResetPassword( password: string): Observable<LoginResponseModel> {
+        return this.httpClient.post('http://localhost:5000/api/auth/login', { password: password})
         .pipe(map((response: any) => {return response}));
     }
 }
