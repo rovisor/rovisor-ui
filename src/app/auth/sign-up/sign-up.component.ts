@@ -9,28 +9,27 @@ import { AuthService } from '../state/auth.service';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css'],
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent {
+  title = 'rovisor-ui';
   public signupForm!: FormGroup;
-  private subscription: Subscription = new Subscription();
+  public showPassword: boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      name: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(6),
+      ]),
     });
   }
-
-  onSubmit() {
-    if (this.signupForm.invalid) {
-      return;
-    }
-
-    this.subscription.add(this.authService.signup(this.signupForm.value).subscribe((response: LoginResponseModel) => {
-      console.log(response);
-    }));
-
+  togglePassword(): void {
+    this.showPassword = !this.showPassword;
   }
 }
