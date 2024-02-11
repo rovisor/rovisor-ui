@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder,  FormControl, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { LoginResponseModel } from '../state/auth.model';
 import { AuthService } from '../state/auth.service';
 
 @Component({
@@ -14,7 +11,7 @@ import { AuthService } from '../state/auth.service';
 })
 export class SignUpComponent {
   title = 'rovisor-ui';
-  public SignupForm!: FormGroup;
+  public signupForm!: FormGroup;
   public showPassword: boolean = false;
 
   constructor(
@@ -23,7 +20,7 @@ export class SignUpComponent {
   ) { }
 
   ngOnInit(): void {
-    this.SignupForm = this.formBuilder.group({
+    this.signupForm = this.formBuilder.group({
       name: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
