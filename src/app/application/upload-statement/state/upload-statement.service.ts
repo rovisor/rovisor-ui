@@ -8,7 +8,7 @@ export class UploadStatementService {
 
     }
     uploadStatement(formData: FormData) {
-        return this.httpClient.post('http://localhost:5053/api/upload-statement', formData)
+        return this.httpClient.post('http://localhost:5000/api/api/FileUpload/upload', formData)
             .pipe(map((response: any) => { return response })); // The map operator takes the response and returns it directly.
     }
 
