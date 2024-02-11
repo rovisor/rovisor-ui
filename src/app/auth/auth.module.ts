@@ -6,10 +6,11 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { AuthComponent } from './auth.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 @NgModule({
-  declarations:[AuthComponent, ForgotPasswordComponent, SignInComponent, SignUpComponent],
+  declarations:[AuthComponent, ForgotPasswordComponent, SignInComponent, SignUpComponent, ResetPasswordComponent],
   imports: [CommonModule, AuthRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
 })

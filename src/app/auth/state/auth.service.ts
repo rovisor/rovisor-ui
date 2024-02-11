@@ -5,9 +5,7 @@ import { LoginResponseModel, SignUpRequestModel, SignUpResponseModel } from "./a
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
-    constructor(private httpClient: HttpClient) {
-
-    }
+    constructor(private httpClient: HttpClient) { }
 
     login(email: string, password: string): Observable<LoginResponseModel> {
         return this.httpClient.post('http://localhost:5000/api/auth/login', {email: email, password: password})
@@ -18,12 +16,15 @@ export class AuthService {
         return this.httpClient.post('http://localhost:5000/api/auth/register', signupModel)
         .pipe(map((response: any) => {return response}));
     }
+  
+    resetPassword( password: string): Observable<LoginResponseModel> {
+        return this.httpClient.post('http://localhost:5000/api/auth/login', { password: password})
+        .pipe(map((response: any) => {return response}));
+    }
 
-    SendResetPasswordEmail(email: string): Observable<SignUpResponseModel> {
+    sendResetPasswordEmail(email: string): Observable<SignUpResponseModel> {
         let params = new HttpParams();
-
-    
-    params = params.append('email', email);
+        params = params.append('email', email);
         return this.httpClient.get('http://localhost:5000/api/auth/reset-password',{params} )
         .pipe(map((response: any) => {return response}));
     }
