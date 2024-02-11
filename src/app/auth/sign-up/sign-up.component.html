@@ -1,0 +1,26 @@
+<div class="d-flex align-items-center justify-content-end">
+    <div class="card signup-box w-100">
+        <div class="card-body">
+            <h4 class="text-green text-center mb-5">Sign Up</h4>
+            <form [formGroup]="signupForm">
+                <div class="form-floating mb-4">
+                    <input type="text" class="form-control" id="name" formControlName="name" placeholder="Name">
+                    <label for="name">Name</label>
+                  </div>
+                <div class="form-floating mb-4">
+                    <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email">
+                    <label for="email">Email address</label>
+                  </div>
+                  <div class="form-floating mb-2">
+                    <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password">
+                    <label for="password">Password</label>
+                  </div>
+                  <div class="row mb-4">
+                      <div class="col-12 text-center">
+                          <button type="submit" class="btn btn-primary btn-green" [disabled]="!signupForm.valid">Sign Up</button>
+                      </div>
+                  </div>
+            </form>
+        </div>
+    </div>
+</div>

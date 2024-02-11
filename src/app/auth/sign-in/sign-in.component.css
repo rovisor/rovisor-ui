@@ -1,11 +1,4 @@
 .login-box {
-    width: 70vw;
-    height: 40vh;
+    height: 60vh;
     border-radius: 10px 0px 0px 10px;
-}
-
-.quote-box {
-    width: 65vw;
-    height: 40vh;
-    border-radius: 0px 10px 10px 0px;
 }
