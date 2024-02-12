@@ -9,15 +9,25 @@ import { Subscription } from 'rxjs';
 })
 
 export class ArchiveStatementComponent implements OnInit, OnDestroy {
-
+  allUsers: any = [];
   private subscription: Subscription = new Subscription();
+  service: any;
+
   constructor() {}
-  
-  ngOnInit(): void {}
+
+  ngOnInit(): void {
+    this.users();
+  }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
+  users(): void {
+    this.service
+        .users()
+        .subscribe((response: any) => {
+          this.allUsers = response.data;
+        });
+  }
 
 }

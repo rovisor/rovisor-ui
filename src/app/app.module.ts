@@ -9,6 +9,7 @@ import { SharedComponentsModule } from './shared-components/shared-components.mo
 import { HandleErrorInterceptor } from './interceptors/handle-error-interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 
 
@@ -23,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CommonModule,
     AppRoutingModule,
     NgbModule,
+    NgxDatatableModule,
     HttpClientModule,
     SharedComponentsModule,
     ToastrModule.forRoot({

@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="card m-5 p-3">
+        <div class="card-body">
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>Sr.no.</th>
+                    <th>File Name</th>
+                    <th>Upload Date </th>
+                    <th>File size</th>
+                    <th>Account</th>
+                    <th>View Details</th>
+                </tr>
+                <tr>
+                    <th>1</th>
+                    <th>File Name</th>
+                    <th>2-5-2023</th>
+                    <th>4kb</th>
+                    <th>00000000001</th>
+                   <th> <button type="submit" class="btn btn-primary ">Details</button></th>
+                </tr>
+                
+               
+                </thead>
+                <tbody>
+                <tr *ngFor="let user of allUsers">
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.phone }}</td>
+                    <td>{{ user.address.street }}, {{ user.address.city }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
