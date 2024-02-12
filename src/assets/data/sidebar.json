@@ -11,5 +11,6 @@
             { "label": "HDFC Bank", "route": "/service2", "icon": "bi bi-bank2" }
         ]
     },
+    { "label": "Archives", "route": "/app/archive", "icon": "bi bi-files","expanded": false },
     { "label": "Settings", "route": "/app/settings", "icon": "bi bi-gear","expanded": false }
   ]
