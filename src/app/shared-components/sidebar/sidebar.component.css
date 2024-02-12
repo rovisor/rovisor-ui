@@ -2,7 +2,7 @@
     min-height: calc(100vh - 60px);
     height:100%;
     width:200px;
-    border-right: 1capx solid #29da73;
+    border-right: 1px solid #29da73;
 }
 
 .bg-rov-primary-sidebar{
@@ -13,11 +13,7 @@
     font-size: 1.3rem;
 }
 
-.nav-item a:hover  {
-    background-color: #154f43;
-}
-
 .active {
     background-color: #16A386;
     border-radius: 5px;
-  }
+}

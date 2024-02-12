@@ -4,8 +4,6 @@ import { AppHeaderComponent } from './app-header/app-header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 
-
-
 @NgModule({
   declarations: [
     AppHeaderComponent,

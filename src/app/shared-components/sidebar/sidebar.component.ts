@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { SharedService } from '../state/shared.service';
+import { SidebarItem } from '../state/shared.model';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,27 +10,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  public sidebarItems = [
-    { label: 'Home', route: '/app/dashboard', icon: 'bi bi-house' },
-    {
-      label: 'Accounts', icon: 'bi bi-bank',
-      children: [
-        { label: 'Paytm Wallet', route: '/app/account/', icon: 'bi bi-wallet'},
-        { label: 'HDFC Bank', route: '/service2', icon: 'bi bi-bank2' },
-      ],
-      expanded: false
-    },
-    { label: 'Settings', route: '/app/settings', icon: 'bi bi-gear' }
-  ];
+  public sidebarItems: SidebarItem[] = [];
+  private subscription: Subscription = new Subscription();
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private sharedService: SharedService) {}
 
   ngOnInit(): void {
+    this.subscription.add(this.sharedService.getSidenavItems().subscribe((response: any) => {
+      console.log(response);
+      this.sidebarItems = response;
+    }));
   }
 
   isActive(item: any): boolean {
     return this.router.isActive(item.route, true);
   }
+
   toggleSubMenu(item: any) {
     item.expanded = !item.expanded;
   }
