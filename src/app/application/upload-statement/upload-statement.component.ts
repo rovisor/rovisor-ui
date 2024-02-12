@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import * as moment from 'moment';
+import { DateTime } from 'luxon';
 
 
 @Component({
@@ -168,8 +168,8 @@ export class UploadStatementComponent implements OnInit {
   }
 
   parseDate(dateValue: string, format: string): Date | null {
-    const momentDate = moment(dateValue, format, true);
-    return momentDate.isValid() ? momentDate.toDate() : null;
+    const date = DateTime.fromFormat(dateValue, format);
+    return date.isValid ? date.toJSDate() : null;
   }
 
 }
