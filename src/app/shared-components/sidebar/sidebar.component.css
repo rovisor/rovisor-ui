@@ -6,5 +6,18 @@
 }
 
 .bg-rov-primary-sidebar{
-    background-image: linear-gradient(rgb(0 0 0/10%) 0 0);
+    background-color: #1ABC9B;
 }
+
+.nav-link span {
+    font-size: 1.3rem;
+}
+
+.nav-item a:hover  {
+    background-color: #154f43;
+}
+
+.active {
+    background-color: #16A386;
+    border-radius: 5px;
+  }

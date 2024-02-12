@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormControl,
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import * as moment from 'moment';
+import { DateTime } from 'luxon';
 
 
 @Component({
@@ -22,12 +17,8 @@ export class UploadStatementComponent implements OnInit {
   csvHeaders: any[] = [];
   missingColumns: string[] = [];
   invalidRow: any[] = [];
-  constructor(
-    private formBuilder: FormBuilder,
-    private activeModal: NgbActiveModal
-  ) { }
+  constructor( private formBuilder: FormBuilder, private activeModal: NgbActiveModal) { }
   ngOnInit(): void {
-
     this.uploadForm = new FormGroup({
       file: new FormControl('', [Validators.required,]),
     });
@@ -168,8 +159,12 @@ export class UploadStatementComponent implements OnInit {
   }
 
   parseDate(dateValue: string, format: string): Date | null {
-    const momentDate = moment(dateValue, format, true);
-    return momentDate.isValid() ? momentDate.toDate() : null;
+    let date = DateTime.fromFormat(dateValue, format);
+    if (date.isValid) {
+      return date.toJSDate();
+    } else {
+      return null;
+    }
   }
 
 }

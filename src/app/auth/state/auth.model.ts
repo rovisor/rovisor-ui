@@ -17,3 +17,8 @@ export interface SignUpResponseModel {
     Id: string;
     name: string;
 }
+
+export interface CommonResponseModel {
+    message: string;
+ }
+ 
