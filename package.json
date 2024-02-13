@@ -21,8 +21,10 @@
     "@ng-bootstrap/ng-bootstrap": "^13.0.0",
     "@ng-select/ng-select": "^9.1.0",
     "@popperjs/core": "^2.10.2",
+    "@swimlane/ngx-datatable": "^20.1.0",
     "bootstrap": "^5.2.0",
     "bootstrap-icons": "^1.11.2",
+    "luxon": "^3.4.4",
     "ngx-toastr": "^14.3.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
@@ -32,6 +34,7 @@
     "@angular-devkit/build-angular": "^14.2.13",
     "@angular/cli": "^14.2.12",
     "@angular/compiler-cli": "^14.3.0",
+    "@types/luxon": "^3.4.2",
     "@types/node": "^12.11.1",
     "typescript": "~4.6.2"
   }
