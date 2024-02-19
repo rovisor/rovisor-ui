@@ -1,87 +1,12 @@
 <div class="container">
     <div class="card m-5 p-3">
         <div class="card-body">
-            <table class="table table-bordered table-striped table-hover">
-                <thead>
-                <tr>
-                    <th>Date and time </th>
-                    <th>Narration</th>
-                    <th>Ammount </th>
-                    <th>Debit/creit </th>
-                    <th>Account</th> 
-                </tr>
-                <tr>
-                    <th>1-Feb-2023 5:00am</th>
-                    <th>Give money to vani</th>
-                    <th>1000</th>
-                    <th>Credit </th>
-                    <th>G-pay</th>
-                </tr>
-                <tr>
-                    <th>2-Feb-2023 5:30pm</th>
-                    <th>Give money to Rachit</th>
-                    <th>10000</th>
-                    <th>Credit </th>
-                    <th>Hdfc</th>
-                </tr>
-                <tr>
-                    <th>1-Feb-2023 8:00pm</th>
-                    <th>Buy table </th>
-                    <th>5000</th>
-                    <th>Credit </th>
-                    <th>G-pay</th>
-                </tr>
-                <tr>
-                    <th>10-Feb-2023 3:00pm</th>
-                    <th>Buy phone  </th>
-                    <th>8000</th>
-                    <th>Credit </th>
-                    <th>Hdfc</th>
-                </tr>
-                <tr>
-                    <th>15-Feb-2023 8:00pm</th>
-                    <th>Buy grossry</th>
-                    <th>500</th>
-                    <th>Credit </th>
-                    <th>Paytm</th>
-                </tr>
-                <tr>
-                    <th>15-Feb-2023 5:00pm</th>
-                    <th>Buy chocolate </th>
-                    <th>500</th>
-                    <th>Credit </th>
-                    <th>G-pay</th>
-                </tr>
-                <tr>
-                    <th>14-Feb-2023 8:00pm</th>
-                    <th>Yanesh </th>
-                    <th>5000</th>
-                    <th>Debit </th>
-                    <th>G-pay</th>
-                </tr>
-                <tr>
-                    <th>16-Feb-2023 7:00pm</th>
-                    <th>Yanshi</th>
-                    <th>10000</th>
-                    <th>Debit  </th>
-                    <th>SBI</th>
-                </tr>
-                <tr>
-                    <th>12-Feb-2023 3:00pm</th>
-                    <th>Varun </th>
-                    <th>100</th>
-                    <th>Credit </th>
-                    <th>G-pay</th>
-                </tr>
-                <tr>
-                    <th>4-Feb-2023 1:00pm</th>
-                    <th>Rachit  </th>
-                    <th>1500</th>
-                    <th>Debit </th>
-                    <th>G-pay</th>
-                </tr>
-                </thead>
-            </table>
+
+         <ngx-datatable class="material" [rows]="rows" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+         [rowHeight]="40" [limit]="10" (sort)="onSort()" [sorts]="[{prop: 'company', dir: 'asc'}]">
+        </ngx-datatable>
+
+
         </div>
 
     </div>
