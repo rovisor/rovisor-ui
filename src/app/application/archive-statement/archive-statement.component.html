@@ -2,9 +2,9 @@
     <div class="card m-5 p-3">
         <div class="card-body">
 
-         <ngx-datatable class="material" [rows]="rows" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
-         [rowHeight]="40" [limit]="10" (sort)="onSort()" [sorts]="[{prop: 'company', dir: 'asc'}]">
-        </ngx-datatable>
+            <ngx-datatable class="material" [rows]="rows" [columns]="columns" [columnMode]="'force'" [headerHeight]="50"
+                [footerHeight]="50" [rowHeight]="'auto'" [externalSorting]="true">
+            </ngx-datatable>
 
 
         </div>

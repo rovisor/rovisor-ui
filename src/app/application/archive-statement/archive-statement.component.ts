@@ -14,14 +14,9 @@ export class ArchiveStatementComponent implements OnInit, OnDestroy {
 force: any;
 
 
-  constructor() {
-    this.fetch((data: { DateAndTime: string; Naration: string; Amount: string; DebitCredit: string; Account: string; }[]) => {
-      this.rows = data;
-    });
-  }
-  onSort(){
-    console.log();
-  }
+  constructor() {}
+    
+  
 
 
   ngOnInit(): void {
@@ -31,7 +26,7 @@ force: any;
   ngOnDestroy(): void {
    
         }
-        rows = [
+       rows = [
           { DateAndTime: '1-feb-2024', Naration: 'Rachit',Amount:'5000', DebitCredit: 'credit',Account:'HDFC'},
           { DateAndTime: '2-feb-2024', Naration: 'Ramesh',Amount:'60000', DebitCredit: 'Debit',Account:'paytm'},
           { DateAndTime: '5-feb-2024', Naration: 'Ramkali',Amount:'4400', DebitCredit: 'credit',Account:'g-pay'},
@@ -52,17 +47,6 @@ force: any;
           { prop: 'DebitCredit' ,name:'DebitCredit'},
           { prop: 'Account',name:'Account'},
         ];
-        fetch(cb: { (data: any): void; (arg0: any): void; }) {
-          const req = new XMLHttpRequest();
-          req.open('GET', `assets/company.json`);
+       }
       
-          req.onload = () => {
-            const data = JSON.parse(req.response);
-            cb(data);
-          };
-      
-          req.send();
-        }
-  }
-
 
