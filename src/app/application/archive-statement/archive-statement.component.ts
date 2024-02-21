@@ -12,37 +12,49 @@ import { Subscription } from 'rxjs';
 export class ArchiveStatementComponent implements OnInit, OnDestroy {
  
   private subscription: Subscription = new Subscription();
-force: any;
+  public rows: any[] = []; // Initialize rows as an empty array
+  columns = [
+    { prop: 'DateAndTime', name: 'DateAndTime' },
+    { prop: 'Naration', name: 'Naration' },
+    { prop: 'Amount', name:'Amount'},
+    { prop: 'DebitCredit', name:'DebitCredit'},
+    { prop: 'Account', name:'Account'},
+  ];
 
-public getJasonValue:any;
-public postJasonValue:any;
+  constructor(private http: HttpClient) {}
 
-  constructor(private http:HttpClient) {}
+
+
+
     
   
 
 
   ngOnInit(): void {
-    this.getMethod();
-   
+    
+    this.fetchStatements();
+
+  }
+  fetchStatements(): void {
+    const endpoint = ' http://localhost:5000/api/statement/statement'; 
+    this.subscription.add(
+      this.http.get<any[]>(endpoint).subscribe({
+        next: (data) => {
+          this.rows = data;
+        },
+        error: (error) => {
+          console.error('There was an error!', error);
+        }
+      })
+    );
   }
 
+
   ngOnDestroy(): void {
-   
+    this.subscription.unsubscribe();
+
         }
-        public getMethod(){
-          this.http.get(' http://localhost:5000/api/statement/statement').subscribe((data)=>{
-            console.log(data);
-            this.getJasonValue
-          });
-        }
-        public postMethod(){
-          this.http.post('http://localhost:5000/api/statement/statement',{}).subscribe((data)=>{
-            console.log(data);
-            this.postJasonValue
-          });
-        }
-      
+        
        
        }
       
