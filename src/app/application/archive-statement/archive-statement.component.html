@@ -1,13 +1,12 @@
 <div class="container">
-    <div class="card m-5 p-3">
-        <div class="card-body">
-
-            <ngx-datatable class="material" [rows]="rows" [columns]="columns" [columnMode]="'force'" [headerHeight]="50"
-                [footerHeight]="50" [rowHeight]="'auto'">
-            </ngx-datatable>
-
-
-        </div>
-
+    <div class="m-5 p-3">
+        <ngx-datatable class="bootstrap"
+            [rows]="rows" 
+            [columns]="columns"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="50" 
+            [rowHeight]="'auto'">
+        </ngx-datatable>
     </div>
 </div>
