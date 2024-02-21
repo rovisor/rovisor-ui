@@ -19,7 +19,10 @@ export class UploadStatementService {
                     this.toastr.success('File uploaded successfully', 'Success');
                     return response;
                 }),
-                
+                catchError((error: any) => {
+                    this.toastr.error('An error occurred while uploading the file.', 'Error');
+                    return throwError(error);
+                })
             );
     }
 }
