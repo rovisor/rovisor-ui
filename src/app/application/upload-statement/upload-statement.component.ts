@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { DateTime } from 'luxon';
+import { ToastrService } from 'ngx-toastr';
+import { UploadStatementService } from './state/upload-statement.service';
 
 
 @Component({
@@ -17,7 +19,8 @@ export class UploadStatementComponent implements OnInit {
   csvHeaders: any[] = [];
   missingColumns: string[] = [];
   invalidRow: any[] = [];
-  constructor( private formBuilder: FormBuilder, private activeModal: NgbActiveModal) { }
+  constructor(private formBuilder: FormBuilder, private activeModal: NgbActiveModal, private uploadStatementService: UploadStatementService,
+    private toastr: ToastrService) { }
   ngOnInit(): void {
     this.uploadForm = new FormGroup({
       file: new FormControl('', [Validators.required,]),
