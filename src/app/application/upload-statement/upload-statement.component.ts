@@ -28,7 +28,18 @@ export class UploadStatementComponent implements OnInit {
   }
 
   upload(): void {
+    const formData = new FormData();
+    formData.append('file', this.uploadForm.get('file')!.value);
 
+    this.uploadStatementService.uploadStatement(formData).subscribe( // The subscribe method is used to handle the response from the server.
+      (response: any) => {
+        this.toastr.success(response.message, 'Success');
+
+      },
+      (error: any) => {
+        this.toastr.error(error.message, 'Error');
+      }
+    );
   }
 
   cancel(): void {
