@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { ArchiveStatementService } from './state/archive-statement.service';
 
 
 @Component({
@@ -14,14 +15,14 @@ export class ArchiveStatementComponent implements OnInit, OnDestroy {
   private subscription: Subscription = new Subscription();
   public rows: any[] = []; // Initialize rows as an empty array
   columns = [
-    { prop: 'DateAndTime', name: 'DateAndTime' },
-    { prop: 'Naration', name: 'Naration' },
-    { prop: 'Amount', name:'Amount'},
-    { prop: 'DebitCredit', name:'DebitCredit'},
-    { prop: 'Account', name:'Account'},
+    { prop: 'TransactionDate', name: 'DateAndTime' },
+    { prop: 'TransactionDescription', name: 'Naration' },
+    { prop: 'TransactionAmount', name:'Amount'},
+    { prop: 'TransactionType', name:'DebitCredit'},
+    { prop: 'TransactionAccount', name:'Account'},
   ];
 
-  constructor(private http: HttpClient) {}
+  constructor(private archiveStatement:ArchiveStatementService) {}
 
 
 
@@ -35,26 +36,19 @@ export class ArchiveStatementComponent implements OnInit, OnDestroy {
     this.fetchStatements();
 
   }
-  fetchStatements(): void {
-    const endpoint = ' http://localhost:5000/api/statement/statement'; 
-    this.subscription.add(
-      this.http.get<any[]>(endpoint).subscribe({
-        next: (data) => {
-          this.rows = data;
-        },
-        error: (error) => {
-          console.error('There was an error!', error);
-        }
-      })
-    );
-  }
+  
 
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
 
         }
-        
+        fetchStatements(){
+          this.subscription.add(this.archiveStatement.fetchStatements().subscribe((result)=>{
+            console.log("result",result);
+            this.rows = result
+          }))
+        }   
        
        }
       
