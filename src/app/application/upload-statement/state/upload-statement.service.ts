@@ -13,7 +13,7 @@ export class UploadStatementService {
 
     uploadStatement(formData: FormData) {
         const apiUrl = "http://localhost:5053/api/FileUpload/upload"
-        return this.httpClient.post('apiUrl', formData)
+        return this.httpClient.post(apiUrl, formData)
             .pipe(
                 map((response: any) => { // The map operator takes the response and returns it directly.
                     this.toastr.success('File uploaded successfully', 'Success');
