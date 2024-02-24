@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { DateTime } from 'luxon';
+import { ToastrService } from 'ngx-toastr';
+import { UploadStatementService } from './state/upload-statement.service';
 
 
 @Component({
@@ -17,7 +19,10 @@ export class UploadStatementComponent implements OnInit {
   csvHeaders: any[] = [];
   missingColumns: string[] = [];
   invalidRow: any[] = [];
-  constructor( private formBuilder: FormBuilder, private activeModal: NgbActiveModal) { }
+  selectedAccount: string = '';
+
+  constructor(private formBuilder: FormBuilder, private activeModal: NgbActiveModal, private uploadStatementService: UploadStatementService,
+    private toastr: ToastrService) { }
   ngOnInit(): void {
     this.uploadForm = new FormGroup({
       file: new FormControl('', [Validators.required,]),
@@ -25,11 +30,23 @@ export class UploadStatementComponent implements OnInit {
   }
 
   upload(): void {
+    const formData = new FormData();
+    formData.append('file', this.uploadForm.get('file')!.value);
 
+    this.uploadStatementService.uploadStatement(formData).subscribe( // The subscribe method is used to handle the response from the server.
+      (response: any) => {
+        this.toastr.success(response.message, 'Success');
+
+      },
+      (error: any) => {
+        this.toastr.error(error.message, 'Error');
+      }
+    );
   }
 
   cancel(): void {
-
+    this.selectedAccount = '';
+    this.uploadForm.get('selectedAccount')!.setValue('');
     this.activeModal.close();
 
   }
