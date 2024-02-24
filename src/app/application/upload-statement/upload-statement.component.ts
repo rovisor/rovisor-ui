@@ -19,6 +19,8 @@ export class UploadStatementComponent implements OnInit {
   csvHeaders: any[] = [];
   missingColumns: string[] = [];
   invalidRow: any[] = [];
+  selectedAccount: string = '';
+
   constructor(private formBuilder: FormBuilder, private activeModal: NgbActiveModal, private uploadStatementService: UploadStatementService,
     private toastr: ToastrService) { }
   ngOnInit(): void {
@@ -43,7 +45,8 @@ export class UploadStatementComponent implements OnInit {
   }
 
   cancel(): void {
-
+    this.selectedAccount = '';
+    this.uploadForm.get('selectedAccount')!.setValue('');
     this.activeModal.close();
 
   }
