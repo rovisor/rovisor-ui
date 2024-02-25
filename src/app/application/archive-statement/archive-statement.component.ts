@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ArchiveStatementService } from './state/archive-statement.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { ArchiveStatementService } from './state/archive-statement.service';
 })
 
 export class ArchiveStatementComponent implements OnInit, OnDestroy {
- 
+  public statementFiltersForm!: FormGroup;
   private subscription: Subscription = new Subscription();
   public rows: any[] = []; 
   columns = [
@@ -21,13 +22,18 @@ export class ArchiveStatementComponent implements OnInit, OnDestroy {
     { prop: 'TransactionType', name:'DebitCredit'},
     { prop: 'TransactionAccount', name:'Account'},
   ];
-model: any;
-selectedItem: any;
-selecteditem: any;
+  model: any;
+  selectedItem: any;
+  selecteditem: any;
 
-  constructor(private archiveStatement:ArchiveStatementService) {}
-  ngOnInit(): void {
-    
+  constructor(private formBuilder: FormBuilder, private archiveStatement:ArchiveStatementService) {}
+  ngOnInit() {
+    this.statementFiltersForm = this.formBuilder.group({
+    fromDate: [''],
+    toDate: [''],
+    account:[''],
+    type:['']
+  });
     this.fetchStatements();
 
   }
