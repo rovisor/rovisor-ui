@@ -1,9 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [{
   path: '', 
+  redirectTo: 'auth/sign-in',
+  pathMatch: 'full'
+}, 
+{
+  path: 'login', 
   redirectTo: 'auth/sign-in',
   pathMatch: 'full'
 },  
@@ -13,7 +19,8 @@ const routes: Routes = [{
 }, 
 { 
   path: 'app', 
-  loadChildren: () => import('./application/application.module').then(module => module.ApplicationModule) 
+  loadChildren: () => import('./application/application.module').then(module => module.ApplicationModule),
+  canLoad: [AuthGuard]
 }, 
 { 
   path: '**', 
