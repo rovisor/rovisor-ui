@@ -1,8 +1,13 @@
 export interface LoginResponseModel {
-    token: string;
-    email: string;
+    Token: string;
+    Email: string;
     Id: string;
-    name: string;
+    Name: string;
+}
+
+export interface LoginRequestModel {
+    email: string;
+    password: string;
 }
 
 export interface SignUpRequestModel {
@@ -12,8 +17,13 @@ export interface SignUpRequestModel {
 }
 
 export interface SignUpResponseModel {
-    token: string;
-    email: string;
+    Token: string;
+    Email: string;
     Id: string;
-    name: string;
+    Name: string;
 }
+
+export interface CommonResponseModel {
+    message: string;
+ }
+ 

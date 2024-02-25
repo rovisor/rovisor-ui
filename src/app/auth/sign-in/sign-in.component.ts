@@ -4,6 +4,7 @@ import { AuthService } from '../state/auth.service';
 import { Subscription } from 'rxjs';
 import { LoginResponseModel } from '../state/auth.model';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-sign-in',
@@ -15,7 +16,7 @@ export class SignInComponent implements OnInit {
   private subscription: Subscription = new Subscription();
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService,
-    private router: Router) {}
+    private toastr: ToastrService, private router: Router) {}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -29,12 +30,15 @@ export class SignInComponent implements OnInit {
       return;
     }
 
-    const email = this.loginForm.value.email;
-    const password = this.loginForm.value.password;
-
-    this.subscription.add(this.authService.login(email, password).subscribe((response: LoginResponseModel) => {
-      localStorage.setItem('user', JSON.stringify(response));
-      this.router.navigate(['/app/dashboard']);
+    this.subscription.add(this.authService.login(this.loginForm.value).subscribe((response: LoginResponseModel) => {
+      if(response.Token) {
+        localStorage.setItem('user', JSON.stringify(response));
+        localStorage.setItem('token', response.Token);
+        this.authService.setAuthenticatedUser(true);
+        this.router.navigate(['/app/dashboard']);
+      } else {
+        this.toastr.error("Invalid credentials. Please try again.");
+      }
     }));
 
   }

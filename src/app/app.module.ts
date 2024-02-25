@@ -9,15 +9,13 @@ import { SharedComponentsModule } from './shared-components/shared-components.mo
 import { HandleErrorInterceptor } from './interceptors/handle-error-interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {NgxDatatableModule } from '@swimlane/ngx-datatable';
-
-
-
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { AuthTokenInterceptor } from './interceptors/auth-token.interceptor';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -33,8 +31,10 @@ import {NgxDatatableModule } from '@swimlane/ngx-datatable';
       progressBar: true}),
     BrowserAnimationsModule
   ],
-  providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: HandleErrorInterceptor, multi: true}
+  providers: [  
+    {provide: HTTP_INTERCEPTORS, useClass: HandleErrorInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: AuthTokenInterceptor, multi: true},
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
