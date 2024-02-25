@@ -1,8 +1,37 @@
 <div class="container">
-    <div class="m-5 p-3">
+    <div class="row m-5 p-3">
+
+        <div class="col-4">
+            <input class="form-control"
+            placeholder="date"
+            name="dp"
+            ngbDatepicker 
+            #dp="ngbDatepicker" 
+            [(ngModel)]="model" 
+            required>
+            <button (click)="dp.toggle()" 
+            class="btn btn-outline-secondary calendar" 
+            type="button">
+        </button>
+        </div>
+        <div class="col-4">
+            <ng-select [items]="Account"
+                       bindLabel="name"
+                       placeholder="Select item"
+                       [(ngModel)]="selectedItem">
+            </ng-select>
+        </div>
+        <div class="col-4">
+            <ng-select [items]="type"
+                    bindLabel="name"
+                    placeholder="Select Type"
+                    [(ngModel)]="selecteditem">
+            </ng-select>
+        </div>
+
         <ngx-datatable class="bootstrap"
-          [rows]="rows"
-          [columns]="columns"
+            [rows]="rows"
+            [columns]="columns"
             [columnMode]="'force'"
             [headerHeight]="50"
             [footerHeight]="50" 
