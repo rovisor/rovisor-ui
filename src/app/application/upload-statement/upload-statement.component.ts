@@ -176,8 +176,12 @@ export class UploadStatementComponent implements OnInit {
   }
 
   parseDate(dateValue: string, format: string): Date | null {
-    const date = DateTime.fromFormat(dateValue, format);
-    return date.isValid ? date.toJSDate() : null;
+    let date = DateTime.fromFormat(dateValue, format);
+    if (date.isValid) {
+      return date.toJSDate();
+    } else {
+      return null;
+    }
   }
 
 }
