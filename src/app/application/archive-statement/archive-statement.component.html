@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row m-5 p-3" [formGroup]="statementFiltersForm">
+        <div class="col-4">
+            <input class="form-control"
+            placeholder="Form Date"
+            name="formDatePicker"
+            ngbDatepicker 
+            #formDatePicker="ngbDatepicker" 
+            formControlName="fromDate"
+            (click)="formDatePicker.toggle()"
+            required/>
+        </div>
+        <div class="col-4">
+            <input class="form-control"
+            placeholder="To Date"
+            name="toDatePicker"
+            ngbDatepicker 
+            #toDatePicker="ngbDatepicker" 
+            formControlName="toDate"
+            required (click)="toDatePicker.toggle()" />
+        </div>
+        <div class="col-4">
+            <ng-select [items]="Account"
+                       bindLabel="name"
+                       placeholder="Select Account"
+                       formControlName="account">
+            </ng-select>
+        </div>
+        <div class="col-4">
+            <ng-select [items]="type"
+                    bindLabel="name"
+                    placeholder="Select Transaction Type"
+                    formControlName="type">
+            </ng-select>
+        </div>
+    </div>
+    <div class="row m-5 p-3">
+
+        <ngx-datatable class="bootstrap"
+            [rows]="rows"
+            [columns]="columns"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="50" 
+            [rowHeight]="'auto'">
+        </ngx-datatable>
+    </div>
+</div>

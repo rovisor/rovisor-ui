@@ -1,0 +1,13 @@
+.modal-body {
+  max-height: calc(100vh - 210px);
+  min-height: 300px;
+  overflow-y: auto;
+}
+
+.modal-header {
+  background-color: #d9d9d9;
+  height: 30px;
+}
+.invalid-row {
+  background-color: yellow !important;
+}

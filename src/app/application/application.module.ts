@@ -11,18 +11,22 @@ import { Registration1Component } from './registration-1/registration-1.componen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UploadStatementComponent } from './upload-statement/upload-statement.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ArchiveStatementComponent } from './archive-statement/archive-statement.component';
+import {NgxDatatableModule } from '@swimlane/ngx-datatable';
 @NgModule({
   declarations: [
     ApplicationComponent,
     Registration1Component,
     RegistrationV2Component,
-    UploadStatementComponent
+    UploadStatementComponent,
+    ArchiveStatementComponent
   ],
   imports: [
     NgbDatepickerModule,
     ApplicationRoutingModule,
     HttpClientModule,
     SharedComponentsModule,
+    NgxDatatableModule,
     ReactiveFormsModule,
     FormsModule,
     NgSelectModule,

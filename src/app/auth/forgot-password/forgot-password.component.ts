@@ -27,7 +27,6 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
     if (this.forgotPasswordForm!.invalid) {
       return;
     }
-
     this.subscription.add(this.authService.sendResetPasswordEmail(this.forgotPasswordForm!.value.email)
       .subscribe((response: CommonResponseModel) => {
         this.toastr.success(response.message);

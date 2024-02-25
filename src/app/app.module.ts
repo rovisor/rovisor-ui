@@ -9,22 +9,20 @@ import { SharedComponentsModule } from './shared-components/shared-components.mo
 import { HandleErrorInterceptor } from './interceptors/handle-error-interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AuthTokenInterceptor } from './interceptors/auth-token.interceptor';
 import { AuthGuard } from './guards/auth.guard';
 
-
-
-
 @NgModule({
   declarations: [
-    AppComponent,
-    
+    AppComponent
   ],
   imports: [
     BrowserModule,
     CommonModule,
     AppRoutingModule,
     NgbModule,
+    NgxDatatableModule,
     HttpClientModule,
     SharedComponentsModule,
     ToastrModule.forRoot({
