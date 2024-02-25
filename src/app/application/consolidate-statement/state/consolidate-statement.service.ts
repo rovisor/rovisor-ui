@@ -4,7 +4,7 @@ import { map } from "rxjs";
 import { environment } from "src/environments/environment"; 
 
 @Injectable({providedIn: 'root'})
-export class ArchiveStatementService {
+export class ConsolidateStatementService {
     constructor(private httpClient: HttpClient) {}
 
     fetchStatements() {

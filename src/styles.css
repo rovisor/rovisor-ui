@@ -3,6 +3,7 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 @import '~ngx-toastr/toastr';
 
+
 html, body {
     font-size: 0.825rem;
     height: 100%;

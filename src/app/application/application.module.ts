@@ -11,15 +11,19 @@ import { Registration1Component } from './registration-1/registration-1.componen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UploadStatementComponent } from './upload-statement/upload-statement.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ArchiveStatementComponent } from './archive-statement/archive-statement.component';
-import {NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { ConsolidateStatementComponent } from './consolidate-statement/consolidate-statement.component';
+import { AccountMappingComponent } from './account-mapping/account-mapping.component';
+import { AddAccountComponent } from './add-account/add-account.component';
 @NgModule({
   declarations: [
     ApplicationComponent,
     Registration1Component,
     RegistrationV2Component,
     UploadStatementComponent,
-    ArchiveStatementComponent
+    ConsolidateStatementComponent,
+    AccountMappingComponent,
+    AddAccountComponent
   ],
   imports: [
     NgbDatepickerModule,

@@ -4,7 +4,7 @@ import { ApplicationComponent } from './application.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { Registration1Component } from './registration-1/registration-1.component';
 import { RegistrationV2Component } from './registration-v2/registration-v2.component';
-import { ArchiveStatementComponent } from './archive-statement/archive-statement.component';
+import { ConsolidateStatementComponent } from './consolidate-statement/consolidate-statement.component';
 
 
 const routes: Routes = [
@@ -25,8 +25,8 @@ const routes: Routes = [
         component: RegistrationV2Component,
       },
       {
-         path: 'archive-statement',
-         component: ArchiveStatementComponent,
+         path: 'consolidate-statement',
+         component: ConsolidateStatementComponent,
       }
     ]
   }
