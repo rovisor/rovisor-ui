@@ -42,7 +42,6 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
         }
         fetchStatements(){
           this.subscription.add(this.consolidateStatement.fetchStatements().subscribe((result)=>{
-            console.log("result",result);
             this.rows = result
           }))
         }  
