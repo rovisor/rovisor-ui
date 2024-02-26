@@ -1,21 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ArchiveStatementService } from './state/archive-statement.service';
+import { ConsolidateStatementService } from './state/consolidate-statement.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 
 @Component({
-  selector: 'app-archive-statement',
-  templateUrl: './archive-statement.component.html',
-  styleUrls: ['./archive-statement.component.css']
+  selector: 'app-consolidate-statement',
+  templateUrl: './consolidate-statement.component.html',
+  styleUrls: ['./consolidate-statement.component.css']
 })
 
-export class ArchiveStatementComponent implements OnInit, OnDestroy {
+export class ConsolidateStatementComponent implements OnInit, OnDestroy {
   public statementFiltersForm!: FormGroup;
   private subscription: Subscription = new Subscription();
   public rows: any[] = []; 
-  columns = [
+  public columns = [
     { prop: 'TransactionDate', name: 'DateAndTime' },
     { prop: 'TransactionDescription', name: 'Naration' },
     { prop: 'TransactionAmount', name:'Amount'},
@@ -26,7 +26,7 @@ export class ArchiveStatementComponent implements OnInit, OnDestroy {
   selectedItem: any;
   selecteditem: any;
 
-  constructor(private formBuilder: FormBuilder, private archiveStatement:ArchiveStatementService) {}
+  constructor(private formBuilder: FormBuilder, private consolidateStatement: ConsolidateStatementService) {}
   ngOnInit() {
     this.statementFiltersForm = this.formBuilder.group({
     fromDate: [''],
@@ -42,8 +42,7 @@ export class ArchiveStatementComponent implements OnInit, OnDestroy {
 
         }
         fetchStatements(){
-          this.subscription.add(this.archiveStatement.fetchStatements().subscribe((result)=>{
-            console.log("result",result);
+          this.subscription.add(this.consolidateStatement.fetchStatements().subscribe((result)=>{
             this.rows = result
           }))
         }  

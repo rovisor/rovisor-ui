@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UploadStatementComponent } from '../upload-statement/upload-statement.component';
+import { AddAccountComponent } from '../add-account/add-account.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,7 +13,10 @@ export class DashboardComponent {
   constructor(private modalService: NgbModal) { }
 
   openUploadModal() {
-    const modalRef = this.modalService.open(UploadStatementComponent, { size: 'lg' });
+    this.modalService.open(UploadStatementComponent, { size: 'lg' });
   }
 
+  openAddAccountModal() {
+    this.modalService.open(AddAccountComponent, { size: 'lg' });
+  }
 }
