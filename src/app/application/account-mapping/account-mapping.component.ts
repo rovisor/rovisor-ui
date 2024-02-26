@@ -14,7 +14,9 @@ export class AccountMappingComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private accountMappingService: AccountMappingService
   ) {}
+  
   ngOnInit() {}
+
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
