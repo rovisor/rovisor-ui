@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 
 export class AddAccountComponent implements OnInit, OnDestroy {
+  public accountForm!: FormGroup;
   private subscription: Subscription = new Subscription();
   constructor(private formBuilder: FormBuilder, private addAccountService: AddAccountService) {}
   ngOnInit() {
