@@ -25,7 +25,7 @@ export class AddAccountComponent implements OnInit, OnDestroy {
       ],
       institutionName: [
         '',
-        [Validators.required, Validators.pattern('^[a-zA-Z]+$')],
+        [Validators.required, Validators.pattern('^[a-zA-Z ]+$')],
       ],
       selectedAccount: ['', Validators.required],
       accountNumber: [
