@@ -1,0 +1,31 @@
+<form [formGroup]="accountForm">
+  <div class="form-container">
+    <h2>Add new account</h2>
+
+    <div>
+      <label for="accountName">Name of the account:</label>
+      <input type="text" id="accountName" formControlName="accountName" />
+    </div>
+    <div>
+      <label for="institutionName">Name of the institution:</label>
+      <input type="text" id="institutionName" formControlName="institutionName" />
+    </div>
+    <div>
+      <label for="accountSelect" class="form-label">Select Account</label>
+      <select class="form-select" id="accountSelect" formControlName="selectedAccount">
+        <option value="Savings Account">Savings Account</option>
+        <option value="Wallet ">Wallet</option>
+        <option value="Current Account">Current Account</option>
+        <option value="Loan Account">Loan Account</option>
+        <option value="Investment Account">Investment Account</option>
+      </select>
+    </div>
+    <div>
+      <label for="accountNumber">Last four digits of the account number:</label>
+      <input type="typeofaccount" id="accountNumber" formControlName="accountNumber" />
+    </div>
+    <button type="submit" class="btn btn-primary btn-green" [disabled]="!accountForm.valid" (click)="onSubmit()">
+      Add Account
+    </button>
+  </div>
+</form>

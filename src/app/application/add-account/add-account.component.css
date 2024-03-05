@@ -1,0 +1,36 @@
+
+.form-container {
+    width: 100%;
+    max-width: 400px;
+    margin:0 auto;
+    
+   
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+button {
+    padding: 10px;
+    width: 50%;
+    color: #fff;
+    border: none;
+    border-radius: 13px;
+    cursor: pointer;
+}
+
+button:hover {
+   background: rgba(255, 255, 255, 0.4);
+
+}
