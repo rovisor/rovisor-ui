@@ -1,0 +1,36 @@
+name: Deploy to AWS Lightsail
+
+on:
+    pull_request:
+        types:
+            - closed
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v2
+              with:
+                    node-version: 14
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Build Angular app
+              run: npm run build -- --prod
+
+            - name: Deploy to AWS Lightsail
+              uses: appleboy/ssh-action@master
+              with:
+                    host: ${{ secrets.AWS_HOST }}
+                    username: ${{ secrets.AWS_USERNAME }}
+                    key: ${{ secrets.AWS_PRIVATE_KEY }}
+                    script: |
+                        cd /path/to/angular/app
+                        rm -rf *
+                        cp -r /path/to/angular/app/dist/* .
