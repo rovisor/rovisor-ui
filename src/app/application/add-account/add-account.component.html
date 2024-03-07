@@ -3,15 +3,15 @@
     <h2>Add new account</h2>
 
     <div>
-      <label for="accountName">Name of the account:</label>
-      <input type="text" id="accountName" formControlName="accountName" />
+      <label for="accountName"class="form-label fw-bold">Name of the account:</label>
+      <input type="text"class="form-control" id="accountName" formControlName="accountName" />
     </div>
     <div>
-      <label for="institutionName">Name of the institution:</label>
-      <input type="text" id="institutionName" formControlName="institutionName" />
+      <label for="institutionName"class="form-label fw-bold">Name of the institution:</label>
+      <input type="text"class="form-control"id="institutionName" formControlName="institutionName" />
     </div>
     <div>
-      <label for="accountSelect" class="form-label">Select Account</label>
+      <label for="accountSelect" class="form-label fw-bold">Select Account</label>
       <select class="form-select" id="accountSelect" formControlName="selectedAccount">
         <option value="Savings Account">Savings Account</option>
         <option value="Wallet ">Wallet</option>
@@ -21,11 +21,13 @@
       </select>
     </div>
     <div>
-      <label for="accountNumber">Last four digits of the account number:</label>
-      <input type="typeofaccount" id="accountNumber" formControlName="accountNumber" />
+      <label for="accountNumber"class="form-label fw-bold">Last four digits of the account number:</label>
+      <input type="typeofaccount"class="form-control" id="accountNumber" formControlName="accountNumber" />
     </div>
-    <button type="submit" class="btn btn-primary btn-green" [disabled]="!accountForm.valid" (click)="onSubmit()">
+   <div class="col-12">
+    <button type="submit" class="btn btn-primary rounded-4 py-3 px-5" [disabled]="!accountForm.valid" (click)="onSubmit()">
       Add Account
     </button>
+  </div>
   </div>
 </form>
