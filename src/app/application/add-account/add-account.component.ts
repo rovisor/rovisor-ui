@@ -11,6 +11,15 @@ import { ToastrService } from 'ngx-toastr';
 })
   
 export class AddAccountComponent implements OnInit, OnDestroy {
+
+  accountTypes = [
+    "Savings Account",
+    "Wallet",
+    "Current Account",
+    "Loan Account",
+    "Investment Account"
+  ];
+
   public accountForm!: FormGroup;
   private subscription: Subscription = new Subscription();
   constructor(
@@ -35,7 +44,10 @@ export class AddAccountComponent implements OnInit, OnDestroy {
         [Validators.required, Validators.pattern('^[0-9]{4}$')],
       ],
     });
-  }
+    this.accountForm.patchValue({
+      selectedAccount: this.accountTypes[0] 
+    });
+}
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

@@ -1,28 +1,22 @@
-<form [formGroup]="accountForm">
+<forms [formGroup]="accountForm">
   <div class="form-container">
     <h2>Add new account</h2>
 
-    <div>
+    <div class="mb-3">
       <label for="accountName"class="form-label fw-bold">Name of the account:</label>
       <input type="text"class="form-control" id="accountName" formControlName="accountName" />
     </div>
-    <div>
+    <div class="mb-3">
       <label for="institutionName"class="form-label fw-bold">Name of the institution:</label>
       <input type="text"class="form-control"id="institutionName" formControlName="institutionName" />
     </div>
-    <div>
-      <label for="accountSelect" class="form-label fw-bold">Select Account</label>
-      <select class="form-select" id="accountSelect" formControlName="selectedAccount">
-        <option value="Savings Account">Savings Account</option>
-        <option value="Wallet ">Wallet</option>
-        <option value="Current Account">Current Account</option>
-        <option value="Loan Account">Loan Account</option>
-        <option value="Investment Account">Investment Account</option>
-      </select>
+    <div class="mb-3">
+     <label for="accountSelect" class="form-label fw-bold">Select Account</label>
+      <ng-select formControlName="accountSelect" [items]="accountTypes"  placeholder="Select Account"></ng-select>
     </div>
-    <div>
+    <div class="mb-3">
       <label for="accountNumber"class="form-label fw-bold">Last four digits of the account number:</label>
-      <input type="typeofaccount"class="form-control" id="accountNumber" formControlName="accountNumber" />
+      <input type="text"class="form-control" id="accountNumber" formControlName="accountNumber" />
     </div>
    <div class="col-12">
     <button type="submit" class="btn btn-primary rounded-4 py-3 px-5" [disabled]="!accountForm.valid" (click)="onSubmit()">
@@ -30,4 +24,4 @@
     </button>
   </div>
   </div>
-</form>
+</forms>
