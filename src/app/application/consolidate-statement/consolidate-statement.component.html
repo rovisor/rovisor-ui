@@ -8,7 +8,8 @@
             #formDatePicker="ngbDatepicker" 
             formControlName="fromDate"
             (click)="formDatePicker.toggle()"
-            required/>
+            required
+            *ngIf="statementFiltersForm.get('birthdate')?.hasError('futureDate')" class="invalid-feedback" />
         </div>
         <div class="col-4">
             <input class="form-control"

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ConsolidateStatementService } from './state/consolidate-statement.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -28,7 +28,7 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
   constructor(private formBuilder: FormBuilder, private consolidateStatement: ConsolidateStatementService) {}
   ngOnInit() {
     this.statementFiltersForm = this.formBuilder.group({
-    fromDate: [''],
+    fromDate: new FormControl (''),
     toDate: [''],
     account:[''],
     type:['']
@@ -56,5 +56,14 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
           { id: 1, name: 'Credit' },
           { id: 2, name: 'Debit' },
         ];
-       }
+        validatedob(control: FormControl): {[key:string]:boolean} | null {
+          const maxdob = new Date();
+          maxdob.setFullYear(maxdob.getFullYear() - 87);
+      
+          const selectedDate = new Date(control.value);
+          if (control.value && new Date(control.value) > new Date()) {
+            return { futureDate: true };
+          }
+        }
+      }
     
