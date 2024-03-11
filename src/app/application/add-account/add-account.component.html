@@ -1,31 +1,41 @@
-<form [formGroup]="accountForm">
+<forms [formGroup]="accountForm">
   <div class="form-container">
     <h2>Add new account</h2>
 
-    <div>
-      <label for="accountName">Name of the account:</label>
-      <input type="text" id="accountName" formControlName="accountName" />
+    <div class="mb-3">
+      <label for="accountName" class="form-label fw-bold">Name of the account:</label>
+      <input type="text" class="form-control" id="accountName" formControlName="accountName" />
+      <div class="text-danger"*ngIf="accountForm.get('accountName')?.touched && accountForm.get('accountName')?.invalid">
+        <div class="text-danger"*ngIf="accountForm.get('accountName')?.errors?.['required']">Account name is required.</div>
+        <div class="text-danger"*ngIf="accountForm.get('accountName')?.errors?.['pattern']">Invalid characters used. Only letters, numbers and spaces allowed.</div>
+      </div>
     </div>
-    <div>
-      <label for="institutionName">Name of the institution:</label>
-      <input type="text" id="institutionName" formControlName="institutionName" />
+    <div class="mb-3">
+      <label for="institutionName" class="form-label fw-bold">Name of the institution:</label>
+      <input type="text" class="form-control" id="institutionName" formControlName="institutionName" />
+      <div class="text-danger"*ngIf="accountForm.get('institutionName')?.touched && accountForm.get('institutionName')?.invalid">
+        <div class="text-danger"*ngIf="accountForm.get('institutionName')?.errors?.['required']">Institution name is required.</div>
+        <div class="text-danger"*ngIf="accountForm.get('institutionName')?.errors?.['pattern']">Invalid characters used. Only letters and spaces allowed.</div> </div>
     </div>
-    <div>
-      <label for="accountSelect" class="form-label">Select Account</label>
-      <select class="form-select" id="accountSelect" formControlName="selectedAccount">
-        <option value="Savings Account">Savings Account</option>
-        <option value="Wallet ">Wallet</option>
-        <option value="Current Account">Current Account</option>
-        <option value="Loan Account">Loan Account</option>
-        <option value="Investment Account">Investment Account</option>
-      </select>
+    <div class="mb-3">
+      <label for="accountSelect" class="form-label fw-bold">Select Account</label>
+      <ng-select formControlName="accountSelect" [items]="accountTypes" placeholder="Select Account"></ng-select>
+      <div class="text-danger"*ngIf="accountForm.get('accountSelect')?.touched && accountForm.get('accountSelect')?.invalid">
+        <div class="text-danger"*ngIf="accountForm.get('accountSelect')?.errors?.['required']">Please select an account type.</div>
+      </div>
     </div>
-    <div>
-      <label for="accountNumber">Last four digits of the account number:</label>
-      <input type="typeofaccount" id="accountNumber" formControlName="accountNumber" />
+    <div class="mb-3">
+      <label for="accountNumber" class="form-label fw-bold">Last four digits of the account number:</label>
+      <input type="text" class="form-control" id="accountNumber" formControlName="accountNumber" />
+      <div class="text-danger"*ngIf="accountForm.get('accountNumber')?.touched && accountForm.get('accountNumber')?.invalid">
+        <div class="text-danger"*ngIf="accountForm.get('accountNumber')?.errors?.['required']">Account number is required.</div>
+        <div class="text-danger"*ngIf="accountForm.get('accountNumber')?.errors?.['pattern']">Invalid account number. Only 4 digits allowed.</div>
+      </div>
     </div>
-    <button type="submit" class="btn btn-primary btn-green" [disabled]="!accountForm.valid" (click)="onSubmit()">
-      Add Account
-    </button>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary rounded-4 py-3 px-5" [disabled]="!accountForm.valid" (click)="onSubmit()">
+        Add Account
+      </button>
+    </div>
   </div>
-</form>
+</forms>
