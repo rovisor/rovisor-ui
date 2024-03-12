@@ -44,16 +44,7 @@ export class AddAccountComponent implements OnInit, OnDestroy {
       ],
     });
 
-    this.accountForm.patchValue({
-      accountSelect: this.accountTypes[0]
-    });
-    this.accountForm.valueChanges.subscribe(() => { // This line sets up a subscription to the valueChanges observable of the accountForm
-      for (const cValue in this.accountForm.controls) {
-        if (this.accountForm.controls[cValue].invalid) {
-          this.accountForm.controls[cValue].markAsTouched();
-        }
-      }
-    });
+
   }
 
   ngOnDestroy(): void {
@@ -63,9 +54,6 @@ export class AddAccountComponent implements OnInit, OnDestroy {
   onSubmit() {
     if (this.accountForm.valid) {
       this.toastr.success('Account added successfully', 'Success!');
-    }
-    else {
-      this.toastr.error('Please fill all required fields correctly', 'Error');
     }
   }
 }
