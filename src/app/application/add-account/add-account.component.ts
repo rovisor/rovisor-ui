@@ -10,7 +10,7 @@ import { AddAccountService } from './state/add-account.service';
   styleUrls: ['./add-account.component.css'],
 })
 export class AddAccountComponent implements OnInit, OnDestroy {
-  accountTypes: string[] = [
+  public accountTypes: string[] = [
     "Savings Account",
     "Wallet",
     "Current Account",
@@ -21,35 +21,22 @@ export class AddAccountComponent implements OnInit, OnDestroy {
   public accountForm!: FormGroup;
   private subscription: Subscription = new Subscription();
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private toastr: ToastrService,
-    private addAccountService: AddAccountService,
-  ) { }
+  constructor(private formBuilder: FormBuilder,  private toastr: ToastrService, private addAccountService: AddAccountService) { }
 
   ngOnInit() {
     this.accountForm = this.formBuilder.group({
-      accountName: [
-        '',
-        [Validators.required, Validators.pattern('^[a-zA-Z0-9 ]+$')],
-      ],
-      institutionName: [
-        '',
-        [Validators.required, Validators.pattern('^[a-zA-Z ]+$')],
-      ],
-      accountSelect: ['', Validators.required],
-      accountNumber: [
-        '',
-        [Validators.required, Validators.pattern('^[0-9]{4}$')],
-      ],
+      accountName: [null, [Validators.required, Validators.pattern('^[a-zA-Z0-9 ]+$')]],
+      institutionName: [null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
+      accountSelect: [null, Validators.required],
+      accountNumber: [null, [Validators.required, Validators.pattern('^[0-9]{4}$')]]
     });
-
-
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
+
+  get f() { return this.accountForm.controls; }
 
   onSubmit() {
     if (this.accountForm.valid) {
