@@ -24,10 +24,12 @@ export class UploadStatementComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private activeModal: NgbActiveModal, private uploadStatementService: UploadStatementService,
     private toastr: ToastrService) { }
   ngOnInit(): void {
-    this.uploadForm = new FormGroup({
-      file: new FormControl('', [Validators.required,]),
+    this.uploadForm = this.formBuilder.group({
+      file: ['', [Validators.required]],
+      selectedAccount: [''] // Add selectedAccount control here
     });
   }
+
 
   upload(): void {
     const formData = new FormData();
@@ -148,7 +150,7 @@ export class UploadStatementComponent implements OnInit {
 
       const dateIndex = this.csvHeaders.indexOf('Date');
       const dateValue = row[dateIndex];
-      if (!this.isValidDate(dateValue)) {
+      if (this.isValidDate(dateValue)) {
         this.missingColumns.push(`Invalid Date (Row ${rowIndex + 1})`);
         this.invalidRow.push(invalidRowIndex)
 
@@ -159,29 +161,19 @@ export class UploadStatementComponent implements OnInit {
   }
 
   isValidDate(dateValue: string): boolean {
-    const dateFormats = [
-      'DD/MM/YYYY HH:mm:ss',
-      'DD/MM/YY HH:mm',
-      'DD-MM-YY HH:mm',
-      'DD-MM-YYYY HH:mm',
-    ];
-
-    for (const format of dateFormats) {
-      if (this.parseDate(dateValue, format)) {
-        return true;
-      }
-    }
-
-    return false;
+    const dateFormat = 'DD/MM/YYYY'; // Define the required date format
+    return this.parseDate(dateValue, dateFormat) !== null;
   }
 
   parseDate(dateValue: string, format: string): Date | null {
     let date = DateTime.fromFormat(dateValue, format);
     if (date.isValid) {
-      return date.toJSDate();
-    } else {
-      return null;
+      // Ensure the date is in the correct format
+      const formattedDate = date.toFormat(format);
+      if (formattedDate === dateValue) {
+        return date.toJSDate();
+      }
     }
+    return null;
   }
-
 }
