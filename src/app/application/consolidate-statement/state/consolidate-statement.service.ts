@@ -7,6 +7,10 @@ import { environment } from "src/environments/environment";
 export class ConsolidateStatementService {
     constructor(private httpClient: HttpClient) {}
 
+    fetchFilteredData() {
+      return this.httpClient.post(`${environment.apiUrl}/statement/statement`, {})
+      .pipe(map((response: any) => {return response}));
+  }
     fetchStatements() {
         return this.httpClient.post(`${environment.apiUrl}/statement/statement`, {})
         .pipe(map((response: any) => {return response}));
