@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ConsolidateStatementService } from './state/consolidate-statement.service';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -11,15 +11,20 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 })
 
 export class ConsolidateStatementComponent implements OnInit, OnDestroy {
+  minEndDate: any;
+search() {
+throw new Error('Method not implemented.');
+}
   public statementFiltersForm!: FormGroup;
   private subscription: Subscription = new Subscription();
   public rows: any[] = []; 
   public columns = [
-    { prop: 'TransactionDate', name: 'DateAndTime' },
-    { prop: 'TransactionDescription', name: 'Naration' },
-    { prop: 'TransactionAmount', name:'Amount'},
-    { prop: 'TransactionType', name:'DebitCredit'},
+    { prop: 'TransactionDate', name: 'Date' },
     { prop: 'TransactionAccount', name:'Account'},
+    { prop: 'TransactionDescription', name: 'Naration' },
+    { prop: 'TransactionType', name:'DebitCredit'},
+    { prop: 'TransactionAmount', name:'Balance'},
+  
   ];
   model: any;
   selectedItem: any;
@@ -28,7 +33,7 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
   constructor(private formBuilder: FormBuilder, private consolidateStatement: ConsolidateStatementService) {}
   ngOnInit() {
     this.statementFiltersForm = this.formBuilder.group({
-    fromDate: new FormControl (''),
+    fromDate: ['', Validators.required],
     toDate: [''],
     account:[''],
     type:['']
@@ -56,14 +61,13 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
           { id: 1, name: 'Credit' },
           { id: 2, name: 'Debit' },
         ];
-        validatedob(control: FormControl): {[key:string]:boolean} | null {
-          const maxdob = new Date();
-          maxdob.setFullYear(maxdob.getFullYear() - 87);
-      
-          const selectedDate = new Date(control.value);
-          if (control.value && new Date(control.value) > new Date()) {
-            return { futureDate: true };
+        minEndDateChecking(){
+          let fromDate= this.statementFiltersForm.get('fromDate');
+          if( fromDate!== null || fromDate !== undefined){
+           
           }
+          
         }
       }
+
     
