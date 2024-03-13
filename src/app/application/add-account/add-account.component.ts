@@ -5,12 +5,12 @@ import { ToastrService } from 'ngx-toastr';
 import { AddAccountService } from './state/add-account.service';
 
 @Component({
-  selector: 'app-add-account-statement',
+  selector: 'add-account.statement',
   templateUrl: './add-account.component.html',
   styleUrls: ['./add-account.component.css'],
 })
 export class AddAccountComponent implements OnInit, OnDestroy {
-  accountTypes = [
+  public accountTypes: string[] = [
     "Savings Account",
     "Wallet",
     "Current Account",
@@ -21,36 +21,14 @@ export class AddAccountComponent implements OnInit, OnDestroy {
   public accountForm!: FormGroup;
   private subscription: Subscription = new Subscription();
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private toastr: ToastrService
-  ) { }
+  constructor(private formBuilder: FormBuilder,  private toastr: ToastrService, private addAccountService: AddAccountService) { }
 
   ngOnInit() {
     this.accountForm = this.formBuilder.group({
-      accountName: [
-        '',
-        [Validators.required, Validators.pattern('^[a-zA-Z0-9 ]+$')],
-      ],
-      institutionName: [
-        '',
-        [Validators.required, Validators.pattern('^[a-zA-Z ]+$')],
-      ],
-      accountSelect: ['', Validators.required],
-      accountNumber: [
-        '',
-        [Validators.required, Validators.pattern('^[0-9]{4}$')],
-      ],
-    });
-    this.accountForm.patchValue({
-      accountSelect: this.accountTypes[0]
-    });
-    this.accountForm.valueChanges.subscribe(() => {
-      for (const field in this.accountForm.controls) {
-        if (this.accountForm.controls[field].invalid) {
-          this.accountForm.controls[field].markAsTouched();
-        }
-      }
+      accountName: [null, [Validators.required, Validators.pattern('^[a-zA-Z0-9 ]+$')]],
+      institutionName: [null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
+      accountSelect: [null, Validators.required],
+      accountNumber: [null, [Validators.required, Validators.pattern('^[0-9]{4}$')]]
     });
   }
 
@@ -58,11 +36,11 @@ export class AddAccountComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  get f() { return this.accountForm.controls; }
+
   onSubmit() {
     if (this.accountForm.valid) {
       this.toastr.success('Account added successfully', 'Success!');
     }
-    
   }
-
 }

@@ -24,10 +24,12 @@ export class UploadStatementComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private activeModal: NgbActiveModal, private uploadStatementService: UploadStatementService,
     private toastr: ToastrService) { }
   ngOnInit(): void {
-    this.uploadForm = new FormGroup({
-      file: new FormControl('', [Validators.required,]),
+    this.uploadForm = this.formBuilder.group({
+      file: ['', [Validators.required]],
+      selectedAccount: [''] // Add selectedAccount control here
     });
   }
+
 
   upload(): void {
     const formData = new FormData();
@@ -159,7 +161,6 @@ export class UploadStatementComponent implements OnInit {
   }
 
   isValidDate(dateValue: string): boolean {
-    
     const dateFormat = 'DD/MM/YYYY'; // Define the required date format
     return this.parseDate(dateValue, dateFormat) !== null;
   }
@@ -167,7 +168,6 @@ export class UploadStatementComponent implements OnInit {
   parseDate(dateValue: string, format: string): Date | null {
     let date = DateTime.fromFormat(dateValue, format);
     if (date.isValid) {
-      
       // Ensure the date is in the correct format
       const formattedDate = date.toFormat(format);
       if (formattedDate === dateValue) {
@@ -176,5 +176,4 @@ export class UploadStatementComponent implements OnInit {
     }
     return null;
   }
-
 }
