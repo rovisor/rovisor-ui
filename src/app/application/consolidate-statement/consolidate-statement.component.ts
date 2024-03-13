@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ConsolidateStatementService } from './state/consolidate-statement.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -11,10 +12,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 
 export class ConsolidateStatementComponent implements OnInit, OnDestroy {
-  minEndDate: any;
-search() {
-throw new Error('Method not implemented.');
-}
+ 
   public statementFiltersForm!: FormGroup;
   private subscription: Subscription = new Subscription();
   public rows: any[] = []; 
@@ -29,6 +27,8 @@ throw new Error('Method not implemented.');
   model: any;
   selectedItem: any;
   selecteditem: any;
+  minToDate: any;
+  maxDate={year:new Date().getFullYear(),month: new Date().getMonth()+1, day: new Date().getDate()}
 
   constructor(private formBuilder: FormBuilder, private consolidateStatement: ConsolidateStatementService) {}
   ngOnInit() {
@@ -61,12 +61,8 @@ throw new Error('Method not implemented.');
           { id: 1, name: 'Credit' },
           { id: 2, name: 'Debit' },
         ];
-        minEndDateChecking(){
-          let fromDate= this.statementFiltersForm.get('fromDate');
-          if( fromDate!== null || fromDate !== undefined){
-           
-          }
-          
+        onDateSelect(date: NgbDateStruct, controlName: string) {
+          this.minToDate = this.statementFiltersForm.get('fromDate')?.value
         }
       }
 

@@ -7,21 +7,21 @@
             ngbDatepicker 
             #formDatePicker="ngbDatepicker" 
             formControlName="fromDate"
-            (ngModelChange)="minEndDateChecking()"
+            [maxDate]="maxDate"
+            (dateSelect)="onDateSelect($event, 'fromDate')"
             (click)="formDatePicker.toggle()"
             required
              />
-             <div class="col-1">
-                <button class="btn btn-primary" (click)="search()">Search</button>
-            </div>
         </div>
         <div class="col-4">
-            <input class="form-control"
+            <input class="form-control bi bi-x"
             placeholder="To Date"
             name="toDatePicker"
             ngbDatepicker 
             #toDatePicker="ngbDatepicker" 
             formControlName="toDate"
+            [minDate]="minToDate"
+            [maxDate]="maxDate"
             required (click)="toDatePicker.toggle()" />
         </div>
         <div class="col-4">
