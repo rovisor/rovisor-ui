@@ -42,8 +42,14 @@
                     formControlName="type">
             </ng-select>
         </div>
+        <div>
+            <p>From Data: {{statementFiltersForm .value.fromDate}}</p>
+            <p>To data {{statementFiltersForm.value.toDate}}</p>
+            <p>type  {{statementFiltersForm.value.account}}</p>
+            <p>account{{statementFiltersForm.value.type}}</p>
+          </div>
         <div class="col-4 mt-5">
-            <button class="btn btn-primary" [disabled]="!statementFiltersForm.valid" (click)="search()">Search</button>
+            <button class="btn btn-primary" [disabled]="!statementFiltersForm.valid">Search</button>
         </div>
     </div>
     <div class="row m-5 p-3">

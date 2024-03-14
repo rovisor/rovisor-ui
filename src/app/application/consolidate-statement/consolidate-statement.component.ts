@@ -64,14 +64,10 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
         onDateSelect(date: NgbDateStruct, controlName: string) {
           this.minToDate = this.statementFiltersForm.get('fromDate')?.value
         }
-        search() {
-          const filters = this.statementFiltersForm.value;
-          this.subscription.add(
-            this.consolidateStatement.fetchFilteredData().subscribe((result) => {
-              this.rows = result;
-            })
-          );
+        onSubmit() {
+          const formData = this.statementFiltersForm.value;
+      
+          console.log(formData); 
         }
-      }
-
+      } 
     
