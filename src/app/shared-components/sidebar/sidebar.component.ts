@@ -31,7 +31,7 @@ export class SidebarComponent implements OnInit {
         accounts?.push({
           icon: icon,
           label: x.AccountName,
-          route: ''
+          route: '/app/accounts/' + x.Id
         })
       });
       this.sidebarItems.find(x => x.label === "Accounts")?.children?.push(...accounts);
