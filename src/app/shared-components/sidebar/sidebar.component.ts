@@ -20,7 +20,6 @@ export class SidebarComponent implements OnInit {
       this.sidebarItems = response;
     }));
     this.subscription.add(this.sharedService.getAccounts().subscribe((result: []) => {
-      console.log(result);
       let accounts: SidebarItem[] = [];
       result.forEach((x: any) => {
         let icon = '';
