@@ -27,7 +27,7 @@ export class AddAccountComponent implements OnInit, OnDestroy {
     this.accountForm = this.formBuilder.group({
       accountName: [null, [Validators.required, Validators.pattern('^[a-zA-Z0-9 ]+$')]],
       institutionName: [null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
-      accountSelect: [null, Validators.required],
+      accountType: [null, Validators.required],
       accountNumber: [null, [Validators.required, Validators.pattern('^[0-9]{4}$')]]
     });
   }
