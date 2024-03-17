@@ -1,66 +1,87 @@
-<div class="container">
-    <div class="row m-5 p-3" [formGroup]="statementFiltersForm">
-        <div class="col-4">
-            <label class="form-label mb-3">From Date </label>
-            <input class="form-control bi bi-x"  
-            placeholder="Form Date"
-            name="formDatePicker"
-            ngbDatepicker 
-            #formDatePicker="ngbDatepicker" 
-            formControlName="fromDate"
-            [maxDate]="maxDate"
-            (dateSelect)="onDateSelect($event, 'fromDate')"
-            (click)="formDatePicker.toggle()"
-            required
-             />
+<form [formGroup]="statementFiltersForm">
+    <div class="row">
+        <div class="col-3">
+            <div class="form-group">
+                <label class="form-label">From Date </label>
+                <input class="form-control" placeholder="From Date" name="fromDatePicker" class="form-control"
+                ngbDatepicker  #formDatePicker="ngbDatepicker" formControlName="fromDate"
+                [maxDate]="maxDate" (dateSelect)="onDateSelect()" (click)="formDatePicker.toggle()"/>
+            </div>
         </div>
-        <div class="col-4">
-            <label class="form-label mb-3">To Date </label>
-            <input class="form-control bi bi-x"
-            placeholder="To Date"
-            name="toDatePicker"
-            ngbDatepicker 
-            #toDatePicker="ngbDatepicker" 
-            formControlName="toDate"
-            [minDate]="minToDate"
-            [maxDate]="maxDate"
-            required (click)="toDatePicker.toggle()" />
+        <div class="col-3">
+            <div class="form-group">
+                <label class="form-label">To Date </label>
+                <input class="form-control" placeholder="To Date" name="toDatePicker" class="form-control"
+                ngbDatepicker #toDatePicker="ngbDatepicker" formControlName="toDate"
+                [minDate]="minToDate" [maxDate]="maxDate" (click)="toDatePicker.toggle()" />
+            </div>
         </div>
-        <div class="col-4">
-            <label class="form-label mb-2 ">TransactionAccount </label>
-            <ng-select [items]="Account"
-                       bindLabel="name"
-                       placeholder="Select Account"
-                       formControlName="account">
-            </ng-select>
+        <div class="col-3">
+            <div class="form-group">
+                <label class="form-label">TransactionAccount </label>
+                <ng-select [items]="accountList" bindLabel="name" placeholder="Select Account" formControlName="account">
+                </ng-select>
+            </div>
         </div>
-        <div class="col-4">
-            <label class="form-label mb-3 mt-3">TransactionType</label>
-            <ng-select [items]="type"
-                    bindLabel="name"
-                    placeholder="Select Transaction Type"
-                    formControlName="type">
-            </ng-select>
+        <div class="col-3">
+            <div class="form-group">
+                <label class="form-label">TransactionType</label>
+                <ng-select [items]="transactionTypeList" bindLabel="name" placeholder="Select Transaction Type" formControlName="transactionType">
+                </ng-select>
+            </div>
         </div>
-        <div>
-            <p>From Data: {{statementFiltersForm .value.fromDate}}</p>
-            <p>To data {{statementFiltersForm.value.toDate}}</p>
-            <p>type  {{statementFiltersForm.value.account}}</p>
-            <p>account{{statementFiltersForm.value.type}}</p>
-          </div>
-        <div class="col-4 mt-5">
-            <button class="btn btn-primary" [disabled]="!statementFiltersForm.valid">Search</button>
+        <div class="col-1 mt-2">
+            <button class="btn btn-primary" (click)="search()">Search</button>
+        </div>
+        <div class="col-1 mt-2">
+            <button class="btn btn-secondary" (click)="reset()">Reset</button>
         </div>
     </div>
-    <div class="row m-5 p-3">
-
+    <div class="row">
         <ngx-datatable class="bootstrap"
             [rows]="rows"
             [columns]="columns"
             [columnMode]="'force'"
             [headerHeight]="50"
             [footerHeight]="50" 
-            [rowHeight]="'auto'">
+            [rowHeight]="'auto'"
+            [externalPaging]="true"
+            [externalSorting]="true"
+            [count]="page.count"
+            [offset]="page.offset"
+            [limit]="page.limit"
+            (page)="onPageChange($event)"
+            (sort)="onSortChange($event)">
+            <ngx-datatable-column name="Date" [maxWidth]="200">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.TransactionDate | date : 'dd-MM-yyyy hh:mm:ss a' }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Narration" [maxWidth]="300">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.TransactionDescription }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Account" [maxWidth]="130">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.TransactionAccount }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Debit Amount" [maxWidth]="130">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.TransactionAmount }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Credit Amount" [maxWidth]="130">
+                <ng-template let-row="row" ngx-datatable-cell-template ="text-end">
+                    {{ row?.TransactionAmount }}
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Balance Amount" [maxWidth]="130">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.Balance }}
+                </ng-template>
+            </ngx-datatable-column>
         </ngx-datatable>
     </div>
-</div>
+</form>

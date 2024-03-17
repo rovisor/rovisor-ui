@@ -28,46 +28,70 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
   selectedItem: any;
   selecteditem: any;
   minToDate: any;
-  maxDate={year:new Date().getFullYear(),month: new Date().getMonth()+1, day: new Date().getDate()}
+  maxDate={year:new Date().getFullYear(),month: new Date().getMonth()+1, day: new Date().getDate()};
+  public accountList = [
+    { id: 1, name: 'Paytm ' },
+    { id: 2, name: 'G-pay' },
+    { id: 3, name: 'HDFC' }
+  ];
+  public transactionTypeList= [
+    { id: 1, name: 'Credit' },
+    { id: 2, name: 'Debit' }
+  ];
+  public page = {
+    limit: 10,
+    count: 0,
+    offset: 0,
+    orderBy: 'TransactionDate',
+    orderDir: 'desc'
+  };
+
 
   constructor(private formBuilder: FormBuilder, private consolidateStatement: ConsolidateStatementService) {}
+  
   ngOnInit() {
     this.statementFiltersForm = this.formBuilder.group({
-    fromDate: ['', Validators.required],
-    toDate: ['',Validators.required],
-    account:['',Validators.required],
-    type:['',Validators.required]
-  });
+    fromDate: [null],
+    toDate: [null],
+    account:[null],
+    transactionType:[null]
+    });
     this.fetchStatements();
 
   }
+
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
 
-        }
-        fetchStatements(){
-          this.subscription.add(this.consolidateStatement.fetchStatements().subscribe((result)=>{
-            this.rows = result
-          }))
-        }  
-        
-        Account = [
-          { id: 1, name: 'Paytm ' },
-          { id: 2, name: 'G-pay' },
-          { id: 3, name: 'HDFC' },
-         
-        ];
-        type= [
-          { id: 1, name: 'Credit' },
-          { id: 2, name: 'Debit' },
-        ];
-        onDateSelect(date: NgbDateStruct, controlName: string) {
-          this.minToDate = this.statementFiltersForm.get('fromDate')?.value
-        }
-        onSubmit() {
-          const formData = this.statementFiltersForm.value;
-      
-          console.log(formData); 
-        }
-      } 
+  fetchStatements(){
+    this.subscription.add(this.consolidateStatement.fetchStatements(this.statementFiltersForm.value).subscribe((result)=>{
+      this.rows = result;
+      this.page.count = result.length;
+    }))
+  }
+
+  onDateSelect() {
+    this.minToDate = this.statementFiltersForm.get('fromDate')?.value
+  }
+
+  search() {
+    this.fetchStatements();
+  }
+
+  reset() {
+    this.statementFiltersForm.reset();
+  }
+
+  onPageChange(pageInfo: { count?: number, pageSize?: number, limit?: number, offset: number }) {
+    this.page.offset = pageInfo.offset;
+    this.fetchStatements();
+  }
+
+  onSortChange (sortInfo: { sorts: { dir: string, prop: string }[], column: {}, prevValue: string, newValue: string }) {
+    this.page.orderDir = sortInfo.sorts[0].dir;
+    this.page.orderBy = sortInfo.sorts[0].prop;
+    this.fetchStatements();
+  }
+} 
     

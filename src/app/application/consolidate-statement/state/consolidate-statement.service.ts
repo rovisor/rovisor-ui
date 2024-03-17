@@ -11,8 +11,8 @@ export class ConsolidateStatementService {
       return this.httpClient.post(`${environment.apiUrl}/statement/statement`, {})
       .pipe(map((response: any) => {return response}));
   }
-    fetchStatements() {
-        return this.httpClient.post(`${environment.apiUrl}/statement/statement`, {})
+    fetchStatements(filters: any) {
+        return this.httpClient.post(`${environment.apiUrl}/statement/statement`, filters)
         .pipe(map((response: any) => {return response}));
     }
 }
