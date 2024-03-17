@@ -17,9 +17,26 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
     this.subscription.add(this.sharedService.getSidenavItems().subscribe((response: any) => {
-      console.log(response);
       this.sidebarItems = response;
     }));
+    this.subscription.add(this.sharedService.getAccounts().subscribe((result: []) => {
+      console.log(result);
+      let accounts: SidebarItem[] = [];
+      result.forEach((x: any) => {
+        let icon = '';
+        if (x.AccountType === 'Savings Account' || x.AccountType === 'Current Account') {
+          icon = 'bi bi-bank2';
+        } else if (x.AccountType === 'Wallet') {
+          icon = 'bi bi-wallet';
+        }
+        accounts?.push({
+          icon: icon,
+          label: x.AccountName,
+          route: ''
+        })
+      });
+      this.sidebarItems.find(x => x.label === "Accounts")?.children?.push(...accounts);
+    }))
   }
 
   isActive(item: any): boolean {
