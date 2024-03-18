@@ -70,6 +70,9 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
       this.page.count = result.length;
     }))
   }
+  fetchFilteredData(){
+    
+  }
 
   onDateSelect() {
     this.minToDate = this.statementFiltersForm.get('fromDate')?.value
@@ -77,6 +80,7 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
 
   search() {
     this.fetchStatements();
+    this.fetchFilteredData();
   }
 
   reset() {
