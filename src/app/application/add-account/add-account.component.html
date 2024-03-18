@@ -45,11 +45,11 @@
     <div class="row mb-4">
       <div class="col-12">
         <div class="form-group">
-          <label for="accountSelect" class="form-label">Select Account</label>
-          <ng-select formControlName="accountSelect" [items]="accountTypes" placeholder="Select Account"
-            [ngClass]="{'is-invalid': f['accountSelect'].touched && f['accountSelect'].errors }"></ng-select>
+          <label for="accountType" class="form-label">Select Account</label>
+          <ng-select formControlName="accountType" [items]="accountTypes" placeholder="Select Account"
+            [ngClass]="{'is-invalid': f['accountType'].touched && f['accountType'].errors }"></ng-select>
           <div class="invalid-feedback">
-            <div class="text-danger" *ngIf="f['accountSelect'].errors?.['required']">
+            <div class="text-danger" *ngIf="f['accountType'].errors?.['required']">
               Please select an account type.
             </div>
           </div>
