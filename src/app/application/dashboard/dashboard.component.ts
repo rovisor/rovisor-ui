@@ -12,11 +12,7 @@ import { AddAccountComponent } from '../add-account/add-account.component';
 export class DashboardComponent {
   constructor(private modalService: NgbModal) { }
 
-  openUploadModal() {
-    this.modalService.open(UploadStatementComponent, { size: 'lg' });
-  }
-
   openAddAccountModal() {
-    this.modalService.open(AddAccountComponent, { size: 'lg' });
+    this.modalService.open(AddAccountComponent, { centered: true, size: 'md', });
   }
 }
