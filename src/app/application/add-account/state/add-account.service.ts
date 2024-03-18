@@ -1,9 +1,17 @@
 import { Injectable } from "@angular/core";
-import {HttpClient} from '@angular/common/http';
-import { map } from "rxjs";
-import { environment } from "src/environments/environment"; 
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { catchError } from "rxjs/operators";
+import { throwError } from 'rxjs';
+import { environment } from "src/environments/environment";
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class AddAccountService {
-    constructor(private httpClient: HttpClient) {}
+    constructor(private httpClient: HttpClient) { }
+
+    addAccount(accountData: any) {
+        return this.httpClient.post(`${environment.apiUrl}/useraccount`, accountData).pipe(catchError((error: any) => { return throwError(error); }));
+        ;
+    }
+
+    
 }
