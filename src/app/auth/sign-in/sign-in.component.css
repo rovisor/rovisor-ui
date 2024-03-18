@@ -2,3 +2,12 @@
     height: 60vh;
     border-radius: 10px 0px 0px 10px;
 }
+.password-toggle {
+    position: absolute;
+    top: 32%;
+    right: 0.5rem;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    
+  }

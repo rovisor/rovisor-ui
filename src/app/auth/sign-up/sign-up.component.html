@@ -15,21 +15,22 @@
           <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="password" 
                  formControlName="password" placeholder="***"/>
           <button class="password-toggle" id="toggleButton" (click)="togglePassword()">
-            <i class="bi bi-eye fs-5"></i>
+            <i class="bi bi-eye fs-5" *ngIf="!showPassword"></i>
+            <i class="bi bi-eye-slash fs-5" *ngIf="showPassword"></i>
           </button>
           <label for="password">Password</label>
         </div>
         <div class="row mb-4">
           <div class="col-12 text-center pt-3">
             <button type="submit" class="btn btn-primary btn-green" [disabled]="!signupForm.valid">
-              Sign up
+               <a routerLink="../sign-in" class="text-white no-underline">Sign up</a>
             </button>
           </div>
         </div>
         <div class="row">
           <div class="col-12 text-center">
             Already have an account?
-            <a routerLink="../sign-in" class="text-blue">Login</a>
+            <a routerLink="../sign-in" class="text-blue ">Login</a>
           </div>
         </div>
       </form>

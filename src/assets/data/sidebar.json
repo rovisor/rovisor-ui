@@ -6,10 +6,7 @@
         "label": "Accounts",
         "icon": "bi bi-bank",
         "expanded": false, 
-        "children": [
-            { "label": "Paytm Wallet", "route": "/app/account/", "icon": "bi bi-wallet"},
-            { "label": "HDFC Bank", "route": "/service2", "icon": "bi bi-bank2" }
-        ]
+        "children": []
     },
     { "label": "Consolidate Statement", "route": "/app/consolidate-statement", "icon": "bi bi-files","expanded": false },
     { "label": "Settings", "route": "/app/settings", "icon": "bi bi-gear","expanded": false }
