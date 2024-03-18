@@ -14,6 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 export class SignInComponent implements OnInit {
   public loginForm!: FormGroup;
   private subscription: Subscription = new Subscription();
+  public showPassword: boolean = false;
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService,
     private toastr: ToastrService, private router: Router) {}
@@ -41,5 +42,8 @@ export class SignInComponent implements OnInit {
       }
     }));
 
+  }
+  togglePassword(): void {
+    this.showPassword = !this.showPassword;
   }
 }
