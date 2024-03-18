@@ -1,0 +1,35 @@
+.mapping-form {
+  display: flex;
+  flex-direction: column; 
+font-family: 'Roboto', sans-serif;
+
+}
+
+.form-row {
+  display: flex;
+  align-items: center; 
+  margin-bottom: 10px; 
+}
+
+.form-row label {
+  margin-right: 10px; 
+}
+
+.ng-select {
+  width: 500px; /* Adjust the width as needed */
+}
+.mapping-form .form-row {
+  display: flex;
+  align-items: center;
+}
+
+.mapping-form .form-row label {
+  width: 120px; /* Adjust the width as needed */
+  text-align: right;
+  margin-right: 20px; /* Adjust the margin as needed */
+   display: inline-block;
+}
+
+.mapping-form .form-row div {
+  flex: 1;
+}
