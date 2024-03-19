@@ -23,22 +23,16 @@ export class AccountMappingComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    // Initialize your form controls here
+   
     this.mappingForm = this.formBuilder.group({
-      date: [''], // Initialize with default value if needed
+      date: [''], 
       narrations: [''],
       debitAmount: [''],
       creditAmount: [''],
       balance: [''],
     });
 
-    // Subscribe to form value changes or other observables if necessary
-    // Example:
-    // this.subscription.add(
-    //   this.mappingForm.valueChanges.subscribe((value) => {
-    //     // Handle form value changes
-    //   })
-    // );
+   
   }
 
   ngOnDestroy(): void {
@@ -46,9 +40,6 @@ export class AccountMappingComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    // Handle form submission here
-    // Example:
-    // const formData = this.mappingForm.value;
-    // Call your service or perform necessary actions
+    
   }
 }
