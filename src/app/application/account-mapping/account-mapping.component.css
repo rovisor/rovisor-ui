@@ -1,35 +1,57 @@
-.mapping-form {
+/* .mapping-form {
   display: flex;
   flex-direction: column; 
 font-family: 'Roboto', sans-serif;
 
-}
+} */
 
 .form-row {
   display: flex;
   align-items: center; 
-  margin-bottom: 10px; 
+  margin-bottom: 20px; 
+}
+
+
+.ng-select {
+  width: 500px; 
 }
 
 .form-row label {
-  margin-right: 10px; 
+  margin-left: 10px;
+  margin-right: 40px;
+}
+.form-row label[for="date"] {
+  margin-right: 80px; 
+}
+.form-row label[for="narration"] {
+  margin-right: 57px; 
 }
 
-.ng-select {
-  width: 500px; /* Adjust the width as needed */
+.form-row label[for="debitAmount"] {
+  margin-right: 36px;
 }
-.mapping-form .form-row {
+
+.form-row label[for="creditAmount"] {
+  margin-right: 33px; 
+}
+
+.form-row label[for="balance"] {
+  margin-right: 63px; 
+}
+
+
+/* .mapping-form .form-row {
   display: flex;
   align-items: center;
-}
+} */
 
-.mapping-form .form-row label {
-  width: 120px; /* Adjust the width as needed */
+/* .mapping-form .form-row label {
+  width: 120px; 
   text-align: right;
-  margin-right: 20px; /* Adjust the margin as needed */
+  margin-right: 20px; 
    display: inline-block;
-}
+} */
 
-.mapping-form .form-row div {
+/* .mapping-form .form-row div {
   flex: 1;
-}
+} */

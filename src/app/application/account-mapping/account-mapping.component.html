@@ -1,6 +1,6 @@
 <div class="mapping-form">
   <form [formGroup]="mappingForm" (ngSubmit)="onSubmit()">
-     <h2 class="text-right ml-auto mb-4">Please select the corresponding column:</h2>
+     <div class="mb-4">Please select the corresponding column:</div>
     <div class="form-row">
       <label for="date">Date:</label>
       <div>
@@ -61,7 +61,7 @@
         ></ng-select>
       </div>
     </div>
-    <button class="btn btn-primary rounded-4 py-3 px-5"type="submit">Confirm</button>
+    <button class="btn btn-primary rounded-4 py-2 px-5"type="submit">Confirm</button>
   </form>
 </div>
 
