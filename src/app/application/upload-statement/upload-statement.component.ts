@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { DateTime } from 'luxon';
@@ -13,6 +13,7 @@ import { UploadStatementService } from './state/upload-statement.service';
 
 })
 export class UploadStatementComponent implements OnInit {
+  @Output() csvDataReady = new EventEmitter<any[]>();
   public uploadForm!: FormGroup;
   isButtonsVisible: boolean = false;
   csvData: any[] = [];
@@ -86,6 +87,8 @@ export class UploadStatementComponent implements OnInit {
     } else {
       this.isButtonsVisible = false;
     }
+    this.uploadStatementService.emitCSVData(this.csvData);
+    
   }
 
 
