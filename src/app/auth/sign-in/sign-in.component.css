@@ -11,3 +11,10 @@
     border: none;
     
   }
+  .login{
+    font-size: 48px;
+  }
+  .account{
+    text-decoration: none;
+    font-size: 16 px;
+  }
