@@ -37,7 +37,8 @@
             <button class="btn btn-secondary" (click)="reset()">Reset</button>
         </div>
     </div>
-    <div class="row">
+    <div class="row ">
+        <div class="col">
         <ngx-datatable class="bootstrap"
             [rows]="rows"
             [columns]="columns"
@@ -83,5 +84,6 @@
                 </ng-template>
             </ngx-datatable-column>
         </ngx-datatable>
+        </div>
     </div>
 </form>
