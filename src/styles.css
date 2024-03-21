@@ -4,10 +4,18 @@
 @import '~ngx-toastr/toastr';
 
 
-html, body {
+html {
     font-size: 0.825rem;
     height: 100%;
 }
+
+body { 
+    margin: 0; 
+    height: 100%;
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    font-size: 0.825rem;
+}
+
 .footer {
     position: absolute;
     bottom: 0;
@@ -22,8 +30,8 @@ html, body {
 }
 
 .logo {
-    height: 50px;
-    width: 100px;
+    height: 54px;
+    width: 225px;
 }
 
 .btn-green {
@@ -67,5 +75,3 @@ html, body {
     border-color: #16a085 !important;
     color: #fff !important;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

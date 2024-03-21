@@ -1,7 +1,8 @@
 .login-box {
-    height: 60vh;
+    height: calc(100vh - 200px);
     border-radius: 10px 0px 0px 10px;
 }
+
 .password-toggle {
     position: absolute;
     top: 32%;
