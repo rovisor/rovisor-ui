@@ -1,10 +1,16 @@
 .quote-box {
-    height: 60vh;
+    height: calc(100vh - 200px);
     border-radius: 0px 10px 10px 0px;
 }
-.p1{
-    font-size: 48px;
+
+.logo-section {
+    height: 100px;
 }
-.p2{
-    font-size: 40px;
+
+.auth-section {
+    min-height: calc(100vh - 150px); 
+}
+
+.privacy-policy-section {
+    height: 50px;
 }
