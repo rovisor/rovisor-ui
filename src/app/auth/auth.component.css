@@ -1,10 +1,16 @@
 .quote-box {
-    height: 60vh;
+    height: calc(100vh - 200px);
     border-radius: 0px 10px 10px 0px;
 }
-.footnote{
-    font-size: 144.px;
+
+.logo-section {
+    height: 100px;
 }
-.foot-note{
-    font-size: 12.8px;
+
+.auth-section {
+    min-height: calc(100vh - 150px); 
+}
+
+.privacy-policy-section {
+    height: 50px;
 }
