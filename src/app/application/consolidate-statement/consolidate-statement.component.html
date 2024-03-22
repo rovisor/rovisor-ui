@@ -19,14 +19,14 @@
         <div class="col-3">
             <div class="form-group">
                 <label class="form-label">TransactionAccount </label>
-                <ng-select [items]="accountList" bindLabel="name" placeholder="Select Account" formControlName="account">
+                <ng-select [items]="accountList" bindLabel="name" bindValue="id" placeholder="Select Account" formControlName="account">
                 </ng-select>
             </div>
         </div>
         <div class="col-3">
             <div class="form-group">
                 <label class="form-label">TransactionType</label>
-                <ng-select [items]="transactionTypeList" bindLabel="name" placeholder="Select Transaction Type" formControlName="transactionType">
+                <ng-select [items]="transactionTypeList" bindLabel="name" bindValue="id" placeholder="Select Transaction Type" formControlName="transactionType">
                 </ng-select>
             </div>
         </div>

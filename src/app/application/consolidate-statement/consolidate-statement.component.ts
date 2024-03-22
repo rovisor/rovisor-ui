@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { ConsolidateStatementService } from './state/consolidate-statement.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { DateTime } from 'luxon';
 
 
 @Component({
@@ -30,13 +31,13 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
   minToDate: any;
   maxDate={year:new Date().getFullYear(),month: new Date().getMonth()+1, day: new Date().getDate()};
   public accountList = [
-    { id: 1, name: 'Paytm ' },
+    { id: 1, name: 'Paytm Bank' },
     { id: 2, name: 'G-pay' },
     { id: 3, name: 'HDFC' }
   ];
   public transactionTypeList= [
-    { id: 1, name: 'Credit' },
-    { id: 2, name: 'Debit' }
+    { id:'Credit', name: 'Credit' },
+    { id:'Debit', name: 'Debit' }
   ];
   public page = {
     limit: 10,
@@ -65,13 +66,34 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
   }
 
   fetchStatements(){
-    this.subscription.add(this.consolidateStatement.fetchStatements(this.statementFiltersForm.value).subscribe((result)=>{
+    let fromDate =  null;
+    if(this.statementFiltersForm.value.fromDate) {
+      fromDate = DateTime.fromObject({
+        year: this.statementFiltersForm.value.fromDate?.year,
+        month: this.statementFiltersForm.value.fromDate?.month,
+        day: this.statementFiltersForm.value.fromDate?.day,
+      }).toFormat('yyyy-MM-dd');
+    } 
+
+    let toDate =  null;
+    if(this.statementFiltersForm.value.toDate) {
+      toDate = DateTime.fromObject({
+        year: this.statementFiltersForm.value.toDate?.year,
+        month: this.statementFiltersForm.value.toDate?.month,
+        day: this.statementFiltersForm.value.toDate?.day,
+      }).toFormat('yyyy-MM-dd');
+    } 
+
+    let params = {
+      FromDate:  fromDate,
+      ToDate: toDate,
+      "TransactionType" : this.statementFiltersForm.value.transactionType,
+      "Account":  this.statementFiltersForm.value.account,
+  }
+    this.subscription.add(this.consolidateStatement.fetchStatements(params).subscribe((result)=>{
       this.rows = result;
       this.page.count = result.length;
     }))
-  }
-  fetchFilteredData(){
-    
   }
 
   onDateSelect() {
@@ -80,7 +102,6 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
 
   search() {
     this.fetchStatements();
-    this.fetchFilteredData();
   }
 
   reset() {
