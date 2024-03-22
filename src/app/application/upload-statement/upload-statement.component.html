@@ -3,34 +3,31 @@
     <h4 class="modal-title">
       <i class="bi bi-upload me-2"></i>Upload Statement
     </h4>
-    <button type="button" class="btn close" aria-label="Close" (click)="cancel()">
+    <button
+      type="button"
+      class="btn close"
+      aria-label="Close"
+      (click)="cancel()"
+    >
       <i class="bi bi-x-circle"></i>
     </button>
   </div>
   <div class="modal-body">
     <div class="row mb-3">
       <div class="col">
-        <label for="accountSelect" class="form-label">Select Account</label>
-        <select class="form-select" id="accountSelect" formControlName="selectedAccount" [(ngModel)]="selectedAccount">
-          <option value="Paytm Wallet">Paytm Wallet</option>
-          <option value="HDFC Bank">HDFC Bank</option>
-          <option value="ICICI Bank">ICICI Bank</option>
-        </select>
-        <div *ngIf="
-            uploadForm.get('selectedAccount')?.invalid &&
-            (uploadForm.get('selectedAccount')?.dirty ||
-              uploadForm.get('selectedAccount')?.touched)
-          ">
-            <!-- A form control is considered dirty if the user has interacted with it and changed its value.A form control is considered touched if the user has focused on the control and then moved away from it, indicating that they have interacted with it. -->
-          <div class="text-danger">Please select an account</div>
-        </div>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col">
-        <input class="form-control" type="file" accept=".csv" formControlName="file" (change)="onFileChange($event)" />
+        <input
+          class="form-control"
+          type="file"
+          accept=".csv"
+          formControlName="file"
+          (change)="onFileChange($event)"
+        />
 
-        <div id="fileHelp" class="form-text" *ngIf="uploadForm.get('file')?.pristine">
+        <div
+          id="fileHelp"
+          class="form-text"
+          *ngIf="uploadForm.get('file')?.pristine"
+        >
           Choose a valid csv to upload data(max size: 10 MB).
         </div>
         <div *ngIf="uploadForm.get('file')?.value">
@@ -38,7 +35,11 @@
             Invalid file type. Please choose a valid CSV file.
           </div>
           <div *ngIf="!validateRequiredColumns() && missingColumns.length > 0">
-            <div class="alert alert-danger" role="alert" *ngFor="let missingColumn of missingColumns">
+            <div
+              class="alert alert-danger"
+              role="alert"
+              *ngFor="let missingColumn of missingColumns"
+            >
               <div *ngFor="let error of missingColumn.split(',')">
                 {{ error }}
               </div>
@@ -63,8 +64,10 @@
             </thead>
             <tbody>
               <tr *ngFor="let row of csvData; let rowIndex = index">
-                <td *ngFor="let cell of row; let cellIndex = index"
-                  [ngClass]="{ 'invalid-row': invalidRow.includes(rowIndex) }">
+                <td
+                  *ngFor="let cell of row; let cellIndex = index"
+                  [ngClass]="{ 'invalid-row': invalidRow.includes(rowIndex) }"
+                >
                   {{ cell }}
                 </td>
               </tr>
@@ -78,7 +81,12 @@
     <button type="button" class="btn btn-link" (click)="cancel()">
       Cancel
     </button>
-    <button type="button" class="btn btn-primary" (click)="upload()" [disabled]="!uploadForm.valid">
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="upload()"
+      [disabled]="!uploadForm.valid"
+    >
       Upload
     </button>
   </div>

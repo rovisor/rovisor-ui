@@ -6,7 +6,7 @@ import { environment } from "src/environments/environment";
 import { Subject } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class UploadStatementService {
-    private csvDataSubject = new Subject<any[]>();
+private csvDataSubject = new Subject<any[]>();
     csvDataReady$ = this.csvDataSubject.asObservable();
 
     
@@ -17,6 +17,7 @@ export class UploadStatementService {
     constructor(private httpClient: HttpClient) { }
 
     uploadStatement(formData: FormData) {
-        return this.httpClient.post(`${environment.apiUrl}/FileUpload/upload`, formData).pipe(catchError((error: any) => { return throwError(error);}));
+        return this.httpClient.post(`${environment.apiUrl}/FileUpload/upload`, formData)
+        .pipe(map((response: any) => { return response}));
     }
 }

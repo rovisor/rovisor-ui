@@ -1,9 +1,10 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { DateTime } from 'luxon';
 import { ToastrService } from 'ngx-toastr';
 import { UploadStatementService } from './state/upload-statement.service';
+import { AccountDetail } from '../account-details/state/account-details.model';
 
 
 @Component({
@@ -13,6 +14,7 @@ import { UploadStatementService } from './state/upload-statement.service';
 
 })
 export class UploadStatementComponent implements OnInit {
+  @Input() accountInfo!: AccountDetail;
   @Output() csvDataReady = new EventEmitter<any[]>();
   public uploadForm!: FormGroup;
   isButtonsVisible: boolean = false;
@@ -20,14 +22,13 @@ export class UploadStatementComponent implements OnInit {
   csvHeaders: any[] = [];
   missingColumns: string[] = [];
   invalidRow: any[] = [];
-  selectedAccount: string = '';
 
   constructor(private formBuilder: FormBuilder, private activeModal: NgbActiveModal, private uploadStatementService: UploadStatementService,
     private toastr: ToastrService) { }
   ngOnInit(): void {
     this.uploadForm = this.formBuilder.group({
       file: ['', [Validators.required]],
-      selectedAccount: [''] // Add selectedAccount control here
+      selectedAccount: [this.accountInfo?.Id] // Add selectedAccount control here
     });
   }
 
@@ -48,8 +49,6 @@ export class UploadStatementComponent implements OnInit {
   }
 
   cancel(): void {
-    this.selectedAccount = '';
-    this.uploadForm.get('selectedAccount')!.setValue('');
     this.activeModal.close();
 
   }
@@ -78,7 +77,7 @@ export class UploadStatementComponent implements OnInit {
     const rows = content.split('\n'); // Split the content into rows using newline as the delimiter
     this.csvHeaders = rows[0].split(',');
     this.csvData = [];
-    for (let i = 1; i < rows.length; i++) {
+    for (let i = 1; i < rows.length - 1; i++) {
       const cells = rows[i].split(',');
       this.csvData.push(cells);
     }
@@ -87,7 +86,7 @@ export class UploadStatementComponent implements OnInit {
     } else {
       this.isButtonsVisible = false;
     }
-    this.uploadStatementService.emitCSVData(this.csvData);
+this.uploadStatementService.emitCSVData(this.csvData);
     
   }
 
@@ -160,7 +159,7 @@ export class UploadStatementComponent implements OnInit {
       }
     }
 
-    return false;
+    return this.invalidRow.length === 0;
   }
 
   isValidDate(dateValue: string): boolean {

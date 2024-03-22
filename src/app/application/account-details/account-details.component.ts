@@ -44,7 +44,8 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
   }
   
   openUploadModal() {
-    this.modalService.open(UploadStatementComponent, { centered: true, size: 'lg', });
+    const modalRef = this.modalService.open(UploadStatementComponent, { centered: true, size: 'lg', });
+    modalRef.componentInstance.account = this.accountInfo;
   }
 }
 
