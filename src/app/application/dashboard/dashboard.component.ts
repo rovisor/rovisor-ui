@@ -16,7 +16,5 @@ export class DashboardComponent {
   openAddAccountModal() {
     this.modalService.open(AddAccountComponent, { centered: true, size: 'md', });
   }
-  openAddAccountModal1() {
-    this.modalService.open(AccountMappingComponent, { size: 'lg' });
-  }
+  
 }

@@ -5,7 +5,8 @@ import { DateTime } from 'luxon';
 import { ToastrService } from 'ngx-toastr';
 import { UploadStatementService } from './state/upload-statement.service';
 import { AccountDetail } from '../account-details/state/account-details.model';
-
+import { AccountMappingComponent } from '../account-mapping/account-mapping.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-upload-statement',
@@ -14,8 +15,11 @@ import { AccountDetail } from '../account-details/state/account-details.model';
 
 })
 export class UploadStatementComponent implements OnInit {
+  openAddAccountModal1() {
+    this.modalService.open(AccountMappingComponent, { size: 'lg' });
+  }
   @Input() accountInfo!: AccountDetail;
-  @Output() csvDataReady = new EventEmitter<any[]>();
+ 
   public uploadForm!: FormGroup;
   isButtonsVisible: boolean = false;
   csvData: any[] = [];
@@ -23,7 +27,7 @@ export class UploadStatementComponent implements OnInit {
   missingColumns: string[] = [];
   invalidRow: any[] = [];
 
-  constructor(private formBuilder: FormBuilder, private activeModal: NgbActiveModal, private uploadStatementService: UploadStatementService,
+  constructor(private formBuilder: FormBuilder, private activeModal: NgbActiveModal, private uploadStatementService: UploadStatementService, private modalService: NgbModal,
     private toastr: ToastrService) { }
   ngOnInit(): void {
     this.uploadForm = this.formBuilder.group({
@@ -33,19 +37,19 @@ export class UploadStatementComponent implements OnInit {
   }
 
 
-  upload(): void {
-    const formData = new FormData();
-    formData.append('file', this.uploadForm.get('file')!.value);
+  upload(){
+    
+    if (this.uploadForm.valid) {
+      this.uploadStatementService.uploadStatement(this.uploadForm.value).subscribe( // The subscribe method is used to handle the response from the server.
+        response => {
+          this.toastr.success('Successfully uploaded the file', 'Success');
 
-    this.uploadStatementService.uploadStatement(formData).subscribe( // The subscribe method is used to handle the response from the server.
-      (response: any) => {
-        this.toastr.success(response.message, 'Success');
-
-      },
-      (error: any) => {
-        this.toastr.error(error.message, 'Error');
-      }
-    );
+        },
+        error => {
+          this.toastr.error(error.message, 'Error');
+        }
+      );
+    }
   }
 
   cancel(): void {
@@ -86,7 +90,7 @@ export class UploadStatementComponent implements OnInit {
     } else {
       this.isButtonsVisible = false;
     }
-this.uploadStatementService.emitCSVData(this.csvData);
+
     
   }
 

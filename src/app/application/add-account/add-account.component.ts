@@ -54,7 +54,6 @@ export class AddAccountComponent implements OnInit, OnDestroy {
         },
         error => {
           this.toastr.error('Failed to add account', 'Error!');
-          console.error(error);
         }
       );
     }
