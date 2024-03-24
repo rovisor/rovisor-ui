@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { AccountMappingService } from './state/account-mapping.service';
 
 @Component({
@@ -9,12 +9,9 @@ import { AccountMappingService } from './state/account-mapping.service';
   styleUrls: ['./account-mapping.component.css'],
 })
 export class AccountMappingComponent implements OnInit, OnDestroy {
-  public dates: string[] = [" "];
-  public narrations: string[] = [" "];
-  public debitAmounts: string[] = [" "];
-  public creditAmounts: string[] = [" "];
-  public balances: string[] = [" "];
+  
   public mappingForm!: FormGroup;
+  public csvHeaders: string[] = [];
   private subscription: Subscription = new Subscription();
 
   constructor(
@@ -23,23 +20,28 @@ export class AccountMappingComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-
     this.mappingForm = this.formBuilder.group({
       date: [''],
-      narrations: [''],
+      narration: [''],
       debitAmount: [''],
       creditAmount: [''],
       balance: [''],
     });
 
-
+    this.BalanceColumnHeaders();
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
-  onSubmit() {
+  
+  BalanceColumnHeaders() {
+    const noFieldOption = 'No field available';
+    this.csvHeaders.push(noFieldOption);
+  }
 
+  onSubmit() {
+    
   }
 }

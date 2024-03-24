@@ -15,9 +15,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 })
 export class UploadStatementComponent implements OnInit {
-  openAddAccountModal1() {
-    this.modalService.open(AccountMappingComponent, { size: 'lg' });
-  }
+ 
   @Input() accountInfo!: AccountDetail;
  
   public uploadForm!: FormGroup;
@@ -37,20 +35,18 @@ export class UploadStatementComponent implements OnInit {
   }
 
 
-  upload(){
+  upload() {
     
-    if (this.uploadForm.valid) {
-      this.uploadStatementService.uploadStatement(this.uploadForm.value).subscribe( // The subscribe method is used to handle the response from the server.
-        response => {
-          this.toastr.success('Successfully uploaded the file', 'Success');
-
-        },
-        error => {
-          this.toastr.error(error.message, 'Error');
-        }
-      );
-    }
   }
+
+  openAccountMappingModal(formData: FormData) {
+    this.activeModal.close();
+    const modalRef = this.modalService.open(AccountMappingComponent, { size: 'lg' });
+    modalRef.componentInstance.csvHeaders = this.csvHeaders;
+  
+  }
+
+
 
   cancel(): void {
     this.activeModal.close();
@@ -90,8 +86,6 @@ export class UploadStatementComponent implements OnInit {
     } else {
       this.isButtonsVisible = false;
     }
-
-    
   }
 
 
@@ -160,6 +154,10 @@ export class UploadStatementComponent implements OnInit {
         this.missingColumns.push(`Invalid Date (Row ${rowIndex + 1})`);
         this.invalidRow.push(invalidRowIndex)
 
+      }
+        if (missingDataColumns.length > 0) {
+        this.missingColumns.push(`Missing data in ${missingDataColumns.join(', ')} (Row ${rowIndex + 1})`);
+        this.invalidRow.push(invalidRowIndex);
       }
     }
 
