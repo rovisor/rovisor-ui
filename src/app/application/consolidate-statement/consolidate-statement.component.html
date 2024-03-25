@@ -70,12 +70,17 @@
             </ngx-datatable-column>
             <ngx-datatable-column name="Debit Amount" [maxWidth]="130">
                 <ng-template let-row="row" ngx-datatable-cell-template>
-                    {{ row?.TransactionAmount }}
+                    <p class="text-end me-5">{{ row?.TransactionType === 'Debit' ? row?.TransactionAmount : "" }}</p>
                 </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="Credit Amount" [maxWidth]="130">
                 <ng-template let-row="row" ngx-datatable-cell-template ="text-end">
-                    {{ row?.TransactionAmount }}
+                    <p class="text-end me-5">{{ row?.TransactionType === 'Credit' ? row?.TransactionAmount : "" }}</p>
+                </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Transaction Type" [maxWidth]="130">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row?.TransactionType }}
                 </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column name="Balance Amount" [maxWidth]="130">

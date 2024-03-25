@@ -30,11 +30,7 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
   selecteditem: any;
   minToDate: any;
   maxDate={year:new Date().getFullYear(),month: new Date().getMonth()+1, day: new Date().getDate()};
-  public accountList = [
-    { id: 1, name: 'Paytm Bank' },
-    { id: 2, name: 'G-pay' },
-    { id: 3, name: 'HDFC' }
-  ];
+  public accountList = [];
   public transactionTypeList= [
     { id:'Credit', name: 'Credit' },
     { id:'Debit', name: 'Debit' }
@@ -48,14 +44,14 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
   };
 
 
-  constructor(private formBuilder: FormBuilder, private consolidateStatement: ConsolidateStatementService) {}
+  constructor(private formBuilder: FormBuilder, private consolidateStatementService: ConsolidateStatementService) {}
   
   ngOnInit() {
     this.statementFiltersForm = this.formBuilder.group({
-    fromDate: [null],
-    toDate: [null],
-    account:[null],
-    transactionType:[null]
+      fromDate: [null],
+      toDate: [null],
+      account:[null],
+      transactionType:[null]
     });
     this.fetchStatements();
 
@@ -63,6 +59,12 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  getAccounts() {
+    this.subscription.add(this.consolidateStatementService.getAccounts().subscribe((list) => {
+      this.accountList = list;
+    }));
   }
 
   fetchStatements(){
@@ -87,10 +89,10 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
     let params = {
       FromDate:  fromDate,
       ToDate: toDate,
-      "TransactionType" : this.statementFiltersForm.value.transactionType,
-      "Account":  this.statementFiltersForm.value.account,
+      TransactionType : this.statementFiltersForm.value.transactionType,
+      Account:  this.statementFiltersForm.value.account,
   }
-    this.subscription.add(this.consolidateStatement.fetchStatements(params).subscribe((result)=>{
+    this.subscription.add(this.consolidateStatementService.fetchStatements(params).subscribe((result)=>{
       this.rows = result;
       this.page.count = result.length;
     }))
