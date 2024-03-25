@@ -21,13 +21,15 @@ export class AddAccountComponent implements OnInit, OnDestroy {
   public accountForm!: FormGroup;
   private subscription: Subscription = new Subscription();
 
-  constructor(private formBuilder: FormBuilder,  private toastr: ToastrService, private addAccountService: AddAccountService) { }
+  constructor(private formBuilder: FormBuilder,
+    private toastr: ToastrService,
+    private addAccountService: AddAccountService) { }
 
   ngOnInit() {
     this.accountForm = this.formBuilder.group({
       accountName: [null, [Validators.required, Validators.pattern('^[a-zA-Z0-9 ]+$')]],
       institutionName: [null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
-      accountSelect: [null, Validators.required],
+      accountType: [null, Validators.required],
       accountNumber: [null, [Validators.required, Validators.pattern('^[0-9]{4}$')]]
     });
   }
@@ -40,7 +42,21 @@ export class AddAccountComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     if (this.accountForm.valid) {
-      this.toastr.success('Account added successfully', 'Success!');
+      const accountName = this.accountForm.value.accountName;
+      const lastFourDigits = this.accountForm.value.accountNumber;
+      const message = `Your account ${ accountName } - ${ lastFourDigits } has been added and can be accessed through the sidebar.`;
+      
+      this.addAccountService.addAccount(this.accountForm.value).subscribe(
+        response => {
+          this.toastr.success(message, 'Account Added');
+          
+          this.accountForm.reset();
+        },
+        error => {
+          this.toastr.error('Failed to add account', 'Error!');
+          console.error(error);
+        }
+      );
     }
   }
 }
