@@ -53,8 +53,8 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
       account:[null],
       transactionType:[null]
     });
+    this.getAccounts();
     this.fetchStatements();
-
   }
 
   ngOnDestroy(): void {
