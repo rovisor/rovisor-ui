@@ -1,62 +1,68 @@
-
-.button-container {
-  margin-left: 10px; 
-  margin-top: 30px;
-    border-radius: 20px 0 0 0;
-    border: 1px solid transparent;
-
-      
- 
+.custom-button {
+margin-left: 10px; 
+margin-top: 20px;
+background: #16A386;
+width: 150px;
+height: 51px;
+padding: 6px 12px;
+gap: 8px;
+border-radius: 20px 0px 0px 0px;
+border: 1px solid #16A386;
+opacity: 1; 
 }
 
+.btn-primary {
+  font-size: 20px;
+}
 
 .form-row {
-  display: flex;
-  align-items: center; 
-  margin-bottom: 20px;
-   
+display: flex;
+align-items: center; 
+margin-bottom: 20px;
 }
-.heading {
-  width: 553px;
-height: 29px;
-top: 157px;
-left: 414px;
-gap: 0px;
-opacity: 0px;
 
-  font-size: 30px;
-  margin-bottom: 30px;
+.heading {
+width: 500px;
+height: 29px;
+margin-bottom: 30px;
+font-family: Roboto;
+font-size: 24px;
+font-weight: 700;
+line-height: 28.8px;
+text-align: left;
+background: linear-gradient(0deg, #212529, #212529),
+linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
 }
 
 .form-container {
-    width: 100%;
-    padding: 20px;
-    height: 60vh;
+padding: 20px;
+width: 200%;
+height: 507px;
+top: 143px;
+left: 394px;
+gap: 0px;
+border-radius: 5px 0px 0px 0px;
+opacity: 0px;
 }
+
 .ng-select {
-  width: 500px; 
+width: 500px;
+padding: 4px 12px 4px 12px;
+gap: 17px;
+border-radius: 15px 0px 0px 0px;
+border: 1px 0px 0px 0px;
+opacity: 0px;
 }
 
-.form-row label {
-  margin-left: 10px;
-  margin-right: 40px;
-}
-.form-row label[for="date"] {
-  margin-right: 80px; 
-}
-.form-row label[for="narration"] {
-  margin-right: 57px; 
-}
-
-.form-row label[for="debitAmount"] {
-  margin-right: 36px;
+.form-row label {  
+width: 200px;
+font-family: Roboto;
+font-size: 20px;
+font-weight: 500;
+line-height: 24px;
+text-align: left;
+background: linear-gradient(0deg, #212529, #212529),
+linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
 }
 
-.form-row label[for="creditAmount"] {
-  margin-right: 33px; 
-}
-
-.form-row label[for="balance"] {
-  margin-right: 63px; 
-}
 

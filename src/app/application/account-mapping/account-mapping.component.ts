@@ -9,7 +9,7 @@ import { AccountMappingService } from './state/account-mapping.service';
   styleUrls: ['./account-mapping.component.css'],
 })
 export class AccountMappingComponent implements OnInit, OnDestroy {
-  
+
   public mappingForm!: FormGroup;
   public csvHeaders: string[] = [];
   private subscription: Subscription = new Subscription();
@@ -35,13 +35,13 @@ export class AccountMappingComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  
+
   BalanceColumnHeaders() {
     const noFieldOption = 'No field available';
     this.csvHeaders.push(noFieldOption);
   }
 
   onSubmit() {
-    
+
   }
 }
