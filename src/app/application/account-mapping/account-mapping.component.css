@@ -13,9 +13,17 @@
 .form-row {
   display: flex;
   align-items: center; 
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
+   
 }
 .heading {
+  width: 553px;
+height: 29px;
+top: 157px;
+left: 414px;
+gap: 0px;
+opacity: 0px;
+
   font-size: 30px;
   margin-bottom: 30px;
 }

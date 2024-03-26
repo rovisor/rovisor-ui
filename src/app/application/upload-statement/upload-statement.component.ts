@@ -36,7 +36,19 @@ export class UploadStatementComponent implements OnInit {
 
 
   upload() {
-    
+    if (this.uploadForm.valid) {
+      const file = this.uploadForm.get('file')?.value;
+
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('selectedAccount', this.uploadForm.get('selectedAccount')?.value);
+      this.uploadStatementService.uploadStatement(formData).subscribe(() => {
+        this.toastr.success('Statement uploaded successfully');
+        this.openAccountMappingModal(formData);
+      }, (error) => {
+        this.toastr.error('Failed to upload statement');
+      });
+    }
   }
 
   openAccountMappingModal(formData: FormData) {
