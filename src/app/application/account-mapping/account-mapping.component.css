@@ -1,0 +1,67 @@
+.custom-button {
+margin-left: 10px; 
+margin-top: 20px;
+background: #16A386;
+width: 150px;
+height: 51px;
+padding: 6px 12px;
+gap: 8px;
+border-radius: 20px 0px 0px 0px;
+border: 1px solid #16A386;
+opacity: 1; 
+}
+
+.btn-primary {
+  font-size: 20px;
+}
+
+.form-row {
+display: flex;
+align-items: center; 
+margin-bottom: 20px;
+}
+
+.heading {
+width: 500px;
+height: 29px;
+margin-bottom: 30px;
+font-family: Roboto;
+font-size: 24px;
+font-weight: 700;
+line-height: 28.8px;
+text-align: left;
+background: linear-gradient(0deg, #212529, #212529),
+linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+}
+
+.form-container {
+padding: 20px;
+width: 200%;
+height: 507px;
+top: 143px;
+left: 394px;
+gap: 0px;
+border-radius: 5px 0px 0px 0px;
+opacity: 0px;
+}
+
+.ng-select {
+width: 500px;
+padding: 4px 12px 4px 12px;
+gap: 17px;
+border-radius: 15px 0px 0px 0px;
+border: 1px 0px 0px 0px;
+opacity: 0px;
+}
+
+.form-row label {  
+width: 200px;
+font-family: Roboto;
+font-size: 20px;
+font-weight: 500;
+line-height: 24px;
+text-align: left;
+background: linear-gradient(0deg, #212529, #212529),
+linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+}
+

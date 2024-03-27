@@ -1,7 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { AccountMappingService } from './state/account-mapping.service';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
+import { AccountMappingService } from './state/account-mapping.service';
 
 @Component({
   selector: 'app-account-mapping-statement',
@@ -9,14 +10,56 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./account-mapping.component.css'],
 })
 export class AccountMappingComponent implements OnInit, OnDestroy {
+
+  public mappingForm!: FormGroup;
+  public csvHeaders: string[] = [];
   private subscription: Subscription = new Subscription();
+
   constructor(
     private formBuilder: FormBuilder,
+    private toastr: ToastrService,
     private accountMappingService: AccountMappingService
-  ) {}
-  ngOnInit() {}
+  ) { }
+
+  ngOnInit() {
+    this.mappingForm = this.formBuilder.group({
+      date: [''],
+      narration: [''],
+      debitAmount: [''],
+      creditAmount: [''],
+      balance: [''],
+    });
+
+    this.BalanceColumnHeaders();
+  }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+
+  BalanceColumnHeaders() {
+    const noFieldOption = 'No field available';
+    this.csvHeaders.push(noFieldOption);
+  }
+
+  
+
+  onSubmit() {
+    if (this.mappingForm.valid) {
+      const formData = this.mappingForm.value;
+      this.subscription.add(
+        this.accountMappingService.submitFormData(formData).subscribe(
+          (response: any) => {
+            // Handle successful response
+            console.log('Form data submitted successfully:', response);
+            this.toastr.success('Form data submitted successfully'); 
+          },
+          (error: any) => {
+            console.error('Error submitting form data:', error);
+          }
+        )
+      );
+    }
   }
 }
