@@ -13,7 +13,7 @@ export class AccountMappingService {
     ) { }
 
    
-    submitFormData(formData: any): Observable<any> {
+    submitFormData(formData: any){
         const apiUrl = `${environment.apiUrl}apiUrl`; 
         return this.httpClient.post(apiUrl, formData)
             .pipe(
