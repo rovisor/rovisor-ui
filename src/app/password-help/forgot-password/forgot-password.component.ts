@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { CommonResponseModel } from '../state/auth.model';
+import { CommonResponseModel } from '../state/password-help.model';
 import { Subscription } from 'rxjs';
-import { AuthService } from '../state/auth.service';
+import {  PasswordHelpService } from '../state/password-help.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -14,7 +14,7 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
   public forgotPasswordForm!: FormGroup;
   private subscription: Subscription = new Subscription();
   
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private toastr: ToastrService) {}
+  constructor(private formBuilder: FormBuilder, private passwordHelpService: PasswordHelpService, private toastr: ToastrService) {}
 
 
   ngOnInit(): void {
@@ -27,7 +27,7 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
     if (this.forgotPasswordForm!.invalid) {
       return;
     }
-    this.subscription.add(this.authService.sendResetPasswordEmail(this.forgotPasswordForm!.value.email)
+    this.subscription.add(this.passwordHelpService.sendResetPasswordEmail(this.forgotPasswordForm!.value.email)
       .subscribe((response: CommonResponseModel) => {
         this.toastr.success(response.message);
         this.forgotPasswordForm!.reset();
