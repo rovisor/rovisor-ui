@@ -16,6 +16,10 @@ const routes: Routes = [{
 { 
   path: 'auth', 
   loadChildren: () => import('./auth/auth.module').then(module => module.AuthModule)
+},  
+{ 
+  path: 'password-help', 
+  loadChildren: () => import('./password-help/password-help.module').then(module => module.PasswordHelpModule)
 }, 
 { 
   path: 'app', 
