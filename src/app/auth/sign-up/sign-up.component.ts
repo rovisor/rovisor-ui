@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,  FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { LoginResponseModel } from '../state/auth.model';
+import { LoginResponseModel, SignUpResponseModel } from '../state/auth.model';
 import { AuthService } from '../state/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,14 +11,14 @@ import { AuthService } from '../state/auth.service';
   styleUrls: ['./sign-up.component.css'],
 })
 export class SignUpComponent {
-  title = 'rovisor-ui';
   public signupForm!: FormGroup;
   public showPassword: boolean = false;
+  private subscription: Subscription = new Subscription();
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
-  ) { }
+    private authService: AuthService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
@@ -29,7 +30,25 @@ export class SignUpComponent {
       ]),
     });
   }
+
+  onSubmit() {
+    if (this.signupForm.invalid) {
+      return;
+    }
+
+    this.subscription.add(this.authService.signup(this.signupForm.value).subscribe((response: SignUpResponseModel) => {
+      if(response) {
+        this.toastr.success("Please check your email to verify your account.");
+      } else {
+        this.toastr.error("Unable to signup, please try later.");
+      }
+    }));
+
+  }
+
   togglePassword(): void {
     this.showPassword = !this.showPassword;
   }
+
+
 }
