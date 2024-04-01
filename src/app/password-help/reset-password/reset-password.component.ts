@@ -13,6 +13,7 @@ export class ResetPasswordComponent {
 
   public resetPasswordForm!: FormGroup;
   private subscription: Subscription = new Subscription();
+  public showPassword: boolean = false;
 
 
   constructor(private formBuilder: FormBuilder, private passwordHelpService: PasswordHelpService, private toastr: ToastrService
@@ -52,6 +53,9 @@ onSubmit() {
 }
   showToast() {
     this.toastr.success('Your password has been changed  sueccefully ');
+  }
+  togglePassword(): void {
+    this.showPassword = !this.showPassword;
   }
   
   }
