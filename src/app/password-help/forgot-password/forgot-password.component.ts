@@ -13,13 +13,14 @@ import { ToastrService } from 'ngx-toastr';
 export class ForgotPasswordComponent implements OnInit, OnDestroy {
   public forgotPasswordForm!: FormGroup;
   private subscription: Subscription = new Subscription();
+  public sendButtonText = "Send Email"
   
   constructor(private formBuilder: FormBuilder, private passwordHelpService: PasswordHelpService, private toastr: ToastrService) {}
 
 
   ngOnInit(): void {
     this.forgotPasswordForm = new FormGroup({
-      email: new FormControl('',[Validators.required,  Validators.email])
+      email: new FormControl('', [Validators.required,  Validators.email])
     });
   }
 
@@ -31,6 +32,7 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
       .subscribe((response: CommonResponseModel) => {
         this.toastr.success(response.message);
         this.forgotPasswordForm!.reset();
+        this.sendButtonText = "Resend Email";
       }));
   }
 
