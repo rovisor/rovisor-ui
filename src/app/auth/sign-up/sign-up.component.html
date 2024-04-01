@@ -3,53 +3,25 @@
     <h4 class="text-green text-center mb-4">Sign up</h4>
     <form [formGroup]="signupForm">
       <div class="form-floating mb-4">
-        <input
-          type="text"
-          class="form-control"
-          id="name"
-          formControlName="name"
-          placeholder="Name"
-        />
+        <input type="text" class="form-control" id="name" formControlName="name" placeholder="Name"/>
         <label for="name">Name</label>
       </div>
       <div class="form-floating mb-4">
-        <input
-          type="email"
-          class="form-control"
-          id="email"
-          formControlName="email"
-          placeholder="Email"
-        />
+        <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email"/>
         <label for="email">Email address</label>
       </div>
       <div class="form-floating mb-2">
-        <input
-          [type]="showPassword ? 'text' : 'password'"
-          class="form-control"
-          id="password"
-          formControlName="password"
-          placeholder="***"
-        />
-        <button
-          class="password-toggle"
-          id="toggleButton"
-          (click)="togglePassword()"
-        >
+        <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="password" formControlName="password" placeholder="***" />
+        <span class="password-toggle" id="toggleButton" (click)="togglePassword()">
           <i class="bi bi-eye fs-5" *ngIf="!showPassword"></i>
           <i class="bi bi-eye-slash fs-5" *ngIf="showPassword"></i>
-        </button>
+        </span>
         <label for="password">Password</label>
       </div>
       <div class="row mb-4">
         <div class="col-12 text-center pt-3">
-          <button
-            type="submit"
-            class="btn btn-primary btn-green"
-            [disabled]="!signupForm.valid"
-          >
-            <a routerLink="../sign-in" class="text-white no-underline"
-              >Sign up</a
-            >
+          <button type="submit" class="btn btn-primary btn-green" [disabled]="!signupForm.valid" (click)="onSubmit()">
+            <a routerLink="../sign-in" class="text-white no-underline">Sign Up</a>
           </button>
         </div>
       </div>
