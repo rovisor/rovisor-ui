@@ -29,7 +29,13 @@ body {
     background-color: #1BBC9B;
 }
 
-.h2 {
+h1 {
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 48px;
+}
+
+h2 {
     font-size: 32px;
     font-weight: 500;
     line-height: 38.4px;
@@ -52,6 +58,13 @@ body {
 
 .text-green {
     color: #1BBC9B;
+}
+
+.text-page-title{
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 57.6px;
+
 }
 
 .logo {
