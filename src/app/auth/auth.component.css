@@ -1,10 +1,11 @@
 .quote-box {
   height: calc(100vh - 200px);
   border-radius: 0px 10px 10px 0px;
+  font-weight: normal;
 }
 
 .bg-green {
-  background-color: #18B091;
+  background-color: #18b091;
 }
 
 .logo-section {
@@ -19,6 +20,7 @@
   height: 50px;
 }
 
-.footnote{
-    color: #212529;  
+.footnote {
+  color: #212529;
 }
+
