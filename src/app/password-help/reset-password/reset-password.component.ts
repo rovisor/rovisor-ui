@@ -42,9 +42,9 @@ onSubmit() {
   if (this.resetPasswordForm.valid) {
     if (!this.resetPasswordForm.errors?.['mismatch']) {
       this.subscription.add(this.passwordHelpService.resetPassword(this.resetPasswordForm.value).subscribe((response: LoginResponseModel) => {
-        console.log(response);    
+        this.showToast();   
       }));
-      this.showToast();
+      
     } else {
       console.log('Passwords did not match');
     }
