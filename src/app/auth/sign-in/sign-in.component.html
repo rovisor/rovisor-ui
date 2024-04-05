@@ -1,6 +1,6 @@
 <div class="card login-box w-100">
     <div class="card-body">
-        <h4 class="text-green text-center mb-5 page-title-bold">Login</h4>
+        <h4 class="text-page-title text-center mb-5 text-green">Login</h4>
         <form [formGroup]="loginForm">
             <div class="form-floating mb-4">
                 <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email">
@@ -17,7 +17,7 @@
                 </div>
                 <div class="row mb-4">
                 <div class="col-12 text-end">
-                    <a routerLink="../forgot-password" class="text-#6c757d text-decoration-none h6">Forgot Password?</a>
+                    <a routerLink="/password-help/forgot-password" class="text-muted text-decoration-none h6">Forgot Password?</a>
                 </div>
                 </div>
                 <div class="row mb-4">
@@ -28,7 +28,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12 text-center">
-                        <a routerLink="../sign-up" class="text-#007bff text-decoration-none h6">Create a new account</a>
+                        <a routerLink="../sign-up" class="text-link text-decoration-none h6">Create a new account</a>
                     </div>
                 </div>
         </form>
