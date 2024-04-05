@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { LoginResponseModel } from '../state/auth.model';
+import { LoginResponseModel } from '../state/password-help.model';
 import { Subscription } from 'rxjs';
-import { AuthService } from '../state/auth.service';
+import { PasswordHelpService } from '../state/password-help.service';
 import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-reset-password',
@@ -15,7 +15,7 @@ export class ResetPasswordComponent {
   private subscription: Subscription = new Subscription();
 
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private toastr: ToastrService
+  constructor(private formBuilder: FormBuilder, private passwordHelpService: PasswordHelpService, private toastr: ToastrService
     ) {}
 
   ngOnInit(): void {
@@ -40,7 +40,7 @@ export class ResetPasswordComponent {
 onSubmit() {
   if (this.resetPasswordForm.valid) {
     if (!this.resetPasswordForm.errors?.['mismatch']) {
-      this.subscription.add(this.authService.signup(this.resetPasswordForm.value).subscribe((response: LoginResponseModel) => {
+      this.subscription.add(this.passwordHelpService.resetPassword(this.resetPasswordForm.value).subscribe((response: LoginResponseModel) => {
         console.log(response);
       }));
       this.showToast();
