@@ -13,7 +13,7 @@ export class ConsolidateStatementService {
     }
 
     getAccounts() {
-      return this.httpClient.get(`${environment.apiUrl}/userAccount`)
+      return this.httpClient.get(`${environment.apiUrl}/userAccount/getAccountList`)
       .pipe(map((response: any) => {return response}));
     }
 }
