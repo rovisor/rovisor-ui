@@ -1,60 +1,53 @@
-import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { LoginResponseModel } from '../state/password-help.model';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PasswordHelpService } from '../state/password-help.service';
 import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
   styleUrls: ['./reset-password.component.css'],
 })
-export class ResetPasswordComponent {
-
+export class ResetPasswordComponent implements OnInit {
   public resetPasswordForm!: FormGroup;
-  private subscription: Subscription = new Subscription();
   public showPassword: boolean = false;
+  public token: string = '';
 
-
-  constructor(private formBuilder: FormBuilder, private passwordHelpService: PasswordHelpService, private toastr: ToastrService
-    ) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private passwordHelpService: PasswordHelpService,
+    private toastr: ToastrService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.token = params['token'] || '';
+    });
+
     this.resetPasswordForm = this.formBuilder.group({
       password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
-      confirmPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
-    }, { validator: this.passwordMatchValidator });
-
-
+      confirmPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+    
+    });
   }
-  passwordMatchValidator(formGroup: FormGroup) {
-    const passwordControl = formGroup.get('password');
-    const confirmPasswordControl = formGroup.get('confirmPassword');
 
-  if (passwordControl!.value === confirmPasswordControl!.value) {
-    confirmPasswordControl!.setErrors(null);
-  } else {
-    confirmPasswordControl!.setErrors({ mismatch: true });
-  }
-}
-  
-onSubmit() {
-  if (this.resetPasswordForm.valid) {
-    if (!this.resetPasswordForm.errors?.['mismatch']) {
-      this.subscription.add(this.passwordHelpService.resetPassword(this.resetPasswordForm.value).subscribe((response: LoginResponseModel) => {
+  onSubmit() {
+    if (this.resetPasswordForm.valid) {
+      this.passwordHelpService.resetPassword(this.token, this.resetPasswordForm.value.password).subscribe((response: any) => {
         this.showToast();   
-      }));
-      
-    } else {
-      console.log('Passwords did not match');
+      }, error => {
+        console.log('Error resetting password:', error);
+      });
     }
   }
-}
+
   showToast() {
-    this.toastr.success('Your password has been changed  sueccefully ');
+    this.toastr.success('Your password has been changed successfully');
   }
+
   togglePassword(): void {
     this.showPassword = !this.showPassword;
   }
-  
-  }
+}

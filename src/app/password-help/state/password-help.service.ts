@@ -12,12 +12,13 @@ export class PasswordHelpService {
     constructor(private httpClient: HttpClient) {
     }
   
-    resetPassword(password: string): Observable<any> {
-        return this.httpClient.post(`${environment.apiUrl}/auth/login`, { password })
-          .pipe(
-            catchError((error: any) => throwError(error))
-          );
-      }
+    resetPassword(password: string, token: string): Observable<any> {
+      return this.httpClient.post(`${environment.apiUrl}/auth/reset-password`, { password, token })
+        .pipe(
+          catchError((error: any) => throwError(error))
+        );
+  }
+  
       
 
       sendResetPasswordEmail(email: string): Observable<any> {
