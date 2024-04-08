@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: "http://app.rovisor.in:8001/api"
+  apiUrl: "http://localhost:5000/api"
 };
 
 
