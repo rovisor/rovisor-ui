@@ -35,7 +35,8 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   onSubmit() {
-    if (!this.resetPasswordForm.valid) {
+    if (this.resetPasswordForm.value.password !== this.resetPasswordForm.value.confirmPassword) {
+      this.toastr.error("Password and confirm password do not match");
       return;
     }
     
