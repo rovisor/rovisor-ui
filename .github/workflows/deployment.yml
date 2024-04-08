@@ -1,0 +1,52 @@
+name: Rovisor UI Deployment
+
+env:
+  DEPLOY_PACKAGE_NAME_FILE: "${{ github.sha }}.zip"
+  DEPLOY_PACKAGE_NAME: "${{ github.sha }}"
+
+on:
+  push:
+    branches: [github-action-deployment]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git clone https://github.com/yorgit.git
+        uses: actions/checkout@v2
+
+      - name: Install And Build Rovisor App
+        run: npm install && npm run build
+
+      - name: Create zip deployment package
+        run: zip -r ${{ env.DEPLOY_PACKAGE_NAME_FILE }} ./dist/ -x *.git*
+
+      - name: copy file via ssh password
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.LIGTHSAIL_IP }}
+          username: ${{ secrets.LIGTHSAIL_USERNAME }}
+          key: ${{ secrets.LIGTHSAIL_KEY }}
+          password: ""
+          passphrase: ""
+          port: 22
+          source: ${{ env.DEPLOY_PACKAGE_NAME_FILE }}
+          target: "/home/${{ secrets.LIGTHSAIL_USERNAME }}"
+
+      - name: Connect to AWS Lightsail, extract file and delete the file
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.LIGTHSAIL_IP }}
+          username: ${{ secrets.LIGTHSAIL_USERNAME }}
+          key: ${{ secrets.LIGTHSAIL_KEY }}
+          password: ""
+          passphrase: ""
+          port: 22
+          script: |
+            sudo apt-get install zip unzip
+            unzip -q -o /home/${{ secrets.LIGTHSAIL_USERNAME }}/${{ env.DEPLOY_PACKAGE_NAME_FILE }} -d /{{ secrets.LIGTHSAIL_ROOT_DIR }}
+            rm /home/${{ secrets.LIGTHSAIL_USERNAME }}/${{ env.DEPLOY_PACKAGE_NAME_FILE }}
+            sudo systemctl restart nginx
+
+      - name: Deployment completed Successfully
+        run: echo "Deployment completed successfuly"
