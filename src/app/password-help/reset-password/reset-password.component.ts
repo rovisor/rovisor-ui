@@ -27,6 +27,10 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
   ) {
     this.subscription.add(this.activatedRoute.queryParams.subscribe(params => {
       this.token = params['token'] || '';
+      if(this.token.length === 0) {
+        this.toastr.error("Invalid Request.");
+        this.router.navigate(['/auth/login']);
+      }
     }));
   }
 
@@ -48,7 +52,7 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
     if(!this.resetPasswordForm.valid) {
       return;
     }
-    
+
     let requestModel: ResetPasswordRequestModel = {
       password: this.resetPasswordForm.value.password,
       confirmPassword: this.resetPasswordForm.value.confirmPassword,
@@ -58,7 +62,7 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
     this.subscription.add(this.passwordHelpService.resetPassword(requestModel).subscribe((response) => {
       this.toastr.success(response.message);
       this.resetPasswordForm.reset();
-      this.router.navigate(['/app/dashboard']);
+      this.router.navigate(['/auth/login']);
     }));
   }
 
