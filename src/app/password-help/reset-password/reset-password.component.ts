@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PasswordHelpService } from '../state/password-help.service';
 import { ToastrService } from 'ngx-toastr';
+import { ResetPasswordRequestModel } from '../state/password-help.model';
 
 @Component({
   selector: 'app-reset-password',
@@ -18,11 +19,11 @@ export class ResetPasswordComponent implements OnInit {
     private formBuilder: FormBuilder,
     private passwordHelpService: PasswordHelpService,
     private toastr: ToastrService,
-    private route: ActivatedRoute
+    private activatedRoute: ActivatedRoute, private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
+    this.activatedRoute.queryParams.subscribe(params => {
       this.token = params['token'] || '';
     });
 
@@ -34,17 +35,21 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.resetPasswordForm.valid) {
-      this.passwordHelpService.resetPassword(this.token, this.resetPasswordForm.value.password).subscribe((response: any) => {
-        this.showToast();   
-      }, error => {
-        console.log('Error resetting password:', error);
-      });
+    if (!this.resetPasswordForm.valid) {
+      return;
     }
-  }
+    
+    let requestModel: ResetPasswordRequestModel = {
+      password: this.resetPasswordForm.value.password,
+      confirmPassword: this.resetPasswordForm.value.confirmPassword,
+      token: this.token
+    }
 
-  showToast() {
-    this.toastr.success('Your password has been changed successfully');
+    this.passwordHelpService.resetPassword(requestModel).subscribe((response) => {
+      this.toastr.success(response.message);
+      this.resetPasswordForm.reset();
+      this.router.navigate(['/app/dashboard']);
+    });
   }
 
   togglePassword(): void {
