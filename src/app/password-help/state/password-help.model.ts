@@ -5,9 +5,10 @@ export interface LoginResponseModel {
     Name: string;
 }
 
-export interface LoginRequestModel {
-    email: string;
+export interface ResetPasswordRequestModel {
     password: string;
+    confirmPassword: string;
+    token: string;
 }
 
 export interface SignUpRequestModel {
