@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { PasswordHelpService } from '../state/password-help.service';
 import { ToastrService } from 'ngx-toastr';
 import { ResetPasswordRequestModel } from '../state/password-help.model';
@@ -35,8 +35,7 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.resetPasswordForm.value.password !== this.resetPasswordForm.value.confirmPassword) {
-      this.toastr.error("Password and confirm password do not match");
+    if (this.resetPasswordForm.value.password !== this.resetPasswordForm.value.confirmPassword) {  
       return;
     }
     
