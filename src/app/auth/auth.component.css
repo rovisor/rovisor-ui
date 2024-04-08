@@ -1,12 +1,7 @@
 .quote-box {
   height: calc(100vh - 200px);
   border-radius: 0px 10px 10px 0px;
-  font-weight: normal;
   
-}
-
-.bg-green {
-  background-color: #1ABC9B;
 }
 
 .logo-section {
@@ -20,12 +15,8 @@
 .privacy-policy-section {
   height: 50px;
 }
+
 .footnote {
-  font-size: 14.4px;
   color: #212529;  
 }
 
-.privacy-policy-section .text-light {
- font-size: 12.8px;
- font-weight: normal;
-}
