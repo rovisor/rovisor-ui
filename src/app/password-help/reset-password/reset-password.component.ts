@@ -14,6 +14,7 @@ export class ResetPasswordComponent implements OnInit {
   public resetPasswordForm!: FormGroup;
   public showPassword: boolean = false;
   public token: string = '';
+  public isPasswordConfirmed: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -23,18 +24,12 @@ export class ResetPasswordComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe(params => {
-      this.token = params['token'] || '';
-    });
-
     this.resetPasswordForm = this.formBuilder.group({
       password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
-      confirmPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
-    
-    });
+      confirmPassword: ['', Validators.required,],
+    },);
   }
-
-  onSubmit() {
+   onSubmit() {
     if (this.resetPasswordForm.value.password !== this.resetPasswordForm.value.confirmPassword) {  
       return;
     }
@@ -54,5 +49,17 @@ export class ResetPasswordComponent implements OnInit {
 
   togglePassword(): void {
     this.showPassword = !this.showPassword;
+  }
+  onConfirmPasswordInput(): void {
+    const confirmPassword = this.resetPasswordForm.get('confirmPassword');
+    if (confirmPassword) {
+      if (confirmPassword.value === this.resetPasswordForm.value.password) {
+        this.isPasswordConfirmed = true;
+        confirmPassword.setErrors(null);
+      } else {
+        this.isPasswordConfirmed = false;
+        confirmPassword.setErrors({ mismatch: true });
+      }
+    }
   }
 }
