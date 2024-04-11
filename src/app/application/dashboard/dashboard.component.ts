@@ -12,6 +12,13 @@ import { DateTime } from 'luxon';
 })
 
 export class DashboardComponent implements OnInit {
+
+  items = [
+    { id: 1, name: 'Option 1' },
+    { id: 2, name: 'Option 2' },
+    { id: 3, name: 'Option 3' }
+  ];
+  
 openAddAccountModal() {
   this.modalService.open(AddAccountComponent, { centered: true, size: 'md', });
 }

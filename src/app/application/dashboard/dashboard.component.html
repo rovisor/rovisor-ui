@@ -3,7 +3,7 @@
         <div class="col-9">
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              </form>
+            </form>
         </div>
         <div class="col-3 text-end">
             <button class="btn btn-primary btn-lg" (click)="openAddAccountModal()">
@@ -20,34 +20,36 @@
         <div class="col-3 mt-3">
             <h2>View Statement</h2>
         </div>
-        </div>
-        <div>
+    </div>
+    <div>
         <div class="col-3">
             <div class="form-group">
                 <h5>From Date:</h5>
                 <input class="form-control" placeholder="From Date" name="fromDatePicker" class="form-control margin"
-            formControlName="fromDate" />
+                    formControlName="fromDate" />
             </div>
         </div>
         <div class="col-3">
             <div class="form-group">
-               <h5>To Date :</h5>
-                <input class="form-control" placeholder="To Date" name="toDatePicker" class="form-control margin"
-                />
+                <h5>To Date :</h5>
+                <input class="form-control" placeholder="To Date" name="toDatePicker" class="form-control margin" />
             </div>
         </div>
         <div class="col-3">
             <div class="form-group">
-                <h5>TransactionAccount: </h5>>
-                
+                <h5>TransactionAccount: </h5>
+                <ng-select [items]="items" bindLabel="name" bindValue="id" placeholder="Select an option"></ng-select>
+
+                <ng-select [items]="items" bindLabel="name" bindValue="id" placeholder="Select an option">
+                </ng-select>
             </div>
         </div>
         <div class="col-3">
             <div class="form-group">
                 <h5>TransactionType:</h5>
-             
+
             </div>
         </div>
-      
+
     </div>
-    </div>
+</div>
