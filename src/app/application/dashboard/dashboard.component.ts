@@ -14,9 +14,16 @@ import { DateTime } from 'luxon';
 export class DashboardComponent implements OnInit {
 
   items = [
-    { id: 1, name: 'Option 1' },
-    { id: 2, name: 'Option 2' },
-    { id: 3, name: 'Option 3' }
+    { id: 1, name: 'All' },
+    { id: 2, name: 'Credit' },
+    { id: 3, name: 'Debit' },
+    { id: 4, name:'Tranfer'},
+  ];
+  items2 = [
+    { id: 1, name: 'All' },
+    { id: 2, name: 'Income' },
+    { id: 3, name: 'EXpensive' },
+    { id: 4, name:'Investment'},
   ];
   
 openAddAccountModal() {
