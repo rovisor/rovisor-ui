@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateStruct, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UploadStatementComponent } from '../upload-statement/upload-statement.component';
 import { AddAccountComponent } from '../add-account/add-account.component';
 import { FormGroup,FormBuilder } from '@angular/forms';
@@ -26,45 +26,14 @@ export class DashboardComponent implements OnInit {
     { id: 4, name:'Investment'},
   ];
   
+  model: NgbDateStruct | undefined;
+
 openAddAccountModal() {
   this.modalService.open(AddAccountComponent, { centered: true, size: 'md', });
 }
   public statementFiltersForm!: FormGroup;
   constructor(private modalService: NgbModal,private formBuilder: FormBuilder,) { }
   ngOnInit(): void {
-    this.statementFiltersForm = this.formBuilder.group({
-      fromDate: [null],
-      toDate: [null],
-    this:fetchStatements(),
-      })
-
-  fetchStatements();{
-    let fromDate =  null;
-    if(this.statementFiltersForm.value.fromDate) {
-      fromDate = DateTime.fromObject({
-        year: this.statementFiltersForm.value.fromDate?.year,
-        month: this.statementFiltersForm.value.fromDate?.month,
-        day: this.statementFiltersForm.value.fromDate?.day,
-      }).toFormat('yyyy-MM-dd');
-    } 
-
-    let toDate =  null;
-    if(this.statementFiltersForm.value.toDate) {
-      toDate = DateTime.fromObject({
-        year: this.statementFiltersForm.value.toDate?.year,
-        month: this.statementFiltersForm.value.toDate?.month,
-        day: this.statementFiltersForm.value.toDate?.day,
-      }).toFormat('yyyy-MM-dd');
-    } 
-
-    let params = {
-      FromDate:  fromDate,
-      ToDate: toDate,
+    this.model = { year: 2024, month: 4, day: 12 }
 }
 }
-  }
-}
-function fetchStatements() {
-  throw new Error('Function not implemented.');
-}
-
