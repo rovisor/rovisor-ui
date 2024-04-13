@@ -11,4 +11,8 @@
 }
 .font{
     font-size: 29px;
+    min-height: 50px;
+}
+.form{
+    font-size: 30px;
 }
