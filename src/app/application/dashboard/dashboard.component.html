@@ -1,11 +1,11 @@
 <div class="container">
     <div class="row m-4">
-        <div class="col-9">
+        <div class="col-10">
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             </form>
         </div>
-        <div class="col-3 text-end">
+        <div class="col-2 text-end">
             <button class="btn btn-primary btn-lg" (click)="openAddAccountModal()">
                 <i class="bi bi-plus"></i>
                 Add Account
@@ -28,8 +28,10 @@
                 <p>Debit Amount:</p>
             </div>
         </div>
-        <div class="card mt-3">
-            <div class="card-body">
+    </div>
+    <div class="row">
+        <div class="cpl-12 mt-3 bg-white" style="min-height: 250px;">
+            <div>
                 <h2>Upcoming Trancation</h2>
             </div>
         </div>
@@ -37,43 +39,62 @@
             <h2>View Statement</h2>
         </div>
     </div>
-    <div class="row">
+    <div class="row mt-5">
+        <div class="col-3">
+            <h5>From Date:</h5>
+        </div>
         <div class="col-3">
             <div class="form-group">
-                <h5>From Date:
                     <input class="form-control" 
-                    placeholder="From Date" 
                     name="toDatePicker" 
                     class="form-control"
                     ngbDatepicker #toDatePicker="ngbDatepicker" 
                     formControlName="toDate"
                     [minDate]="minToDate" 
                     [maxDate]="maxDate" (click)="toDatePicker.toggle()" />
-                </h5>
-                    <h5>To Date:
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-3">
+            <h5>To Date:</h5>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
                         <input class="form-control" 
-                        placeholder="To Date" 
                         name="toDatePicker" 
                         class="form-control"
                         ngbDatepicker #toDatePicker="ngbDatepicker" 
                         formControlName="toDate"
                         [minDate]="minToDate" 
                         [maxDate]="maxDate" (click)="toDatePicker.toggle()" />
-                    </h5>
-              
-                <h5>TransactionAccount:
+                    
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-3">
+            <h5>TransactionAccount:</h5>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
                 <ng-select [items]="items"
                 bindLabel="name"
-                bindValue="id"
-                placeholder="Select an option">
-            </ng-select></h5>
-           
-                <h5>TransactionType:
+                bindValue="id">
+            </ng-select>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-3">
+            <h5>TransactionType:</h5>
+        </div>
+        <div class="col-3">
+            <div class="form-group"> 
                 <ng-select [items]="items2"
                 bindLabel="name"
-                bindValue="id"
-                placeholder="Select an option">
-            </ng-select></h5>
+                bindValue="id">
+            </ng-select>
 
             </div>
         </div>
