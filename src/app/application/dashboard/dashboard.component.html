@@ -37,39 +37,37 @@
             <h2>View Statement</h2>
         </div>
     </div>
-    <div>
+    <div class="row">
         <div class="col-3">
             <div class="form-group">
                 <h5>From Date:
-                <input class="form-control" 
-                placeholder="yyyy-mm-dd"
-                name="dp" 
-                ngbDatepicker #d="ngbDatepicker" 
-                [(ngModel)]="model" required></h5>
-            </div>
-        </div>
-        <div class="col-3">
-            <div class="form-group">
-                <h5>To Date :
-                <input class="form-control" 
-                placeholder="yyyy-mm-dd"
-                name="dp" 
-                ngbDatepicker #d="ngbDatepicker" 
-                [(ngModel)]="model" required></h5>
-            </div>
-        </div>
-        <div class="col-3">
-            <div class="form-group">
+                    <input class="form-control" 
+                    placeholder="From Date" 
+                    name="toDatePicker" 
+                    class="form-control"
+                    ngbDatepicker #toDatePicker="ngbDatepicker" 
+                    formControlName="toDate"
+                    [minDate]="minToDate" 
+                    [maxDate]="maxDate" (click)="toDatePicker.toggle()" />
+                </h5>
+                    <h5>To Date:
+                        <input class="form-control" 
+                        placeholder="To Date" 
+                        name="toDatePicker" 
+                        class="form-control"
+                        ngbDatepicker #toDatePicker="ngbDatepicker" 
+                        formControlName="toDate"
+                        [minDate]="minToDate" 
+                        [maxDate]="maxDate" (click)="toDatePicker.toggle()" />
+                    </h5>
+              
                 <h5>TransactionAccount:
                 <ng-select [items]="items"
                 bindLabel="name"
                 bindValue="id"
                 placeholder="Select an option">
             </ng-select></h5>
-            </div>
-        </div>
-        <div class="col-3">
-            <div class="form-group">
+           
                 <h5>TransactionType:
                 <ng-select [items]="items2"
                 bindLabel="name"

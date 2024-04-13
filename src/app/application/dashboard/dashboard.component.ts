@@ -31,6 +31,10 @@ export class DashboardComponent implements OnInit {
 openAddAccountModal() {
   this.modalService.open(AddAccountComponent, { centered: true, size: 'md', });
 }
+
+minToDate: any;
+maxDate={year:new Date().getFullYear(),month: new Date().getMonth()+1, day: new Date().getDate()};
+
   public statementFiltersForm!: FormGroup;
   constructor(private modalService: NgbModal,private formBuilder: FormBuilder,) { }
   ngOnInit(): void {
