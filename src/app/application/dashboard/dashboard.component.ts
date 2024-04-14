@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
   items2 = [
     { id: 1, name: 'All' },
     { id: 2, name: 'Income' },
-    { id: 3, name: 'EXpensive' },
+    { id: 3, name: 'Expensive' },
     { id: 4, name:'Investment'},
   ];
   

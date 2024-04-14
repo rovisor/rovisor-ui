@@ -3,10 +3,13 @@
         <div class="col-10">
             <form class="form-inline my-2 my-lg-0">
                 <div class="input-group">
-                    <input class="form-control" style="background-color:#DBDEE7" type="search" placeholder="Search" aria-label="Search">
                     <div class="input-group-append">
-                        <span class="input-group-text" style="background-color:#DBDEE7;"><i class="bi bi-search"></i></span>
+                        <span class="input-group-text" 
+                        style="background-color:#DBDEE7;">
+                        <i class="bi bi-search btn"></i>
+                        </span>
                     </div>
+                    <input class="form-control " style="background-color:#DBDEE7" type="search" aria-label="Search">
                 </div>
             </form>
         </div>
@@ -18,19 +21,19 @@
             </button>
         </div>
     </div>
-    <div class="row m-4">
+    <div class="row ms-4">
         <div class="col-3  ms-5 ">
-            <div class="font bg-white"  >
+            <div class="font bg-white border border-secondary  rounded-3"  >
                 <b class="ms-3 fw-normal"> Balance: </b>
             </div>
         </div>
         <div class="col-3 ms-5 ">
-            <div class="font bg-white font">
+            <div class="font bg-white border border-secondary  rounded-3 ">
                 <b class="ms-3 fw-normal">Credit Amount: </b>
             </div>
         </div>
-        <div class="col-3  ms-5 ">
-            <div class=" font bg-white">
+        <div class="col-3 ms-5 ">
+            <div class=" font bg-white border border-secondary  rounded-3">
                 <b class="ms-3 fw-normal " >Debit Amount: </b>
             </div>
         </div>
@@ -47,70 +50,62 @@
             <h2>View Statement</h2>
         </div>
     </div>
-    </div>
-    <div class="row m-3">
-        <div class="col-3 form ">
-            <h2 class="fw-normal">From Date:</h2>
-        </div>
-        <div class="col-3">
-            <div class="form-group">
-                    <input class="form-control" 
-                    name="toDatePicker" 
-                    class="form-control"
-                    ngbDatepicker #toDatePicker="ngbDatepicker" 
-                    formControlName="toDate"
-                    [minDate]="minToDate" 
-                    [maxDate]="maxDate" (click)="toDatePicker.toggle()" />
+    </div>  <div class="row">
+        <div class="col-2 ms-5">
+            <div class="form-group ">
+                <label class="form-label form">From Date </label>
+                <input class="form-control" 
+                 name="fromDatePicker" 
+                 class="form-control border-secondary  rounded-3"
+                ngbDatepicker  
+                #formDatePicker="ngbDatepicker" 
+                formControlName="fromDate"
+                [maxDate]="maxDate"  
+                (click)="formDatePicker.toggle()"/>
             </div>
         </div>
-    </div>
-    <div class="row m-3">
-        <div class="col-3 form">
-            <h2 class="fw-normal">To Date:</h2>
-        </div>
-        <div class="col-3">
+        <div class="col-2 ms-4">
             <div class="form-group">
-                        <input class="form-control" 
-                        name="toDatePicker" 
-                        class="form-control"
-                        ngbDatepicker #toDatePicker="ngbDatepicker" 
-                        formControlName="toDate"
-                        [minDate]="minToDate" 
-                        [maxDate]="maxDate" (click)="toDatePicker.toggle()" />
+                <label class="form-label form">To Date </label>
+                <input class="form-control" 
+                name="toDatePicker" 
+                class="form-control border-secondary  rounded-3"
+                ngbDatepicker 
+                #toDatePicker="ngbDatepicker" 
+                formControlName="toDate"
+                [minDate]="minToDate" 
+                [maxDate]="maxDate" 
+                (click)="toDatePicker.toggle()" />
             </div>
         </div>
-    </div>
-    <div class="row m-3">
-        <div class="col-3 form">
-            <h2 class="fw-normal">Transaction type:</h2>
-        </div>
-        <div class="col-3">
+        <div class="col-2 ms-4">
             <div class="form-group">
-                <ng-select [items]="items"
-                bindLabel="name"
+                <label class="form-label form">Transaction type</label>
+                <ng-select
+                [items]="items" 
+                bindLabel="name" 
                 bindValue="id">
-            </ng-select>
+                </ng-select>
             </div>
         </div>
-    </div>
-    <div class="row m-3">
-        <div class="col-3 form">
-            <h2 class="fw-normal"> Category:</h2>
-        </div>
-        <div class="col-3">
-            <div class="form-group"> 
-                <ng-select [items]="items2"
-                bindLabel="name"
+        <div class="col-2 ms-4">
+            <div class="form-group">
+                <label class="form-label form">Category:</label>
+                <ng-select 
+                [items]="items2" 
+                bindLabel="name" 
                 bindValue="id">
-            </ng-select>
-
+                </ng-select>
             </div>
         </div>
-
-    </div>
-    <div class="row m-3">
+    <div class="row ms-5 mt-3">
     <div class="col-3">
-        <button type="submit" class="btn btn-primary btn-green" >
-            <a href="app/consolidate-statement" class="text-white no-underline">View</a></button>
+        <button 
+        type="submit" 
+        class="btn btn-primary btn-green" >
+            <a href="app/consolidate-statement" 
+            class="text-white no-underline">View
+        </a>
+    </button>
     </div>
     </div>
