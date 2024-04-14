@@ -1,3 +1,33 @@
 .account-name {
   color: #212529;
+  font-family: "Roboto";
+  font-size: 40px;
+  font-weight: 500;
+  margin-top: 34px;
+  margin-left: 72px;
+}
+.box {
+  width: 199px;
+  height: 140px;
+  margin-top: 38px;
+  margin-left: 72px;
+  border: 1px solid rgba(26, 188, 155, 1);
+  margin-bottom: 150px;
+}
+.box-title {
+  color: #18b091;
+  margin-top: 16px;
+  margin-left: 22px;
+  font-family: "Roboto";
+  font-size: 20px;
+  font-weight: 500;
+}
+.secondary-text {
+  color: #212529;
+  display: block;
+  margin-left: 57px;
+  margin-top: 35px;
+  font-family: "Roboto";
+  font-size: 16px;
+  font-weight: 400;
 }
