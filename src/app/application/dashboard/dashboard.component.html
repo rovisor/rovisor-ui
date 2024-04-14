@@ -2,10 +2,15 @@
     <div class="row m-4">
         <div class="col-10">
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" style="background-color:#DBDEE7
-                ;" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group">
+                    <input class="form-control" style="background-color:#DBDEE7" type="search" placeholder="Search" aria-label="Search">
+                    <div class="input-group-append">
+                        <span class="input-group-text" style="background-color:#DBDEE7;"><i class="bi bi-search"></i></span>
+                    </div>
+                </div>
             </form>
         </div>
+        
         <div class="col-2 text-end">
             <button class="btn btn-primary btn-lg" (click)="openAddAccountModal()">
                 <i class="bi bi-plus"></i>
@@ -16,33 +21,36 @@
     <div class="row m-4">
         <div class="col-3  ms-5 ">
             <div class="font bg-white"  >
-                <p class="ms-3"> Balance:</p>
+                <b class="ms-3 fw-normal"> Balance: </b>
             </div>
         </div>
         <div class="col-3 ms-5 ">
             <div class="font bg-white font">
-                <p class="ms-3">Credit Amount:</p>
+                <b class="ms-3 fw-normal">Credit Amount: </b>
             </div>
         </div>
         <div class="col-3  ms-5 ">
             <div class=" font bg-white">
-                <p class="ms-3">Debit Amount:</p>
+                <b class="ms-3 fw-normal " >Debit Amount: </b>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="cpl-12 mt-3 bg-white" style="min-height: 250px;">
+    <div class="row card m-4" style=" background-color:#FEF7E5;">
+        <div class="col-12  card-body" style="min-height: 250px;">
             <div>
                 <h2>Upcoming Trancation</h2>
             </div>
         </div>
-        <div class="col-3 mt-3">
+    </div>
+    <div class="row  m-3">
+        <div>
             <h2>View Statement</h2>
         </div>
     </div>
-    <div class="row mt-5">
-        <div class="col-3 form">
-            <h5>From Date:</h5>
+    </div>
+    <div class="row m-3">
+        <div class="col-3 form ">
+            <h2 class="fw-normal">From Date:</h2>
         </div>
         <div class="col-3">
             <div class="form-group">
@@ -56,9 +64,9 @@
             </div>
         </div>
     </div>
-    <div class="row mt-4">
+    <div class="row m-3">
         <div class="col-3 form">
-            <h5>To Date:</h5>
+            <h2 class="fw-normal">To Date:</h2>
         </div>
         <div class="col-3">
             <div class="form-group">
@@ -72,9 +80,9 @@
             </div>
         </div>
     </div>
-    <div class="row mt-4">
+    <div class="row m-3">
         <div class="col-3 form">
-            <h5>TransactionAccount:</h5>
+            <h2 class="fw-normal">Transaction type:</h2>
         </div>
         <div class="col-3">
             <div class="form-group">
@@ -85,9 +93,9 @@
             </div>
         </div>
     </div>
-    <div class="row mt-4">
+    <div class="row m-3">
         <div class="col-3 form">
-            <h5>TransactionType:</h5>
+            <h2 class="fw-normal"> Category:</h2>
         </div>
         <div class="col-3">
             <div class="form-group"> 
@@ -100,9 +108,8 @@
         </div>
 
     </div>
-    <div class="row">
-        <div class="col-3">
-            <button class="btn btn-primary" >View</button>
-        </div>
+    <div class="row m-3">
+    <div class="col-3">
+        <button type="submit" class="btn btn-primary btn-green" >View</button>
     </div>
-</div>
+    </div>
