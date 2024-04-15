@@ -43,7 +43,7 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
       this.accountDetailsService.getAccountDetails(this.accountId).subscribe((result: AccountDetail) => {
         console.log(result);
         this.accountInfo = result;
-        this.accountName = result.AccountName; // Update accountName with the retrieved account name
+        this.accountName = result.AccountName; 
       })
     );
   }
