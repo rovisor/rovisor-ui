@@ -39,13 +39,10 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
   ngOnChanges() { }
 
   getAccountDetails() {
-    this.subscription.add(
-      this.accountDetailsService.getAccountDetails(this.accountId).subscribe((result: AccountDetail) => {
-        console.log(result);
-        this.accountInfo = result;
-        this.accountName = result.AccountName; 
-      })
-    );
+    this.subscription.add(this.accountDetailsService.getAccountDetails(this.accountId).subscribe((result: AccountDetail) => {
+      console.log(result);
+      this.accountInfo = result;
+    }));
   }
 
   openUploadModal() {
