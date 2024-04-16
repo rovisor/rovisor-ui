@@ -9,12 +9,15 @@
 .margin{
     margin-left: 100px;
 }
-.font{
-    font-size: 29px;
+.background{
+    background-color:#DBDEE7;
 }
 .form{
     font-size: 25px;
 }
-.no-underline{
+.text-decoration-none{
     text-decoration: none;
+}
+.card{
+    background-color:#FEF7E5;
 }

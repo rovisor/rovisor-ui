@@ -4,12 +4,11 @@
             <form class="form-inline my-2 my-lg-0">
                 <div class="input-group">
                     <div class="input-group-append">
-                        <span class="input-group-text" 
-                        style="background-color:#DBDEE7;">
+                        <span class="input-group-text background">
                         <i class="bi bi-search btn"></i>
                         </span>
                     </div>
-                    <input class="form-control " style="background-color:#DBDEE7" type="search" aria-label="Search">
+                    <input class="form-control background "  type="search">
                 </div>
             </form>
         </div>
@@ -23,22 +22,22 @@
     </div>
     <div class="row ms-4">
         <div class="col-3  ms-5 ">
-            <div class="font bg-white border border-secondary  rounded-3"  >
-                <b class="ms-3 fw-normal"> Balance: </b>
+            <div class="bg-white border border-secondary  rounded-3"  >
+               <h2><b class="ms-3 fw-normal"> Balance: </b> </h2>
             </div>
         </div>
         <div class="col-3 ms-5 ">
-            <div class="font bg-white border border-secondary  rounded-3 ">
-                <b class="ms-3 fw-normal">Credit Amount: </b>
+            <div class="bg-white border border-secondary  rounded-3 ">
+              <h2> <b class="ms-3 fw-normal">Credit Amount: </b></h2>
             </div>
         </div>
         <div class="col-3 ms-5 ">
-            <div class=" font bg-white border border-secondary  rounded-3">
-                <b class="ms-3 fw-normal " >Debit Amount: </b>
+            <div class=" bg-white border border-secondary  rounded-3">
+               <h2> <b class="ms-3 fw-normal " >Debit Amount: </b></h2>
             </div>
         </div>
     </div>
-    <div class="row card m-4" style=" background-color:#FEF7E5;">
+    <div class="row card m-4 ">
         <div class="col-12  card-body" style="min-height: 250px;">
             <div>
                 <h2>Upcoming Transaction</h2>
@@ -82,7 +81,7 @@
             <div class="form-group">
                 <label class="form-label form">Transaction type</label>
                 <ng-select
-                [items]="items" 
+                [items]="Transactiontype" 
                 bindLabel="name" 
                 bindValue="id">
                 </ng-select>
@@ -92,7 +91,7 @@
             <div class="form-group">
                 <label class="form-label form">Category:</label>
                 <ng-select 
-                [items]="items2" 
+                [items]="Category" 
                 bindLabel="name" 
                 bindValue="id">
                 </ng-select>
@@ -104,7 +103,7 @@
         type="submit" 
         class="btn btn-primary btn-green" >
             <a href="app/consolidate-statement" 
-            class="text-white no-underline">View
+            class="text-white text-decoration-none">View
         </a>
     </button>
     </div>

@@ -13,20 +13,20 @@ import { DateTime } from 'luxon';
 
 export class DashboardComponent implements OnInit {
 
-  items = [
+  Transactiontype = [
     { id: 1, name: 'All' },
     { id: 2, name: 'Credit' },
     { id: 3, name: 'Debit' },
-    { id: 4, name:'Tranfer'},
+    { id: 4, name:'Transfers'},
   ];
-  items2 = [
+  Category = [
     { id: 1, name: 'All' },
     { id: 2, name: 'Income' },
     { id: 3, name: 'Expensive' },
     { id: 4, name:'Investment'},
   ];
   
-  model: NgbDateStruct | undefined;
+ 
 
 openAddAccountModal() {
   this.modalService.open(AddAccountComponent, { centered: true, size: 'md', });
@@ -38,6 +38,6 @@ maxDate={year:new Date().getFullYear(),month: new Date().getMonth()+1, day: new 
   public statementFiltersForm!: FormGroup;
   constructor(private modalService: NgbModal,private formBuilder: FormBuilder,) { }
   ngOnInit(): void {
-    this.model = { year: 2024, month: 4, day: 12 }
+   
 }
 }
