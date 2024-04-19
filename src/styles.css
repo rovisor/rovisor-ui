@@ -110,14 +110,6 @@ h6, .h6 {
     color: #fff;
 }
 
-.bg-rov-primary{
-    background-color: #154f43;
-}
-
-.bg-rov-secondary{
-    background-color: rgb(233, 236, 228);
-}
-
 .btn-primary {
     background-color: #16a085 !important;
     color: #fff !important;
@@ -140,3 +132,19 @@ h6, .h6 {
     color: #fff !important;
 }
 
+.bg-brand-selected {
+    background-color:  #16A386;
+}
+
+.bg-rov-primary {
+    background-color:  #1ABC9B;
+}
+
+.bg-rov-secondary {
+    background-color: rgb(233, 236, 228);
+}
+
+
+.privacy-policy-section {
+    height: 50px;
+}

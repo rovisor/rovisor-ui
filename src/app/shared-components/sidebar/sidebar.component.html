@@ -1,5 +1,5 @@
 <div class="col full-screen bg-rov-primary-sidebar p-2" tabindex="-1">
-    <div class="d-flex flex-column align-items-center align-items-sm-start px-0 pt-2 text-white min-vh-100">
+    <div class="d-flex flex-column align-items-center align-items-sm-start px-0 pt-2 text-white h-100">
         <ul class="nav nav-pills mb-sm-auto mb-0 align-items-center align-items-sm-start">
             <li *ngFor="let item of sidebarItems" class="nav-item w-100"  [class.active]="isActive(item)">
                 <a [routerLink]="item.route" *ngIf="!item.children" class="nav-link align-middle px-2 text-white">
@@ -24,6 +24,13 @@
                 </ul>
             </li>
         </ul>
+        <div class="privacy-policy-section d-block mb-1">
+            <p class="text-black text-foot-note">
+                <span class="align-content-start d-inline-block">Privacy Policy </span>
+                <span class="align-content-end d-inline-block ms-3">Terms and Conditions</span>
+            </p>
+            <p class="text-black text-foot-note">© rovisor, 2023. All rights reserved. v0.0.0123</p>
+        </div>
     </div>
 
 </div>
