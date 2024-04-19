@@ -38,7 +38,7 @@
         </div>
     </div>
     <div class="row card m-4 ">
-        <div class="col-12  card-body" style="min-height: 250px;">
+        <div class="col-12  card-body">
             <div>
                 <h2>Upcoming Transaction</h2>
             </div>
@@ -52,7 +52,7 @@
     </div>  <div class="row">
         <div class="col-2 ms-5">
             <div class="form-group ">
-                <label class="form-label form">From Date </label>
+                <label class="form-label">From Date </label>
                 <input class="form-control" 
                  name="fromDatePicker" 
                  class="form-control border-secondary  rounded-3"
@@ -65,7 +65,7 @@
         </div>
         <div class="col-2 ms-4">
             <div class="form-group">
-                <label class="form-label form">To Date </label>
+                <label class="form-label">To Date </label>
                 <input class="form-control" 
                 name="toDatePicker" 
                 class="form-control border-secondary  rounded-3"
@@ -79,9 +79,9 @@
         </div>
         <div class="col-2 ms-4">
             <div class="form-group">
-                <label class="form-label form">Transaction type</label>
+                <label class="form-label">Transaction type</label>
                 <ng-select
-                [items]="Transactiontype" 
+                [items]="transactionType" 
                 bindLabel="name" 
                 bindValue="id">
                 </ng-select>
@@ -89,9 +89,9 @@
         </div>
         <div class="col-2 ms-4">
             <div class="form-group">
-                <label class="form-label form">Category:</label>
+                <label class="form-label">Category:</label>
                 <ng-select 
-                [items]="Category" 
+                [items]="category" 
                 bindLabel="name" 
                 bindValue="id">
                 </ng-select>

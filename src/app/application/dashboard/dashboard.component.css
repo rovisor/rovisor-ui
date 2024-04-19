@@ -12,12 +12,8 @@
 .background{
     background-color:#DBDEE7;
 }
-.form{
-    font-size: 25px;
-}
-.text-decoration-none{
-    text-decoration: none;
-}
+
 .card{
     background-color:#FEF7E5;
+    min-height: 250px;
 }
