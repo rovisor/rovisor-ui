@@ -31,9 +31,15 @@ export class DashboardComponent implements OnInit {
   public statementFiltersForm!: FormGroup;
   constructor(private modalService: NgbModal, private formBuilder: FormBuilder,) { }
   ngOnInit(): void {
-
+    fromDate:[null]
+    
   }
 
+  updateMinToDate(selectedDate: NgbDateStruct | null) {
+    if (selectedDate) {
+      this.minToDate = selectedDate;
+    }
+  }
   openAddAccountModal() {
     this.modalService.open(AddAccountComponent, { centered: true, size: 'md', });
   }

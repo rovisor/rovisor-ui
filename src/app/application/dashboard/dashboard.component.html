@@ -51,31 +51,30 @@
     </div>
     </div>  <div class="row">
         <div class="col-2 ms-5">
-            <div class="form-group ">
-                <label class="form-label">From Date </label>
-                <input class="form-control" 
-                 name="fromDatePicker" 
-                 class="form-control border-secondary  rounded-3"
-                ngbDatepicker  
-                #formDatePicker="ngbDatepicker" 
+            <label>From Date</label>
+            <input class="form-control"
+                name="fromDatePicker"
+                class="form-control border-secondary rounded-3 mt-3"
+                ngbDatepicker
+                #formDatePicker="ngbDatepicker"
                 formControlName="fromDate"
-                [maxDate]="maxDate"  
-                (click)="formDatePicker.toggle()"/>
-            </div>
+                [maxDate]="maxDate"
+                (dateSelect)="updateMinToDate($event)"
+                (click)="formDatePicker.toggle()" />
+
         </div>
         <div class="col-2 ms-4">
-            <div class="form-group">
-                <label class="form-label">To Date </label>
-                <input class="form-control" 
-                name="toDatePicker" 
-                class="form-control border-secondary  rounded-3"
-                ngbDatepicker 
-                #toDatePicker="ngbDatepicker" 
-                formControlName="toDate"
-                [minDate]="minToDate" 
-                [maxDate]="maxDate" 
-                (click)="toDatePicker.toggle()" />
-            </div>
+            <label>To Date</label>
+            <input class="form-control"
+            name="toDatePicker"
+            class="form-control border-secondary rounded-3 mt-3"
+            ngbDatepicker
+            #toDatePicker="ngbDatepicker"
+            formControlName="toDate"
+            [minDate]="minToDate" 
+            [maxDate]="maxDate"
+            (click)="toDatePicker.toggle()" />
+     
         </div>
         <div class="col-2 ms-4">
             <div class="form-group">
