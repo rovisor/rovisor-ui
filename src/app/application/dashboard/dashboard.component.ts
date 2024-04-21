@@ -12,6 +12,9 @@ import { DateTime } from 'luxon';
 })
 
 export class DashboardComponent implements OnInit {
+navigateToConsolidatedStatement() {
+throw new Error('Method not implemented.');
+}
 
   transactionType = [
     { id: 1, name: 'All' },
