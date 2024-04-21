@@ -27,6 +27,7 @@
 }
 .week-margin{
   margin-top: 72px;
+  margin-left: 406px;
 }
 .custom-column {
     width: 133px;   
@@ -41,4 +42,9 @@
   .small-row{
     height: 33px;
     margin-left: 72px;
+  }
+  .days-margin{
+    margin-top: 9px;
+    font-weight: bold;
+  font-size: 12.8px;
   }
