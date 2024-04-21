@@ -1,14 +1,60 @@
 <div class="container">
-    <div class="row m-4">
-        <div class="col-9">
-            <h1>{{accountInfo.AccountName}}</h1>
-        </div> 
-        <div class="col-3 text-end">
-            <button class="btn btn-primary btn-lg" (click)="openUploadModal()">
-                <i class="bi bi-plus"></i>
-                Upload Statement
-            </button>
-        </div>
+  <div class="row mx-4 mt-4">
+    <div class="col-9">
+      <h1 class="account-margin text-regular roboto-font ">{{accountInfo.AccountName}}</h1>
     </div>
+    <div class="col-3 text-end">
+      <button class="btn btn-primary btn-lg upload-button" (click)="openUploadModal()">
+        <i class="bi bi-plus"></i>
+        Upload Statement
+      </button>
+    </div>
+  </div>
 
+  <div class="row m-4">
+    <div class="col-3">
+     <div class="box">
+        <h4 class="box-title roboto-font text-center">Opening Balance</h4>
+        <span class="text-secondary text-margin block-display text-regular roboto-font ">₹6654.00</span>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="box">
+        <h4 class="box-title roboto-font text-center">Credit Amount</h4>
+        <span class="text-secondary text-margin block-display text-regular roboto-font ">₹4314.00</span>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="box">
+        <h4 class="box-title roboto-font text-center">Debit Amount</h4>
+        <span class="text-secondary text-margin block-display text-regular roboto-font ">₹5582.00</span>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="box">
+        <h4 class="box-title roboto-font text-center">Closing Balance</h4>
+        <span class="text-secondary text-margin block-display text-regular roboto-font ">₹7922.00</span>
+        <span class="textmuted-margin block-display text-muted ">As on 22 Oct 2023</span>
+      </div>
+    </div>
+  </div>
+  <h4 class="text-regular week-margin">This Week (16-22 Oct 2023)</h4>
+  <div class="row small-row">
+    <div class="col-1 custom-column"></div>
+    <div class="col-1 custom-column"></div>
+    <div class="col-1 custom-column"></div>
+    <div class="col-1 custom-column"></div>
+    <div class="col-1 custom-column"></div>
+    <div class="col-1 custom-column"></div>
+    <div class="col-1 custom-column"></div>
+  </div>
+  <div class="row tall-row">
+    <div class="col-1 custom-column"></div>
+    <div class="col-1 custom-column"></div>
+    <div class="col-1 custom-column"></div>
+    <div class="col-1 custom-column"></div>
+    <div class="col-1 custom-column"></div>
+    <div class="col-1 custom-column"></div>
+    <div class="col-1 custom-column"></div>
+  </div>
 </div>

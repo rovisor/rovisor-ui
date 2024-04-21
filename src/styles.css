@@ -3,7 +3,6 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 @import '~ngx-toastr/toastr';
 
-
 html {
     height: 100%;
     font-size: 0.825rem;
@@ -139,4 +138,9 @@ h6, .h6 {
     border-color: #16a085 !important;
     color: #fff !important;
 }
-
+.roboto-font {
+    font-family:"Roboto";
+}
+.block-display{
+  display: block;
+}
