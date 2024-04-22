@@ -12,39 +12,45 @@ import { DateTime } from 'luxon';
 })
 
 export class DashboardComponent implements OnInit {
-navigateToConsolidatedStatement() {
-throw new Error('Method not implemented.');
-}
-
-  transactionType = [
-    { id: 1, name: 'All' },
-    { id: 2, name: 'Credit' },
-    { id: 3, name: 'Debit' },
-    { id: 4, name: 'Transfers' },
-  ];
-  category = [
-    { id: 1, name: 'All' },
-    { id: 2, name: 'Income' },
-    { id: 3, name: 'Expensive' },
-    { id: 4, name: 'Investment' },
-  ];
-  minToDate: any;
-  maxDate = { year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() };
-
   public statementFiltersForm!: FormGroup;
-  constructor(private modalService: NgbModal, private formBuilder: FormBuilder,) { }
+  public searchForm!: FormGroup;
+  public minToDate: any;
+  public maxDate = { year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() };
+  public transactionTypeList = [
+      { id: 1, name: 'All' },
+      { id: 2, name: 'Credit' },
+      { id: 3, name: 'Debit' },
+      { id: 4, name: 'Transfers' },
+    ];
+  public categoryList = [
+      { id: 1, name: 'All' },
+      { id: 2, name: 'Income' },
+      { id: 3, name: 'Expensive' },
+      { id: 4, name: 'Investment' },
+    ];
+  
+  constructor(private modalService: NgbModal, private formBuilder: FormBuilder) { }
+
   ngOnInit(): void {
-    fromDate:[null]
-    
+    this.statementFiltersForm = this.formBuilder.group({
+      fromDate: [null],
+      toDate: [null],
+      category:[null],
+      transactionType:[null]
+    });
+    this.searchForm = this.formBuilder.group({
+      search: [null]
+    })
   }
 
-  updateMinToDate(selectedDate: NgbDateStruct | null) {
-    if (selectedDate) {
-      this.minToDate = selectedDate;
-    }
+  onDateSelect() {
+    this.minToDate = this.statementFiltersForm.get('fromDate')?.value
   }
+
   openAddAccountModal() {
     this.modalService.open(AddAccountComponent, { centered: true, size: 'md', });
   }
-
+    
+  navigateToConsolidatedStatement() {
+  }
 }
