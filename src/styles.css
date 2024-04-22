@@ -56,7 +56,9 @@ h6, .h6 {
 .text-positive {
     color: #28A745;
 }
-
+.text-negative {
+  color: #dc3545;
+}
 .text-regular {
     color: #212529 !important; 
 }
