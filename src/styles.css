@@ -3,6 +3,10 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 @import '~ngx-toastr/toastr';
 
+:root {
+    --bs-border-color: #ccc;
+}
+
 html {
     height: 100%;
     font-size: 0.825rem;
@@ -165,4 +169,26 @@ h6, .h6 {
 
 *::-webkit-scrollbar-thumb {
 	background-color:#464646;
+}
+
+.form-control {
+    line-height: 1.90;
+}
+
+.form-label {
+    font-weight: 500;
+}
+
+.ng-select .ng-select-container .ng-value-container .ng-placeholder,
+.ng-select .ng-select-container .ng-value-container .ng-value .ng-value-label,
+.ng-select .ng-select-container .ng-value-container .ng-input input {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.ng-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-option .ng-option-label {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
 }
