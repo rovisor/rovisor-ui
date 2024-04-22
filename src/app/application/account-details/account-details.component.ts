@@ -36,7 +36,6 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  ngOnChanges() { }
 
   getAccountDetails() {
     this.subscription.add(this.accountDetailsService.getAccountDetails(this.accountId).subscribe((result: AccountDetail) => {

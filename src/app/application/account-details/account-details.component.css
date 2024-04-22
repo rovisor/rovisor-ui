@@ -1,27 +1,6 @@
-.account-margin {
-  margin-top: 34px;
-  margin-left: 72px;
-}
-
-.upload-button {
-  margin-top: 33px;
-}
 .box {
-  width: 199px;
-  height: 140px;
-  margin-top: 38px;
-  margin-left: 72px;
-  border: 1px solid rgba(26, 188, 155, 1);
-}
-.box-title {
-  color: #18b091;
-  margin-top: 16px;
-}
-.text-margin {
-  margin-left: 57px;
-  margin-top: 35px;
-}
-.textmuted-margin {
-  margin-left: 45px;
-  margin-top: 17px;
+  height: 12rem;
+  border: 1px solid #1ABC9B;
+	width: calc(33.333333% - 100px);
+	margin: 5px;
 }
