@@ -1,0 +1,30 @@
+.box {
+    height: 5rem;
+    width: calc(33.333333% - 20px);
+    margin: 10px;
+  }
+
+.has-search .form-control {
+    padding-left: 2.375rem;
+    background-color:#DBDEE7;
+    border-radius: 20px;
+    height: 2.80rem;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.80rem;
+    height: 2.80rem;
+    line-height: 2.80rem;
+    text-align: center;
+    pointer-events: none;
+}
+
+.upcoming-transaction {
+    background-color:#FEF7E5;
+    min-height: 250px;
+    height: 250px;
+    overflow-y: scroll;
+}
