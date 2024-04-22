@@ -26,23 +26,26 @@
   margin-top: 17px;
 }
 .week-margin{
-  margin-top: 72px;
+  /* margin-top: 72px; */
   margin-left: 406px;
 }
 .custom-column {
     width: 133px;   
-    border: 1px solid #ccc; 
+    border: 1px solid #212529; 
     
   }
 
   .tall-row {
     height: 115px; 
     margin-left: 72px;
+    
   }
   .small-row{
     height: 33px;
-    margin-left: 72px;
+    margin-left: 72px; 
   }
+  
+
   .day-label {
   margin-top: 9px;
   font-weight: bold;
@@ -54,4 +57,8 @@
 
 .total-value {
   margin-right: 7px;
+}
+.sbutton{
+  margin-top: 83px;
+  margin-left: 74px;
 }
