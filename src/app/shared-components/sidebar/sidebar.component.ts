@@ -12,6 +12,8 @@ import { SidebarItem } from '../state/shared.model';
 export class SidebarComponent implements OnInit {
   public sidebarItems: SidebarItem[] = [];
   private subscription: Subscription = new Subscription();
+  public year = new Date().getFullYear();
+  public version = "0.0.28";
 
   constructor(private router: Router, private sharedService: SharedService) {}
 

@@ -15,6 +15,7 @@ import { ConsolidateStatementComponent } from './consolidate-statement/consolida
 import {NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AccountMappingComponent } from './account-mapping/account-mapping.component';
 import { AddAccountComponent } from './add-account/add-account.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
 
 @NgModule({
@@ -26,6 +27,7 @@ import { AccountDetailsComponent } from './account-details/account-details.compo
     ConsolidateStatementComponent,
     AccountMappingComponent,
     AddAccountComponent,
+    DashboardComponent,
     AccountDetailsComponent
   ],
   imports: [

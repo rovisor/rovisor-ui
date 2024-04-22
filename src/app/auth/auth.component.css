@@ -12,10 +12,6 @@
   min-height: calc(100vh - 150px);
 }
 
-.privacy-policy-section {
-  height: 50px;
-}
-
 .footnote {
   color: #212529;  
 }

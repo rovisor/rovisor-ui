@@ -1,23 +1,11 @@
-<div class="container-fluid bd-gutter bd-layout bg-rov-primary" >
-    <div class="row">
-        <div class="col-12">
-            <app-header></app-header>
-        </div>
-    </div>
-    <div class="row">
-        <div class="d-flex p-0">
-            <app-sidebar></app-sidebar>
-            <div class="flex-grow-1 bg-white p-2">
-                <router-outlet>
-                    
-                </router-outlet>
+<div class="overflow-hidden container-fluid px-0">
+    <app-header></app-header>
+    <div class="d-flex">
+        <app-sidebar></app-sidebar>
+        <div class="flex-grow-1 bg-white p-2">
+            <div class="container p-4">
+                <router-outlet></router-outlet>
             </div>
         </div>
     </div>
 </div>
-<div>
-    
-</div>
-<footer class="p-2">
-    &copy; {{year}} Rovisor Moments. Rovisor&trade; and "Rovisor Moments"&trade; are trademarks of <a href="http://www.rovisor.in">rovisor.in</a>. v{{version}}
-</footer>
