@@ -45,7 +45,7 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
   };
 
 
-  constructor(private formBuilder: FormBuilder, private consolidateStatementService: ConsolidateStatementService,private activatedRoute: ActivatedRoute) {}
+  constructor(private formBuilder: FormBuilder, private consolidateStatementService: ConsolidateStatementService,private route: ActivatedRoute) {}
   
   ngOnInit() {
     this.statementFiltersForm = this.formBuilder.group({
@@ -56,24 +56,16 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
     });
     this.getAccounts();
     this.fetchStatements();
-    this.activatedRoute.queryParams.subscribe(params => {
-      const fromDate = params['fromDate'];
-      const toDate = params['toDate'];
-      const transactionType = params['transactionType'];
-      const category = params['category'];
-
-      // Set form values
-      this.statementFiltersForm.patchValue({
-          fromDate: fromDate,
-          toDate: toDate,
-          transactionType: transactionType,
-          category: category
-      });
-
-      // Enable search button
-      this.search();
-  });
+    
+    this.route.params.subscribe(params => {
+      const selectedFilters = this.route.snapshot.state.filters;
+      if (selectedFilters) {
+        this.statementFiltersForm.patchValue(selectedFilters); // Pre-fill form fields
+        this.search(); // Trigger search function
+      }
+    });
   }
+  
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

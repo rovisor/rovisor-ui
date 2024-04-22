@@ -3,8 +3,8 @@ import { NgbDateStruct, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UploadStatementComponent } from '../upload-statement/upload-statement.component';
 import { AddAccountComponent } from '../add-account/add-account.component';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { DateTime } from 'luxon';
-import { ActivatedRoute, Router } from '@angular/router';
+import { DateTime } from 'luxon';import { Router } from '@angular/router';
+;
 
 @Component({
   selector: 'app-dashboard',
@@ -13,8 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 
 export class DashboardComponent implements OnInit {
-  toDate: any;
-  fromDate: any;
+  
 navigateToConsolidatedStatement() {
 throw new Error('Method not implemented.');
 }
@@ -35,21 +34,26 @@ throw new Error('Method not implemented.');
   maxDate = { year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() };
 
   public statementFiltersForm!: FormGroup;
-  constructor(private modalService: NgbModal, private formBuilder: FormBuilder,private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private modalService: NgbModal, private formBuilder: FormBuilder,private router: Router) { }
+
+  openConsolidatedStatement() {
+    // Assuming selectedFilters is an object containing selected filter values
+    const selectedFilters = {
+      fromDate: this.selectedFromDate,
+      toDate: this.selectedToDate,
+      transactionType: this.selectedTransactionType,
+      category: this.selectedCategory
+    };
+  
+    // Pass selected filter values as route parameters
+    this.router.navigate(['/consolidated-statement'], { state: { filters: selectedFilters } });
+  }
+
   ngOnInit(): void {
     fromDate:[null]
     
   }
-  viewConsolidatedStatement() {
-   
-    const queryParams = {
-      fromDate: this.fromDate,
-      toDate: this.toDate,
-      transactionType: this.transactionType,
-      category: this.category
-    };
-    this.router.navigate(['/consolidate-statement'], { queryParams });
-  }
+ 
 
   updateMinToDate(selectedDate: NgbDateStruct | null) {
     if (selectedDate) {
