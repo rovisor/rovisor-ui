@@ -1,0 +1,8 @@
+.navbar {
+    height: 50px;
+}
+
+.navbar .navbar-brand .logo {
+    height: 50px;
+    width: 225px;
+}
