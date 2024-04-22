@@ -4,6 +4,7 @@ import { UploadStatementComponent } from '../upload-statement/upload-statement.c
 import { AddAccountComponent } from '../add-account/add-account.component';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { DateTime } from 'luxon';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,6 +13,8 @@ import { DateTime } from 'luxon';
 })
 
 export class DashboardComponent implements OnInit {
+  toDate: any;
+  fromDate: any;
 navigateToConsolidatedStatement() {
 throw new Error('Method not implemented.');
 }
@@ -32,10 +35,20 @@ throw new Error('Method not implemented.');
   maxDate = { year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() };
 
   public statementFiltersForm!: FormGroup;
-  constructor(private modalService: NgbModal, private formBuilder: FormBuilder,) { }
+  constructor(private modalService: NgbModal, private formBuilder: FormBuilder,private router: Router, private activatedRoute: ActivatedRoute) { }
   ngOnInit(): void {
     fromDate:[null]
     
+  }
+  viewConsolidatedStatement() {
+   
+    const queryParams = {
+      fromDate: this.fromDate,
+      toDate: this.toDate,
+      transactionType: this.transactionType,
+      category: this.category
+    };
+    this.router.navigate(['/consolidate-statement'], { queryParams });
   }
 
   updateMinToDate(selectedDate: NgbDateStruct | null) {

@@ -4,6 +4,7 @@ import { ConsolidateStatementService } from './state/consolidate-statement.servi
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { DateTime } from 'luxon';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -44,7 +45,7 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
   };
 
 
-  constructor(private formBuilder: FormBuilder, private consolidateStatementService: ConsolidateStatementService) {}
+  constructor(private formBuilder: FormBuilder, private consolidateStatementService: ConsolidateStatementService,private activatedRoute: ActivatedRoute) {}
   
   ngOnInit() {
     this.statementFiltersForm = this.formBuilder.group({
@@ -55,6 +56,23 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
     });
     this.getAccounts();
     this.fetchStatements();
+    this.activatedRoute.queryParams.subscribe(params => {
+      const fromDate = params['fromDate'];
+      const toDate = params['toDate'];
+      const transactionType = params['transactionType'];
+      const category = params['category'];
+
+      // Set form values
+      this.statementFiltersForm.patchValue({
+          fromDate: fromDate,
+          toDate: toDate,
+          transactionType: transactionType,
+          category: category
+      });
+
+      // Enable search button
+      this.search();
+  });
   }
 
   ngOnDestroy(): void {
