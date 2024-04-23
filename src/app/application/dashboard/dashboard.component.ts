@@ -62,6 +62,6 @@ export class DashboardComponent implements OnInit {
     };
   
     // Pass selected filter values as route parameters
-    this.router.navigate(['/consolidated-statement'], { state: { filters: selectedFilters } });
+    this.router.navigate(['/consolidate-statement'], { state: { filters: selectedFilters } });
   }
 }
