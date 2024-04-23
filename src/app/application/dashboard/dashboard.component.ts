@@ -13,6 +13,9 @@ import { DateTime } from 'luxon';import { Router } from '@angular/router';
 })
 
 export class DashboardComponent implements OnInit {
+openConsolidatedStatement() {
+throw new Error('Method not implemented.');
+}
   
 navigateToConsolidatedStatement() {
 throw new Error('Method not implemented.');
@@ -36,18 +39,7 @@ throw new Error('Method not implemented.');
   public statementFiltersForm!: FormGroup;
   constructor(private modalService: NgbModal, private formBuilder: FormBuilder,private router: Router) { }
 
-  openConsolidatedStatement() {
-    // Assuming selectedFilters is an object containing selected filter values
-    const selectedFilters = {
-      fromDate: this.selectedFromDate,
-      toDate: this.selectedToDate,
-      transactionType: this.selectedTransactionType,
-      category: this.selectedCategory
-    };
   
-    // Pass selected filter values as route parameters
-    this.router.navigate(['/consolidated-statement'], { state: { filters: selectedFilters } });
-  }
 
   ngOnInit(): void {
     fromDate:[null]

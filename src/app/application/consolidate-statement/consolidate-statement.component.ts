@@ -57,13 +57,6 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
     this.getAccounts();
     this.fetchStatements();
     
-    this.route.params.subscribe(params => {
-      const selectedFilters = this.route.snapshot.state.filters;
-      if (selectedFilters) {
-        this.statementFiltersForm.patchValue(selectedFilters); // Pre-fill form fields
-        this.search(); // Trigger search function
-      }
-    });
   }
   
 
