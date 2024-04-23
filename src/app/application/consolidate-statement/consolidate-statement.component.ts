@@ -52,19 +52,15 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
       account:[null],
       transactionType:[null]
     });
-    this.route.queryParams.subscribe(params => {
-      if (params) {
-        this.statementFiltersForm.patchValue({
-          fromDate: params['fromDate'],
-          toDate: params['toDate'],
-          account: params['account'],
-          transactionType: params['transactionType']
-        });
-  
-        // Fetch statements based on the provided filters
-        this.fetchStatements();
-      }
-    });
+    const filters = history.state.filters;
+    if (filters) {
+      this.statementFiltersForm.patchValue({
+        fromDate: filters.fromDate,
+        toDate: filters.toDate,
+        account: filters.account,
+        transactionType: filters.transactionType
+      });
+    }
     this.getAccounts();
     this.fetchStatements();
     

@@ -57,22 +57,11 @@ export class DashboardComponent implements OnInit {
       fromDate: this.statementFiltersForm.value?.fromDate,
       toDate: this.statementFiltersForm.value?.toDate,
       transactionType: this.statementFiltersForm.value?.transactionType,
-      category: this.statementFiltersForm.value?.category
+      account: this.statementFiltersForm.value?.account
     };
+
   
-    // Constructing query parameters string
-    let queryParams = '';
-    for (const key in selectedFilters) {
-      if (selectedFilters.hasOwnProperty(key) && selectedFilters[key]) {
-        queryParams += `${key}=${selectedFilters[key]}&`;
-      }
-    }
-    // Remove trailing '&' if exists
-    if (queryParams.length > 0) {
-      queryParams = queryParams.slice(0, -1);
-    }
-  
-    // Navigate to consolidated statement component with query parameters
-    this.router.navigate(['/consolidated-statement'], { queryParams });
-  }
+    this.router.navigate(['/consolidated-statement'], { state: { filters: selectedFilters } });
 }
+  }
+
