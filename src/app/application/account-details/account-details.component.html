@@ -1,14 +1,31 @@
-<div class="container">
-    <div class="row m-4">
-        <div class="col-9">
-            <h1>{{accountInfo.AccountName}}</h1>
-        </div> 
-        <div class="col-3 text-end">
-            <button class="btn btn-primary btn-lg" (click)="openUploadModal()">
-                <i class="bi bi-plus"></i>
-                Upload Statement
-            </button>
-        </div>
-    </div>
-
+<div class="row">
+  <div class="col-9">
+    <h1 class="text-regular">{{accountInfo.AccountName}}</h1>
+  </div>
+  <div class="col-3 text-end">
+    <button class="btn btn-primary btn-lg upload-button" (click)="openUploadModal()">
+      <i class="bi bi-plus"></i>
+      Upload Statement
+    </button>
+  </div>
+</div>
+<div class="row justify-content-center">
+  <div class="col-3 box text-center align-content-center">
+      <h4 class="text-green">Opening Balance</h4>
+      <p class="text-secondary d-block text-regular mt-4">₹6654.00</p>
+  </div>
+  <div class="col-3 box text-center align-content-center">
+      <h4 class="text-green">Credit Amount</h4>
+      <p class="text-secondary d-block text-regular mt-4">₹4314.00</p>
+  </div>
+  <div class="col-3 box text-center align-content-center">
+      <h4 class="text-green align-text-middle">Debit Amount</h4>
+      <p class="text-secondary d-block text-regular mt-4">₹5582.00</p>
+  </div>
+  <div class="col-3 box text-center align-content-center position-relative">
+      <h4 class="text-green">Closing Balance</h4>
+      <p class="text-secondary d-block text-regular mt-4">₹7922.00</p>
+      <p class="d-block text-secondary text-muted position-absolute bottom-0 w-100 text-center">
+        <span class="text-center">As on 22 Oct 2023</span></p>
+  </div>
 </div>

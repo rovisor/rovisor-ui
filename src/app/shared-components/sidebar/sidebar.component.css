@@ -1,7 +1,7 @@
 .full-screen{
-    min-height: calc(100vh - 60px);
+    min-height: calc(100vh - 70px);
     height:100%;
-    width:200px;
+    width:250px;
     border-right: 1px solid #29da73;
 }
 

@@ -27,8 +27,6 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
   
   ];
   model: any;
-  selectedItem: any;
-  selecteditem: any;
   minToDate: any;
   maxDate={year:new Date().getFullYear(),month: new Date().getMonth()+1, day: new Date().getDate()};
   public accountList = [];

@@ -8,6 +8,6 @@ export class AccountDetailsService {
     constructor(private httpClient: HttpClient) {}
 
     getAccountDetails(accountId: string) {
-        return this.httpClient.get(`${environment.apiUrl}/userAccount/${accountId}`).pipe(map((response: any) => {return response}));
+        return this.httpClient.get(`${environment.apiUrl}/userAccount/getAccount/${accountId}`).pipe(map((response: any) => {return response}));
     }
 }
