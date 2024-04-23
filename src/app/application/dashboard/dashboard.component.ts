@@ -53,7 +53,6 @@ export class DashboardComponent implements OnInit {
     this.modalService.open(AddAccountComponent, { centered: true, size: 'md', });
   }
   openConsolidatedStatement() {
-    // Assuming selectedFilters is an object containing selected filter values
     const selectedFilters = {
       fromDate: this.statementFiltersForm.value?.fromDate,
       toDate: this.statementFiltersForm.value?.toDate,
@@ -61,7 +60,19 @@ export class DashboardComponent implements OnInit {
       category: this.statementFiltersForm.value?.category
     };
   
-    // Pass selected filter values as route parameters
-    this.router.navigate(['/consolidate-statement'], { state: { filters: selectedFilters } });
+    // Constructing query parameters string
+    let queryParams = '';
+    for (const key in selectedFilters) {
+      if (selectedFilters.hasOwnProperty(key) && selectedFilters[key]) {
+        queryParams += `${key}=${selectedFilters[key]}&`;
+      }
+    }
+    // Remove trailing '&' if exists
+    if (queryParams.length > 0) {
+      queryParams = queryParams.slice(0, -1);
+    }
+  
+    // Navigate to consolidated statement component with query parameters
+    this.router.navigate(['/consolidated-statement'], { queryParams });
   }
 }
