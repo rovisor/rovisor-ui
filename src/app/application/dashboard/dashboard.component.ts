@@ -53,17 +53,14 @@ export class DashboardComponent implements OnInit {
     this.modalService.open(AddAccountComponent, { centered: true, size: 'md', });
   }
   openConsolidatedStatement() {
-    const selectedFilters = {
+    const queryParams = {
       fromDate: this.statementFiltersForm.value?.fromDate,
       toDate: this.statementFiltersForm.value?.toDate,
       transactionType: this.statementFiltersForm.value?.transactionType,
       category: this.statementFiltersForm.value?.category
     };
-    const queryParams: NavigationExtras = {
-      queryParams: selectedFilters
-    };
   
-    this.router.navigate(['/consolidate-statement'], { state: { filters: selectedFilters } });
+    this.router.navigate(['/consolidated-statement'], { queryParams });
 }
   }
 
