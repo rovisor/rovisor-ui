@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddAccountComponent } from '../add-account/add-account.component';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 ;
 
 @Component({
@@ -57,11 +57,13 @@ export class DashboardComponent implements OnInit {
       fromDate: this.statementFiltersForm.value?.fromDate,
       toDate: this.statementFiltersForm.value?.toDate,
       transactionType: this.statementFiltersForm.value?.transactionType,
-      account: this.statementFiltersForm.value?.account
+      category: this.statementFiltersForm.value?.category
     };
-
+    const queryParams: NavigationExtras = {
+      queryParams: selectedFilters
+    };
   
-    this.router.navigate(['/consolidated-statement'], { state: { filters: selectedFilters } });
+    this.router.navigate(['/consolidate-statement'], { state: { filters: selectedFilters } });
 }
   }
 

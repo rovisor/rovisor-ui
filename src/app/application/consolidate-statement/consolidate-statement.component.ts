@@ -53,14 +53,13 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
       transactionType:[null]
     });
     const filters = history.state.filters;
-    if (filters) {
-      this.statementFiltersForm.patchValue({
-        fromDate: filters.fromDate,
-        toDate: filters.toDate,
-        account: filters.account,
-        transactionType: filters.transactionType
-      });
-    }
+    this.statementFiltersForm.patchValue({
+      fromDate: filters?.fromDate || null,
+      toDate: filters?.toDate || null,
+      transactionType: filters?.transactionType || null,
+      account: filters?.account || null
+    });
+    
     this.getAccounts();
     this.fetchStatements();
     
