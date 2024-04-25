@@ -60,7 +60,7 @@ export class DashboardComponent implements OnInit {
       category: this.statementFiltersForm.value?.category
     };
     
-    this.router.navigate(['/consolidated-statement'], { queryParams: selectedFilters });
+    this.router.navigate(['app/consolidate-statement'], { queryParams: selectedFilters });
 }
   }
 
