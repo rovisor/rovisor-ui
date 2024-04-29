@@ -59,8 +59,11 @@ export class DashboardComponent implements OnInit {
       transactionType: this.statementFiltersForm.value?.transactionType,
       category: this.statementFiltersForm.value?.category
     };
+    const navigationExtras: NavigationExtras = {
+      queryParams: selectedFilters
+    };
     
     this.router.navigate(['app/consolidate-statement'], { queryParams: selectedFilters });
-}
+  }  
   }
 
