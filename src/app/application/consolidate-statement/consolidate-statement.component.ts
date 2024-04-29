@@ -129,7 +129,7 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
 
   search() {
     this.fetchStatements();
-  }
+  }  
 
   reset() {
     this.statementFiltersForm.reset();

@@ -13,7 +13,6 @@ import { NavigationExtras, Router } from '@angular/router';
 
 export class DashboardComponent implements OnInit {
   public statementFiltersForm!: FormGroup;
-  public searchForm!: FormGroup;
   public minToDate: any;
   public maxDate = { year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() };
   public transactionTypeList = [
@@ -36,10 +35,10 @@ export class DashboardComponent implements OnInit {
     this.statementFiltersForm = this.formBuilder.group({
       fromDate: [null],
       toDate: [null],
-      category:[null],
-      transactionType:[null]
+      category: [null], 
+      transactionType: [null]
     });
-    this.searchForm = this.formBuilder.group({
+    this.statementFiltersForm = this.formBuilder.group({
       search: [null]
     })
   }
