@@ -1,4 +1,18 @@
 .quote-box {
-    height: 60vh;
-    border-radius: 0px 10px 10px 0px;
+  height: calc(100vh - 200px);
+  border-radius: 0px 10px 10px 0px;
+  
 }
+
+.logo-section {
+  height: 100px;
+}
+
+.auth-section {
+  min-height: calc(100vh - 150px);
+}
+
+.footnote {
+  color: #212529;  
+}
+

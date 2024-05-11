@@ -1,26 +1,33 @@
-<div class="container-fluid h-100">
+<div class="container-fluid">
     <div class="row h-100">
-        <div class="row">
-            <div class="col-4 bg-green ps-5">
+        <div class="col-md-4 col-lg-4 col-xl-4 col-sm-12 col-xs-12 bg-green pe-0 ps-1">
+            <div class="logo-section">
                 <img src="assets/images/logo.png" alt="logo" class="logo">
             </div>
-        </div>
-        <div class="row">
-
-            <div class="col-sm-8 col-md-4 bg-green pe-0 ps-5">
+            <div class="auth-section ps-4 ">
                 <router-outlet></router-outlet>
             </div>
-            <div class="col-sm-4 col-md-8 ps-0 pe-5">
-                <div class="d-flex align-items-center justify-content-start">
-                    <div class="card bg-green text-white quote-box">
-                        <div class="card-body">
-                            <h2 class="text-center mb-4 text-bold">MOMENTS</h2>
-                            <h3 class="d-flex justify-content-center"> "Formal education will make you a living; self-education will make you a fortune." </h3>
-                            <h3 class="d-flex justify-content-end"> -- Jim Rohn, Entrepreneur</h3>
+            <div class="privacy-policy-section d-flex align-items-end">
+                <span class="text-light text-foot-note">Privacy Policy Terms and Conditions<br>
+                    © rovisor, 2023. All rights reserved. v0.0.0123</span>
+            </div>
+        </div>
+        <div class="col-md-8 col-lg-8 col-xl-8 d-none d-md-flex d-lg-flex d-xl-flex ps-0 pe-1
+        bg-white align-items-center justify-content-start">
+            <div class="card bg-green quote-box w-100 me-4">
+                <div class="card-body position-relative">
+                    <p class="text-center mb-4 fw-bold text-page-title text-white ">MOMENTS</p>
+                    <h1 class="justify-content-center text-white fw-normal"> "Formal education will make you a living;
+                        self-education will make you a fortune." </h1>
+                    <h1 class="d-flex justify-content-end text-white fw-normal"> - Jim Rohn, Entrepreneur</h1>
+                    <div class="w-100 position-absolute bottom-0 mb-3">
+                        <div class="d-flex justify-content-center">
+                            <span class="text-light text-menu-item">Rovisor Moments provides you the right amount of financial
+                                education while working as an AI accountant for you.</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </div>
+  </div>
 </div>

@@ -1,5 +1,5 @@
-.Signup-box {
-  height: 60vh;
+.signup-box {
+  height: calc(100vh - 200px);
   border-radius: 10px 0px 0px 10px;
 }
 
@@ -10,9 +10,23 @@
   cursor: pointer;
   background: transparent;
   border: none;
-  
 }
 
 .no-underline {
   text-decoration: none;
+}
+
+
+.text-green {
+  color: #18b091 ;
+  font-size: 48px ;
+  font-weight: 800 
+}
+
+.text-blue {
+  color: #007bff 
+}
+
+.already-have-account {
+  font-size: 16px 
 }

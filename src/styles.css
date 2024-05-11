@@ -3,27 +3,103 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 @import '~ngx-toastr/toastr';
 
-
-html, body {
-    font-size: 0.825rem;
+html {
     height: 100%;
+    font-size: 0.825rem;
 }
+
+body { 
+    margin: 0; 
+    height: 100%;
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    font-size: 0.825rem;
+}
+
 .footer {
     position: absolute;
     bottom: 0;
 }
 
+.rounded {
+    border-radius: 10px;
+}
+
 .bg-green {
-    background-color: #1BBC9B;
+    background-color: #1ABC9B;
+}
+
+h1, .h1 {
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 48px;
+}
+
+h2, .h2 {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 38.4px;
+}
+
+h6, .h6 {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19.2px;
+}
+
+.text-secondary {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.2px;
+    
+}
+
+.text-positive {
+    color: #28A745;
+}
+
+.text-regular {
+    color: #212529 !important; 
 }
 
 .text-green {
     color: #1BBC9B;
 }
 
+.text-muted {
+    color: #6C757D;
+}
+
+.text-link {
+    color: #007BFF;
+}
+
+.text-page-title{
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 57.6px;
+}
+
+.text-page-sub-title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 28.8px;
+}
+
+.text-menu-item {
+    font-size: 14.4px;
+    font-weight: 400;
+    line-height: 17.28px;
+}
+
+.text-foot-note {
+    font-size: 12.8px;
+    font-weight: 400;
+    line-height: 15.36px;
+}
+
 .logo {
-    height: 50px;
-    width: 100px;
+    height: 54px;
+    width: 225px;
 }
 
 .btn-green {
@@ -38,12 +114,24 @@ html, body {
     color: #fff;
 }
 
-.bg-rov-primary{
-    background-color: #154f43;
+.bg-brand-selected {
+    background-color:  #16A386;
 }
 
-.bg-rov-secondary{
-    background-color: rgb(233, 236, 228);
+.bg-rov-primary {
+    background-color:  #1ABC9B;
+}
+
+.bg-rov-secondary {
+    background-color: #E9ECE4;
+}
+
+.privacy-policy-section {
+    height: 70px;
+}
+
+.privacy-policy-section a {
+    color: #000;
 }
 
 .btn-primary {
@@ -54,7 +142,6 @@ html, body {
 .btn-primary:hover {
     background-image: linear-gradient(rgb(0 0 0/20%) 0 0);
 }
-
 
 .btn-outline-primary {
     color: #16a085 !important;
@@ -67,5 +154,15 @@ html, body {
     border-color: #16a085 !important;
     color: #fff !important;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+*::-webkit-scrollbar {
+	width: 7px;
+}
+
+*::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color:#464646;
+}

@@ -1,38 +1,36 @@
-<div class="d-flex align-items-center justify-content-end">
-    <div class="card login-box w-100">
-        <div class="card-body">
-            <h4 class="text-green text-center mb-5">Login</h4>
-            <form [formGroup]="loginForm">
-                <div class="form-floating mb-4">
-                    <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email">
-                    <label for="email">Email address</label>
-                  </div>
-                  <div class="form-floating mb-2">
-                    <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="password" 
-                           formControlName="password" placeholder="***"/>
-                    <button class="password-toggle" id="toggleButton" (click)="togglePassword()">
-                      <i class="bi bi-eye fs-5" *ngIf="!showPassword"></i>
-                      <i class="bi bi-eye-slash fs-5" *ngIf="showPassword"></i>
-                    </button>
-                    <label for="password">Password</label>
-                  </div>
-                  <div class="row mb-4">
-                    <div class="col-12 text-end">
-                        <a routerLink="../forgot-password" class="text-green">Forgot Password?</a>
+<div class="card login-box w-100">
+    <div class="card-body">
+        <h4 class="text-page-title text-center mb-5 text-green">Login</h4>
+        <form [formGroup]="loginForm">
+            <div class="form-floating mb-4">
+                <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email">
+                <label for="email">Email address</label>
+                </div>
+                <div class="form-floating mb-2">
+                <input [type]="showPassword ? 'text' : 'password'" class="form-control" id="password" 
+                        formControlName="password" placeholder="***"/>
+                <span class="password-toggle" id="toggleButton" (click)="togglePassword()">
+                    <i class="bi bi-eye fs-5" *ngIf="!showPassword"></i>
+                    <i class="bi bi-eye-slash fs-5" *ngIf="showPassword"></i>
+                </span>
+                <label for="password">Password</label>
+                </div>
+                <div class="row mb-4">
+                <div class="col-12 text-end">
+                    <a routerLink="/password-help/forgot-password" class="text-muted text-decoration-none h6">Forgot Password?</a>
+                </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-primary btn-green" [disabled]="!loginForm.valid"
+                        (click)="onSubmit()">Login</button>
                     </div>
-                  </div>
-                  <div class="row mb-4">
-                      <div class="col-12 text-center">
-                          <button type="submit" class="btn btn-primary btn-green" [disabled]="!loginForm.valid"
-                          (click)="onSubmit()">Login</button>
-                      </div>
-                  </div>
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <a routerLink="../sign-up" class="text-green">Create a new account</a>
-                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <a routerLink="../sign-up" class="text-link text-decoration-none h6">Create a new account</a>
                     </div>
-            </form>
-        </div>
+                </div>
+        </form>
     </div>
 </div>

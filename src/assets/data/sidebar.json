@@ -8,6 +8,6 @@
         "expanded": false, 
         "children": []
     },
-    { "label": "Consolidate Statement", "route": "/app/consolidate-statement", "icon": "bi bi-files","expanded": false },
+    { "label": "Consolidated Statement", "route": "/app/consolidate-statement", "icon": "bi bi-files","expanded": false },
     { "label": "Settings", "route": "/app/settings", "icon": "bi bi-gear","expanded": false }
   ]

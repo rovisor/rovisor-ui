@@ -13,6 +13,6 @@ export class SharedService {
   }
   
   getAccounts() {
-    return this.http.get(`${environment.apiUrl}/userAccount`).pipe(map((response: any) => {return response}));
+    return this.http.get(`${environment.apiUrl}/userAccount/getAccountList`).pipe(map((response: any) => {return response}));
   }
 }
