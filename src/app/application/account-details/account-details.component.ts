@@ -17,6 +17,10 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
   private accountId = '';
   public accountInfo: AccountDetail = createAccountDetail(null);
   public accountName: string = '';
+  public weekStartDate: Date = new Date(); 
+  public weekEndDate: Date = new Date(); 
+  public isPreviousWeekAvailable: boolean = false;
+  public isNextWeekAvailable: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,13 +33,16 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
     this.activatedRoute.params.subscribe((routeParams: any) => {
       this.accountId = routeParams.id || '';
       this.getAccountDetails();
+
     });
+
+    this.parseWeekRange("This Week (16-22 Oct 2023)");
+
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
 
   getAccountDetails() {
     this.subscription.add(this.accountDetailsService.getAccountDetails(this.accountId).subscribe((result: AccountDetail) => {
@@ -46,5 +53,49 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
 
   openUploadModal() {
     this.modalService.open(UploadStatementComponent, { centered: true, size: 'lg' });
+  }
+
+  onPreviousWeek() {
+   
+    const previousWeekStartDate = new Date(this.weekStartDate);
+    previousWeekStartDate.setDate(previousWeekStartDate.getDate() - 7);
+    const previousWeekEndDate = new Date(this.weekEndDate);
+    previousWeekEndDate.setDate(previousWeekEndDate.getDate() - 7);
+
+    
+    this.isPreviousWeekAvailable = true;
+
+   
+    this.weekStartDate = previousWeekStartDate;
+    this.weekEndDate = previousWeekEndDate;
+
+   
+    this.getAccountDetails();
+  }
+
+  onNextWeek() {
+   
+    const nextWeekStartDate = new Date(this.weekStartDate);
+    nextWeekStartDate.setDate(nextWeekStartDate.getDate() + 7);
+    const nextWeekEndDate = new Date(this.weekEndDate);
+    nextWeekEndDate.setDate(nextWeekEndDate.getDate() + 7);
+
+   
+    this.isNextWeekAvailable = true;
+
+   
+    this.weekStartDate = nextWeekStartDate;
+    this.weekEndDate = nextWeekEndDate;
+
+   
+    this.getAccountDetails();
+  }
+
+  parseWeekRange(weekRange: string) {
+    const dates = weekRange.match(/\d{2}-\d{2}-\d{4}/g);
+    if (dates && dates.length === 2) {
+      this.weekStartDate = new Date(dates[0]);
+      this.weekEndDate = new Date(dates[1]);
+    }
   }
 }

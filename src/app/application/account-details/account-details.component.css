@@ -1,11 +1,28 @@
+.account-margin {
+  margin-top: 34px;
+  margin-left: 72px;
+}
+
 .upload-button {
   margin-top: 33px;
+}
+.oml{
+  margin-left: 72px;
+}
+.cml{
+  margin-left: 37px;
+}
+.dml{
+  margin-left: 49px;
+}
+.clml{
+  margin-left: 49px;
 }
 .box {
   width: 199px;
   height: 140px;
   margin-top: 38px;
-  margin-left: 72px;
+  /* margin-left: 72px; */
   border: 1px solid rgba(26, 188, 155, 1);
 }
 .box-title {
@@ -25,18 +42,18 @@
   margin-left: 406px;
 }
 .custom-column {
-    width: 133px;   
+    width: 140.5px;   
     border: 1px solid #212529; 
     
   }
   .tall-row {
     height: 115px; 
-    margin-left: 72px;
+    margin-left: 100px;
     
   }
   .small-row{
     height: 33px;
-    margin-left: 72px; 
+    margin-left: 100px; 
   }
   
   .day-label {
@@ -52,4 +69,17 @@
 .sbutton{
   margin-top: 83px;
   margin-left: 74px;
+}
+.button-container {
+  position: relative;
+}
+
+#top-left-button {
+  position: absolute;
+  margin-left: 90px;
+}
+
+#top-right-button {
+  position: absolute;
+  right:25px;
 }
