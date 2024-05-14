@@ -1,23 +1,28 @@
-.account-margin {
+.account-name {
   margin-top: 34px;
   margin-left: 72px;
 }
 
-.upload-button {
+.upload-btn {
   margin-top: 33px;
 }
-.oml{
+
+.opening-balance-box {
   margin-left: 72px;
 }
-.cml{
+
+.credit-box {
   margin-left: 37px;
 }
-.dml{
+
+.debit-box {
   margin-left: 49px;
 }
-.clml{
+
+.closing-balance-box {
   margin-left: 49px;
 }
+
 .box {
   width: 199px;
   height: 140px;
@@ -66,10 +71,7 @@
 .total-value {
   margin-right: 7px;
 }
-.sbutton{
-  margin-top: 83px;
-  margin-left: 74px;
-}
+
 .button-container {
   position: relative;
 }

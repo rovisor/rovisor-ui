@@ -13,25 +13,25 @@
 
   <div class="row m-4">
     <div class="col-3">
-     <div class="box oml">
+     <div class="box opening-balance-box">
         <h4 class="box-title roboto-font text-center">Opening Balance</h4>
         <span class="text-secondary text-margin block-display text-regular roboto-font ">₹6654.00</span>
       </div>
     </div>
     <div class="col-3">
-      <div class="box cml">
+      <div class="box credit-box">
         <h4 class="box-title roboto-font text-center">Credit Amount</h4>
         <span class="text-secondary text-margin block-display text-regular roboto-font ">₹4314.00</span>
   </div>
   </div>
     <div class="col-3">
-      <div class="box dml">
+      <div class="box debit-box">
         <h4 class="box-title roboto-font text-center">Debit Amount</h4>
         <span class="text-secondary text-margin block-display text-regular roboto-font ">₹5582.00</span>
       </div>
     </div>
     <div class="col-3">
-      <div class="box clml">
+      <div class="box closing-balance-box">
         <h4 class="box-title roboto-font text-center">Closing Balance</h4>
         <span class="text-secondary text-margin block-display text-regular roboto-font ">₹7922.00</span>
         <span class="textmuted-margin block-display text-muted ">As on 22 Oct 2023</span>
@@ -41,7 +41,7 @@
 <div >
     <!-- <button class="sbutton" onclick="handleButtonClick()">Yo</button> -->
    <div class="button-container">
-  <button id="top-left-button" class="btn"(click)="onPreviousWeek()"[disabled]="!isPreviousWeekAvailable"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <button id="top-left-button" class="btn"(click)="onPreviousWeek()"[disabled]="isPreviousWeekAvailable"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_236_14870)">
 <path d="M16 14.0016C16 14.532 15.7893 15.0407 15.4142 15.4158C15.0391 15.7909 14.5304 16.0016 14 16.0016H2C1.46957 16.0016 0.960859 15.7909 0.585786 15.4158C0.210714 15.0407 0 14.532 0 14.0016V2.00159C0 1.47115 0.210714 0.962446 0.585786 0.587373C0.960859 0.212301 1.46957 0.00158691 2 0.00158691L14 0.00158691C14.5304 0.00158691 15.0391 0.212301 15.4142 0.587373C15.7893 0.962446 16 1.47115 16 2.00159V14.0016ZM11.5 7.50159H5.707L7.854 5.35559C7.94789 5.2617 8.00063 5.13436 8.00063 5.00159C8.00063 4.86881 7.94789 4.74147 7.854 4.64759C7.76011 4.5537 7.63278 4.50096 7.5 4.50096C7.36722 4.50096 7.23989 4.5537 7.146 4.64759L4.146 7.64759C4.09944 7.69403 4.06249 7.74921 4.03729 7.80995C4.01208 7.8707 3.99911 7.93582 3.99911 8.00159C3.99911 8.06735 4.01208 8.13247 4.03729 8.19322C4.06249 8.25397 4.09944 8.30914 4.146 8.35559L7.146 11.3556C7.23989 11.4495 7.36722 11.5022 7.5 11.5022C7.63278 11.5022 7.76011 11.4495 7.854 11.3556C7.94789 11.2617 8.00063 11.1344 8.00063 11.0016C8.00063 10.8688 7.94789 10.7415 7.854 10.6476L5.707 8.50159H11.5C11.6326 8.50159 11.7598 8.44891 11.8536 8.35514C11.9473 8.26137 12 8.1342 12 8.00159C12 7.86898 11.9473 7.7418 11.8536 7.64803C11.7598 7.55427 11.6326 7.50159 11.5 7.50159Z" fill="#212529"/>
 </g>
@@ -51,7 +51,7 @@
 </clipPath>
 </defs>
 </svg></button>
-  <button id="top-right-button" class="btn"(click)="onNextWeek()"[disabled]="!isNextWeekAvailable"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <button id="top-right-button" class="btn"(click)="onNextWeek()"[disabled]="isNextWeekAvailable"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_236_14851)">
 <path d="M0 14.0016C0 14.532 0.210714 15.0407 0.585786 15.4158C0.960859 15.7909 1.46957 16.0016 2 16.0016H14C14.5304 16.0016 15.0391 15.7909 15.4142 15.4158C15.7893 15.0407 16 14.532 16 14.0016V2.00159C16 1.47115 15.7893 0.962446 15.4142 0.587373C15.0391 0.212301 14.5304 0.00158691 14 0.00158691L2 0.00158691C1.46957 0.00158691 0.960859 0.212301 0.585786 0.587373C0.210714 0.962446 0 1.47115 0 2.00159L0 14.0016ZM4.5 7.50159H10.293L8.146 5.35559C8.05211 5.2617 7.99937 5.13436 7.99937 5.00159C7.99937 4.86881 8.05211 4.74147 8.146 4.64759C8.23989 4.5537 8.36722 4.50096 8.5 4.50096C8.63278 4.50096 8.76011 4.5537 8.854 4.64759L11.854 7.64759C11.9006 7.69403 11.9375 7.74921 11.9627 7.80995C11.9879 7.8707 12.0009 7.93582 12.0009 8.00159C12.0009 8.06735 11.9879 8.13247 11.9627 8.19322C11.9375 8.25397 11.9006 8.30914 11.854 8.35559L8.854 11.3556C8.76011 11.4495 8.63278 11.5022 8.5 11.5022C8.36722 11.5022 8.23989 11.4495 8.146 11.3556C8.05211 11.2617 7.99937 11.1344 7.99937 11.0016C7.99937 10.8688 8.05211 10.7415 8.146 10.6476L10.293 8.50159H4.5C4.36739 8.50159 4.24021 8.44891 4.14645 8.35514C4.05268 8.26137 4 8.1342 4 8.00159C4 7.86898 4.05268 7.7418 4.14645 7.64803C4.24021 7.55427 4.36739 7.50159 4.5 7.50159Z" fill="#212529"/>
 </g>
@@ -64,7 +64,7 @@
 </div>
 
 <div class="container">
-  </div>
+  </div >
 
     <h4 class="text-regular week-margin roboto-font">This Week (16-22 Oct 2023)</h4>
   </div>
@@ -191,9 +191,11 @@
     </div>
   </div>
 </div>
+
+
 <div class="container" *ngIf="isPreviousWeekAvailable">
   <div class="row m-4">
-    <h4 class="text-regular week-margin roboto-font">Previous Week (9-15 Oct 2023)</h4>
+    <h4 class="text-regular week-margin roboto-font">This Week (9-15 Oct 2023)</h4>
   </div>
   <div class="row small-row">
     <div class="custom-column">

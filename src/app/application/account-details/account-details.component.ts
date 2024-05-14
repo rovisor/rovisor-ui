@@ -54,41 +54,58 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
   openUploadModal() {
     this.modalService.open(UploadStatementComponent, { centered: true, size: 'lg' });
   }
-
   onPreviousWeek() {
-   
+    // Calculate the start and end dates of the previous week
     const previousWeekStartDate = new Date(this.weekStartDate);
     previousWeekStartDate.setDate(previousWeekStartDate.getDate() - 7);
     const previousWeekEndDate = new Date(this.weekEndDate);
     previousWeekEndDate.setDate(previousWeekEndDate.getDate() - 7);
 
-    
-    this.isPreviousWeekAvailable = true;
+    // Optionally, check if data for the previous week is available
+    // You can replace this with your actual logic to check data availability
+    // For now, let's assume it's always available
+    const isPreviousWeekAvailable = true;
 
-   
-    this.weekStartDate = previousWeekStartDate;
-    this.weekEndDate = previousWeekEndDate;
+    if (isPreviousWeekAvailable) {
+      // Enable the left button since previous week data is available
+      this.isPreviousWeekAvailable = true;
 
-   
-    this.getAccountDetails();
+      // Update the displayed week's date range
+      this.weekStartDate = previousWeekStartDate;
+      this.weekEndDate = previousWeekEndDate;
+
+      
+      this.getAccountDetails();
+    } else {
+      
+      this.isPreviousWeekAvailable = false;
+    }
   }
 
   onNextWeek() {
-   
+    // Calculate the start and end dates of the next week
     const nextWeekStartDate = new Date(this.weekStartDate);
     nextWeekStartDate.setDate(nextWeekStartDate.getDate() + 7);
     const nextWeekEndDate = new Date(this.weekEndDate);
     nextWeekEndDate.setDate(nextWeekEndDate.getDate() + 7);
 
    
-    this.isNextWeekAvailable = true;
+    const isNextWeekAvailable = true;
 
-   
-    this.weekStartDate = nextWeekStartDate;
-    this.weekEndDate = nextWeekEndDate;
+    if (isNextWeekAvailable) {
+    
+      this.isNextWeekAvailable = true;
 
-   
-    this.getAccountDetails();
+      // Update the displayed week's date range
+      this.weekStartDate = nextWeekStartDate;
+      this.weekEndDate = nextWeekEndDate;
+
+    
+      this.getAccountDetails();
+    } else {
+      
+      this.isNextWeekAvailable = false;
+    }
   }
 
   parseWeekRange(weekRange: string) {
