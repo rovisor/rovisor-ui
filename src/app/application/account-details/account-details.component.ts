@@ -35,7 +35,7 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
   };
 
   public previousWeekData: any = {
-    range: 'Previous Week (9-15 Oct 2023)',
+    range: 'This Week (9-15 Oct 2023)',
     data: [
       { day: 'SUN', credit: 250.00, debit: 200.00 },
       { day: 'MON', credit: 600.00, debit: 150.00 },
