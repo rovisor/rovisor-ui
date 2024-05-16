@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AccountDetailsService } from './state/account-details.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UploadStatementComponent } from '../upload-statement/upload-statement.component';
@@ -17,10 +17,37 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
   private accountId = '';
   public accountInfo: AccountDetail = createAccountDetail(null);
   public accountName: string = '';
-  public weekStartDate: Date = new Date(); 
-  public weekEndDate: Date = new Date(); 
-  public isPreviousWeekAvailable: boolean = false;
-  public isNextWeekAvailable: boolean = false;
+  public weekStartDate: Date = new Date();
+  public weekEndDate: Date = new Date();
+  public isPreviousWeekAvailable: boolean = true;
+  public isNextWeekAvailable: boolean = true;
+  public currentWeekData: any = {
+    range: 'This Week (16-22 Oct 2023)',
+    data: [
+      { day: 'SUN', credit: 150.00, debit: 300.00 },
+      { day: 'MON', credit: 657.00, debit: 90.00 },
+      { day: 'TUE', credit: 80.00, debit: 111.00 },
+      { day: 'WED', credit: 60.00, debit: 0.00 },
+      { day: 'THU', credit: 435.00, debit: 213.00 },
+      { day: 'FRI', credit: 4000.00, debit: 600.00 },
+      { day: 'SAT', credit: 200.00, debit: 3000.00 },
+    ]
+  };
+
+  public previousWeekData: any = {
+    range: 'Previous Week (9-15 Oct 2023)',
+    data: [
+      { day: 'SUN', credit: 250.00, debit: 200.00 },
+      { day: 'MON', credit: 600.00, debit: 150.00 },
+      { day: 'TUE', credit: 80.00, debit: 70.00 },
+      { day: 'WED', credit: 40.00, debit: 20.00 },
+      { day: 'THU', credit: 300.00, debit: 100.00 },
+      { day: 'FRI', credit: 3000.00, debit: 500.00 },
+      { day: 'SAT', credit: 150.00, debit: 1200.00 },
+    ]
+  };
+
+  public displayData: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -33,11 +60,10 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
     this.activatedRoute.params.subscribe((routeParams: any) => {
       this.accountId = routeParams.id || '';
       this.getAccountDetails();
-
     });
 
-    this.parseWeekRange("This Week (16-22 Oct 2023)");
 
+    this.updateDisplayData(this.currentWeekData);
   }
 
   ngOnDestroy(): void {
@@ -46,7 +72,6 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
 
   getAccountDetails() {
     this.subscription.add(this.accountDetailsService.getAccountDetails(this.accountId).subscribe((result: AccountDetail) => {
-      console.log(result);
       this.accountInfo = result;
     }));
   }
@@ -54,58 +79,18 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
   openUploadModal() {
     this.modalService.open(UploadStatementComponent, { centered: true, size: 'lg' });
   }
+
   onPreviousWeek() {
-    // Calculate the start and end dates of the previous week
-    const previousWeekStartDate = new Date(this.weekStartDate);
-    previousWeekStartDate.setDate(previousWeekStartDate.getDate() - 7);
-    const previousWeekEndDate = new Date(this.weekEndDate);
-    previousWeekEndDate.setDate(previousWeekEndDate.getDate() - 7);
-
-    // Optionally, check if data for the previous week is available
-    // You can replace this with your actual logic to check data availability
-    // For now, let's assume it's always available
-    const isPreviousWeekAvailable = true;
-
-    if (isPreviousWeekAvailable) {
-      // Enable the left button since previous week data is available
-      this.isPreviousWeekAvailable = true;
-
-      // Update the displayed week's date range
-      this.weekStartDate = previousWeekStartDate;
-      this.weekEndDate = previousWeekEndDate;
-
-      
-      this.getAccountDetails();
-    } else {
-      
-      this.isPreviousWeekAvailable = false;
-    }
+    this.updateDisplayData(this.previousWeekData);
   }
 
   onNextWeek() {
-    // Calculate the start and end dates of the next week
-    const nextWeekStartDate = new Date(this.weekStartDate);
-    nextWeekStartDate.setDate(nextWeekStartDate.getDate() + 7);
-    const nextWeekEndDate = new Date(this.weekEndDate);
-    nextWeekEndDate.setDate(nextWeekEndDate.getDate() + 7);
+    this.updateDisplayData(this.currentWeekData);
+  }
 
-   
-    const isNextWeekAvailable = true;
-
-    if (isNextWeekAvailable) {
-    
-      this.isNextWeekAvailable = true;
-
-      // Update the displayed week's date range
-      this.weekStartDate = nextWeekStartDate;
-      this.weekEndDate = nextWeekEndDate;
-
-    
-      this.getAccountDetails();
-    } else {
-      
-      this.isNextWeekAvailable = false;
-    }
+  updateDisplayData(weekData: any) {
+    this.displayData = weekData;
+    this.parseWeekRange(weekData.range);
   }
 
   parseWeekRange(weekRange: string) {
@@ -115,4 +100,10 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
       this.weekEndDate = new Date(dates[1]);
     }
   }
+
+
+  formatAmount(amount: number): string {
+    return amount >= 0 ? `₹${amount.toFixed(2)}` : `-₹${Math.abs(amount).toFixed(2)}`;
+  }
+
 }
