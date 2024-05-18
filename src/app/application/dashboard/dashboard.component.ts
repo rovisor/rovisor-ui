@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateStruct, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { UploadStatementComponent } from '../upload-statement/upload-statement.component';
 import { AddAccountComponent } from '../add-account/add-account.component';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { NavigationExtras, Router } from '@angular/router';
-;
+import { DateTime } from 'luxon';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,6 +13,7 @@ import { NavigationExtras, Router } from '@angular/router';
 
 export class DashboardComponent implements OnInit {
   public statementFiltersForm!: FormGroup;
+  public searchForm!: FormGroup;
   public minToDate: any;
   public maxDate = { year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() };
   public transactionTypeList = [
@@ -28,21 +29,19 @@ export class DashboardComponent implements OnInit {
       { id: 4, name: 'Investment' },
     ];
   
-  constructor(private modalService: NgbModal, private formBuilder: FormBuilder, private router: Router) { }
-
+  constructor(private modalService: NgbModal, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.statementFiltersForm = this.formBuilder.group({
       fromDate: [null],
       toDate: [null],
-      category: [null], 
-      transactionType: [null]
+      category:[null],
+      transactionType:[null]
     });
-    this.statementFiltersForm = this.formBuilder.group({
+    this.searchForm = this.formBuilder.group({
       search: [null]
     })
   }
- 
 
   onDateSelect() {
     this.minToDate = this.statementFiltersForm.get('fromDate')?.value
@@ -51,18 +50,7 @@ export class DashboardComponent implements OnInit {
   openAddAccountModal() {
     this.modalService.open(AddAccountComponent, { centered: true, size: 'md', });
   }
-  openConsolidatedStatement() {
-    const selectedFilters = {
-      fromDate: this.statementFiltersForm.value?.fromDate,
-      toDate: this.statementFiltersForm.value?.toDate,
-      transactionType: this.statementFiltersForm.value?.transactionType,
-      category: this.statementFiltersForm.value?.category
-    };
-    const navigationExtras: NavigationExtras = {
-      queryParams: selectedFilters
-    };
     
-    this.router.navigate(['app/consolidate-statement'], { queryParams: selectedFilters });
-  }  
+  navigateToConsolidatedStatement() {
   }
-
+}
