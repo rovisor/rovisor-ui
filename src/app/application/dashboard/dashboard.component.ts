@@ -50,13 +50,14 @@ export class DashboardComponent implements OnInit {
   }
 
   openConsolidatedStatement() {
-    const selectedFilters = {
-      fromDate: this.statementFiltersForm.value?.fromDate,
-      toDate: this.statementFiltersForm.value?.toDate,
-      transactionType: this.statementFiltersForm.value?.transactionType,
-      category: this.statementFiltersForm.value?.category
-    };
 
-    this.router.navigate(['app/consolidate-statement'], { queryParams: selectedFilters });
-  }
+      const selectedFilters = {
+        fromDate: JSON.stringify(this.statementFiltersForm.value?.fromDate),
+        toDate: JSON.stringify(this.statementFiltersForm.value?.toDate),
+        TransactionType: this.statementFiltersForm.value.transactionType,
+      };
+    
+      this.router.navigate(['app/consolidate-statement'], { queryParams: selectedFilters });
+    }
+    
 }
