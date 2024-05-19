@@ -58,7 +58,7 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
         toDate: params['toDate'] ? JSON.parse(params['toDate']) : null,
         transactionType: params['transactionType']? JSON.parse(params['toDate']) : null,
       });
-
+      this.search();
       this.fetchStatements();
     });
 
