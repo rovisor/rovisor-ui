@@ -76,12 +76,12 @@
   position: relative;
 }
 
-#top-left-button {
+.top-left-button {
   position: absolute;
   margin-left: 90px;
 }
 
-#top-right-button {
+.top-right-button {
   position: absolute;
   right:24px;
 }
