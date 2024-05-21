@@ -56,7 +56,7 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
       this.statementFiltersForm.patchValue({
         fromDate: params['fromDate'] ? JSON.parse(params['fromDate']) : null,
         toDate: params['toDate'] ? JSON.parse(params['toDate']) : null,
-        transactionType: params['transactionType']? JSON.parse(params['toDate']) : null,
+        transactionType: params['transactionType']? JSON.parse(params['transcationType']) : null,
       });
       this.search();
       this.fetchStatements();
