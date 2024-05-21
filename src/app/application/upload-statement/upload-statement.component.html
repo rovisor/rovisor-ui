@@ -1,93 +1,72 @@
 <form [formGroup]="uploadForm">
-  <div class="modal-header">
-    <h4 class="modal-title">
-      <i class="bi bi-upload me-2"></i>Upload Statement
-    </h4>
-    <button
-      type="button"
-      class="btn close ms-auto"
-      aria-label="Close"
-      (click)="cancel()"
-    >
-      <i class="bi bi-x-circle"></i>
-    </button>
-  </div>
-  <div class="modal-body">
-    <div class="row mb-3">
-      <div class="col">
-        <input
-          class="form-control"
-          type="file"
-          accept=".csv"
-          formControlName="file"
-          (change)="onFileChange($event)"
-        />
-
-        <div
-          id="fileHelp"
-          class="form-text"
-          *ngIf="uploadForm.get('file')?.pristine"
-        >
-          Choose a valid csv to upload data(max size: 10 MB).
+    <div class="modal-header">
+      <div class="row w-100 mt-3">
+        <div class="col-11">
+          <h4><i class="bi bi-upload me-2"></i> Upload Statement</h4>
         </div>
-        <div *ngIf="uploadForm.get('file')?.value">
-          <div *ngIf="uploadForm.get('file')?.hasError('invalidExtension')">
-            Invalid file type. Please choose a valid CSV file.
+        <div class="col-1 text-end">
+          <button type="button" class="btn close ms-auto" aria-label="Close" (click)="cancel()">
+            <i class="bi bi-x-circle"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-body form-container">
+      <div class="row mb-3">
+        <div class="col">
+          <input class="form-control" type="file" accept=".csv" formControlName="file"
+            (change)="onFileChange($event)" />
+
+          <div id="fileHelp" class="form-text" *ngIf="uploadForm.get('file')?.pristine">
+            Choose a valid csv to upload data(max size: 10 MB).
           </div>
-          <div *ngIf="!validateRequiredColumns() && missingColumns.length > 0">
-            <div
-              class="alert alert-danger"
-              role="alert"
-              *ngFor="let missingColumn of missingColumns"
-            >
-              <div *ngFor="let error of missingColumn.split(',')">
-                {{ error }}
+          <div *ngIf="uploadForm.get('file')?.value">
+            <div *ngIf="uploadForm.get('file')?.hasError('invalidExtension')">
+              Invalid file type. Please choose a valid CSV file.
+            </div>
+            <div *ngIf="!validateRequiredColumns() && missingColumns.length > 0">
+              <div class="alert alert-danger" role="alert" *ngFor="let missingColumn of missingColumns">
+                <div *ngFor="let error of missingColumn.split(',')">
+                  {{ error }}
+                </div>
               </div>
             </div>
-          </div>
-          <div *ngIf="uploadForm.get('file')?.hasError('maxFileSize')">
-            File size exceeds the limit (max size: 10 MB).
+            <div *ngIf="uploadForm.get('file')?.hasError('maxFileSize')">
+              File size exceeds the limit (max size: 10 MB).
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col">
-        <h5>Preview</h5>
+      <div class="row mb-3">
+        <div class="col">
+          <h5>Preview</h5>
 
-        <div *ngIf="csvData">
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th *ngFor="let header of csvHeaders">{{ header }}</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let row of csvData; let rowIndex = index">
-                <td
-                  *ngFor="let cell of row; let cellIndex = index"
-                  [ngClass]="{ 'invalid-row': invalidRow.includes(rowIndex) }"
-                >
-                  {{ cell }}
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div *ngIf="csvData">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th *ngFor="let header of csvHeaders">{{ header }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let row of csvData; let rowIndex = index">
+                  <td *ngFor="let cell of row; let cellIndex = index"
+                    [ngClass]="{ 'invalid-row': invalidRow.includes(rowIndex) }">
+                    {{ cell }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="modal-footer" *ngIf="isButtonsVisible">
-    <button type="button" class="btn btn-link" (click)="cancel()">
-      Cancel
-    </button>
-    <button
-      type="button"
-      class="btn btn-primary"
-      (click)="upload()"
-      [disabled]="!uploadForm.valid"
-    >
-      Upload
-    </button>
-  </div>
+    <div class="modal-footer" *ngIf="isButtonsVisible">
+      <button type="button" class="btn btn-link" (click)="cancel()">
+        Cancel
+      </button>
+      <button type="button" class="btn btn-primary" (click)="upload()" [disabled]="!uploadForm.valid">
+        Upload
+      </button>
+    </div>
 </form>

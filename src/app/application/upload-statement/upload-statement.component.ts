@@ -19,11 +19,11 @@ export class UploadStatementComponent implements OnInit {
   @Input() accountInfo!: AccountDetail;
  
   public uploadForm!: FormGroup;
-  isButtonsVisible: boolean = false;
-  csvData: any[] = [];
-  csvHeaders: any[] = [];
-  missingColumns: string[] = [];
-  invalidRow: any[] = [];
+  public isButtonsVisible: boolean = false;
+  public csvData: any[] = [];
+  public csvHeaders: any[] = [];
+  public missingColumns: string[] = [];
+  public invalidRow: any[] = [];
 
   constructor(private formBuilder: FormBuilder, private activeModal: NgbActiveModal, private uploadStatementService: UploadStatementService, private modalService: NgbModal,
     private toastr: ToastrService) { }
