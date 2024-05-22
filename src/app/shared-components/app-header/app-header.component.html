@@ -23,13 +23,12 @@
                 </li>
               </ul>
         </div>
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown button
+        <div class="dropdown fs-4 text-black">
+            <button class="bi bi-person-circle dropdown-toggle" type="button"data-toggle="dropdown">
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">user name </a>
-              <a class="dropdown-item (click)="logout() href="#">Log-out </a>
+            <div class="dropdown-menu" >
+              <a class="dropdown-item" href="#">User Name </a>
+              <a class="dropdown-item text-danger"  (click)="openConsolidatedStatement()">Logout</a>
             </div>
           </div>
     </div>

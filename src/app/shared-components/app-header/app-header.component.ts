@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/auth/state/auth.service';
 })
 export class AppHeaderComponent implements OnInit {
 
+
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
@@ -20,5 +21,8 @@ export class AppHeaderComponent implements OnInit {
     localStorage.removeItem('token');
     
     this.router.navigate(['/auth/login']);
+  }
+  openConsolidatedStatement() {
+    this.router.navigate(['auth/sign']);
   }
 }
