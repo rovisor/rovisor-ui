@@ -1,9 +1,3 @@
-.box {
-  height: 12rem;
-  border: 1px solid #1ABC9B;
-	width: calc(33.333333% - 100px);
-	margin: 5px;
-}
 .account-name {
   margin-top: 34px;
   margin-left: 72px;
@@ -18,62 +12,71 @@
 }
 
 .credit-box {
-  margin-left: 60px;
+  margin-left: 56px;
 }
 
 .debit-box {
-  margin-left: 52px;
+  margin-left: 47px;
 }
 
 .closing-balance-box {
-  margin-left: 40px;
+  margin-left: 47px;
 }
 
 .box {
   width: 199px;
   height: 140px;
   margin-top: 38px;
-  /* margin-left: 72px; */
   border: 1px solid rgba(26, 188, 155, 1);
 }
+
 .box-title {
   color: #18b091;
   margin-top: 16px;
 }
+
 .text-margin {
   margin-left: 57px;
   margin-top: 35px;
 }
+
 .textmuted-margin {
   margin-left: 45px;
   margin-top: 17px;
 }
-.week-margin{
+
+.week-margin {
   margin-top: 72px;
   margin-left: 406px;
 }
+
 .custom-column {
-    width: 140.5px;   
-    border: 1px solid #212529; 
-    
-  }
-  .tall-row {
-    height: 115px; 
-    margin-left: 100px;
-    
-  }
-  .small-row{
-    height: 33px;
-    margin-left: 100px; 
-  }
-  
-  .day-label {
+  flex: 0 0 auto;
+  width: 140.5px;
+  border: 1px solid #212529;
+}
+
+.tall-row {
+  height: 115px;
+  margin-left: 100px;
+  overflow-x: auto;
+}
+
+.small-row {
+  height: 33px;
+  margin-left: 100px;
+  overflow-x: auto;
+}
+
+.day-label {
   margin-top: 9px;
   font-weight: bold;
 }
+
 .positive-amount {
   margin-top: 30px;
 }
+
 .total-value {
   margin-right: 7px;
 }
@@ -82,12 +85,12 @@
   position: relative;
 }
 
-#top-left-button {
+.top-left-button {
   position: absolute;
   margin-left: 90px;
 }
 
-#top-right-button {
+.top-right-button {
   position: absolute;
-  right:24px;
+  right: 24px;
 }

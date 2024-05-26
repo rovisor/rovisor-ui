@@ -118,9 +118,6 @@ h6, .h6 {
     font-family:"Roboto";
 }
 
-.block-display{
-  display: block;
-}
 *::-webkit-scrollbar {
 	width: 7px;
 }
