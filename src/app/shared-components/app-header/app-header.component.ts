@@ -22,7 +22,4 @@ export class AppHeaderComponent implements OnInit {
     
     this.router.navigate(['/auth/login']);
   }
-  openConsolidatedStatement() {
-    this.router.navigate(['auth/sign']);
-  }
 }
