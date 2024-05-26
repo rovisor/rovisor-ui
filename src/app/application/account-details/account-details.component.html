@@ -21,7 +21,7 @@
       <div class="box opening-balance-box">
         <h4 class="box-title roboto-font text-center">Opening Balance</h4>
         <span
-          class="text-secondary text-margin block-display text-regular roboto-font"
+          class="text-secondary text-margin d-block text-regular roboto-font"
           >₹6654.00</span
         >
       </div>
@@ -30,7 +30,7 @@
       <div class="box credit-box">
         <h4 class="box-title roboto-font text-center">Credit Amount</h4>
         <span
-          class="text-secondary text-margin block-display text-regular roboto-font"
+          class="text-secondary text-margin d-block text-regular roboto-font"
           >₹4314.00</span
         >
       </div>
@@ -39,7 +39,7 @@
       <div class="box debit-box">
         <h4 class="box-title roboto-font text-center">Debit Amount</h4>
         <span
-          class="text-secondary text-margin block-display text-regular roboto-font"
+          class="text-secondary text-margin d-block text-regular roboto-font"
           >₹5582.00</span
         >
       </div>
@@ -48,54 +48,30 @@
       <div class="box closing-balance-box">
         <h4 class="box-title roboto-font text-center">Closing Balance</h4>
         <span
-          class="text-secondary text-margin block-display text-regular roboto-font"
+          class="text-secondary text-margin d-block text-regular roboto-font"
           >₹7922.00</span
         >
-        <span class="textmuted-margin block-display text-muted"
+        <span class="textmuted-margin d-block text-muted"
           >As on 22 Oct 2023</span
         >
       </div>
     </div>
   </div>
   <div>
-
     <div class="button-container">
       <button
         class="btn top-left-button"
         (click)="onPreviousWeek()"
         [disabled]="!isPreviousWeekAvailable"
       >
-        <img src="https://www.figma.com/design/c3oSyrc6pnmHmxPYvsrnsi/Rovisor?node-id=236-14870&t=qmMfvfdoJROtg0zA-4">
+        <i class="bi bi-arrow-left-square-fill"></i>
       </button>
       <button
         class="btn top-right-button"
         (click)="onNextWeek()"
         [disabled]="!isNextWeekAvailable"
       >
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g clip-path="url(#clip0_236_14851)">
-            <path
-              d="M0 14.0016C0 14.532 0.210714 15.0407 0.585786 15.4158C0.960859 15.7909 1.46957 16.0016 2 16.0016H14C14.5304 16.0016 15.0391 15.7909 15.4142 15.4158C15.7893 15.0407 16 14.532 16 14.0016V2.00159C16 1.47115 15.7893 0.962446 15.4142 0.587373C15.0391 0.212301 14.5304 0.00158691 14 0.00158691L2 0.00158691C1.46957 0.00158691 0.960859 0.212301 0.585786 0.587373C0.210714 0.962446 0 1.47115 0 2.00159L0 14.0016ZM4.5 7.50159H10.293L8.146 5.35559C8.05211 5.2617 7.99937 5.13436 7.99937 5.00159C7.99937 4.86881 8.05211 4.74147 8.146 4.64759C8.23989 4.5537 8.36722 4.50096 8.5 4.50096C8.63278 4.50096 8.76011 4.5537 8.854 4.64759L11.854 7.64759C11.9006 7.69403 11.9375 7.74921 11.9627 7.80995C11.9879 7.8707 12.0009 7.93582 12.0009 8.00159C12.0009 8.06735 11.9879 8.13247 11.9627 8.19322C11.9375 8.25397 11.9006 8.30914 11.854 8.35559L8.854 11.3556C8.76011 11.4495 8.63278 11.5022 8.5 11.5022C8.36722 11.5022 8.23989 11.4495 8.146 11.3556C8.05211 11.2617 7.99937 11.1344 7.99937 11.0016C7.99937 10.8688 8.05211 10.7415 8.146 10.6476L10.293 8.50159H4.5C4.36739 8.50159 4.24021 8.44891 4.14645 8.35514C4.05268 8.26137 4 8.1342 4 8.00159C4 7.86898 4.05268 7.7418 4.14645 7.64803C4.24021 7.55427 4.36739 7.50159 4.5 7.50159Z"
-              fill="#212529"
-            />
-          </g>
-          <defs>
-            <clipPath id="clip0_236_14851">
-              <rect
-                width="16"
-                height="16"
-                fill="white"
-                transform="translate(0 0.00158691)"
-              />
-            </clipPath>
-          </defs>
-        </svg>
+        <i class="bi bi-arrow-right-square-fill"></i>
       </button>
     </div>
 

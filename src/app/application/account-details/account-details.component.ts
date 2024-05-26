@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AccountDetailsService } from './state/account-details.service';
-import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UploadStatementComponent } from '../upload-statement/upload-statement.component';
@@ -16,41 +15,12 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
   private subscription: Subscription = new Subscription();
   private accountId = '';
   public accountInfo: AccountDetail = createAccountDetail(null);
-  public accountName: string = '';
-  public weekStartDate: Date = new Date();
-  public weekEndDate: Date = new Date();
+  public currentDate: Date = new Date();
   public isPreviousWeekAvailable: boolean = true;
-  public isNextWeekAvailable: boolean = true;
-  public currentWeekData: any = {
-    range: 'This Week (16-22 Oct 2023)',
-    data: [
-      { day: 'SUN', credit: 150.00, debit: 300.00 },
-      { day: 'MON', credit: 657.00, debit: 90.00 },
-      { day: 'TUE', credit: 80.00, debit: 111.00 },
-      { day: 'WED', credit: 60.00, debit: 0.00 },
-      { day: 'THU', credit: 435.00, debit: 213.00 },
-      { day: 'FRI', credit: 4000.00, debit: 600.00 },
-      { day: 'SAT', credit: 200.00, debit: 3000.00 },
-    ]
-  };
-
-  public previousWeekData: any = {
-    range: 'This Week (9-15 Oct 2023)',
-    data: [
-      { day: 'SUN', credit: 250.00, debit: 200.00 },
-      { day: 'MON', credit: 600.00, debit: 150.00 },
-      { day: 'TUE', credit: 80.00, debit: 70.00 },
-      { day: 'WED', credit: 40.00, debit: 20.00 },
-      { day: 'THU', credit: 300.00, debit: 100.00 },
-      { day: 'FRI', credit: 3000.00, debit: 500.00 },
-      { day: 'SAT', credit: 150.00, debit: 1200.00 },
-    ]
-  };
-
+  public isNextWeekAvailable: boolean = false;
   public displayData: any;
 
   constructor(
-    private formBuilder: FormBuilder,
     private modalService: NgbModal,
     private activatedRoute: ActivatedRoute,
     private accountDetailsService: AccountDetailsService
@@ -62,8 +32,7 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
       this.getAccountDetails();
     });
 
-
-    this.updateDisplayData(this.currentWeekData);
+    this.updateDisplayData(this.getWeekData(this.currentDate));
   }
 
   ngOnDestroy(): void {
@@ -81,29 +50,65 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
   }
 
   onPreviousWeek() {
-    this.updateDisplayData(this.previousWeekData);
+    this.currentDate.setDate(this.currentDate.getDate() - 7);
+    this.updateDisplayData(this.getWeekData(this.currentDate));
+    this.isNextWeekAvailable = true;
   }
 
   onNextWeek() {
-    this.updateDisplayData(this.currentWeekData);
+    this.currentDate.setDate(this.currentDate.getDate() + 7);
+    this.updateDisplayData(this.getWeekData(this.currentDate));
+    if (this.currentDate >= new Date()) {
+      this.isNextWeekAvailable = false;
+    }
   }
 
   updateDisplayData(weekData: any) {
     this.displayData = weekData;
-    this.parseWeekRange(weekData.range);
   }
 
-  parseWeekRange(weekRange: string) {
-    const dates = weekRange.match(/\d{2}-\d{2}-\d{4}/g);
-    if (dates && dates.length === 2) {
-      this.weekStartDate = new Date(dates[0]);
-      this.weekEndDate = new Date(dates[1]);
+  getWeekData(date: Date): any {
+    const startDate = new Date(date);
+    startDate.setDate(date.getDate() - date.getDay());
+    const endDate = new Date(startDate);
+    endDate.setDate(startDate.getDate() + 6);
+
+    return {
+      range: `${this.formatDate(startDate)} - ${this.formatDate(endDate)}`,
+      data: this.generateWeekData(startDate)
+    };
+  }
+
+  generateWeekData(startDate: Date): any[] {
+    const data = [];
+    for (let i = 0; i < 7; i++) {
+      const date = new Date(startDate);
+      date.setDate(startDate.getDate() + i);
+      data.push({
+        day: this.formatDay(date),
+        credit: this.getRandomAmount(),
+        debit: this.getRandomAmount()
+      });
     }
+    return data;
   }
 
+  formatDate(date: Date): string {
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  }
+
+  formatDay(date: Date): string {
+    return date.toLocaleString('en-US', { weekday: 'short' }).toUpperCase();
+  }
+
+  getRandomAmount(): number {
+    return Math.floor(Math.random() * 1000);
+  }
 
   formatAmount(amount: number): string {
     return amount >= 0 ? `₹${amount.toFixed(2)}` : `-₹${Math.abs(amount).toFixed(2)}`;
   }
-
 }
