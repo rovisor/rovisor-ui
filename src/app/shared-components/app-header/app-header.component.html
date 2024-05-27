@@ -1,4 +1,3 @@
-
 <nav class="navbar bg-brand-selected navbar-expand-lg navbar-dark bd-navbar sticky-top">
     <div class="container-xxl bd-gutter flex-wrap flex-lg-nowrap">
         <a class="navbar-brand p-0 me-0 me-lg-2" href="#">
@@ -17,12 +16,12 @@
                     </a>
                 </li>
                 <li class="nav-item col-6 col-lg-auto ms-4 dropdown">
-                    <button class="fs-4 text-black" href="#" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="fs-4 text-black" (click)="toggleDropdown()" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
                         <i class="bi bi-person-circle dropdown-toggle"></i>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    </a>
+                    <div class="dropdown-menu" [class.show]="isDropdownOpen" aria-labelledby="dropdownMenuButton">
                         <button class="dropdown-item" type="button">User Name</button>
-                        <button class="dropdown-item text-danger" type="button" (click)="logout">Logout</button>
+                        <button class="dropdown-item text-danger" type="button" (click)="logout()">Logout</button>
                     </div>
                 </li>                
               </ul>

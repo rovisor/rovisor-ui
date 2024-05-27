@@ -8,18 +8,22 @@ import { AuthService } from 'src/app/auth/state/auth.service';
   styleUrls: ['./app-header.component.css']
 })
 export class AppHeaderComponent implements OnInit {
-
+  isDropdownOpen = false;
 
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
   logout() {
     this.authService.setAuthenticatedUser(false);
     localStorage.removeItem('user');
     localStorage.removeItem('token');
-    
+
     this.router.navigate(['/auth/login']);
   }
 }
