@@ -74,7 +74,7 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
     endDate.setDate(startDate.getDate() + 6);
 
     return {
-      range: `${this.formatDate(startDate)} - ${this.formatDate(endDate)}`,
+      range: `This Week(${this.formatWeekRange(startDate, endDate)})`,
       data: this.generateWeekData(startDate)
     };
   }
@@ -92,7 +92,19 @@ export class AccountDetailsComponent implements OnInit, OnDestroy {
     }
     return data;
   }
+  formatWeekRange(startDate: Date, endDate: Date): string {
+    const startDay = String(startDate.getDate()).padStart(2, '0');
+    const startMonth = startDate.toLocaleString('en-US', { month: 'short' });
+    const endDay = String(endDate.getDate()).padStart(2, '0');
+    const endMonth = endDate.toLocaleString('en-US', { month: 'short' });
+    const year = startDate.getFullYear();
 
+    if (startMonth === endMonth) {
+      return `${startDay}-${endDay} ${startMonth} ${year}`;
+    } else {
+      return `${startDay} ${startMonth} - ${endDay} ${endMonth} ${year}`;
+    }
+  }
   formatDate(date: Date): string {
     const day = String(date.getDate()).padStart(2, '0');
     const month = String(date.getMonth() + 1).padStart(2, '0');
