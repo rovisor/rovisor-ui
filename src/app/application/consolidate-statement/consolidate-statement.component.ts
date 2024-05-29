@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ConsolidateStatementService } from './state/consolidate-statement.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { DateTime } from 'luxon';
 import { ActivatedRoute } from '@angular/router';
 
@@ -56,7 +55,7 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
       this.statementFiltersForm.patchValue({
         fromDate: params['fromDate'] ? JSON.parse(params['fromDate']) : null,
         toDate: params['toDate'] ? JSON.parse(params['toDate']) : null,
-        transactionType: params['transactionType']? JSON.parse(params['transcationType']) : null,
+        transactionType: params['transactionType']? JSON.parse(params['transactionType']) : null,
       });
       this.search();
       this.fetchStatements();
