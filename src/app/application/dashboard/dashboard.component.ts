@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit {
       fromDate: [null],
       toDate: [null],
       category: [null],
-      transactionType: [null]
+      transactionType: [1]
     });
     this.searchForm = this.formBuilder.group({
       search: [null]
@@ -53,9 +53,10 @@ export class DashboardComponent implements OnInit {
     const selectedFilters = {
       fromDate: JSON.stringify(this.statementFiltersForm.value?.fromDate),
       toDate: JSON.stringify(this.statementFiltersForm.value?.toDate),
-      TransactionType: this.statementFiltersForm.value.transactionType,
+      TransactionType: this.statementFiltersForm.value.transactionType || 1,
     };
 
+    console.log('Navigating with filters:', selectedFilters);
     this.router.navigate(['app/consolidate-statement'], { queryParams: selectedFilters });
   }
 }

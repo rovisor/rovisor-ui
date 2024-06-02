@@ -26,8 +26,10 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
   maxDate = { year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() };
   public accountList = [];
   public transactionTypeList = [
-    { id: 'Credit', name: 'Credit' },
-    { id: 'Debit', name: 'Debit' }
+    { id: 1, name: 'All' },
+    { id: 2, name: 'Credit' },
+    { id: 3, name: 'Debit' },
+    { id: 4, name: 'Transfers' }
   ];
   public page = {
     limit: 10,
@@ -48,7 +50,7 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
       fromDate: [null],
       toDate: [null],
       account: [null],
-      transactionType: [null]
+      transactionType: [1]
     });
 
     this.route.queryParams.subscribe(params => {
@@ -99,6 +101,7 @@ export class ConsolidateStatementComponent implements OnInit, OnDestroy {
       TransactionType: this.statementFiltersForm.value.transactionType,
       Account: this.statementFiltersForm.value.account
     };
+    console.log('Fetching statements with params:', params);
     this.subscription.add(
       this.consolidateStatementService.fetchStatements(params).subscribe((result) => {
         this.rows = result;
