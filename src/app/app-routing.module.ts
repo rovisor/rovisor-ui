@@ -4,31 +4,31 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [{
-  path: '', 
+  path: '',
   redirectTo: 'auth/sign-in',
   pathMatch: 'full'
-}, 
+},
 {
-  path: 'login', 
+  path: 'login',
   redirectTo: 'auth/sign-in',
   pathMatch: 'full'
-},  
-{ 
-  path: 'auth', 
+},
+{
+  path: 'auth',
   loadChildren: () => import('./auth/auth.module').then(module => module.AuthModule)
-},  
-{ 
-  path: 'password-help', 
+},
+{
+  path: 'password-help',
   loadChildren: () => import('./password-help/password-help.module').then(module => module.PasswordHelpModule)
-}, 
-{ 
-  path: 'app', 
+},
+{
+  path: 'app',
   loadChildren: () => import('./application/application.module').then(module => module.ApplicationModule),
   canLoad: [AuthGuard]
-}, 
-{ 
-  path: '**', 
-  loadChildren: () => import('./not-found/not-found.module').then(module => module.NotFoundModule) 
+},
+{
+  path: '**',
+  loadChildren: () => import('./not-found/not-found.module').then(module => module.NotFoundModule)
 }];
 
 @NgModule({
