@@ -6,5 +6,9 @@ import { FormGroup, FormBuilder } from '@angular/forms';
     templateUrl: './emi-calculator.component.html',
     styleUrls: ['./emi-calculator.component.css']
 })
-export class EmiCalculatorComponent {
+export class EmiCalculatorComponent implements OnInit {
+
+    ngOnInit(): void{
+        
+    }
 }
