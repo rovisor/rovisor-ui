@@ -28,7 +28,8 @@ import { EmiCalculatorComponent } from './emi-calculator/emi-calculator.componen
     AccountMappingComponent,
     AddAccountComponent,
     DashboardComponent,
-    AccountDetailsComponent
+    AccountDetailsComponent,
+    EmiCalculatorComponent
   ],
   imports: [
     NgbDatepickerModule,
