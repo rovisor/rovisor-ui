@@ -17,3 +17,7 @@
     background-color: #16A386;
     border-radius: 5px;
 }
+
+.no-underline {
+    text-decoration: none;
+  }
