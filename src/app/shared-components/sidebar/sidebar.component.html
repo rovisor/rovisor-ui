@@ -1,5 +1,5 @@
-<div class="col full-screen bg-rov-primary-sidebar p-2" tabindex="-1">
-    <div class="d-flex flex-column align-items-center align-items-sm-start px-0 pt-2 text-white h-100">
+<div class="col full-screen bg-rov-primary-sidebar ps-1 mb-4" tabindex="-1">
+    <div class="d-flex flex-column align-items-center align-items-sm-start  pt-2 px-0 text-white h-100">
         <ul class="nav nav-pills mb-sm-auto mb-0 align-items-center align-items-sm-start">
             <li *ngFor="let item of sidebarItems" class="nav-item w-100"  [class.active]="isActive(item)">
                 <a [routerLink]="item.route" *ngIf="!item.children" class="nav-link align-middle px-2 text-white">
@@ -24,12 +24,12 @@
                 </ul>
             </li>
         </ul>
-        <div class="privacy-policy-section d-block mb-1">
+        <div class="privacy-policy-section d-block mb-0">
             <p class="text-black text-foot-note">
                 <span class="align-content-start d-inline-block">
                     <a href="" class="no-underline">Privacy Policy </a>
                 </span>
-                <span class="align-content-end d-inline-block ms-3 ">
+                <span class="align-content-end d-inline-block ms-2 ">
                     <a href="" class="no-underline">Terms and Conditions
                     </a>
                 </span>
