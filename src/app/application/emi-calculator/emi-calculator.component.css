@@ -17,6 +17,7 @@
   top: 75px;
   margin-left: 31px;
   margin-top: 25px;
+  font-size: 50px;
 }
 
 .page_subtitle {
@@ -26,7 +27,7 @@
   top: 153px;
   margin-left: 31px;
   margin-top: 20px;
-  font-size: 20px;
+  font-size: 30px;
   line-height: 30px;
   text-align: left;
   color: rgba(0, 0, 0, 1);
