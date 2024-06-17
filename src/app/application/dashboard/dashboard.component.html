@@ -1,76 +1,74 @@
 <div class="row" [formGroup]="searchForm">
     <div class="col-10">
-        <div class="form-group has-search">
-            <span class="bi bi-search form-control-feedback fs-5"></span>
-            <input type="text" class="form-control" placeholder="Search" formControlName="search">
-            </div>
+      <div class="form-group has-search">
+        <span class="bi bi-search form-control-feedback fs-5"></span>
+        <input type="text" class="form-control" placeholder="Search" formControlName="search">
+      </div>
     </div>
-    
     <div class="col-2 text-end">
-        <button class="btn btn-primary btn-lg" (click)="openAddAccountModal()">
-            <i class="bi bi-plus"></i>
-            Add Account
-        </button>
+      <button class="btn btn-primary btn-lg" (click)="openAddAccountModal()">
+        <i class="bi bi-plus"></i>
+        Add Account
+      </button>
     </div>
-</div>
-<div class="row my-4 justify-content-center px-4">
+  </div>
+  <div class="row my-4 justify-content-center px-4">
     <div class="col-4 border border-secondary rounded-3 box text-center align-content-center">
-        <span class="text-page-sub-title">Balance:</span>
-        <span class="ms-1 text-page-sub-title fw-bold">₹ 2,000.00 </span>
-    </div>
-    <div class="col-4 border border-secondary rounded-3 box text-center align-content-center">
-        <span class="text-page-sub-title">Credit Amount:</span>
-        <span class="ms-1 text-page-sub-title fw-bold">₹ 2,000.00</span>
+      <span class="text-page-sub-title">Balance:</span>
+      <span class="ms-1 text-page-sub-title fw-bold">₹ 2,000.00</span>
     </div>
     <div class="col-4 border border-secondary rounded-3 box text-center align-content-center">
-        <span class="text-page-sub-title">Debit Amount:</span>
-        <span class="ms-1 text-page-sub-title fw-bold">₹ 2,000.00</span>
+      <span class="text-page-sub-title">Credit Amount:</span>
+      <span class="ms-1 text-page-sub-title fw-bold">₹ 2,000.00</span>
     </div>
-</div>
-<div class="row mb-4 upcoming-transaction rounded-3">
+    <div class="col-4 border border-secondary rounded-3 box text-center align-content-center">
+      <span class="text-page-sub-title">Debit Amount:</span>
+      <span class="ms-1 text-page-sub-title fw-bold">₹ 2,000.00</span>
+    </div>
+  </div>
+  <div class="row mb-4 upcoming-transaction rounded-3">
     <div class="col-12 p-3">
-        <h2>Upcoming Transaction</h2>
+      <h2>Upcoming Transaction</h2>
     </div>
-</div>
-<form [formGroup]="statementFiltersForm">
+  </div>
+  <form [formGroup]="statementFiltersForm">
     <div class="row">
-        <div class="col-12">
-            <h2>View Statement</h2>
-        </div>
+      <div class="col-12">
+        <h2>View Statement</h2>
+      </div>
     </div>
     <div class="row">
-        <div class="col-3">
-            <div class="form-group">
-                <label class="form-label">From Date </label>
-                <input class="form-control" placeholder="From Date" name="fromDatePicker" class="form-control"
-                ngbDatepicker  #formDatePicker="ngbDatepicker" formControlName="fromDate"
-                [maxDate]="maxDate" (dateSelect)="onDateSelect()" (click)="formDatePicker.toggle()"/>
-            </div>
+      <div class="col-3">
+        <div class="form-group">
+          <label class="form-label">From Date</label>
+          <input class="form-control" placeholder="From Date" name="fromDatePicker" ngbDatepicker #formDatePicker="ngbDatepicker" formControlName="fromDate"
+            [maxDate]="maxDate" (dateSelect)="onDateSelect()" (click)="formDatePicker.toggle()" />
         </div>
-        <div class="col-3">
-            <div class="form-group">
-                <label class="form-label">To Date </label>
-                <input class="form-control" placeholder="To Date" name="toDatePicker" class="form-control"
-                ngbDatepicker #toDatePicker="ngbDatepicker" formControlName="toDate"
-                [minDate]="minToDate" [maxDate]="maxDate" (click)="toDatePicker.toggle()" />
-            </div>
+      </div>
+      <div class="col-3">
+        <div class="form-group">
+          <label class="form-label">To Date</label>
+          <input class="form-control" placeholder="To Date" name="toDatePicker" ngbDatepicker #toDatePicker="ngbDatepicker" formControlName="toDate"
+            [minDate]="minToDate" [maxDate]="maxDate" (click)="toDatePicker.toggle()" />
         </div>
-        <div class="col-3">
-            <div class="form-group">
-                <label class="form-label">Transaction Type</label>
-                <ng-select [items]="transactionTypeList" bindLabel="name" bindValue="id" placeholder="Select Transaction Type" formControlName="transactionType">
-                </ng-select>
-            </div>
+      </div>
+      <div class="col-3">
+        <div class="form-group">
+          <label class="form-label">Transaction Type</label>
+          <ng-select [items]="transactionTypeList" bindLabel="name" bindValue="id" placeholder="Select Transaction Type" formControlName="transactionType">
+          </ng-select>
         </div>
-        <div class="col-3">
-            <div class="form-group">
-                <label class="form-label">Category </label>
-                <ng-select [items]="categoryList" bindLabel="name" bindValue="id" placeholder="Select Category" formControlName="category">
-                </ng-select>
-            </div>
+      </div>
+      <div class="col-3">
+        <div class="form-group">
+          <label class="form-label">Category</label>
+          <ng-select [items]="categoryList" bindLabel="name" bindValue="id" placeholder="Select Category" formControlName="category">
+          </ng-select>
         </div>
-        <div class="col mt-2">
-            <button class="btn btn-primary btn-green btn-lg" (click)="navigateToConsolidatedStatement()">View</button>
-        </div>
+      </div>
+      <div class="col mt-2">
+        <button class="btn btn-primary btn-green btn-lg" (click)="openConsolidatedStatement()">View</button>
+      </div>
     </div>
-</form>
+  </form>
+  
