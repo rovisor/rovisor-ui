@@ -30,7 +30,7 @@ export class AddAccountComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.accountForm = this.formBuilder.group({
-      accountName: [null, [Validators.required, Validators.pattern('^[a-zA-Z0-9 ]+$')]],
+      accountName: [null, [Validators.required, Validators.pattern('^[a-zA-Z0-9 \'`~!@#\\$%\\^&\\*\\(\\)_\\-\\+=\\{\\}\\[\\]\\|\\\\:;"\'<>,\\.?/]+$')]],
       institutionName: [null, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
       accountType: [null, Validators.required],
       accountNumber: [null, [Validators.required, Validators.pattern('^[0-9]{4}$')]]
