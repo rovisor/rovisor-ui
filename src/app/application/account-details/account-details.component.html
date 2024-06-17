@@ -1,31 +1,153 @@
-<div class="row">
-  <div class="col-9">
-    <h1 class="text-regular">{{accountInfo.AccountName}}</h1>
+<div class="container">
+  <div class="row mx-4 mt-4">
+    <div class="col-9">
+      <h1 class="account-name text-regular roboto-font">
+        {{ accountInfo.AccountName }}
+      </h1>
+    </div>
+    <div class="col-3 text-end">
+      <button
+        class="btn btn-primary btn-lg upload-btn"
+        (click)="openUploadModal()"
+      >
+        <i class="bi bi-plus"></i>
+        Upload Statement
+      </button>
+    </div>
   </div>
-  <div class="col-3 text-end">
-    <button class="btn btn-primary btn-lg upload-button" (click)="openUploadModal()">
-      <i class="bi bi-plus"></i>
-      Upload Statement
-    </button>
+
+  <div class="row m-4">
+    <div class="col-3">
+      <div class="box opening-balance-box">
+        <h4 class="box-title roboto-font text-center">Opening Balance</h4>
+        <span
+          class="text-secondary text-margin d-block text-regular roboto-font"
+          >₹6654.00</span
+        >
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="box credit-box">
+        <h4 class="box-title roboto-font text-center">Credit Amount</h4>
+        <span
+          class="text-secondary text-margin d-block text-regular roboto-font"
+          >₹4314.00</span
+        >
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="box debit-box">
+        <h4 class="box-title roboto-font text-center">Debit Amount</h4>
+        <span
+          class="text-secondary text-margin d-block text-regular roboto-font"
+          >₹5582.00</span
+        >
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="box closing-balance-box">
+        <h4 class="box-title roboto-font text-center">Closing Balance</h4>
+        <span
+          class="text-secondary text-margin d-block text-regular roboto-font"
+          >₹7922.00</span
+        >
+        <span class="textmuted-margin d-block text-muted"
+          >As on 22 Oct 2023</span
+        >
+      </div>
+    </div>
   </div>
-</div>
-<div class="row justify-content-center">
-  <div class="col-3 box text-center align-content-center">
-      <h4 class="text-green">Opening Balance</h4>
-      <p class="text-secondary d-block text-regular mt-4">₹6654.00</p>
+  <div>
+    <div class="button-container">
+      <button
+        class="btn top-left-button"
+        (click)="onPreviousWeek()"
+        [disabled]="!isPreviousWeekAvailable"
+      >
+        <i class="bi bi-arrow-left-square-fill"></i>
+      </button>
+      <button
+        class="btn top-right-button"
+        (click)="onNextWeek()"
+        [disabled]="!isNextWeekAvailable"
+      >
+        <i class="bi bi-arrow-right-square-fill"></i>
+      </button>
+    </div>
+
+    <div class="container"></div>
+
+    <h4 class="text-regular week-margin roboto-font">
+      {{ displayData.range }}
+    </h4>
   </div>
-  <div class="col-3 box text-center align-content-center">
-      <h4 class="text-green">Credit Amount</h4>
-      <p class="text-secondary d-block text-regular mt-4">₹4314.00</p>
+  <div class="row small-row">
+    <div class="custom-column">
+      <div
+        class="day-label text-center text-regular roboto-font text-foot-note"
+      >
+        SUN
+      </div>
+    </div>
+    <div class="custom-column">
+      <div
+        class="day-label text-center text-regular roboto-font text-foot-note"
+      >
+        MON
+      </div>
+    </div>
+    <div class="custom-column">
+      <div
+        class="day-label text-center text-regular roboto-font text-foot-note"
+      >
+        TUE
+      </div>
+    </div>
+    <div class="custom-column">
+      <div
+        class="day-label text-center text-regular roboto-font text-foot-note"
+      >
+        WED
+      </div>
+    </div>
+    <div class="custom-column">
+      <div
+        class="day-label text-center text-regular roboto-font text-foot-note"
+      >
+        THU
+      </div>
+    </div>
+    <div class="custom-column">
+      <div
+        class="day-label text-center text-regular roboto-font text-foot-note"
+      >
+        FRI
+      </div>
+    </div>
+    <div class="custom-column">
+      <div
+        class="day-label text-center text-regular roboto-font text-foot-note"
+      >
+        SAT
+      </div>
+    </div>
   </div>
-  <div class="col-3 box text-center align-content-center">
-      <h4 class="text-green align-text-middle">Debit Amount</h4>
-      <p class="text-secondary d-block text-regular mt-4">₹5582.00</p>
-  </div>
-  <div class="col-3 box text-center align-content-center position-relative">
-      <h4 class="text-green">Closing Balance</h4>
-      <p class="text-secondary d-block text-regular mt-4">₹7922.00</p>
-      <p class="d-block text-secondary text-muted position-absolute bottom-0 w-100 text-center">
-        <span class="text-center">As on 22 Oct 2023</span></p>
+  <div class="row tall-row">
+    <div class="custom-column" *ngFor="let day of displayData.data">
+      <div
+        class="positive-amount text-positive total-value text-end roboto-font text-foot-note"
+      >
+        +₹{{ day.credit.toFixed(2) }}
+      </div>
+      <div
+        class="text-negative total-value text-end roboto-font text-foot-note"
+      >
+        -₹{{ day.debit.toFixed(2) }}
+      </div>
+      <div class="total-value text-end">-------------------</div>
+      <div class="total-value text-end roboto-font text-foot-note">
+        {{ formatAmount(day.credit - day.debit) }}
+      </div>
+    </div>
   </div>
 </div>
