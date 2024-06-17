@@ -1,7 +1,7 @@
 .full-screen{
     min-height: calc(100vh - 70px);
     height:100%;
-    width:250px;
+    width:280px;
     border-right: 1px solid #29da73;
 }
 
@@ -17,3 +17,7 @@
     background-color: #16A386;
     border-radius: 5px;
 }
+
+.no-underline {
+    text-decoration: none;
+  }
