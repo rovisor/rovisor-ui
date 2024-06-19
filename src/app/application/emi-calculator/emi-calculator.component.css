@@ -11,10 +11,7 @@
   border: 1px solid rgba(0, 0, 0, 1);
 }
 .emi {
-  width: 474px;
-  height: 58px;
-  left: 280px;
-  top: 75px;
+ 
   margin-left: 31px;
   margin-top: 25px;
   font-size: 50px;
@@ -22,10 +19,6 @@
 
 .page_subtitle {
   font-weight: 500;
-  width: 342px;
-  height: 29px;
-  left: 280px;
-  top: 153px;
   margin-left: 31px;
   margin-top: 20px;
   font-size: 30px;
@@ -42,8 +35,6 @@
   align-items: center;
 }
 .principal-label {
-  width: 83px;
-  height: 30px;
   top: 234px;
   left: 280px;
   margin-top: 52px;
@@ -57,8 +48,6 @@
   margin-left: 48px;
 }
 .interest-rate-label {
-  width: 118px;
-  height: 30px;
   top: 304px;
   left: 280px;
   margin-top: 40px;
@@ -80,8 +69,8 @@
   margin-top: 20px;
 }
 .time-input {
-  width: 129px;
-  height: 45px;
+  Width:129px;
+height:45px;
   top: 354px;
   left: 411px;
   margin-top: 14px;
@@ -97,8 +86,6 @@
   color: rgba(0, 0, 0, 1);
 }
 .percent {
-  width: 15px;
-  height: 30px;
   top: 302px;
   left: 554px;
   gap: 0px;
@@ -111,8 +98,6 @@
   margin-left: 11px;
 }
 .yr {
-  width: 50px;
-  height: 30px;
   top: 361px;
   left: 562px;
   gap: 0px;
@@ -169,20 +154,14 @@
   left: 280px;
 }
 .totalAmount {
-  width: 126px;
-  height: 30px;
   top: 514px;
   margin-top: 47px;
 }
 .EMI {
-  width: 116px;
-  height: 30px;
   top: 579px;
   margin-top: 35px;
 }
 .interestPaid {
-  width: 167px;
-  height: 30px;
   top: 644px;
   margin-top: 35px;
 }
