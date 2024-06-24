@@ -11,17 +11,13 @@
   border: 1px solid rgba(0, 0, 0, 1);
 }
 .emi {
- 
-  margin-left: 31px;
-  margin-top: 25px;
-  font-size: 50px;
+  margin-left: 31px
 }
 
 .page_subtitle {
   font-weight: 500;
   margin-left: 31px;
   margin-top: 20px;
-  font-size: 30px;
   line-height: 30px;
   text-align: left;
   color: rgba(0, 0, 0, 1);
@@ -80,7 +76,6 @@ height:45px;
   gap: 0px;
   opacity: 0px;
   margin-left: 31px;
-  font-size: 20px;
   line-height: 30px;
   text-align: left;
   color: rgba(0, 0, 0, 1);
