@@ -11,18 +11,21 @@
   border: 1px solid rgba(0, 0, 0, 1);
 }
 .emi {
-  margin-left: 31px
+
+  margin-left: 31px;
+  margin-top: 25px;
+  font-size: 50px;
 }
 
 .page_subtitle {
   font-weight: 500;
   margin-left: 31px;
   margin-top: 20px;
+  font-size: 30px;
   line-height: 30px;
   text-align: left;
   color: rgba(0, 0, 0, 1);
 }
-
 .input-field {
   font-size: 50px;
 }
@@ -76,6 +79,7 @@ height:45px;
   gap: 0px;
   opacity: 0px;
   margin-left: 31px;
+  font-size: 20px;
   line-height: 30px;
   text-align: left;
   color: rgba(0, 0, 0, 1);
@@ -179,4 +183,76 @@ height:45px;
   top: 635px;
   margin-top: 20px;
   margin-left: 22px;
+}
+@media (min-width: 1200px) {
+ .principal-input {
+    width: 400px;
+  }
+ .interest-rate-input {
+    width: 150px;
+  }
+ .time-input {
+    width: 150px;
+  }
+ .dim-input {
+    width: 400px;
+  }
+}
+/* existing styles remain the same */
+
+/* add mobile-specific styles */
+@media (max-width: 768px) {
+  /* adjust font sizes */
+  .emi {
+    font-size: 30px;
+  }
+  .page_subtitle {
+    font-size: 20px;
+  }
+  .input-field {
+    font-size: 30px;
+  }
+  .form-label, .percent, .yr {
+    font-size: 16px;
+  }
+
+  /* adjust layout and spacing */
+  .form-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .principal-input, .interest-rate-input, .time-input, .dim-input {
+    width: 100%;
+    margin: 10px 0;
+  }
+  .principal-label, .interest-rate-label, .time-label {
+    margin-top: 10px;
+  }
+  .resetbutton, .calculatebutton {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  /* adjust positioning */
+  .principal-input, .interest-rate-input, .time-input, .dim-input {
+    top: auto;
+    left: auto;
+  }
+  .principal-label, .interest-rate-label, .time-label {
+    top: auto;
+    left: auto;
+  }
+  .resetbutton, .calculatebutton {
+    top: auto;
+    left: auto;
+  }
+
+  /* adjust padding and margin */
+  .comm-input {
+    padding: 10px;
+    margin: 10px 0;
+  }
+  .totalAmount, .EMI, .interestPaid {
+    margin-top: 20px;
+  }
 }

@@ -1,19 +1,19 @@
-<h1 class="emi mt-4 fs-1 text-bold">EMI Calculator</h1>
-<h4 class="page_subtitle fs-4">Calculate monthly EMI</h4>
+<h1 class="emi text-bold">EMI Calculator</h1>
+<h4 class="page_subtitle">Calculate monthly EMI</h4>
 <form>
   <div class="form-group">
-    <label for="principal" class="form-label fs-5 font-weight-light font-roboto principal-label">Principal:</label>
+    <label for="principal" class="form-label font-weight-light font-roboto principal-label">Principal:</label>
     <input type="number" [(ngModel)]="principal" name="principal" class="principal-input comm-input" required />
   </div>
 
   <div class="form-group">
-    <label for="interestRate" class="form-label fs-5 font-weight-light font-roboto interest-rate-label">Interest Rate:</label>
+    <label for="interestRate" class="form-label font-weight-light font-roboto interest-rate-label">Interest Rate:</label>
     <input type="number" [(ngModel)]="interestRate" name="interestRate" class="interest-rate-input comm-input" step="1" required />
     <span class="percent font-weight-light font-roboto">%</span>
   </div>
 
   <div class="form-group">
-    <label for="time" class="form-label fs-5 font-weight-light font-roboto time-label">Time:</label>
+    <label for="time" class="form-label font-weight-light font-roboto time-label">Time:</label>
     <input type="number" [(ngModel)]="time" name="time" class="time-input comm-input" required />
     <span class="yr font-weight-light font-roboto">Years</span>
   </div>
