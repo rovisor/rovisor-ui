@@ -3,7 +3,7 @@
         <h1>
             Retirement Calculator
         </h1>
-        <form>
+        <form  [formGroup]="retirementForm">
             <div class="form-group col-6">
                 <div>
                     <label for="CurrentAge" class="label  mt-5">Current age</label>
@@ -18,11 +18,11 @@
                     <input type="number" class="ms-5 input" />
                 </div>
                 <div>
-                    <label class="label mt-5 ">Expected annual return rate </label>
+                    <label for="AnnualRetrun" class="label mt-5 ">Expected annual return rate </label>
                     <input type="number" class="ms-5 input" />
                 </div>
                 <div>
-                    <label class="label mt-5">Current retirement savings </label>
+                    <label for="Saving" class="label mt-5">Current retirement savings </label>
                     <input type="number" class="ms-5 input" />
                 </div>
                 <div class="buttons mt-5 ">
