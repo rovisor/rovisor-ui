@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col">
+    <div class="col-12">
         <h1>
             Retirement Calculator
         </h1>
@@ -31,22 +31,18 @@
                 </div>
             </div>
         </form>
-        <div class="result mt-5">
+        <div class="result mt-3 col-6 ">
             <div class="result-item">
-                <label for="ProjectedRetirementSavings" class=" label">Total Amount:</label>
+                <label for="ProjectedRetirementSavings" class=" label mt-5">Total Amount:</label>
                 <input type="text" class="input ms-3" [value]="ProjectedRetirementSavings | number : '1.2-2'"
                     readonly />
             </div>
-        </div>
-        <div class="result mt-5">
             <div class="result-item">
-                <label for="TotalContributions" class=" label">Total contributions:</label>
+                <label for="TotalContributions" class=" label mt-5">Total contributions:</label>
                 <input type="text" class="input ms-3" [value]="TotalContributions | number : '1.2-2'" readonly />
             </div>
-        </div>
-        <div class="result mt-5">
             <div class="result-item">
-                <label for="TotalInterestEarned" class=" label">Total Interest Earned:</label>
+                <label for="TotalInterestEarned" class=" label mt-5">Total Interest Earned:</label>
                 <input type="text" class="input ms-3" [value]="TotalInterestEarned | number : '1.2-2'" readonly />
             </div>
         </div>
