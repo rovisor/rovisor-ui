@@ -114,6 +114,7 @@ height:45px;
   cursor: pointer;
   width: Hug (67px) px;
   height: Hug (38px) px;
+  font-size: 16px;
   top: 429px;
   left: 280px;
   padding: 6px 12px 6px 12px;
@@ -133,6 +134,7 @@ height:45px;
   height: Hug (36px) px;
   top: 429px;
   left: 358px;
+  font-size: 16px;
   padding: 6px 12px 6px 12px;
   gap: 8px;
   border-radius: 4px 0px 0px 0px;
@@ -198,11 +200,9 @@ height:45px;
     width: 400px;
   }
 }
-/* existing styles remain the same */
 
-/* add mobile-specific styles */
 @media (max-width: 768px) {
-  /* adjust font sizes */
+ 
   .emi {
     font-size: 30px;
   }
@@ -216,7 +216,7 @@ height:45px;
     font-size: 16px;
   }
 
-  /* adjust layout and spacing */
+  
   .form-group {
     flex-direction: column;
     align-items: flex-start;
@@ -233,7 +233,6 @@ height:45px;
     margin: 10px 0;
   }
 
-  /* adjust positioning */
   .principal-input, .interest-rate-input, .time-input, .dim-input {
     top: auto;
     left: auto;
@@ -247,7 +246,6 @@ height:45px;
     left: auto;
   }
 
-  /* adjust padding and margin */
   .comm-input {
     padding: 10px;
     margin: 10px 0;
