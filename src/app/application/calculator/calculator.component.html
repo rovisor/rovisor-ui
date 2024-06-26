@@ -1,48 +1,45 @@
 <div class="row">
     <div class="col-12">
-        <h1>
-            Retirement Calculator
-        </h1>
-        <form  [formGroup]="retirementForm">
+        <h1>Retirement Calculator</h1>
+        <form [formGroup]="retirementForm">
             <div class="form-group col-6">
                 <div>
-                    <label for="CurrentAge" class="label  mt-5">Current age</label>
-                    <input type="number" class="ms-5 input " required />
+                    <label for="CurrentAge" class="label mt-5">Current age</label>
+                    <input type="number" class="ms-5 input" formControlName="currentAge" required />
                 </div>
                 <div>
-                    <label for="RetirementAge" class="label mt-5 ">Retirement age </label>
-                    <input type="number" class="ms-5 input " />
+                    <label for="RetirementAge" class="label mt-5">Retirement age </label>
+                    <input type="number" class="ms-5 input" formControlName="retirementAge" required />
                 </div>
                 <div>
                     <label for="MonthlyContribution" class="label mt-5">Monthly contribution </label>
-                    <input type="number" class="ms-5 input" />
+                    <input type="number" class="ms-5 input" formControlName="monthlyContribution" required />
                 </div>
                 <div>
-                    <label for="AnnualRetrun" class="label mt-5 ">Expected annual return rate </label>
-                    <input type="number" class="ms-5 input" />
+                    <label for="AnnualRate" class="label mt-5">Expected annual return rate </label>
+                    <input type="number" class="ms-5 input" formControlName="annualRate" required />
                 </div>
                 <div>
                     <label for="Saving" class="label mt-5">Current retirement savings </label>
-                    <input type="number" class="ms-5 input" />
+                    <input type="number" class="ms-5 input" formControlName="saving" required />
                 </div>
-                <div class="buttons mt-5 ">
+                <div class="buttons mt-5">
                     <button type="reset" class="label" (click)="resetForm()">Reset</button>
                     <button type="button" class="ms-3 label" (click)="calculateEMI()">Calculate</button>
                 </div>
             </div>
         </form>
-        <div class="result mt-3 col-6 ">
+        <div class="result mt-3 col-6">
             <div class="result-item">
-                <label for="ProjectedRetirementSavings" class=" label mt-5">Total Amount:</label>
-                <input type="text" class="input ms-3" [value]="ProjectedRetirementSavings | number : '1.2-2'"
-                    readonly />
+                <label for="ProjectedRetirementSavings" class="label mt-5">Total Amount:</label>
+                <input type="text" class="input ms-3" [value]="ProjectedRetirementSavings | number : '1.2-2'" readonly />
             </div>
             <div class="result-item">
-                <label for="TotalContributions" class=" label mt-5">Total contributions:</label>
+                <label for="TotalContributions" class="label mt-5">Total contributions:</label>
                 <input type="text" class="input ms-3" [value]="TotalContributions | number : '1.2-2'" readonly />
             </div>
             <div class="result-item">
-                <label for="TotalInterestEarned" class=" label mt-5">Total Interest Earned:</label>
+                <label for="TotalInterestEarned" class="label mt-5">Total Interest Earned:</label>
                 <input type="text" class="input ms-3" [value]="TotalInterestEarned | number : '1.2-2'" readonly />
             </div>
         </div>
