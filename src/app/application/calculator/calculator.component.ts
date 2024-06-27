@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-calculator',
@@ -21,13 +21,14 @@ export class CalculatorComponent {
 
   constructor(private fb: FormBuilder) {
     this.retirementForm = this.fb.group({
-      currentAge: [null, Validators.required],
+      currentAge: [null, Validators.required, ],
       annualRate: [null, [Validators.required, Validators.min(0)]],
       retirementAge: [null, Validators.required],
       monthlyContribution: [null, Validators.required],
       saving: [null, Validators.required]
     });
   }
+
 
   calculateEMI() {
     if (this.retirementForm.valid) {
@@ -51,6 +52,9 @@ export class CalculatorComponent {
       this.ProjectedRetirementSavings = futureValueOfSavings + futureValueOfContributions;
       this.TotalContributions = monthlyContribution * monthsToRetirement;
       this.TotalInterestEarned = this.ProjectedRetirementSavings - this.TotalContributions - saving;
+    }
+    if (this.retirementForm.valid) {
+      console.log('Form Value:', this.retirementForm.value);
     }
   }
 
