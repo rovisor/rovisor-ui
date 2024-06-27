@@ -28,10 +28,11 @@
                     <button type="button" class="ms-3 label" (click)="calculateEMI()">Calculate</button>
                 </div>
             </div>
+            <div ngif="errorMessage"  >{{errorMessage}}</div>
         </form>
         <div class="result mt-3 col-6">
             <div class="result-item">
-                <label for="ProjectedRetirementSavings" class="label mt-5">Total Amount:</label>
+                <label for="ProjectedRetirementSavings" class="label mt-4">Total Amount:</label>
                 <input type="text" class="input ms-3" [value]="ProjectedRetirementSavings | number : '1.2-2'" readonly />
             </div>
             <div class="result-item">

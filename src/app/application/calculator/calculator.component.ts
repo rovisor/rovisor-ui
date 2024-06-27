@@ -18,6 +18,7 @@ export class CalculatorComponent {
   ProjectedRetirementSavings: number = 0;
   TotalContributions: number = 0;
   TotalInterestEarned: number = 0;
+  errorMessage: string = '';
 
   constructor(private fb: FormBuilder) {
     this.retirementForm = this.fb.group({
@@ -31,12 +32,22 @@ export class CalculatorComponent {
 
 
   calculateEMI() {
+    if(this.CurrentAge==null || this.AnnualRate==null || this.RetirementAge== null|| this.MonthlyContribution== null|| this.Saving== null){
+      this.errorMessage = " All fields are reqired";
+    }
+    
+
     if (this.retirementForm.valid) {
       const currentAge = this.retirementForm.value.currentAge;
       const annualRate = this.retirementForm.value.annualRate / 100;
       const retirementAge = this.retirementForm.value.retirementAge;
       const monthlyContribution = this.retirementForm.value.monthlyContribution;
       const saving = this.retirementForm.value.saving;
+
+      if(currentAge <=0 || annualRate<=0 || retirementAge <= 0|| monthlyContribution<=0 || saving<=0){
+        this.errorMessage = " Must be greater than zero";
+        return; 
+      }
 
       const monthsToRetirement = (retirementAge - currentAge) * 12;
       const ratePerMonth = annualRate / 12;
