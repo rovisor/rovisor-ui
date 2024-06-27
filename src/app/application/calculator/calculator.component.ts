@@ -32,7 +32,7 @@ export class CalculatorComponent {
 
 
   calculateEMI() {
-    if(this.CurrentAge==null || this.AnnualRate==null || this.RetirementAge== null|| this.MonthlyContribution== null|| this.Saving== null){
+    if(this.CurrentAge == null || this.AnnualRate == null || this.RetirementAge == null|| this.MonthlyContribution == null|| this.Saving == null){
       this.errorMessage = " All fields are reqired";
     }
     
@@ -79,5 +79,6 @@ export class CalculatorComponent {
     this.ProjectedRetirementSavings = 0;
     this.TotalContributions = 0;
     this.TotalInterestEarned = 0;
+    this.errorMessage ='';
   }
 }
