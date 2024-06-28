@@ -6,22 +6,37 @@
                 <div>
                     <label for="CurrentAge" class="label col-sm-6 col-form-label mt-5">Current age</label>
                     <input type="number" class="ms-5 input" formControlName="currentAge" required />
+                    <div *ngIf="retirementForm.controls['currentAge'].invalid && (retirementForm.controls['currentAge'].dirty || retirementForm.controls['currentAge'].touched)" class="text-danger">
+                        Current Age is required.
+                    </div>
                 </div>
                 <div>
                     <label for="RetirementAge" class="label col-sm-6 col-form-label mt-5">Retirement age </label>
                     <input type="number" class="ms-5 input" formControlName="retirementAge" required />
+                    <div *ngIf="retirementForm.controls['retirementAge'].invalid && (retirementForm.controls['retirementAge'].dirty || retirementForm.controls['retirementAge'].touched)" class="text-danger">
+                        Retirement Age is required.
+                    </div>
                 </div>
                 <div>
                     <label for="MonthlyContribution" class="label col-sm-6 col-form-label mt-5">Monthly contribution </label>
                     <input type="number" class="ms-5 input" formControlName="monthlyContribution" required />
+                    <div *ngIf="retirementForm.controls['monthlyContribution'].invalid && (retirementForm.controls['monthlyContribution'].dirty || retirementForm.controls['monthlyContribution'].touched)" class="text-danger">
+                        Monthly Contribution is required.
+                    </div>
                 </div>
                 <div>
                     <label for="AnnualRate" class="label col-sm-6 col-form-label mt-5">Expected annual return rate (%) </label>
                     <input type="number" class="ms-5 input" formControlName="annualRate" required />
+                    <div *ngIf="retirementForm.controls['annualRate'].invalid && (retirementForm.controls['annualRate'].dirty || retirementForm.controls['annualRate'].touched)" class="text-danger">
+                        Annual Rate is required and must be greater than 0.
+                    </div>
                 </div>
                 <div>
                     <label for="Saving" class="label col-sm-6 col-form-label mt-5">Current retirement savings </label>
                     <input type="number" class="ms-5 input" formControlName="saving" required />
+                    <div *ngIf="retirementForm.controls['saving'].invalid && (retirementForm.controls['saving'].dirty || retirementForm.controls['saving'].touched)" class="text-danger">
+                        Current Savings is required.
+                    </div>
                 </div>
                 <div class="buttons mt-5">
                     <button type="reset" class="resetButton text-white" (click)="resetForm()">Reset</button>

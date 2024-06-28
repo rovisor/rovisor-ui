@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-calculator',
@@ -9,12 +9,6 @@ import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators }
 export class CalculatorComponent {
   retirementForm: FormGroup;
 
-  CurrentAge: number | null = null;
-  RetirementAge: number | null = null;
-  MonthlyContribution: number | null = null;
-  AnnualRate: number | null = null;
-  Saving: number | null = null;
-
   ProjectedRetirementSavings: number = 0;
   TotalContributions: number = 0;
   TotalInterestEarned: number = 0;
@@ -22,7 +16,7 @@ export class CalculatorComponent {
 
   constructor(private fb: FormBuilder) {
     this.retirementForm = this.fb.group({
-      currentAge: [null, Validators.required, ],
+      currentAge: [null, Validators.required],
       annualRate: [null, [Validators.required, Validators.min(0)]],
       retirementAge: [null, Validators.required],
       monthlyContribution: [null, Validators.required],
@@ -30,13 +24,7 @@ export class CalculatorComponent {
     });
   }
 
-
   calculateEMI() {
-    if(this.CurrentAge == null || this.AnnualRate == null || this.RetirementAge == null|| this.MonthlyContribution == null|| this.Saving == null){
-      this.errorMessage = " All fields are reqired";
-    }
-    
-
     if (this.retirementForm.valid) {
       const currentAge = this.retirementForm.value.currentAge;
       const annualRate = this.retirementForm.value.annualRate / 100;
@@ -44,13 +32,13 @@ export class CalculatorComponent {
       const monthlyContribution = this.retirementForm.value.monthlyContribution;
       const saving = this.retirementForm.value.saving;
 
-      if(currentAge <=0 || annualRate<=0 || retirementAge <= 0|| monthlyContribution<=0 || saving<=0){
-        this.errorMessage = " Must be greater than zero";
+      if (currentAge <= 0 || annualRate <= 0 || retirementAge <= 0 || monthlyContribution <= 0 || saving <= 0) {
+        this.errorMessage = " All values must be greater than zero.";
         return; 
       }
 
-      if (currentAge > retirementAge){
-        this.errorMessage = " Current Age must be greater than Retirment Age"
+      if (currentAge > retirementAge) {
+        this.errorMessage = " Current Age must be less than Retirement Age.";
         return;
       }
 
@@ -58,32 +46,24 @@ export class CalculatorComponent {
       const ratePerMonth = annualRate / 12;
       const compoundFactor = Math.pow(1 + ratePerMonth, monthsToRetirement);
 
-     
       const futureValueOfSavings = saving * compoundFactor;
-
-     
       const futureValueOfContributions = monthlyContribution * ((compoundFactor - 1) / ratePerMonth) * (1 + ratePerMonth);
 
-      
       this.ProjectedRetirementSavings = futureValueOfSavings + futureValueOfContributions;
       this.TotalContributions = monthlyContribution * monthsToRetirement;
       this.TotalInterestEarned = this.ProjectedRetirementSavings - this.TotalContributions - saving;
-    }
-    if (this.retirementForm.valid) {
-      console.log('Form Value:', this.retirementForm.value);
+
+      this.errorMessage = '';
+    } else {
+      this.errorMessage = "Please fill out all required fields.";
     }
   }
 
   resetForm() {
     this.retirementForm.reset();
-    this.CurrentAge = null;
-    this.RetirementAge = null;
-    this.MonthlyContribution = null;
-    this.AnnualRate = null;
-    this.Saving = null;
     this.ProjectedRetirementSavings = 0;
     this.TotalContributions = 0;
     this.TotalInterestEarned = 0;
-    this.errorMessage ='';
+    this.errorMessage = '';
   }
 }
