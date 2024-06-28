@@ -28,6 +28,14 @@ export class EmiCalculatorComponent {
         const monthlyInterestRate = annualInterestRate / 12;
         const numberOfMonths = timeInYears * 12;
 
+        if (principal <= 0 || timeInYears <= 0 || monthlyInterestRate <= 0) {
+            const numberOfMonths = timeInYears * 12;
+            this.errorMessage = 'Every value must be greater than zero.';
+            this.totalAmount = 0;
+            this.monthlyEMI = 0;
+            this.totalInterestPaid = 0;
+            return;
+        }
         this.errorMessage = '';
 
         const monthlyPayment = this.calculatePMT(principal, monthlyInterestRate, numberOfMonths);
