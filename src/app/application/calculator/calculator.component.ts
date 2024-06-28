@@ -49,6 +49,11 @@ export class CalculatorComponent {
         return; 
       }
 
+      if (currentAge > retirementAge){
+        this.errorMessage = " Current Age must be greater than Retirment Age"
+        return;
+      }
+
       const monthsToRetirement = (retirementAge - currentAge) * 12;
       const ratePerMonth = annualRate / 12;
       const compoundFactor = Math.pow(1 + ratePerMonth, monthsToRetirement);
