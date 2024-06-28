@@ -17,7 +17,7 @@ import { AccountMappingComponent } from './account-mapping/account-mapping.compo
 import { AddAccountComponent } from './add-account/add-account.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
-
+import { SavingCalculatorComponent } from './saving-calculator/saving-calculator.component';
 @NgModule({
   declarations: [
     ApplicationComponent,
@@ -28,7 +28,8 @@ import { AccountDetailsComponent } from './account-details/account-details.compo
     AccountMappingComponent,
     AddAccountComponent,
     DashboardComponent,
-    AccountDetailsComponent
+    AccountDetailsComponent,
+    SavingCalculatorComponent
   ],
   imports: [
     NgbDatepickerModule,
