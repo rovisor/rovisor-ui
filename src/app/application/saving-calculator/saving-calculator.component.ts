@@ -19,7 +19,7 @@ export class SavingCalculatorComponent {
 
     calculateSavings() {
         if (this.principal == null || this.monthlyContribution ==null || this.interestRate ==null || this.compoundingFrequency ==null || this.savingsPeriod ==null) {
-            this.errorMessage = 'All fields are required.';
+            this.errorMessage = 'All fields are required to fill.';
             return;
         }
 
