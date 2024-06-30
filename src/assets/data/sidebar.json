@@ -9,8 +9,9 @@
         "children": []
     },
     { "label": "Consolidated Statement", "route": "/app/consolidate-statement", "icon": "bi bi-files","expanded": false },
-    { "label": "Settings", "route": "/app/settings", "icon": "bi bi-gear","expanded": false },
     { "label": "Savings Calculator", 
         "route": "/app/saving-calculator",
-         "icon": "bi bi-house","expanded": false }
+         "icon": "bi bi-house","expanded": false },
+    { "label": "Settings", "route": "/app/settings", "icon": "bi bi-gear","expanded": false }
+    
   ]
