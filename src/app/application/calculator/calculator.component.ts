@@ -42,15 +42,12 @@ export class CalculatorComponent {
         return;
       }
 
-      const monthsToRetirement = (retirementAge - currentAge) * 12;
+      const yearToRtirement = (retirementAge - currentAge) ;
       const ratePerMonth = annualRate / 12;
-      const compoundFactor = Math.pow(1 + ratePerMonth, monthsToRetirement);
 
-      const futureValueOfSavings = saving * compoundFactor;
-      const futureValueOfContributions = monthlyContribution * ((compoundFactor - 1) / ratePerMonth) * (1 + ratePerMonth);
-
-      this.ProjectedRetirementSavings = futureValueOfSavings + futureValueOfContributions;
-      this.TotalContributions = monthlyContribution * monthsToRetirement;
+      this.TotalContributions= 
+      this.ProjectedRetirementSavings = (saving*(Math.pow(1 +(ratePerMonth),(12*yearToRtirement)))+monthlyContribution*(((Math.pow(1 +(ratePerMonth),(yearToRtirement * 12)))-1)/(ratePerMonth)));
+      this.TotalContributions = (saving+monthlyContribution*12*yearToRtirement);
       this.TotalInterestEarned = this.ProjectedRetirementSavings - this.TotalContributions - saving;
 
       this.errorMessage = '';
@@ -58,6 +55,7 @@ export class CalculatorComponent {
       this.errorMessage = "Please fill out all required fields.";
     }
   }
+  
 
   resetForm() {
     this.retirementForm.reset();
