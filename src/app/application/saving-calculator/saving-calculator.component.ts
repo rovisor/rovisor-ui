@@ -6,62 +6,47 @@ import { Component } from '@angular/core';
     styleUrls: ['./saving-calculator.component.css']
 })
 export class SavingCalculatorComponent {
-    principal: number | null = null;
-    interestRate: number | null = null;
-    time: number | null = null;
-    monthlyEMI: number = 0;
-    totalAmount: number = 0;
-    totalInterestPaid: number = 0;
-    errorMessage: string = '';
+    principal: number = 0;
+    monthlyContribution: number = 0;
+    interestRate: number = 0;
+    compoundingFrequency: number = 12; // Default to monthly
+    savingsPeriod: number = 0;
 
-    constructor() { }
+    futureValue: number | null = null;
+    totalContributions: number | null = null;
+    totalInterest: number | null = null;
+    errorMessage: string | null = null;
 
-    calculateEMI() {
-        if (this.principal === null || this.interestRate === null || this.time === null) {
-            this.errorMessage = 'All fields are required.';
+    calculateSavings() {
+        if (this.principal < 0 || this.monthlyContribution < 0 || this.interestRate < 0 || this.compoundingFrequency <= 0 || this.savingsPeriod < 0) {
+            this.errorMessage = 'Please enter non-negative values for all fields.';
             return;
         }
 
-        const principal = this.principal;
-        const annualInterestRate = this.interestRate;
-        const timeInYears = this.time;
-        const monthlyInterestRate = annualInterestRate / 12;
-        const numberOfMonths = timeInYears * 12;
+        const P = this.principal;
+        const PMT = this.monthlyContribution;
+        const r = this.interestRate;
+        const n = this.compoundingFrequency;
+        const t = this.savingsPeriod;
 
-        if (principal <= 0 || timeInYears <= 0 || monthlyInterestRate <= 0) {
-            const numberOfMonths = timeInYears * 12;
-            this.errorMessage = 'Every value must be greater than zero.';
-            this.totalAmount = 0;
-            this.monthlyEMI = 0;
-            this.totalInterestPaid = 0;
-            return;
-        }
-        this.errorMessage = '';
+        const FV = P * Math.pow((1 + r / n), n * t) + PMT * (Math.pow((1 + r / n), n * t) - 1) / (r / n);
 
-        const monthlyPayment = this.calculatePMT(principal, monthlyInterestRate, numberOfMonths);
-        this.monthlyEMI = monthlyPayment;
-        this.totalAmount = monthlyPayment * numberOfMonths;
-        this.totalInterestPaid = this.totalAmount - principal;
-    }
-
-    calculatePMT(principal: number, monthlyInterestRate: number, numberOfMonths: number): number {
-        const rate = monthlyInterestRate;
-        const presentValue = principal;
-        const numPeriods = numberOfMonths;
-        const numerator = rate * Math.pow(1 + rate, numPeriods);
-        const denominator = Math.pow(1 + rate, numPeriods) - 1;
-        const pmt = presentValue * (numerator / denominator);
-
-        return pmt;
+        this.futureValue = FV;
+        this.totalContributions = P + PMT * t * 12;
+        this.totalInterest = FV - this.totalContributions;
+        this.errorMessage = null;
     }
 
     resetForm() {
-        this.principal = null;
-        this.interestRate = null;
-        this.time = null;
-        this.monthlyEMI = 0;
-        this.totalAmount = 0;
-        this.totalInterestPaid = 0;
-        this.errorMessage = '';
+        this.principal = 0;
+        this.monthlyContribution = 0;
+        this.interestRate = 0;
+        this.compoundingFrequency = 12;
+        this.savingsPeriod = 0;
+
+        this.futureValue = null;
+        this.totalContributions = null;
+        this.totalInterest = null;
+        this.errorMessage = null;
     }
 }

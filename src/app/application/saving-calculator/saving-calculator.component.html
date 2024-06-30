@@ -1,9 +1,14 @@
-<h1 class="emi text-bold">EMI Calculator</h1>
+<h1 class="emi text-bold">Savings Calculator</h1>
 <h4 class="page_subtitle">Calculate monthly EMI</h4>
 <form>
   <div class="form-group">
     <label for="principal" class="form-label font-weight-light font-roboto principal-label">Principal:</label>
     <input type="number" [(ngModel)]="principal" name="principal" class="principal-input comm-input" required />
+  </div>
+  <div class="form-group">
+    <label for="interestRate" class="form-label font-weight-light font-roboto interest-rate-label">Monthly Contribution:</label>
+    <input type="number" [(ngModel)]="monthlyContribution" name="interestRate" class="interest-rate-input comm-input" step="1" required />
+    <span class="percent font-weight-light font-roboto">%</span>
   </div>
 
   <div class="form-group">
@@ -13,14 +18,20 @@
   </div>
 
   <div class="form-group">
-    <label for="time" class="form-label font-weight-light font-roboto time-label">Time:</label>
-    <input type="number" [(ngModel)]="time" name="time" class="time-input comm-input" required />
+    <label for="interestRate" class="form-label font-weight-light font-roboto interest-rate-label">Compounding Frequency:</label>
+    <input type="number" [(ngModel)]="compoundingFrequency" name="interestRate" class="interest-rate-input comm-input" step="1" required />
+    <span class="percent font-weight-light font-roboto">%</span>
+  </div>
+
+  <div class="form-group">
+    <label for="time" class="form-label font-weight-light font-roboto time-label">Savings period:</label>
+    <input type="number" [(ngModel)]="savingsPeriod" name="time" class="time-input comm-input" required />
     <span class="yr font-weight-light font-roboto">Years</span>
   </div>
 
   <div class="buttons">
     <button type="reset" class="resetbutton" (click)="resetForm()">Reset</button>
-    <button type="button" class="calculatebutton" (click)="calculateEMI()">Calculate</button>
+    <button type="button" class="calculatebutton" (click)="calculateSavings()">Calculate</button>
   </div>
 </form>
 
@@ -29,14 +40,14 @@
 <div class="result">
   <div class="result-item">
     <label for="totalAmount" class="totalAmount font-roboto font-weight-light style-label">Total Amount:</label>
-    <input type="text" class="totalAmount-input comm-input dim-input" [value]="totalAmount | number : '1.2-2'" readonly />
+    <input type="text" class="totalAmount-input comm-input dim-input" [value]="futureValue | number : '1.2-2'" readonly />
   </div>
   <div class="result-item">
-    <label for="monthlyEMI" class="EMI font-roboto font-weight-light style-label">Monthly EMI:</label>
-    <input type="text" class="monthlyEMI-input comm-input dim-input" [value]="monthlyEMI | number : '1.2-2'" readonly />
+    <label for="monthlyEMI" class="EMI font-roboto font-weight-light style-label">Total Contributions:</label>
+    <input type="text" class="monthlyEMI-input comm-input dim-input" [value]="totalContributions | number : '1.2-2'" readonly />
   </div>
   <div class="result-item">
-    <label for="totalInterestPaid" class="interestPaid font-roboto font-weight-light style-label">Total Interest Paid:</label>
-    <input type="text" class="totalInterestPaid-input comm-input dim-input" [value]="totalInterestPaid | number : '1.2-2'" readonly />
+    <label for="totalInterestPaid" class="interestPaid font-roboto font-weight-light style-label">Total Interest Earned:</label>
+    <input type="text" class="totalInterestPaid-input comm-input dim-input" [value]="totalInterest | number : '1.2-2'" readonly />
   </div>
 </div>
