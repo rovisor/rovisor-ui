@@ -6,11 +6,11 @@ import { Component } from '@angular/core';
     styleUrls: ['./saving-calculator.component.css']
 })
 export class SavingCalculatorComponent {
-    principal: number = 0;
-    monthlyContribution: number = 0;
-    interestRate: number = 0;
-    compoundingFrequency: number = 12; // Default to monthly
-    savingsPeriod: number = 0;
+    principal: number | null = null;
+    monthlyContribution: number | null = null;
+    interestRate: number | null = null;
+    compoundingFrequency: number | null = null;
+    savingsPeriod: number | null = null;
 
     futureValue: number | null = null;
     totalContributions: number | null = null;
@@ -18,8 +18,8 @@ export class SavingCalculatorComponent {
     errorMessage: string | null = null;
 
     calculateSavings() {
-        if (this.principal < 0 || this.monthlyContribution < 0 || this.interestRate < 0 || this.compoundingFrequency <= 0 || this.savingsPeriod < 0) {
-            this.errorMessage = 'Please enter non-negative values for all fields.';
+        if (this.principal == null || this.monthlyContribution ==null || this.interestRate ==null || this.compoundingFrequency ==null || this.savingsPeriod ==null) {
+            this.errorMessage = 'All fields are required.';
             return;
         }
 
@@ -30,7 +30,10 @@ export class SavingCalculatorComponent {
         const t = this.savingsPeriod;
 
         const FV = P * Math.pow((1 + r / n), n * t) + PMT * (Math.pow((1 + r / n), n * t) - 1) / (r / n);
-
+        if (this.principal <= 0 || this.monthlyContribution <= 0 || this.interestRate <= 0 || this.compoundingFrequency <= 0 || this.savingsPeriod <= 0) {
+            this.errorMessage = 'Every value must be greater than zero.';
+            return;
+        }
         this.futureValue = FV;
         this.totalContributions = P + PMT * t * 12;
         this.totalInterest = FV - this.totalContributions;
