@@ -48,7 +48,7 @@ export class CalculatorComponent {
       this.TotalContributions= 
       this.ProjectedRetirementSavings = (saving*(Math.pow(1 +(ratePerMonth),(12*yearToRtirement)))+monthlyContribution*(((Math.pow(1 +(ratePerMonth),(yearToRtirement * 12)))-1)/(ratePerMonth)));
       this.TotalContributions = (saving+monthlyContribution*12*yearToRtirement);
-      this.TotalInterestEarned = this.ProjectedRetirementSavings - this.TotalContributions - saving;
+      this.TotalInterestEarned = this.ProjectedRetirementSavings - this.TotalContributions;
 
       this.errorMessage = '';
     } else {
