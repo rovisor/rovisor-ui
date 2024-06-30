@@ -14,6 +14,7 @@ export class SidebarComponent implements OnInit {
   private subscription: Subscription = new Subscription();
   public year = new Date().getFullYear();
   public version = "0.0.28";
+  showSidebar = false;
 
   constructor(private router: Router, private sharedService: SharedService) {}
 
@@ -47,5 +48,9 @@ export class SidebarComponent implements OnInit {
   toggleSubMenu(item: any) {
     item.expanded = !item.expanded;
   }
-
+  // in your component
+  toggleSidebar() {
+    const sidebar = document.querySelector('.full-screen.bg-rov-primary-sidebar');
+    sidebar?.classList.toggle('show-sidebar');
+  }
 }
