@@ -1,0 +1,49 @@
+    <div class="row">
+        <div class="col-12">
+            <h1>Retirement Calculator</h1>
+            <form [formGroup]="intrestForm">
+                <div class="form-group col-6">
+                    <div>
+                        <label for="principalAmount" class="label col-sm-6 col-form-label mt-5">Principal Amount</label>
+                        <input type="number" class="ms-5 input" formControlName="principalAmount" required />
+                        <div *ngIf="intrestForm.controls['principalAmount'].invalid && (intrestForm.controls['principalAmount'].dirty || intrestForm.controls['principalAmount'].touched)" class="text-danger">
+                            Principal Amount is required.
+                        </div>
+                    </div>
+                    <div>
+                        <label for="annualIntrest" class="label col-sm-6 col-form-label mt-5">Annual Intrest</label>
+                        <input type="number" class="ms-5 input" formControlName="annualIntrest" required />
+                        <div *ngIf="intrestForm.controls['annualIntrest'].invalid && (intrestForm.controls['annualIntrest'].dirty || intrestForm.controls['annualIntrest'].touched)" class="text-danger">
+                            Annual Intrest Age is required.
+                        </div>
+                    </div>
+                    <div>
+                        <label for="compoundFrequency" class="label col-sm-6 col-form-label mt-5">Compound Frequency </label>
+                        <input type="number" class="ms-5 input" formControlName="compoundFrequency" required />
+                        <div *ngIf="intrestForm.controls['compoundFrequency'].invalid && (intrestForm.controls['compoundFrequency'].dirty || intrestForm.controls['compoundFrequency'].touched)" class="text-danger">
+                            Compound Frequency is required.
+                        </div>
+                    </div>
+                    <div>
+                        <label for="investmentPeriod" class="label col-sm-6 col-form-label mt-5">Investment Period </label>
+                        <input type="number" class="ms-5 input" formControlName="investmentPeriod" required />
+                        <div *ngIf="intrestForm.controls['investmentPeriod'].invalid && (intrestForm.controls['investmentPeriod'].dirty || intrestForm.controls['investmentPeriod'].touched)" class="text-danger">
+                            Investment Period is required and must be greater than 0.
+                        </div>
+                    </div>
+                    <div class="buttons mt-5">
+                        <button type="reset" class="resetButton text-white" (click)="resetForm()">Reset</button>
+                        <button type="button" class="ms-3  calculateButton text-white" (click)="calculateEMI()">Calculate</button>
+                    </div>
+                </div>
+                <div *ngIf="errorMessage" class="alert alert-danger label col-6 mt-3">{{errorMessage}}</div>
+            </form>
+            <div class="result mt-3 col-6">
+                <div class="result-item">
+                    <label for="ProjectedRetirementSavings" class="label col-sm-6 col-form-label mt-4">Compound Intrest </label>
+                    <input type="text" class="input ms-3" [value]="ProjectedRetirementSavings | number : '1.2-2'" readonly />
+                </div>
+            
+            </div>
+        </div>
+    </div>
