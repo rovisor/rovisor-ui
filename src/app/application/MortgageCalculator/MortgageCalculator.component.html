@@ -27,7 +27,7 @@
                 </div>
                 <div class="buttons mt-5">
                     <button type="reset" class="resetButton text-white" (click)="resetForm()">Reset</button>
-                    <button type="button" class="ms-3  calculateButton text-white" (click)="calculate()">Calculate</button>
+                    <button type="button" class="ms-3  calculateButton text-white" (click)="calculate()" [disabled]="MortageCalculatorForm.invalid">Calculate</button>
                 </div>
             </div>
             <div *ngIf="errorMessage" class="alert alert-danger label col-6 mt-3">{{errorMessage}}</div>
