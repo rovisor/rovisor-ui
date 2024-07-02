@@ -21,7 +21,7 @@ export class compoundIntresetComponent {
     });
   }
 
-  calculateEMI() {
+  calculate() {
     if (this.intrestForm.valid) {
       const principalAmount = this.intrestForm.value.principalAmount;
       const annualIntrest = this.intrestForm.value.annualIntrest;
