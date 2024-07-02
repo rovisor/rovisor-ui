@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-calculator',
-  templateUrl: './calculator.component.html',
-  styleUrls: ['./calculator.component.css']
+  selector: 'app-compoundIntreset',
+  templateUrl: './compoundIntreset.component.html',
+  styleUrls: ['./compoundIntreset.component.css']
 })
-export class CalculatorComponent {
+export class compoundIntresetComponent {
   intrestForm: FormGroup;
 
   ProjectedRetirementSavings: number = 0;
