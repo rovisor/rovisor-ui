@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-calculator',
-  templateUrl: './calculator.component.html',
-  styleUrls: ['./calculator.component.css']
+  selector: 'app-MortgageCalculator',
+  templateUrl: './MortgageCalculator.component.html',
+  styleUrls: ['./MortgageCalculator.component.css']
 })
-export class CalculatorComponent {
+export class MortgageCalculatorComponent {
   
 MortageCalculatorForm: FormGroup;
 

@@ -6,7 +6,7 @@ import { Registration1Component } from './registration-1/registration-1.componen
 import { RegistrationV2Component } from './registration-v2/registration-v2.component';
 import { ConsolidateStatementComponent } from './consolidate-statement/consolidate-statement.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
-import { CalculatorComponent } from './calculator/calculator.component';
+import { MortgageCalculatorComponent } from './MortgageCalculator/MortgageCalculator.component';
 
 const routes: Routes = [
   {
@@ -26,8 +26,8 @@ const routes: Routes = [
         component: RegistrationV2Component,
       },
         {
-          path: 'calculator',
-          component: CalculatorComponent,
+          path: 'MortgageCalculator',
+          component: MortgageCalculatorComponent,
        },
       {
          path: 'consolidate-statement',
