@@ -10,12 +10,14 @@ export class InvestmentCalculatorComponent {
     InvestmentCalculatorForm: FormGroup;
 
     Projectedcalculation: number = 0;
+    annualizedROI: number =0;
     errorMessage: string = '';
   
     constructor(private fb: FormBuilder) {
       this.InvestmentCalculatorForm = this.fb.group({
         InitialInvestment: [null, Validators.required],
         FinalValue: [null, Validators.required],
+        Time: [null,Validators.required],
       });
     }
   
@@ -23,8 +25,9 @@ export class InvestmentCalculatorComponent {
       if (this.InvestmentCalculatorForm.valid) {
         const InitialInvestment = this.InvestmentCalculatorForm.value.InitialInvestment;
         const FinalValue = this.InvestmentCalculatorForm.value.FinalValue;
+        const Time = this.InvestmentCalculatorForm.value.Time;
   
-        if (InitialInvestment <= 0 || FinalValue<= 0 ) {
+        if (InitialInvestment <= 0 || FinalValue<= 0  || Time<=0) {
           this.errorMessage = " All values must be greater than zero.";
           return; 
         }
@@ -32,7 +35,7 @@ export class InvestmentCalculatorComponent {
 
         
         this.Projectedcalculation = (((FinalValue-InitialInvestment)/InitialInvestment)*100);
-  
+        this.annualizedROI = ((Math.pow(1 +(FinalValue/InitialInvestment),(1/Time))-1))
         this.errorMessage = '';
       } else {
         this.errorMessage = "Please fill out all required fields.";
@@ -43,6 +46,7 @@ export class InvestmentCalculatorComponent {
     resetForm() {
       this.InvestmentCalculatorForm.reset();
       this.Projectedcalculation = 0;
+      this.annualizedROI = 0;
       this.errorMessage = '';
     }
 }
