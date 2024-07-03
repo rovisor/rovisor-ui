@@ -17,6 +17,7 @@ import { AccountMappingComponent } from './account-mapping/account-mapping.compo
 import { AddAccountComponent } from './add-account/add-account.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
+import { InvestmentCalculatorComponent } from './InvestmentCalculator/InvestmentCalculator.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AccountDetailsComponent } from './account-details/account-details.compo
     RegistrationV2Component,
     UploadStatementComponent,
     ConsolidateStatementComponent,
+    InvestmentCalculatorComponent,
     AccountMappingComponent,
     AddAccountComponent,
     DashboardComponent,
