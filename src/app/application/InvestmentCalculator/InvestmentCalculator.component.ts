@@ -32,10 +32,10 @@ export class InvestmentCalculatorComponent {
           return; 
         }
   
-
+        const x = 1/Time;
         
         this.Projectedcalculation = (((FinalValue-InitialInvestment)/InitialInvestment)*100);
-        this.annualizedROI = ((Math.pow(1 +(FinalValue/InitialInvestment),(1/Time))-1))
+        this.annualizedROI = ((Math.pow((FinalValue/InitialInvestment),(x)))-1)
         this.errorMessage = '';
       } else {
         this.errorMessage = "Please fill out all required fields.";
