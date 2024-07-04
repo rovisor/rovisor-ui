@@ -6,7 +6,7 @@ import { Registration1Component } from './registration-1/registration-1.componen
 import { RegistrationV2Component } from './registration-v2/registration-v2.component';
 import { ConsolidateStatementComponent } from './consolidate-statement/consolidate-statement.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
-
+import { CreditCardPayoffCalculatorComponent } from './Credit-Card-Payoff-Calculator/Credit-Card-Payoff-Calculator.component';
 
 const routes: Routes = [
   {
@@ -28,6 +28,10 @@ const routes: Routes = [
       {
          path: 'consolidate-statement',
          component: ConsolidateStatementComponent,
+      },
+      {
+        path: 'Credit-Card-Payoff-Calculator',
+        component: CreditCardPayoffCalculatorComponent,
       },
       {
          path: 'accounts/:id',
