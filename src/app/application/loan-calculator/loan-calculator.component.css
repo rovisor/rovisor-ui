@@ -10,6 +10,15 @@
   background: rgba(255, 255, 255, 0.4);
   border: 1px solid rgba(0, 0, 0, 1);
 }
+.table-responsive {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.table {
+  width: 100%;
+}
+
 .emi {
 
   margin-left: 31px;
