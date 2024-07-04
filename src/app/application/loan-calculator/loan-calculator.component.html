@@ -30,33 +30,42 @@
 
 <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
 
-<div class="result" *ngIf="amortizationSchedule.length > 0">
-  <div class="table-responsive">
-    <table class="table table-striped table-bordered">
-      <thead>
-        <tr>
-          <th>Payment Number</th>
-          <th>Beginning Balance</th>
-          <th>Scheduled Payment</th>
-          <th>Additional Payment</th>
-          <th>Total Payment</th>
-          <th>Interest Payment</th>
-          <th>Principal Payment</th>
-          <th>Ending Balance</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let payment of amortizationSchedule">
-          <td>{{ payment.paymentNumber }}</td>
-          <td>{{ payment.beginningBalance | number:'1.2-2' }}</td>
-          <td>{{ payment.scheduledPayment | number:'1.2-2' }}</td>
-          <td>{{ payment.additionalPayment | number:'1.2-2' }}</td>
-          <td>{{ payment.totalPayment | number:'1.2-2' }}</td>
-          <td>{{ payment.interestPayment | number:'1.2-2' }}</td>
-          <td>{{ payment.principalPayment | number:'1.2-2' }}</td>
-          <td>{{ payment.endingBalance | number:'1.2-2' }}</td>
-        </tr>
-      </tbody>
-    </table>
+<div class="result">
+  <div class="result-item">
+    <label for="totalAmount" class="totalAmount font-roboto font-weight-light style-label">Monthly Payment:</label>
+    <input type="text" [value]="monthlyPayment | number:'1.2-2'" class="comm-input dim-input" readonly />
   </div>
+  <div class="result-item">
+    <label for="totalMonthlyPayment" class="EMI font-roboto font-weight-light style-label">Total Monthly Payment:</label>
+    <input type="text" [value]="totalMonthlyPayment | number:'1.2-2'" class="comm-input dim-input" readonly />
+  </div>
+</div>
+
+<div *ngIf="amortizationSchedule.length > 0" class="amortization-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Payment Number</th>
+        <th>Beginning Balance</th>
+        <th>Scheduled Payment</th>
+        <th>Additional Payment</th>
+        <th>Total Payment</th>
+        <th>Interest Payment</th>
+        <th>Principal Payment</th>
+        <th>Ending Balance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let payment of amortizationSchedule; let i = index">
+        <td>{{ payment.paymentNumber }}</td>
+        <td>{{ payment.beginningBalance | number:'1.2-2' }}</td>
+        <td>{{ payment.scheduledPayment | number:'1.2-2' }}</td>
+        <td>{{ payment.additionalPayment | number:'1.2-2' }}</td>
+        <td>{{ payment.totalPayment | number:'1.2-2' }}</td>
+        <td>{{ payment.interestPayment | number:'1.2-2' }}</td>
+        <td>{{ payment.principalPayment | number:'1.2-2' }}</td>
+        <td>{{ payment.endingBalance | number:'1.2-2' }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

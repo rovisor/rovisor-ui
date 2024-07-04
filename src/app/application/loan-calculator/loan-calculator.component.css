@@ -10,14 +10,26 @@
   background: rgba(255, 255, 255, 0.4);
   border: 1px solid rgba(0, 0, 0, 1);
 }
-.table-responsive {
+.amortization-table {
+  overflow-x: auto;
   max-height: 400px;
-  overflow-y: auto;
 }
 
-.table {
+.amortization-table table {
   width: 100%;
+  border-collapse: collapse;
 }
+
+.amortization-table th, .amortization-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.amortization-table th {
+  background-color: #f2f2f2;
+}
+
 
 .emi {
 

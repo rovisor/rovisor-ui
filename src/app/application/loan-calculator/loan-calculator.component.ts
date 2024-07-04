@@ -14,7 +14,8 @@ export class LoanCalculatorComponent {
     monthlyPayment: number | null = null;
     totalMonthlyPayment: number | null = null;
     errorMessage: string | null = null;
-    amortizationSchedule: any[] = [];
+
+    amortizationSchedule: { paymentNumber: number; beginningBalance: number; scheduledPayment: number; additionalPayment: number; totalPayment: number; interestPayment: number; principalPayment: number; endingBalance: number; }[] = [];
 
     calculateMonthlyPayment() {
         if (this.principal == null || this.loanTerm == null || this.interestRate == null || this.additionalMonthlyPayment == null) {
@@ -22,8 +23,8 @@ export class LoanCalculatorComponent {
             return;
         }
 
-        if (this.principal <= 0 || this.interestRate <= 0 || this.loanTerm <= 0 || this.additionalMonthlyPayment < 0) {
-            this.errorMessage = 'Please enter positive values for principal, interest rate, and loan term.';
+        if (this.principal <= 0 || this.interestRate <= 0 || this.loanTerm <= 0 || this.additionalMonthlyPayment <= 0) {
+            this.errorMessage = 'Please enter non-negative values for all fields.';
             return;
         }
 
@@ -32,46 +33,43 @@ export class LoanCalculatorComponent {
         const r = annualRate / 12;
         const n = this.loanTerm * 12;
 
+        const M = P * r * Math.pow((1 + r), n) / (Math.pow((1 + r), n) - 1);
+        this.monthlyPayment = M;
+        this.totalMonthlyPayment = M + this.additionalMonthlyPayment;
         this.errorMessage = null;
 
-        this.calculateAmortizationSchedule(P, r, n, this.additionalMonthlyPayment);
+        this.generateAmortizationSchedule(P, r, n);
     }
 
-    calculateAmortizationSchedule(principal: number, monthlyRate: number, totalPayments: number, additionalPayment: number) {
+    generateAmortizationSchedule(P: number, r: number, n: number) {
         this.amortizationSchedule = [];
-        let remainingBalance = principal;
+        let remainingBalance = P;
 
-        for (let i = 1; i <= totalPayments; i++) {
-            const monthlyPayment = remainingBalance * (monthlyRate * Math.pow((1 + monthlyRate), (totalPayments - i + 1))) / (Math.pow((1 + monthlyRate), (totalPayments - i + 1)) - 1);
-            const totalMonthlyPayment = monthlyPayment + additionalPayment;
-            const interestPayment = remainingBalance * monthlyRate;
-            const principalPayment = totalMonthlyPayment - interestPayment;
-            const endingBalance = remainingBalance - principalPayment;
+        for (let month = 1; month <= n; month++) {
+            const interest = remainingBalance * r;
+            const principal = this.monthlyPayment! - interest;
+            const additionalPayment = this.additionalMonthlyPayment!;
+            const totalPayment = this.monthlyPayment! + additionalPayment;
+            remainingBalance -= principal + additionalPayment;
 
             this.amortizationSchedule.push({
-                paymentNumber: i,
-                beginningBalance: remainingBalance,
-                scheduledPayment: monthlyPayment,
+                paymentNumber: month,
+                beginningBalance: remainingBalance + principal + additionalPayment,
+                scheduledPayment: this.monthlyPayment!,
                 additionalPayment: additionalPayment,
-                totalPayment: totalMonthlyPayment,
-                interestPayment: interestPayment,
-                principalPayment: principalPayment,
-                endingBalance: endingBalance
+                totalPayment: totalPayment,
+                interestPayment: interest,
+                principalPayment: principal + additionalPayment,
+                endingBalance: remainingBalance
             });
-
-            remainingBalance = endingBalance;
-
-            if (remainingBalance <= 0) {
-                break;
-            }
         }
     }
 
     resetForm() {
-        this.principal = null;
-        this.interestRate = null;
-        this.loanTerm = null;
-        this.additionalMonthlyPayment = null;
+        this.principal = 0;
+        this.interestRate = 0;
+        this.loanTerm = 0;
+        this.additionalMonthlyPayment = 0;
 
         this.monthlyPayment = null;
         this.totalMonthlyPayment = null;
