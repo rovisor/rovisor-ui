@@ -24,7 +24,7 @@ export class LoanCalculatorComponent {
         }
 
         if (this.principal <= 0 || this.interestRate <= 0 || this.loanTerm <= 0 || this.additionalMonthlyPayment <= 0) {
-            this.errorMessage = 'Please enter non-negative values for all fields.';
+            this.errorMessage = 'Please enter positive values for all fields.';
             return;
         }
 
@@ -52,24 +52,30 @@ export class LoanCalculatorComponent {
             const totalPayment = this.monthlyPayment! + additionalPayment;
             remainingBalance -= principal + additionalPayment;
 
+            // Ensure no negative values
+            const adjustedRemainingBalance = Math.max(0, remainingBalance);
+
             this.amortizationSchedule.push({
                 paymentNumber: month,
-                beginningBalance: remainingBalance + principal + additionalPayment,
+                beginningBalance: Math.max(0, remainingBalance + principal + additionalPayment),
                 scheduledPayment: this.monthlyPayment!,
                 additionalPayment: additionalPayment,
                 totalPayment: totalPayment,
-                interestPayment: interest,
-                principalPayment: principal + additionalPayment,
-                endingBalance: remainingBalance
+                interestPayment: Math.max(0, interest),
+                principalPayment: Math.max(0, principal + additionalPayment),
+                endingBalance: adjustedRemainingBalance
             });
+
+            // Ensure remaining balance is reset to zero if negative
+            if (remainingBalance < 0) remainingBalance = 0;
         }
     }
 
     resetForm() {
-        this.principal = 0;
-        this.interestRate = 0;
-        this.loanTerm = 0;
-        this.additionalMonthlyPayment = 0;
+        this.principal = null;
+        this.interestRate = null;
+        this.loanTerm = null;
+        this.additionalMonthlyPayment = null;
 
         this.monthlyPayment = null;
         this.totalMonthlyPayment = null;
