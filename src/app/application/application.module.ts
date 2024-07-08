@@ -17,6 +17,7 @@ import { AccountMappingComponent } from './account-mapping/account-mapping.compo
 import { AddAccountComponent } from './add-account/add-account.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
+import { EmergencyFundComponent } from './Emergency-Fund/Emergency-Fund.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AccountDetailsComponent } from './account-details/account-details.compo
     AccountMappingComponent,
     AddAccountComponent,
     DashboardComponent,
-    AccountDetailsComponent
+    AccountDetailsComponent,
+    EmergencyFundComponent
   ],
   imports: [
     NgbDatepickerModule,
