@@ -9,5 +9,6 @@
         "children": []
     },
     { "label": "Consolidated Statement", "route": "/app/consolidate-statement", "icon": "bi bi-files","expanded": false },
+    { "label": "Lease vs. Buys Calculator", "route": "/app/Lease-vs-Buy", "icon": "bi bi-calculator","expanded": false },
     { "label": "Settings", "route": "/app/settings", "icon": "bi bi-gear","expanded": false }
   ]
