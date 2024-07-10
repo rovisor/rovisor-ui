@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class compoundIntresetComponent {
   intrestForm: FormGroup;
 
-  ProjectedRetirementSavings: number = 0;
+  Projected: number = 0;
   errorMessage: string = '';
 
   constructor(private fb: FormBuilder) {
@@ -35,7 +35,7 @@ export class compoundIntresetComponent {
 
 
 
-      this.ProjectedRetirementSavings = (principalAmount*(Math.pow(1 +(annualIntrest/compoundFrequency),(compoundFrequency*investmentPeriod))));
+      this.Projected = (principalAmount*(Math.pow(1 +(annualIntrest/compoundFrequency),(compoundFrequency*investmentPeriod))));
       this.errorMessage = '';
     } else {
       this.errorMessage = "Please fill out all required fields.";
@@ -45,7 +45,7 @@ export class compoundIntresetComponent {
 
   resetForm() {
     this.intrestForm.reset();
-    this.ProjectedRetirementSavings = 0;
+    this.Projected = 0;
     this.errorMessage = '';
   }
 }
