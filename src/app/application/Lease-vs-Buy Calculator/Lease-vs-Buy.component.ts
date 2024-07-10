@@ -38,7 +38,7 @@ export class LeaseVsBuyComponent {
         const ResidualValue = this.payoffCalculatorForm.value.ResidualValue;
         const AdditionalFees = this.payoffCalculatorForm.value.AdditionalFees
   
-        if (LeasePayment <= 0 || LeaseTerm <= 0 || LeaseDown <= 0 || ResidualValue<=0 || AdditionalFees<=0) {
+        if (LeasePayment <= 0 || LeaseTerm <= 0 || LeaseDown <= 0 || ResidualValue<0 || AdditionalFees<0) {
           this.errorMessage = "All values must be greater than zero.";
           return; 
         }
@@ -53,8 +53,8 @@ export class LeaseVsBuyComponent {
         const BuyAdditional = this.payoffCalculatorForm.value.BuyAdditional;
         const TaxRate = this.payoffCalculatorForm.value.TaxRate;
 
-        if ( PurchasePrice <=0 || Term <=0 || InterestRate <=0 || DownPayment<=0 || BuyAdditional<=0 || TaxRate <=0){
-          this.errorMessage = "All value must be greater than zero";
+        if ( PurchasePrice <=0 || Term <=0 || InterestRate <=0 || DownPayment<=0 || BuyAdditional<0 || TaxRate <0){
+          this.errorMessage = "All value must be greater than zero ";
           return;
         }
 
