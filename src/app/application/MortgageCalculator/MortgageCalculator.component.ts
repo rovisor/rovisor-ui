@@ -10,7 +10,7 @@ export class MortgageCalculatorComponent {
   
 MortageCalculatorForm: FormGroup;
 
-  ProjectedRetirementSavings: number = 0;
+  Projected: number = 0;
   errorMessage: string = '';
 
   constructor(private fb: FormBuilder) {
@@ -36,7 +36,7 @@ MortageCalculatorForm: FormGroup;
       const lonaTerm = (time*12) ;
       const ratePerMonth = annualRate / 12;
 
-      this.ProjectedRetirementSavings = (loanAmount*((ratePerMonth*(Math.pow(1 +(ratePerMonth),(lonaTerm))))/(((Math.pow(1 +(ratePerMonth),(lonaTerm)))-1))));
+      this.Projected = (loanAmount*((ratePerMonth*(Math.pow(1 +(ratePerMonth),(lonaTerm))))/(((Math.pow(1 +(ratePerMonth),(lonaTerm)))-1))));
 
       this.errorMessage = '';
     } else {
@@ -47,7 +47,7 @@ MortageCalculatorForm: FormGroup;
 
   resetForm() {
     this.MortageCalculatorForm.reset();
-    this.ProjectedRetirementSavings = 0;
+    this.Projected = 0;
     this.errorMessage = '';
   }
 }
