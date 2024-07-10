@@ -11,6 +11,7 @@ export class DebttoIncomeRatioCalculatorComponentComponent {
 
     dtiRatio: number = 0;
     errorMessage: string = '';
+    hasNegativeValue: boolean = false;
 
     constructor(private fb: FormBuilder) {
         this.debitincomeCalculatorForm = this.fb.group({
@@ -29,19 +30,27 @@ export class DebttoIncomeRatioCalculatorComponentComponent {
     }
 
     calculate() {
-        if (this.debitincomeCalculatorForm.valid) {
-            const mortgagePayments = this.debitincomeCalculatorForm.value.mortgagePayments;
-            const carLoanPayments = this.debitincomeCalculatorForm.value.carLoanPayments;
-            const studentLoanPayments = this.debitincomeCalculatorForm.value.studentLoanPayments;
-            const creditCardPayments = this.debitincomeCalculatorForm.value.creditCardPayments;
-            const personalLoanPayments = this.debitincomeCalculatorForm.value.personalLoanPayments;
-            const otherDebtPayments = this.debitincomeCalculatorForm.value.otherDebtPayments;
+        const formValues = this.debitincomeCalculatorForm.value;
+        const hasNegativeValue = Object.keys(formValues).some(key => formValues[key] < 0);
 
-            const salaryWages = this.debitincomeCalculatorForm.value.salaryWages;
-            const bonusesCommissions = this.debitincomeCalculatorForm.value.bonusesCommissions;
-            const rentalIncome = this.debitincomeCalculatorForm.value.rentalIncome;
-            const investmentIncome = this.debitincomeCalculatorForm.value.investmentIncome;
-            const otherIncomeSources = this.debitincomeCalculatorForm.value.otherIncomeSources;
+        if (hasNegativeValue) {
+            this.errorMessage = "Values cannot be negative.";
+            return;
+        }
+
+        if (this.debitincomeCalculatorForm.valid) {
+            const mortgagePayments = formValues.mortgagePayments;
+            const carLoanPayments = formValues.carLoanPayments;
+            const studentLoanPayments = formValues.studentLoanPayments;
+            const creditCardPayments = formValues.creditCardPayments;
+            const personalLoanPayments = formValues.personalLoanPayments;
+            const otherDebtPayments = formValues.otherDebtPayments;
+
+            const salaryWages = formValues.salaryWages;
+            const bonusesCommissions = formValues.bonusesCommissions;
+            const rentalIncome = formValues.rentalIncome;
+            const investmentIncome = formValues.investmentIncome;
+            const otherIncomeSources = formValues.otherIncomeSources;
 
             const totalDebtPayments = mortgagePayments + carLoanPayments + studentLoanPayments + creditCardPayments + personalLoanPayments + otherDebtPayments;
             const totalMonthlyIncome = salaryWages + bonusesCommissions + rentalIncome + investmentIncome + otherIncomeSources;
@@ -63,5 +72,11 @@ export class DebttoIncomeRatioCalculatorComponentComponent {
         this.debitincomeCalculatorForm.reset();
         this.dtiRatio = 0;
         this.errorMessage = '';
+        this.hasNegativeValue = false; // Reset negative value check
+    }
+
+    checkForNegativeValues() {
+        const formValues = this.debitincomeCalculatorForm.value;
+        this.hasNegativeValue = Object.keys(formValues).some(key => formValues[key] < 0);
     }
 }
