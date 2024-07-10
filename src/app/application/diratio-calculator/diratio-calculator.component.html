@@ -1,0 +1,101 @@
+<div class="row">
+    <div class="col-12">
+        <h1>Debit to Income Ratio Calculator</h1>
+        <form [formGroup]="debitincomeCalculatorForm">
+            <div class="form-group col-6">
+                <h2>Debt Payments</h2>
+                <div>
+                    <label for="mortgagePayments" class="label col-sm-6 col-form-label mt-5">Mortgage/Rent Payments</label>
+                    <input type="number" class="ms-5 input" formControlName="mortgagePayments" required />
+                    <div *ngIf="debitincomeCalculatorForm.controls['mortgagePayments'].invalid && (debitincomeCalculatorForm.controls['mortgagePayments'].dirty || debitincomeCalculatorForm.controls['mortgagePayments'].touched)" class="text-danger">
+                        Mortgage/Rent Payments are required
+                    </div>
+                </div>
+                <div>
+                    <label for="carLoanPayments" class="label col-sm-6 col-form-label mt-5">Car Loan Payments</label>
+                    <input type="number" class="ms-5 input" formControlName="carLoanPayments" required />
+                    <div *ngIf="debitincomeCalculatorForm.controls['carLoanPayments'].invalid && (debitincomeCalculatorForm.controls['carLoanPayments'].dirty || debitincomeCalculatorForm.controls['carLoanPayments'].touched)" class="text-danger">
+                        Car Loan Payments are required 
+                    </div>
+                </div>
+                <div>
+                    <label for="studentLoanPayments" class="label col-sm-6 col-form-label mt-5">Student Loan Payments</label>
+                    <input type="number" class="ms-5 input" formControlName="studentLoanPayments" required />
+                    <div *ngIf="debitincomeCalculatorForm.controls['studentLoanPayments'].invalid && (debitincomeCalculatorForm.controls['studentLoanPayments'].dirty || debitincomeCalculatorForm.controls['studentLoanPayments'].touched)" class="text-danger">
+                        Student Loan Payments are required 
+                    </div>
+                </div>
+                <div>
+                    <label for="creditCardPayments" class="label col-sm-6 col-form-label mt-5">Credit Card Payments</label>
+                    <input type="number" class="ms-5 input" formControlName="creditCardPayments" required />
+                    <div *ngIf="debitincomeCalculatorForm.controls['creditCardPayments'].invalid && (debitincomeCalculatorForm.controls['creditCardPayments'].dirty || debitincomeCalculatorForm.controls['creditCardPayments'].touched)" class="text-danger">
+                        Credit Card Payments are required 
+                    </div>
+                </div>
+                <div>
+                    <label for="personalLoanPayments" class="label col-sm-6 col-form-label mt-5">Personal Loan Payments</label>
+                    <input type="number" class="ms-5 input" formControlName="personalLoanPayments" required />
+                    <div *ngIf="debitincomeCalculatorForm.controls['personalLoanPayments'].invalid && (debitincomeCalculatorForm.controls['personalLoanPayments'].dirty || debitincomeCalculatorForm.controls['personalLoanPayments'].touched)" class="text-danger">
+                        Personal Loan Payments are required 
+                    </div>
+                </div>
+                <div>
+                    <label for="otherDebtPayments" class="label col-sm-6 col-form-label mt-5">Other Debt Payments</label>
+                    <input type="number" class="ms-5 input" formControlName="otherDebtPayments" required />
+                    <div *ngIf="debitincomeCalculatorForm.controls['otherDebtPayments'].invalid && (debitincomeCalculatorForm.controls['otherDebtPayments'].dirty || debitincomeCalculatorForm.controls['otherDebtPayments'].touched)" class="text-danger">
+                        Other Debt Payments are required 
+                    </div>
+                </div>
+
+                <h2>Income Sources</h2>
+                <div>
+                    <label for="salaryWages" class="label col-sm-6 col-form-label mt-5">Salary/Wages</label>
+                    <input type="number" class="ms-5 input" formControlName="salaryWages" required />
+                    <div *ngIf="debitincomeCalculatorForm.controls['salaryWages'].invalid && (debitincomeCalculatorForm.controls['salaryWages'].dirty || debitincomeCalculatorForm.controls['salaryWages'].touched)" class="text-danger">
+                        Salary/Wages are required 
+                    </div>
+                </div>
+                <div>
+                    <label for="bonusesCommissions" class="label col-sm-6 col-form-label mt-5">Bonuses/Commissions</label>
+                    <input type="number" class="ms-5 input" formControlName="bonusesCommissions" required />
+                    <div *ngIf="debitincomeCalculatorForm.controls['bonusesCommissions'].invalid && (debitincomeCalculatorForm.controls['bonusesCommissions'].dirty || debitincomeCalculatorForm.controls['bonusesCommissions'].touched)" class="text-danger">
+                        Bonuses/Commissions are required 
+                    </div>
+                </div>
+                <div>
+                    <label for="rentalIncome" class="label col-sm-6 col-form-label mt-5">Rental Income</label>
+                    <input type="number" class="ms-5 input" formControlName="rentalIncome" required />
+                    <div *ngIf="debitincomeCalculatorForm.controls['rentalIncome'].invalid && (debitincomeCalculatorForm.controls['rentalIncome'].dirty || debitincomeCalculatorForm.controls['rentalIncome'].touched)" class="text-danger">
+                        Rental Income is required 
+                    </div>
+                </div>
+                <div>
+                    <label for="investmentIncome" class="label col-sm-6 col-form-label mt-5">Investment Income</label>
+                    <input type="number" class="ms-5 input" formControlName="investmentIncome" required />
+                    <div *ngIf="debitincomeCalculatorForm.controls['investmentIncome'].invalid && (debitincomeCalculatorForm.controls['investmentIncome'].dirty || debitincomeCalculatorForm.controls['investmentIncome'].touched)" class="text-danger">
+                        Investment Income is required 
+                    </div>
+                </div>
+                <div>
+                    <label for="otherIncomeSources" class="label col-sm-6 col-form-label mt-5">Other Income Sources</label>
+                    <input type="number" class="ms-5 input" formControlName="otherIncomeSources" required />
+                    <div *ngIf="debitincomeCalculatorForm.controls['otherIncomeSources'].invalid && (debitincomeCalculatorForm.controls['otherIncomeSources'].dirty || debitincomeCalculatorForm.controls['otherIncomeSources'].touched)" class="text-danger">
+                        Other Income Sources are required 
+                    </div>
+                </div>
+
+                <div class="buttons mt-5">
+                    <button type="reset" class="resetButton btn btn-secondary text-white" (click)="resetForm()">Reset</button>
+                    <button type="button" class="ms-3 calculateButton btn btn-primary" (click)="calculate()" [disabled]="debitincomeCalculatorForm.invalid">Calculate</button>
+                </div>
+            </div>
+            <div *ngIf="errorMessage" class="alert alert-danger label col-6 mt-3">{{errorMessage}}</div>
+        </form>
+        <div class="result mt-3 col-6">
+            <div class="result-item">
+                <label for="dtiRatio" class="label col-sm-6 col-form-label mt-4">Debt-to-Income Ratio (%)</label>
+                <input type="text" class="input ms-3" [value]="dtiRatio | number : '1.2-2'" readonly />
+            </div>
+        </div>
+    </div>
+</div>

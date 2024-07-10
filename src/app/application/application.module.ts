@@ -17,7 +17,7 @@ import { AccountMappingComponent } from './account-mapping/account-mapping.compo
 import { AddAccountComponent } from './add-account/add-account.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
-import { DebttoIncomeRatioCalculatorComponent } from './diratio-calculator/diratio-calculator.component';
+import { DebttoIncomeRatioCalculatorComponentComponent } from './diratio-calculator/diratio-calculator.component';
 @NgModule({
   declarations: [
     ApplicationComponent,
@@ -29,7 +29,7 @@ import { DebttoIncomeRatioCalculatorComponent } from './diratio-calculator/dirat
     AddAccountComponent,
     DashboardComponent,
     AccountDetailsComponent,
-    DebttoIncomeRatioCalculatorComponent
+   DebttoIncomeRatioCalculatorComponentComponent
   ],
   imports: [
     NgbDatepickerModule,
