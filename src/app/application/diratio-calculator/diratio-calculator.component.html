@@ -3,83 +3,115 @@
         <h1>Debt to Income Ratio Calculator</h1>
         <form [formGroup]="debitincomeCalculatorForm">
             <div class="form-group col-6">
-                <h2>Debt Payments</h2>
+                
                 <div>
                     <label for="mortgagePayments" class="label col-sm-6 col-form-label mt-5">Mortgage/Rent Payments</label>
                     <input type="number" class="ms-5 input" formControlName="mortgagePayments" required (input)="checkForNegativeValues()" />
-                    <div *ngIf="debitincomeCalculatorForm.controls['mortgagePayments'].invalid && (debitincomeCalculatorForm.controls['mortgagePayments'].dirty || debitincomeCalculatorForm.controls['mortgagePayments'].touched)" class="text-danger">
+                    <div *ngIf="debitincomeCalculatorForm.controls['mortgagePayments'].hasError('negativeValue')" class="text-danger">
+                        Negative values are not allowed
+                    </div>
+                    <div *ngIf="debitincomeCalculatorForm.controls['mortgagePayments'].invalid && (debitincomeCalculatorForm.controls['mortgagePayments'].dirty || debitincomeCalculatorForm.controls['mortgagePayments'].touched) && !debitincomeCalculatorForm.controls['mortgagePayments'].hasError('negativeValue')" class="text-danger">
                         Mortgage/Rent Payments are required
                     </div>
                 </div>
                 <div>
                     <label for="carLoanPayments" class="label col-sm-6 col-form-label mt-5">Car Loan Payments</label>
                     <input type="number" class="ms-5 input" formControlName="carLoanPayments" required (input)="checkForNegativeValues()" />
-                    <div *ngIf="debitincomeCalculatorForm.controls['carLoanPayments'].invalid && (debitincomeCalculatorForm.controls['carLoanPayments'].dirty || debitincomeCalculatorForm.controls['carLoanPayments'].touched)" class="text-danger">
+                    <div *ngIf="debitincomeCalculatorForm.controls['carLoanPayments'].hasError('negativeValue')" class="text-danger">
+                        Negative values are not allowed
+                    </div>
+                    <div *ngIf="debitincomeCalculatorForm.controls['carLoanPayments'].invalid && (debitincomeCalculatorForm.controls['carLoanPayments'].dirty || debitincomeCalculatorForm.controls['carLoanPayments'].touched) && !debitincomeCalculatorForm.controls['carLoanPayments'].hasError('negativeValue')" class="text-danger">
                         Car Loan Payments are required
                     </div>
                 </div>
                 <div>
                     <label for="studentLoanPayments" class="label col-sm-6 col-form-label mt-5">Student Loan Payments</label>
                     <input type="number" class="ms-5 input" formControlName="studentLoanPayments" required (input)="checkForNegativeValues()" />
-                    <div *ngIf="debitincomeCalculatorForm.controls['studentLoanPayments'].invalid && (debitincomeCalculatorForm.controls['studentLoanPayments'].dirty || debitincomeCalculatorForm.controls['studentLoanPayments'].touched)" class="text-danger">
+                    <div *ngIf="debitincomeCalculatorForm.controls['studentLoanPayments'].hasError('negativeValue')" class="text-danger">
+                        Negative values are not allowed
+                    </div>
+                    <div *ngIf="debitincomeCalculatorForm.controls['studentLoanPayments'].invalid && (debitincomeCalculatorForm.controls['studentLoanPayments'].dirty || debitincomeCalculatorForm.controls['studentLoanPayments'].touched) && !debitincomeCalculatorForm.controls['studentLoanPayments'].hasError('negativeValue')" class="text-danger">
                         Student Loan Payments are required
                     </div>
                 </div>
                 <div>
                     <label for="creditCardPayments" class="label col-sm-6 col-form-label mt-5">Credit Card Payments</label>
                     <input type="number" class="ms-5 input" formControlName="creditCardPayments" required (input)="checkForNegativeValues()" />
-                    <div *ngIf="debitincomeCalculatorForm.controls['creditCardPayments'].invalid && (debitincomeCalculatorForm.controls['creditCardPayments'].dirty || debitincomeCalculatorForm.controls['creditCardPayments'].touched)" class="text-danger">
+                    <div *ngIf="debitincomeCalculatorForm.controls['creditCardPayments'].hasError('negativeValue')" class="text-danger">
+                        Negative values are not allowed
+                    </div>
+                    <div *ngIf="debitincomeCalculatorForm.controls['creditCardPayments'].invalid && (debitincomeCalculatorForm.controls['creditCardPayments'].dirty || debitincomeCalculatorForm.controls['creditCardPayments'].touched) && !debitincomeCalculatorForm.controls['creditCardPayments'].hasError('negativeValue')" class="text-danger">
                         Credit Card Payments are required
                     </div>
                 </div>
                 <div>
                     <label for="personalLoanPayments" class="label col-sm-6 col-form-label mt-5">Personal Loan Payments</label>
                     <input type="number" class="ms-5 input" formControlName="personalLoanPayments" required (input)="checkForNegativeValues()" />
-                    <div *ngIf="debitincomeCalculatorForm.controls['personalLoanPayments'].invalid && (debitincomeCalculatorForm.controls['personalLoanPayments'].dirty || debitincomeCalculatorForm.controls['personalLoanPayments'].touched)" class="text-danger">
+                    <div *ngIf="debitincomeCalculatorForm.controls['personalLoanPayments'].hasError('negativeValue')" class="text-danger">
+                        Negative values are not allowed
+                    </div>
+                    <div *ngIf="debitincomeCalculatorForm.controls['personalLoanPayments'].invalid && (debitincomeCalculatorForm.controls['personalLoanPayments'].dirty || debitincomeCalculatorForm.controls['personalLoanPayments'].touched) && !debitincomeCalculatorForm.controls['personalLoanPayments'].hasError('negativeValue')" class="text-danger">
                         Personal Loan Payments are required
                     </div>
                 </div>
                 <div>
                     <label for="otherDebtPayments" class="label col-sm-6 col-form-label mt-5">Other Debt Payments</label>
                     <input type="number" class="ms-5 input" formControlName="otherDebtPayments" required (input)="checkForNegativeValues()" />
-                    <div *ngIf="debitincomeCalculatorForm.controls['otherDebtPayments'].invalid && (debitincomeCalculatorForm.controls['otherDebtPayments'].dirty || debitincomeCalculatorForm.controls['otherDebtPayments'].touched)" class="text-danger">
+                    <div *ngIf="debitincomeCalculatorForm.controls['otherDebtPayments'].hasError('negativeValue')" class="text-danger">
+                        Negative values are not allowed
+                    </div>
+                    <div *ngIf="debitincomeCalculatorForm.controls['otherDebtPayments'].invalid && (debitincomeCalculatorForm.controls['otherDebtPayments'].dirty || debitincomeCalculatorForm.controls['otherDebtPayments'].touched) && !debitincomeCalculatorForm.controls['otherDebtPayments'].hasError('negativeValue')" class="text-danger">
                         Other Debt Payments are required
                     </div>
                 </div>
 
-                <h2>Income Sources</h2>
                 <div>
                     <label for="salaryWages" class="label col-sm-6 col-form-label mt-5">Salary/Wages</label>
                     <input type="number" class="ms-5 input" formControlName="salaryWages" required (input)="checkForNegativeValues()" />
-                    <div *ngIf="debitincomeCalculatorForm.controls['salaryWages'].invalid && (debitincomeCalculatorForm.controls['salaryWages'].dirty || debitincomeCalculatorForm.controls['salaryWages'].touched)" class="text-danger">
+                    <div *ngIf="debitincomeCalculatorForm.controls['salaryWages'].hasError('negativeValue')" class="text-danger">
+                        Negative values are not allowed
+                    </div>
+                    <div *ngIf="debitincomeCalculatorForm.controls['salaryWages'].invalid && (debitincomeCalculatorForm.controls['salaryWages'].dirty || debitincomeCalculatorForm.controls['salaryWages'].touched) && !debitincomeCalculatorForm.controls['salaryWages'].hasError('negativeValue')" class="text-danger">
                         Salary/Wages are required
                     </div>
                 </div>
                 <div>
                     <label for="bonusesCommissions" class="label col-sm-6 col-form-label mt-5">Bonuses/Commissions</label>
                     <input type="number" class="ms-5 input" formControlName="bonusesCommissions" required (input)="checkForNegativeValues()" />
-                    <div *ngIf="debitincomeCalculatorForm.controls['bonusesCommissions'].invalid && (debitincomeCalculatorForm.controls['bonusesCommissions'].dirty || debitincomeCalculatorForm.controls['bonusesCommissions'].touched)" class="text-danger">
+                    <div *ngIf="debitincomeCalculatorForm.controls['bonusesCommissions'].hasError('negativeValue')" class="text-danger">
+                        Negative values are not allowed
+                    </div>
+                    <div *ngIf="debitincomeCalculatorForm.controls['bonusesCommissions'].invalid && (debitincomeCalculatorForm.controls['bonusesCommissions'].dirty || debitincomeCalculatorForm.controls['bonusesCommissions'].touched) && !debitincomeCalculatorForm.controls['bonusesCommissions'].hasError('negativeValue')" class="text-danger">
                         Bonuses/Commissions are required
                     </div>
                 </div>
                 <div>
                     <label for="rentalIncome" class="label col-sm-6 col-form-label mt-5">Rental Income</label>
                     <input type="number" class="ms-5 input" formControlName="rentalIncome" required (input)="checkForNegativeValues()" />
-                    <div *ngIf="debitincomeCalculatorForm.controls['rentalIncome'].invalid && (debitincomeCalculatorForm.controls['rentalIncome'].dirty || debitincomeCalculatorForm.controls['rentalIncome'].touched)" class="text-danger">
+                    <div *ngIf="debitincomeCalculatorForm.controls['rentalIncome'].hasError('negativeValue')" class="text-danger">
+                        Negative values are not allowed
+                    </div>
+                    <div *ngIf="debitincomeCalculatorForm.controls['rentalIncome'].invalid && (debitincomeCalculatorForm.controls['rentalIncome'].dirty || debitincomeCalculatorForm.controls['rentalIncome'].touched) && !debitincomeCalculatorForm.controls['rentalIncome'].hasError('negativeValue')" class="text-danger">
                         Rental Income is required
                     </div>
                 </div>
                 <div>
                     <label for="investmentIncome" class="label col-sm-6 col-form-label mt-5">Investment Income</label>
                     <input type="number" class="ms-5 input" formControlName="investmentIncome" required (input)="checkForNegativeValues()" />
-                    <div *ngIf="debitincomeCalculatorForm.controls['investmentIncome'].invalid && (debitincomeCalculatorForm.controls['investmentIncome'].dirty || debitincomeCalculatorForm.controls['investmentIncome'].touched)" class="text-danger">
+                    <div *ngIf="debitincomeCalculatorForm.controls['investmentIncome'].hasError('negativeValue')" class="text-danger">
+                        Negative values are not allowed
+                    </div>
+                    <div *ngIf="debitincomeCalculatorForm.controls['investmentIncome'].invalid && (debitincomeCalculatorForm.controls['investmentIncome'].dirty || debitincomeCalculatorForm.controls['investmentIncome'].touched) && !debitincomeCalculatorForm.controls['investmentIncome'].hasError('negativeValue')" class="text-danger">
                         Investment Income is required
                     </div>
                 </div>
                 <div>
                     <label for="otherIncomeSources" class="label col-sm-6 col-form-label mt-5">Other Income Sources</label>
                     <input type="number" class="ms-5 input" formControlName="otherIncomeSources" required (input)="checkForNegativeValues()" />
-                    <div *ngIf="debitincomeCalculatorForm.controls['otherIncomeSources'].invalid && (debitincomeCalculatorForm.controls['otherIncomeSources'].dirty || debitincomeCalculatorForm.controls['otherIncomeSources'].touched)" class="text-danger">
+                    <div *ngIf="debitincomeCalculatorForm.controls['otherIncomeSources'].hasError('negativeValue')" class="text-danger">
+                        Negative values are not allowed
+                    </div>
+                    <div *ngIf="debitincomeCalculatorForm.controls['otherIncomeSources'].invalid && (debitincomeCalculatorForm.controls['otherIncomeSources'].dirty || debitincomeCalculatorForm.controls['otherIncomeSources'].touched) && !debitincomeCalculatorForm.controls['otherIncomeSources'].hasError('negativeValue')" class="text-danger">
                         Other Income Sources are required
                     </div>
                 </div>
