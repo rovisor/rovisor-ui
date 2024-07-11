@@ -6,14 +6,14 @@ import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors }
     templateUrl: './diratio-calculator.component.html',
     styleUrls: ['./diratio-calculator.component.css']
 })
-export class DebttoIncomeRatioCalculatorComponentComponent {
-    debitincomeCalculatorForm: FormGroup;
+export class DebttoIncomeRatioCalculatorComponent {
+    DebttoIncomeRatioCalculatorForm: FormGroup;
     dtiRatio: number = 0;
     errorMessage: string = '';
     hasNegativeValue: boolean = false;
 
     constructor(private fb: FormBuilder) {
-        this.debitincomeCalculatorForm = this.fb.group({
+        this.DebttoIncomeRatioCalculatorForm = this.fb.group({
             mortgagePayments: [null, [Validators.required, this.negativeValidator]],
             carLoanPayments: [null, [Validators.required, this.negativeValidator]],
             studentLoanPayments: [null, [Validators.required, this.negativeValidator]],
@@ -29,8 +29,8 @@ export class DebttoIncomeRatioCalculatorComponentComponent {
     }
 
     calculate() {
-        if (this.debitincomeCalculatorForm.valid) {
-            const formValues = this.debitincomeCalculatorForm.value;
+        if (this.DebttoIncomeRatioCalculatorForm.valid && !this.hasNegativeValue) {
+            const formValues = this.DebttoIncomeRatioCalculatorForm.value;
 
             const totalDebtPayments = formValues.mortgagePayments + formValues.carLoanPayments + formValues.studentLoanPayments +
                 formValues.creditCardPayments + formValues.personalLoanPayments + formValues.otherDebtPayments;
@@ -40,6 +40,7 @@ export class DebttoIncomeRatioCalculatorComponentComponent {
 
             if (totalDebtPayments <= 0 || totalMonthlyIncome <= 0) {
                 this.errorMessage = "All values must be greater than zero.";
+                this.dtiRatio = 0; // Reset the output to 0
                 return;
             }
 
@@ -48,19 +49,23 @@ export class DebttoIncomeRatioCalculatorComponentComponent {
 
         } else {
             this.errorMessage = "Please fill out all required fields.";
+            this.dtiRatio = 0; 
         }
     }
 
     resetForm() {
-        this.debitincomeCalculatorForm.reset();
+        this.DebttoIncomeRatioCalculatorForm.reset();
         this.dtiRatio = 0;
         this.errorMessage = '';
         this.hasNegativeValue = false;
     }
 
     checkForNegativeValues() {
-        const formValues = this.debitincomeCalculatorForm.value;
+        const formValues = this.DebttoIncomeRatioCalculatorForm.value;
         this.hasNegativeValue = Object.keys(formValues).some(key => formValues[key] < 0);
+        if (this.hasNegativeValue) {
+            this.dtiRatio = 0; // Reset the output to 0 if any value is negative
+        }
     }
 
     negativeValidator(control: AbstractControl): ValidationErrors | null {
