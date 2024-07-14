@@ -18,6 +18,7 @@ import { AddAccountComponent } from './add-account/add-account.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
 import { compoundIntresetComponent } from './compoundIntreset/compoundIntreset.component';
+import { CalculatorComponent } from './calculator/calculator.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { compoundIntresetComponent } from './compoundIntreset/compoundIntreset.c
     AccountMappingComponent,
     AddAccountComponent,
     DashboardComponent,
+    CalculatorComponent,
     AccountDetailsComponent
   ],
   imports: [

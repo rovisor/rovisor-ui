@@ -10,5 +10,6 @@
     },
     { "label": "Consolidated Statement", "route": "/app/consolidate-statement", "icon": "bi bi-files","expanded": false },
     { "label": "Compound Interest Calculator", "route": "/app/compoundIntreset", "icon": "bi bi-calculator-fill","expanded": false },
+    { "label": "Retirement Calculator ", "route": "/app/calculator", "icon": "bi bi-calculator","expanded": false },
     { "label": "Settings", "route": "/app/settings", "icon": "bi bi-gear","expanded": false }
   ]
