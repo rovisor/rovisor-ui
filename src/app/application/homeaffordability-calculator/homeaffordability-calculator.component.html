@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-12">
+        <h1>Home Affordability Calculator</h1>
+        <form [formGroup]="homeAffordabilityForm">
+            <div class="form-group col-6">
+                <div>
+                    <label for="annualIncome" class="label col-sm-6 col-form-label mt-5">Annual Income</label>
+                    <input type="number" class="ms-5 input" formControlName="annualIncome" required />
+                    <div *ngIf="homeAffordabilityForm.controls['annualIncome'].invalid && (homeAffordabilityForm.controls['annualIncome'].dirty || homeAffordabilityForm.controls['annualIncome'].touched)" class="text-danger">
+                        Annual Income is required 
+                    </div>
+                </div>
+                <div>
+                    <label for="downPayment" class="label col-sm-6 col-form-label mt-5">Down Payment</label>
+                    <input type="number" class="ms-5 input" formControlName="downPayment" required />
+                    <div *ngIf="homeAffordabilityForm.controls['downPayment'].invalid && (homeAffordabilityForm.controls['downPayment'].dirty || homeAffordabilityForm.controls['downPayment'].touched)" class="text-danger">
+                        Down Payment is required 
+                    </div>
+                </div>
+                <div>
+                    <label for="loanTerm" class="label col-sm-6 col-form-label mt-5">Loan Term (years)</label>
+                    <input type="number" class="ms-5 input" formControlName="loanTerm" required />
+                    <div *ngIf="homeAffordabilityForm.controls['loanTerm'].invalid && (homeAffordabilityForm.controls['loanTerm'].dirty || homeAffordabilityForm.controls['loanTerm'].touched)" class="text-danger">
+                        Loan Term is required 
+                    </div>
+                </div>
+                <div>
+                    <label for="annualInterestRate" class="label col-sm-6 col-form-label mt-5">Annual Interest Rate (%)</label>
+                    <input type="number" class="ms-5 input" formControlName="annualInterestRate" required />
+                    <div *ngIf="homeAffordabilityForm.controls['annualInterestRate'].invalid && (homeAffordabilityForm.controls['annualInterestRate'].dirty || homeAffordabilityForm.controls['annualInterestRate'].touched)" class="text-danger">
+                        Annual Interest Rate is required 
+                    </div>
+                </div>
+            </div>
+            <div class="buttons mt-5">
+                <button type="reset" class="resetButton btn btn-secondary text-white" (click)="resetForm()">Reset</button>
+                <button type="button" class="ms-3 calculateButton btn btn-primary" (click)="calculate()" [disabled]="homeAffordabilityForm.invalid">Calculate</button>
+            </div>
+            <div *ngIf="errorMessage" class="alert alert-danger label col-6 mt-3">{{errorMessage}}</div>
+        </form>
+        <div class="result mt-3 col-6">
+            <div class="result-item">
+                <label for="monthlyGrossIncome" class="label col-sm-6 col-form-label mt-4">Monthly Gross Income</label>
+                <input type="text" class="input ms-3" [value]="monthlyGrossIncome | number : '1.2-2'" readonly />
+            </div>
+            <div class="result-item">
+                <label for="maxMonthlyPayment" class="label col-sm-6 col-form-label mt-4">Max Monthly Payment</label>
+                <input type="text" class="input ms-3" [value]="maxMonthlyPayment | number : '1.2-2'" readonly />
+            </div>
+            <div class="result-item">
+                <label for="monthlyInterestRate" class="label col-sm-6 col-form-label mt-4">Monthly Interest Rate</label>
+                <input type="text" class="input ms-3" [value]="monthlyInterestRate | number : '1.2-2'" readonly />
+            </div>
+            <div class="result-item">
+                <label for="numberOfPayments" class="label col-sm-6 col-form-label mt-4">Number of Payments</label>
+                <input type="text" class="input ms-3" [value]="numberOfPayments | number : '1.2-2'" readonly />
+            </div>
+            <div class="result-item">
+                <label for="loanAmount" class="label col-sm-6 col-form-label mt-4">Loan Amount</label>
+                <input type="text" class="input ms-3" [value]="loanAmount | number : '1.2-2'" readonly />
+            </div>
+            <div class="result-item">
+                <label for="maxHomePrice" class="label col-sm-6 col-form-label mt-4">Max Home Price</label>
+                <input type="text" class="input ms-3" [value]="maxHomePrice | number : '1.2-2'" readonly />
+            </div>
+        </div>
+    </div>
+</div>
