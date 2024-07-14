@@ -7,28 +7,28 @@
                     <label for="annualIncome" class="label col-sm-6 col-form-label mt-5">Annual Income</label>
                     <input type="number" class="ms-5 input" formControlName="annualIncome" required />
                     <div *ngIf="homeAffordabilityForm.controls['annualIncome'].invalid && (homeAffordabilityForm.controls['annualIncome'].dirty || homeAffordabilityForm.controls['annualIncome'].touched)" class="text-danger">
-                        Annual Income is required 
+                        Annual Income is required and must be greater than 0.
                     </div>
                 </div>
                 <div>
                     <label for="downPayment" class="label col-sm-6 col-form-label mt-5">Down Payment</label>
                     <input type="number" class="ms-5 input" formControlName="downPayment" required />
                     <div *ngIf="homeAffordabilityForm.controls['downPayment'].invalid && (homeAffordabilityForm.controls['downPayment'].dirty || homeAffordabilityForm.controls['downPayment'].touched)" class="text-danger">
-                        Down Payment is required 
+                        Down Payment is required and must be greater than 0.
                     </div>
                 </div>
                 <div>
                     <label for="loanTerm" class="label col-sm-6 col-form-label mt-5">Loan Term (years)</label>
                     <input type="number" class="ms-5 input" formControlName="loanTerm" required />
                     <div *ngIf="homeAffordabilityForm.controls['loanTerm'].invalid && (homeAffordabilityForm.controls['loanTerm'].dirty || homeAffordabilityForm.controls['loanTerm'].touched)" class="text-danger">
-                        Loan Term is required 
+                        Loan Term is required and must be greater than 0.
                     </div>
                 </div>
                 <div>
                     <label for="annualInterestRate" class="label col-sm-6 col-form-label mt-5">Annual Interest Rate (%)</label>
                     <input type="number" class="ms-5 input" formControlName="annualInterestRate" required />
                     <div *ngIf="homeAffordabilityForm.controls['annualInterestRate'].invalid && (homeAffordabilityForm.controls['annualInterestRate'].dirty || homeAffordabilityForm.controls['annualInterestRate'].touched)" class="text-danger">
-                        Annual Interest Rate is required 
+                        Annual Interest Rate is required and must be greater than 0.
                     </div>
                 </div>
             </div>

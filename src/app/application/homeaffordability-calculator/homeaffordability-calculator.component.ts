@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 
 @Component({
-    selector: 'app-calculator',
+    selector: 'app-home-affordability-calculator',
     templateUrl: './homeaffordability-calculator.component.html',
     styleUrls: ['./homeaffordability-calculator.component.css']
 })
@@ -19,11 +19,21 @@ export class HomeAffordabilityComponent {
 
     constructor(private fb: FormBuilder) {
         this.homeAffordabilityForm = this.fb.group({
-            annualIncome: [null, Validators.required],
-            downPayment: [null, Validators.required],
-            loanTerm: [null, Validators.required],
-            annualInterestRate: [null, Validators.required]
+            annualIncome: [null, [Validators.required, this.positiveNumberValidator]],
+            downPayment: [null, [Validators.required, this.positiveNumberValidator]],
+            loanTerm: [null, [Validators.required, this.positiveNumberValidator]],
+            annualInterestRate: [null, [Validators.required, this.positiveNumberValidator]]
         });
+
+        this.homeAffordabilityForm.valueChanges.subscribe(() => {
+            if (this.homeAffordabilityForm.invalid) {
+                this.resetCalculatedValues();
+            }
+        });
+    }
+
+    positiveNumberValidator(control: AbstractControl): ValidationErrors | null {
+        return control.value <= 0 ? { positiveNumber: true } : null;
     }
 
     calculate() {
@@ -32,11 +42,6 @@ export class HomeAffordabilityComponent {
             const downPayment = this.homeAffordabilityForm.value.downPayment;
             const loanTerm = this.homeAffordabilityForm.value.loanTerm;
             const annualInterestRate = this.homeAffordabilityForm.value.annualInterestRate;
-
-            if (annualIncome <= 0 || downPayment < 0 || loanTerm <= 0 || annualInterestRate <= 0) {
-                this.errorMessage = "All values must be greater than zero.";
-                return;
-            }
 
             // Calculations
             this.monthlyGrossIncome = annualIncome / 12;
@@ -54,18 +59,23 @@ export class HomeAffordabilityComponent {
 
             this.errorMessage = '';
         } else {
-            this.errorMessage = "Please fill out all required fields.";
+            this.resetCalculatedValues();
+            this.errorMessage = "Please fill out all required fields with valid values.";
         }
     }
 
     resetForm() {
         this.homeAffordabilityForm.reset();
+        this.resetCalculatedValues();
+        this.errorMessage = '';
+    }
+
+    resetCalculatedValues() {
         this.monthlyGrossIncome = 0;
         this.maxMonthlyPayment = 0;
         this.monthlyInterestRate = 0;
         this.numberOfPayments = 0;
         this.loanAmount = 0;
         this.maxHomePrice = 0;
-        this.errorMessage = '';
     }
 }
