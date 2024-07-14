@@ -18,6 +18,7 @@ import { AddAccountComponent } from './add-account/add-account.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
 import { CreditCardPayoffCalculatorComponent } from './Credit-Card-Payoff-Calculator/Credit-Card-Payoff-Calculator.component';
+import { CalculatorComponent } from './calculator/calculator.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { CreditCardPayoffCalculatorComponent } from './Credit-Card-Payoff-Calcul
     AccountMappingComponent,
     AddAccountComponent,
     DashboardComponent,
+    CalculatorComponent,
     AccountDetailsComponent
   ],
   imports: [
