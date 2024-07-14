@@ -18,6 +18,7 @@ import { AddAccountComponent } from './add-account/add-account.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
 import { LeaseVsBuyComponent } from './Lease-vs-Buy Calculator/Lease-vs-Buy.component';
+import { CalculatorComponent } from './calculator/calculator.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { LeaseVsBuyComponent } from './Lease-vs-Buy Calculator/Lease-vs-Buy.comp
     AccountMappingComponent,
     AddAccountComponent,
     DashboardComponent,
+    CalculatorComponent,
     AccountDetailsComponent,
     LeaseVsBuyComponent,
   ],
