@@ -18,6 +18,7 @@ import { AddAccountComponent } from './add-account/add-account.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
 import { CalculatorComponent } from './calculator/calculator.component';
+import { BreakEvenCalculatorComponent } from './BreakEvenCalculator/BreakEvenCalculator.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CalculatorComponent } from './calculator/calculator.component';
     AddAccountComponent,
     DashboardComponent,
     CalculatorComponent,
-    AccountDetailsComponent
+    AccountDetailsComponent,
+    BreakEvenCalculatorComponent,
   ],
   imports: [
     NgbDatepickerModule,

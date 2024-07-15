@@ -7,6 +7,7 @@ import { RegistrationV2Component } from './registration-v2/registration-v2.compo
 import { ConsolidateStatementComponent } from './consolidate-statement/consolidate-statement.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
 import { CalculatorComponent } from './calculator/calculator.component';
+import { BreakEvenCalculatorComponent } from './BreakEvenCalculator/BreakEvenCalculator.component';
 
 const routes: Routes = [
   {
@@ -36,7 +37,11 @@ const routes: Routes = [
       {
          path: 'accounts/:id',
          component: AccountDetailsComponent,
-      }
+      },
+      {
+        path : 'BreakEvenCalculator',
+        component: BreakEvenCalculatorComponent,
+      },
     ]
   }
 ];
