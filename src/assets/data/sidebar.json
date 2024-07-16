@@ -12,6 +12,8 @@
     { "label": "Emi-Calculator", 
         "route": "/app/emi-calculator",
          "icon": "bi bi-calculator","expanded": false },
+    { "label": "Investment Calculator", "route": "/app/InvestmentCalculator", "icon": "bi bi-calculator","expanded": false },
+    { "label": "Retirement Calculator ", "route": "/app/calculator", "icon": "bi bi-calculator","expanded": false },
     { "label": "Settings", "route": "/app/settings", "icon": "bi bi-gear","expanded": false }
     
     
