@@ -17,6 +17,7 @@ import { AccountMappingComponent } from './account-mapping/account-mapping.compo
 import { AddAccountComponent } from './add-account/add-account.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
+import { compoundIntresetComponent } from './compoundIntreset/compoundIntreset.component';
 import { InvestmentCalculatorComponent } from './InvestmentCalculator/InvestmentCalculator.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 
@@ -26,6 +27,7 @@ import { CalculatorComponent } from './calculator/calculator.component';
     Registration1Component,
     RegistrationV2Component,
     UploadStatementComponent,
+    compoundIntresetComponent,
     ConsolidateStatementComponent,
     InvestmentCalculatorComponent,
     AccountMappingComponent,
