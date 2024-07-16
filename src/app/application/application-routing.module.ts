@@ -7,7 +7,7 @@ import { RegistrationV2Component } from './registration-v2/registration-v2.compo
 import { ConsolidateStatementComponent } from './consolidate-statement/consolidate-statement.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
 import { LoanCalculatorComponent } from './loan-calculator/loan-calculator.component';
-
+import { InvestmentCalculatorComponent } from './InvestmentCalculator/InvestmentCalculator.component';import { CalculatorComponent } from './calculator/calculator.component';
 
 const routes: Routes = [
   {
@@ -30,6 +30,10 @@ const routes: Routes = [
          path: 'consolidate-statement',
          component: ConsolidateStatementComponent,
       },
+      {
+        path: 'InvestmentCalculator',
+        component: InvestmentCalculatorComponent,
+     },
       {
          path: 'accounts/:id',
          component: AccountDetailsComponent,
