@@ -7,6 +7,7 @@ import { RegistrationV2Component } from './registration-v2/registration-v2.compo
 import { ConsolidateStatementComponent } from './consolidate-statement/consolidate-statement.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
 import { LoanCalculatorComponent } from './loan-calculator/loan-calculator.component';
+import { EmiCalculatorComponent } from './emi-calculator/emi-calculator.component';import { compoundIntresetComponent } from './compoundIntreset/compoundIntreset.component';
 import { InvestmentCalculatorComponent } from './InvestmentCalculator/InvestmentCalculator.component';import { CalculatorComponent } from './calculator/calculator.component';
 
 const routes: Routes = [
@@ -27,6 +28,10 @@ const routes: Routes = [
         component: RegistrationV2Component,
       },
       {
+        path: 'compoundIntreset',
+        component: compoundIntresetComponent,
+     },
+      {
          path: 'consolidate-statement',
          component: ConsolidateStatementComponent,
       },
@@ -41,6 +46,10 @@ const routes: Routes = [
       {
         path: 'loan-calculator',
         component: LoanCalculatorComponent,
+      },
+      {
+        path: 'emi-calculator',
+        component: EmiCalculatorComponent,
       }
     ]
   }

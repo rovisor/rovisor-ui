@@ -17,7 +17,8 @@ import { AccountMappingComponent } from './account-mapping/account-mapping.compo
 import { AddAccountComponent } from './add-account/add-account.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
-import { LoanCalculatorComponent } from './loan-calculator/loan-calculator.component';import { InvestmentCalculatorComponent } from './InvestmentCalculator/InvestmentCalculator.component';
+import { LoanCalculatorComponent } from './loan-calculator/loan-calculator.component';import { EmiCalculatorComponent } from './emi-calculator/emi-calculator.component';import { compoundIntresetComponent } from './compoundIntreset/compoundIntreset.component';
+import { InvestmentCalculatorComponent } from './InvestmentCalculator/InvestmentCalculator.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 
 @NgModule({
@@ -26,6 +27,7 @@ import { CalculatorComponent } from './calculator/calculator.component';
     Registration1Component,
     RegistrationV2Component,
     UploadStatementComponent,
+    compoundIntresetComponent,
     ConsolidateStatementComponent,
     InvestmentCalculatorComponent,
     AccountMappingComponent,
@@ -33,7 +35,8 @@ import { CalculatorComponent } from './calculator/calculator.component';
     DashboardComponent,
     CalculatorComponent,
     AccountDetailsComponent,
-    LoanCalculatorComponent
+    LoanCalculatorComponent,
+    EmiCalculatorComponent
   ],
   imports: [
     NgbDatepickerModule,

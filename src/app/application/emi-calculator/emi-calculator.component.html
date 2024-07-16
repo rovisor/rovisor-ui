@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-12">
+    <h1 class="emi text-bold">EMI Calculator</h1>
+    <h4 class="page_subtitle">Calculate monthly EMI</h4>
+    <form [formGroup]="emiCalculatorForm">
+      <div class="form-group col-6">
+        <div>
+          <label for="principal" class="label col-sm-6 col-form-label mt-5">Principal:</label>
+          <input type="number" class="ms-5 input" formControlName="principal" required />
+          <div *ngIf="emiCalculatorForm.controls['principal'].invalid && (emiCalculatorForm.controls['principal'].dirty || emiCalculatorForm.controls['principal'].touched)" class="text-danger mt-2">
+            Principal is required and must be greater than zero
+          </div>
+        </div>
+        <div>
+          <label for="interestRate" class="label col-sm-6 col-form-label mt-5">Interest Rate (%):</label>
+          <input type="number" class="ms-5 input " formControlName="interestRate" step="1" required />
+          <div *ngIf="emiCalculatorForm.controls['interestRate'].invalid && (emiCalculatorForm.controls['interestRate'].dirty || emiCalculatorForm.controls['interestRate'].touched)" class="text-danger mt-2">
+            Interest Rate is required and must be greater than zero
+          </div>
+        </div>
+        <div>
+          <label for="time" class="label col-sm-6 col-form-label mt-5">Time (Years):</label>
+          <input type="number" class="ms-5 input" formControlName="time" required />
+          <div *ngIf="emiCalculatorForm.controls['time'].invalid && (emiCalculatorForm.controls['time'].dirty || emiCalculatorForm.controls['time'].touched)" class="text-danger mt-2">
+            Time is required and must be greater than zero
+          </div>
+        </div>
+        <div class="buttons mt-5">
+          <button type="reset" class="resetButton btn btn-secondary text-white" (click)="resetForm()">Reset</button>
+          <button type="button" class="ms-3 calculateButton btn btn-primary" (click)="calculateEMI()" [disabled]="emiCalculatorForm.invalid">Calculate</button>
+        </div>
+      </div>
+      <div *ngIf="errorMessage" class="alert alert-danger label col-6 mt-3">{{ errorMessage }}</div>
+    </form>
+    <div class="result mt-3 col-6">
+      <div class="result-item">
+        <label for="totalAmount" class="label col-sm-6 col-form-label mt-4">Total Amount:</label>
+        <input type="text" class="input ms-3 " [value]="totalAmount | number : '1.2-2'" readonly />
+      </div>
+      <div class="result-item">
+        <label for="monthlyEMI" class="label col-sm-6 col-form-label mt-4">Monthly EMI:</label>
+        <input type="text" class="input ms-3 " [value]="monthlyEMI | number : '1.2-2'" readonly />
+      </div>
+      <div class="result-item">
+        <label for="totalInterestPaid" class="label col-sm-6 col-form-label mt-4">Total Interest Paid:</label>
+        <input type="text" class="input ms-3 " [value]="totalInterestPaid | number : '1.2-2'" readonly />
+      </div>
+    </div>
+  </div>
+</div>

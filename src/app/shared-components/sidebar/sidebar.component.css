@@ -17,3 +17,18 @@
     background-color: #16A386;
     border-radius: 5px;
 }
+
+@media (max-width: 768px) { 
+ .full-screen.bg-rov-primary-sidebar {
+    display: none;
+  }
+ .btn.btn-primary.mobile-toggle {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+ .full-screen.bg-rov-primary-sidebar.show-sidebar {
+    display: block;
+  }
+}
