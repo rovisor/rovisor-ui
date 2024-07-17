@@ -12,6 +12,7 @@
     { "label": "Savings Calculator", 
         "route": "/app/saving-calculator",
          "icon": "bi bi-calculator","expanded": false },
+    { "label": "Mortage Calculator", "route": "/app/MortgageCalculator", "icon": "bi bi-calculator","expanded": false },
     { "label": "Emi-Calculator", 
         "route": "/app/emi-calculator",
          "icon": "bi bi-calculator","expanded": false },
