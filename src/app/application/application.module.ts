@@ -18,6 +18,7 @@ import { AddAccountComponent } from './add-account/add-account.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
 import { EmergencyFundComponent } from './Emergency-Fund/Emergency-Fund.component';
+import { CreditCardPayoffCalculatorComponent } from './Credit-Card-Payoff-Calculator/Credit-Card-Payoff-Calculator.component';
 import { SavingCalculatorComponent } from './saving-calculator/saving-calculator.component';import { MortgageCalculatorComponent } from './MortgageCalculator/MortgageCalculator.component';
 import { EmiCalculatorComponent } from './emi-calculator/emi-calculator.component';import { compoundIntresetComponent } from './compoundIntreset/compoundIntreset.component';
 import { InvestmentCalculatorComponent } from './InvestmentCalculator/InvestmentCalculator.component';
@@ -30,6 +31,7 @@ import { CalculatorComponent } from './calculator/calculator.component';
     RegistrationV2Component,
     UploadStatementComponent,
     ConsolidateStatementComponent,
+    CreditCardPayoffCalculatorComponent,
     InvestmentCalculatorComponent,
     AccountMappingComponent,
     AddAccountComponent,
