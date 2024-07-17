@@ -1,4 +1,7 @@
 <div class="col full-screen bg-rov-primary-sidebar p-2" tabindex="-1">
+    <button class="btn btn-primary d-md-none mobile-toggle" (click)="toggleSidebar()">
+        <i class="bi bi-list">hello</i>
+    </button>
     <div class="d-flex flex-column align-items-center align-items-sm-start px-0 pt-2 text-white h-100">
         <ul class="nav nav-pills mb-sm-auto mb-0 align-items-center align-items-sm-start">
             <li *ngFor="let item of sidebarItems" class="nav-item w-100"  [class.active]="isActive(item)">
