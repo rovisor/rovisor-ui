@@ -1,0 +1,14 @@
+.label {
+    font-size: 20px;
+  }
+  .input {
+        font-size: 20px;
+        text-align:left;  
+  }
+  .resetButton{
+      font-size: 20px;
+  }
+  .calculateButton{
+      font-size: 20px;
+      ;
+  }
