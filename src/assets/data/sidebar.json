@@ -11,6 +11,7 @@
     { "label": "Consolidated Statement", "route": "/app/consolidate-statement", "icon": "bi bi-files","expanded": false },
        { "label": "Loan Calculator", "route": "/app/loan-calculator", "icon": "bi bi-calculator","expanded": false },
 
+    { "label": "Mortage Calculator", "route": "/app/MortgageCalculator", "icon": "bi bi-calculator","expanded": false },
     { "label": "Emi-Calculator", 
         "route": "/app/emi-calculator",
          "icon": "bi bi-calculator","expanded": false },
