@@ -9,6 +9,7 @@
         "children": []
     },
     { "label": "Consolidated Statement", "route": "/app/consolidate-statement", "icon": "bi bi-files","expanded": false },
+    { "label": "Emergency Fund Calculator", "route": "/app/Emergency-Fund", "icon": "bi bi-calculator","expanded": false },
     {"label": "Credit Card Payoff Calculator", "route": "/app/Credit-Card-Payoff-Calculator", "icon":"bi bi-calculator", "expanded":false},
     { "label": "Savings Calculator", 
         "route": "/app/saving-calculator",
