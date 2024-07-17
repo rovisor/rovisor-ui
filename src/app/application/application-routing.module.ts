@@ -8,7 +8,9 @@ import { ConsolidateStatementComponent } from './consolidate-statement/consolida
 import { AccountDetailsComponent } from './account-details/account-details.component';
 import { LoanCalculatorComponent } from './loan-calculator/loan-calculator.component';
 import { CreditCardPayoffCalculatorComponent } from './Credit-Card-Payoff-Calculator/Credit-Card-Payoff-Calculator.component';import { SavingCalculatorComponent } from './saving-calculator/saving-calculator.component';import { EmiCalculatorComponent } from './emi-calculator/emi-calculator.component';import { compoundIntresetComponent } from './compoundIntreset/compoundIntreset.component';
-import { InvestmentCalculatorComponent } from './InvestmentCalculator/InvestmentCalculator.component';import { CalculatorComponent } from './calculator/calculator.component';import { MortgageCalculatorComponent } from './MortgageCalculator/MortgageCalculator.component';
+import { InvestmentCalculatorComponent } from './InvestmentCalculator/InvestmentCalculator.component';
+import { CalculatorComponent } from './calculator/calculator.component';
+import { MortgageCalculatorComponent } from './MortgageCalculator/MortgageCalculator.component';
 
 const routes: Routes = [
   {
