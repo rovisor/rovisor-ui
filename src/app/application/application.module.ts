@@ -17,7 +17,8 @@ import { AccountMappingComponent } from './account-mapping/account-mapping.compo
 import { AddAccountComponent } from './add-account/add-account.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
-import { LoanCalculatorComponent } from './loan-calculator/loan-calculator.component';import { MortgageCalculatorComponent } from './MortgageCalculator/MortgageCalculator.component';
+import { LoanCalculatorComponent } from './loan-calculator/loan-calculator.component';import { CreditCardPayoffCalculatorComponent } from './Credit-Card-Payoff-Calculator/Credit-Card-Payoff-Calculator.component';
+import { SavingCalculatorComponent } from './saving-calculator/saving-calculator.component';import { MortgageCalculatorComponent } from './MortgageCalculator/MortgageCalculator.component';
 import { EmiCalculatorComponent } from './emi-calculator/emi-calculator.component';import { compoundIntresetComponent } from './compoundIntreset/compoundIntreset.component';
 import { InvestmentCalculatorComponent } from './InvestmentCalculator/InvestmentCalculator.component';
 import { CalculatorComponent } from './calculator/calculator.component';
@@ -29,6 +30,7 @@ import { CalculatorComponent } from './calculator/calculator.component';
     RegistrationV2Component,
     UploadStatementComponent,
     ConsolidateStatementComponent,
+    CreditCardPayoffCalculatorComponent,
     InvestmentCalculatorComponent,
     AccountMappingComponent,
     AddAccountComponent,
@@ -36,6 +38,7 @@ import { CalculatorComponent } from './calculator/calculator.component';
     CalculatorComponent,
     AccountDetailsComponent,
     LoanCalculatorComponent,
+    SavingCalculatorComponent,
     EmiCalculatorComponent
   ],
   imports: [

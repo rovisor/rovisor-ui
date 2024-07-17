@@ -11,6 +11,10 @@
     { "label": "Consolidated Statement", "route": "/app/consolidate-statement", "icon": "bi bi-files","expanded": false },
        { "label": "Loan Calculator", "route": "/app/loan-calculator", "icon": "bi bi-calculator","expanded": false },
 
+    {"label": "Credit Card Payoff Calculator", "route": "/app/Credit-Card-Payoff-Calculator", "icon":"bi bi-calculator", "expanded":false},
+    { "label": "Savings Calculator", 
+        "route": "/app/saving-calculator",
+         "icon": "bi bi-calculator","expanded": false },
     { "label": "Mortage Calculator", "route": "/app/MortgageCalculator", "icon": "bi bi-calculator","expanded": false },
     { "label": "Emi-Calculator", 
         "route": "/app/emi-calculator",
@@ -19,6 +23,7 @@
     { "label": "Investment Calculator", "route": "/app/InvestmentCalculator", "icon": "bi bi-calculator","expanded": false },
     { "label": "Retirement Calculator ", "route": "/app/calculator", "icon": "bi bi-calculator","expanded": false },
     { "label": "Settings", "route": "/app/settings", "icon": "bi bi-gear","expanded": false }
+    
     
     
   ]
