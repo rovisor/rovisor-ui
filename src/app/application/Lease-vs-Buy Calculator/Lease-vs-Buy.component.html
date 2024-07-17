@@ -1,0 +1,111 @@
+<div class="row">
+    <div class="col-12">
+        <h1>Lease vs. Buy Calculator</h1>
+        <form [formGroup]="payoffCalculatorForm">
+            <div class="form-group col-6">
+                <H2 class="mt-3"> Input for the  Lease </H2>
+                <div>
+                    <label for="LeasePayment" class="label col-sm-6 col-form-label mt-5">Lease Payment </label>
+                    <input type="number" class="ms-5 input" formControlName="LeasePayment" required />
+                    <div *ngIf="payoffCalculatorForm.controls['LeasePayment'].invalid && (payoffCalculatorForm.controls['LeasePayment'].dirty || payoffCalculatorForm.controls['LeasePayment'].touched)" class="text-danger">
+                        Lease Payment is required 
+                    </div>
+                </div>
+                <div>
+                    <label for="LeaseTerm" class="label col-sm-6 col-form-label mt-5">Lease Term (months)
+                    </label>
+                    <input type="number" class="ms-5 input" formControlName="LeaseTerm" required />
+                    <div *ngIf="payoffCalculatorForm.controls['LeaseTerm'].invalid && (payoffCalculatorForm.controls['LeaseTerm'].dirty || payoffCalculatorForm.controls['LeaseTerm'].touched)" class="text-danger">
+                        Lease Term is required 
+                    </div>
+                </div>
+                <div>
+                    <label for="LeaseDown" class="label col-sm-6 col-form-label mt-5">Lease Down Payment</label>
+                    <input type="number" class="ms-5 input" formControlName="LeaseDown" required />
+                    <div *ngIf="payoffCalculatorForm.controls['LeaseDown'].invalid && (payoffCalculatorForm.controls['LeaseDown'].dirty || payoffCalculatorForm.controls['LeaseDown'].touched)" class="text-danger">
+                        LeaseDown Payment is required 
+                    </div>
+                </div>
+                <div>
+                    <label for="ResidualValue" class="label col-sm-6 col-form-label mt-5">Lease Residual Value</label>
+                    <input type="number" class="ms-5 input" formControlName="ResidualValue" required />
+                    <div *ngIf="payoffCalculatorForm.controls['ResidualValue'].invalid && (payoffCalculatorForm.controls['ResidualValue'].dirty || payoffCalculatorForm.controls['ResidualValue'].touched)" class="text-danger">
+                        Lease Residua lValue is required 
+                    </div>
+                </div>
+                <div>
+                    <label for="AdditionalFees" class="label col-sm-6 col-form-label mt-5">Lease Additional Fees</label>
+                    <input type="number" class="ms-5 input" formControlName="AdditionalFees" required />
+                    <div *ngIf="payoffCalculatorForm.controls['AdditionalFees'].invalid && (payoffCalculatorForm.controls['AdditionalFees'].dirty || payoffCalculatorForm.controls['AdditionalFees'].touched)" class="text-danger">
+                        Lease Additional Fees is required 
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-6">
+                <h2 class="mt-5">Input for the Buys</h2>             
+                <div>
+                    <label for="PurchasePrice" class="label col-sm-6 col-form-label mt-5">Purchase Price</label>
+                    <input type="number" class="ms-5 input" formControlName="PurchasePrice" required />
+                    <div *ngIf="payoffCalculatorForm.controls['PurchasePrice'].invalid && (payoffCalculatorForm.controls['PurchasePrice'].dirty || payoffCalculatorForm.controls['PurchasePrice'].touched)" class="text-danger">
+                        Purchase Price is required 
+                    </div>
+                </div>
+                <div>
+                    <label for="Term" class="label col-sm-6 col-form-label mt-5">Loan Term (years)
+                    </label>
+                    <input type="number" class="ms-5 input" formControlName="Term" required />
+                    <div *ngIf="payoffCalculatorForm.controls['Term'].invalid && (payoffCalculatorForm.controls['Term'].dirty || payoffCalculatorForm.controls['Term'].touched)" class="text-danger">
+                        Loan Term is required 
+                    </div>
+                </div>
+                <div>
+                    <label for="InterestRate" class="label col-sm-6 col-form-label mt-5">Buy Interest Rate (%)
+                    </label>
+                    <input type="number" class="ms-5 input" formControlName="InterestRate" required />
+                    <div *ngIf="payoffCalculatorForm.controls['InterestRate'].invalid && (payoffCalculatorForm.controls['InterestRate'].dirty || payoffCalculatorForm.controls['InterestRate'].touched)" class="text-danger">
+                        Buy Interest Rate is required 
+                    </div>
+                </div>
+                <div>
+                    <label for="DownPayment" class="label col-sm-6 col-form-label mt-5">Buy Down Payment
+                    </label>
+                    <input type="number" class="ms-5 input" formControlName="DownPayment" required />
+                    <div *ngIf="payoffCalculatorForm.controls['DownPayment'].invalid && (payoffCalculatorForm.controls['DownPayment'].dirty || payoffCalculatorForm.controls['DownPayment'].touched)" class="text-danger">
+                       Buy Down Payment is required 
+                    </div>
+                </div>
+                <div>
+                    <label for="BuyAdditional" class="label col-sm-6 col-form-label mt-5">Buy Additional Fees</label>
+                    <input type="number" class="ms-5 input" formControlName="BuyAdditional" required />
+                    <div *ngIf="payoffCalculatorForm.controls['BuyAdditional'].invalid && (payoffCalculatorForm.controls['BuyAdditional'].dirty || payoffCalculatorForm.controls['BuyAdditional'].touched)" class="text-danger">
+                        Buy Additional Fees is required 
+                    </div>
+                </div> 
+                <div>
+                    <label for="TaxRate" class="label col-sm-6 col-form-label mt-5">Property Tax Rate
+                    </label>
+                    <input type="number" class="ms-5 input" formControlName="TaxRate" required />
+                    <div *ngIf="payoffCalculatorForm.controls['TaxRate'].invalid && (payoffCalculatorForm.controls['TaxRate'].dirty || payoffCalculatorForm.controls['TaxRate'].touched)" class="text-danger">
+                        Property Tax Rate is required 
+                    </div>
+                </div>
+            </div>
+                <div class="buttons mt-5">
+                    <button type="reset" class="resetButton btn btn-secondary text-white" (click)="resetForm()">Reset</button>
+                    <button type="button" class="ms-3 calculateButton btn btn-primary" (click)="calculate()" [disabled]="payoffCalculatorForm.invalid">Calculate</button>
+                </div>
+            <div *ngIf="errorMessage" class="alert alert-danger label col-6 mt-3">{{errorMessage}}</div>
+        </form>
+        <div class="result mt-3 col-6">
+            <div class="result-item">
+                <label for="Projectedcalculation" class="label col-sm-6 col-form-label mt-4">Total Lease Cost
+                </label>
+                <input type="text" class="input ms-3" [value]="projectedMonths | number : '1.2-2'" readonly />
+            </div>
+            <div class="result-item">
+                <label for="buy" class="label col-sm-6 col-form-label mt-4">Total Buy Cost </label>
+                <input type="text" class="input ms-3" [value]="buy | number : '1.2-2'" readonly />
+            </div>
+        </div>
+    </div>
+</div>
