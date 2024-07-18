@@ -23,7 +23,7 @@ import { SavingCalculatorComponent } from './saving-calculator/saving-calculator
 import { EmiCalculatorComponent } from './emi-calculator/emi-calculator.component'; import { compoundIntresetComponent } from './compoundIntreset/compoundIntreset.component';
 import { InvestmentCalculatorComponent } from './InvestmentCalculator/InvestmentCalculator.component';
 import { CalculatorComponent } from './calculator/calculator.component';
-
+import { EmergencyFundComponent } from './Emergency-Fund/Emergency-Fund.component';
 @NgModule({
   declarations: [
     ApplicationComponent,
@@ -47,6 +47,7 @@ import { CalculatorComponent } from './calculator/calculator.component';
     MortgageCalculatorComponent,
     EmiCalculatorComponent,
     compoundIntresetComponent,
+    EmergencyFundComponent
   ],
   imports: [
     NgbDatepickerModule,

@@ -11,7 +11,7 @@ import { CreditCardPayoffCalculatorComponent } from './Credit-Card-Payoff-Calcul
 import { InvestmentCalculatorComponent } from './InvestmentCalculator/InvestmentCalculator.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 import { MortgageCalculatorComponent } from './MortgageCalculator/MortgageCalculator.component';
-
+import { EmergencyFundComponent } from './Emergency-Fund/Emergency-Fund.component';
 const routes: Routes = [
   {
     path: '',
@@ -44,6 +44,10 @@ const routes: Routes = [
       {
         path: 'saving-calculator',
         component: SavingCalculatorComponent,
+      },
+      {
+        path: 'Emergency-Fund',
+        component: EmergencyFundComponent,
       },
       {
          path: 'accounts/:id',
