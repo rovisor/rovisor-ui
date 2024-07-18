@@ -17,6 +17,7 @@ import { AccountMappingComponent } from './account-mapping/account-mapping.compo
 import { AddAccountComponent } from './add-account/add-account.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
+import { LeaseVsBuyComponent } from './Lease-vs-Buy Calculator/Lease-vs-Buy.component';
 import { LoanCalculatorComponent } from './loan-calculator/loan-calculator.component';import { CreditCardPayoffCalculatorComponent } from './Credit-Card-Payoff-Calculator/Credit-Card-Payoff-Calculator.component';
 import { SavingCalculatorComponent } from './saving-calculator/saving-calculator.component';import { MortgageCalculatorComponent } from './MortgageCalculator/MortgageCalculator.component';
 import { EmiCalculatorComponent } from './emi-calculator/emi-calculator.component';import { compoundIntresetComponent } from './compoundIntreset/compoundIntreset.component';
@@ -40,6 +41,8 @@ import { CalculatorComponent } from './calculator/calculator.component';
     LoanCalculatorComponent,
     SavingCalculatorComponent,
     EmiCalculatorComponent
+    AccountDetailsComponent,
+    LeaseVsBuyComponent,
   ],
   imports: [
     NgbDatepickerModule,
