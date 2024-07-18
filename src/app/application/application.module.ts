@@ -12,19 +12,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UploadStatementComponent } from './upload-statement/upload-statement.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConsolidateStatementComponent } from './consolidate-statement/consolidate-statement.component';
-import {NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AccountMappingComponent } from './account-mapping/account-mapping.component';
 import { AddAccountComponent } from './add-account/add-account.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
 import { DebttoIncomeRatioCalculatorComponent } from './diratio-calculator/diratio-calculator.component';import { SimpleInterestCalculatorComponent } from './si-calculator/si-calculator.component';import { LeaseVsBuyComponent } from './Lease-vs-Buy Calculator/Lease-vs-Buy.component';
-import { EmergencyFundComponent } from './Emergency-Fund/Emergency-Fund.component';
-import { CreditCardPayoffCalculatorComponent } from './Credit-Card-Payoff-Calculator/Credit-Card-Payoff-Calculator.component';
-import { SavingCalculatorComponent } from './saving-calculator/saving-calculator.component';import { MortgageCalculatorComponent } from './MortgageCalculator/MortgageCalculator.component';
-import { EmiCalculatorComponent } from './emi-calculator/emi-calculator.component';import { compoundIntresetComponent } from './compoundIntreset/compoundIntreset.component';
+import { LoanCalculatorComponent } from './loan-calculator/loan-calculator.component'; import { CreditCardPayoffCalculatorComponent } from './Credit-Card-Payoff-Calculator/Credit-Card-Payoff-Calculator.component';
+import { SavingCalculatorComponent } from './saving-calculator/saving-calculator.component'; import { MortgageCalculatorComponent } from './MortgageCalculator/MortgageCalculator.component';
+import { EmiCalculatorComponent } from './emi-calculator/emi-calculator.component'; import { compoundIntresetComponent } from './compoundIntreset/compoundIntreset.component';
 import { InvestmentCalculatorComponent } from './InvestmentCalculator/InvestmentCalculator.component';
 import { CalculatorComponent } from './calculator/calculator.component';
-
+import { EmergencyFundComponent } from './Emergency-Fund/Emergency-Fund.component';
 @NgModule({
   declarations: [
     ApplicationComponent,
@@ -37,15 +36,25 @@ import { CalculatorComponent } from './calculator/calculator.component';
     AccountMappingComponent,
     AddAccountComponent,
     DashboardComponent,
-    AccountDetailsComponent,
    DebttoIncomeRatioCalculatorComponent,
     CalculatorComponent,
     AccountDetailsComponent,
+    LoanCalculatorComponent,
+    SavingCalculatorComponent,
+    EmiCalculatorComponent,
+    AccountDetailsComponent,
+    LoanCalculatorComponent,
+    SavingCalculatorComponent,
+    EmiCalculatorComponent,
+    AccountDetailsComponent,
     SimpleInterestCalculatorComponent,
     LeaseVsBuyComponent,
-    EmergencyFundComponent,
     SavingCalculatorComponent,
     MortgageCalculatorComponent,
+    EmiCalculatorComponent,
+    compoundIntresetComponent,
+    EmergencyFundComponent,
+    SavingCalculatorComponent,
     EmiCalculatorComponent,
     compoundIntresetComponent,
   ],
