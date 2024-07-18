@@ -1,0 +1,71 @@
+<h1 class="emi text-bold">Savings Calculator</h1>
+<h4 class="page_subtitle">Calculate monthly EMI</h4>
+<form>
+  <div class="form-group">
+    <label for="principal" class="form-label font-weight-light font-roboto principal-label">Principal:</label>
+    <input type="number" [(ngModel)]="principal" name="principal" class="principal-input comm-input" required />
+  </div>
+
+  <div class="form-group">
+    <label for="interestRate" class="form-label font-weight-light font-roboto interest-rate-label">Interest Rate:</label>
+    <input type="number" [(ngModel)]="interestRate" name="interestRate" class="interest-rate-input comm-input" step="0.01" required />
+    <span class="percent font-weight-light font-roboto">%</span>
+  </div>
+
+  <div class="form-group">
+    <label for="loanTerm" class="form-label font-weight-light font-roboto interest-rate-label">Loan Term:</label>
+    <input type="number" [(ngModel)]="loanTerm" name="loanTerm" class="interest-rate-input comm-input" step="1" required />
+  </div>
+
+  <div class="form-group">
+    <label for="additionalMonthlyPayment" class="form-label font-weight-light font-roboto interest-rate-label">Additional Monthly Payment:</label>
+    <input type="number" [(ngModel)]="additionalMonthlyPayment" name="additionalMonthlyPayment" class="interest-rate-input comm-input" step="1" required />
+  </div>
+
+  <div class="buttons">
+    <button type="button" class="resetbutton" (click)="resetForm()">Reset</button>
+    <button type="button" class="calculatebutton" (click)="calculateMonthlyPayment()">Calculate</button>
+  </div>
+</form>
+
+<div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
+
+<div class="result">
+  <div class="result-item">
+    <label for="totalAmount" class="totalAmount font-roboto font-weight-light style-label">Monthly Payment:</label>
+    <input type="text" [value]="monthlyPayment | number:'1.2-2'" class="comm-input dim-input" readonly />
+  </div>
+  <div class="result-item">
+    <label for="totalMonthlyPayment" class="EMI font-roboto font-weight-light style-label">Total Monthly Payment:</label>
+    <input type="text" [value]="totalMonthlyPayment | number:'1.2-2'" class="comm-input dim-input" readonly />
+  </div>
+</div>
+
+<div *ngIf="amortizationSchedule.length > 0" class="amortization-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Payment Number</th>
+        <th>Beginning Balance</th>
+        <th>Scheduled Payment</th>
+        <th>Additional Payment</th>
+        <th>Total Payment</th>
+        <th>Interest Payment</th>
+        <th>Principal Payment</th>
+        <th>Ending Balance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let payment of amortizationSchedule; let i = index">
+        <td>{{ payment.paymentNumber }}</td>
+        <td>{{ payment.beginningBalance | number:'1.2-2' }}</td>
+        <td>{{ payment.scheduledPayment | number:'1.2-2' }}</td>
+        <td>{{ payment.additionalPayment | number:'1.2-2' }}</td>
+        <td>{{ payment.totalPayment | number:'1.2-2' }}</td>
+        <td>{{ payment.interestPayment | number:'1.2-2' }}</td>
+        <td>{{ payment.principalPayment | number:'1.2-2' }}</td>
+        <td>{{ payment.endingBalance | number:'1.2-2' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
