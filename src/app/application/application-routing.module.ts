@@ -56,7 +56,7 @@ const routes: Routes = [
       {
         path: 'emi-calculator',
         component: EmiCalculatorComponent,
-      }
+      },
       {
          path: 'accounts/:id',
          component: AccountDetailsComponent,

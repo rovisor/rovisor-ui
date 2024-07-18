@@ -40,7 +40,7 @@ import { CalculatorComponent } from './calculator/calculator.component';
     AccountDetailsComponent,
     LoanCalculatorComponent,
     SavingCalculatorComponent,
-    EmiCalculatorComponent
+    EmiCalculatorComponent,
     AccountDetailsComponent,
     LeaseVsBuyComponent,
   ],
