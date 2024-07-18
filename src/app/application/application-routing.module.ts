@@ -6,7 +6,8 @@ import { Registration1Component } from './registration-1/registration-1.componen
 import { RegistrationV2Component } from './registration-v2/registration-v2.component';
 import { ConsolidateStatementComponent } from './consolidate-statement/consolidate-statement.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
-import { LeaseVsBuyComponent } from './Lease-vs-Buy Calculator/Lease-vs-Buy.component';import { LoanCalculatorComponent } from './loan-calculator/loan-calculator.component';
+import { DebttoIncomeRatioCalculatorComponent } from './diratio-calculator/diratio-calculator.component';
+import { SimpleInterestCalculatorComponent } from './si-calculator/si-calculator.component';import { LeaseVsBuyComponent } from './Lease-vs-Buy Calculator/Lease-vs-Buy.component';import { LoanCalculatorComponent } from './loan-calculator/loan-calculator.component';
 import { CreditCardPayoffCalculatorComponent } from './Credit-Card-Payoff-Calculator/Credit-Card-Payoff-Calculator.component';import { SavingCalculatorComponent } from './saving-calculator/saving-calculator.component';import { EmiCalculatorComponent } from './emi-calculator/emi-calculator.component';import { compoundIntresetComponent } from './compoundIntreset/compoundIntreset.component';
 import { InvestmentCalculatorComponent } from './InvestmentCalculator/InvestmentCalculator.component';
 import { CalculatorComponent } from './calculator/calculator.component';
@@ -50,9 +51,17 @@ const routes: Routes = [
         component: EmergencyFundComponent,
       },
       {
+        path: 'diratio-calculator',
+        component: DebttoIncomeRatioCalculatorComponent,
+      },
+      {
          path: 'accounts/:id',
          component: AccountDetailsComponent,
-      },
+     },
+      {
+        path: 'si-calculator',
+        component: SimpleInterestCalculatorComponent,
+       },
       {
         path: 'loan-calculator',
         component: LoanCalculatorComponent,
@@ -68,31 +77,7 @@ const routes: Routes = [
       {
         path: 'Lease-vs-Buy',
         component: LeaseVsBuyComponent,
-      },
-      {
-        path: 'CreditCardPayoffCalculator',
-        component: CreditCardPayoffCalculatorComponent,
-      },
-      {
-        path: 'compoundIntreset',
-        component: compoundIntresetComponent,
-      },
-      {
-        path: 'SavingCalculator',
-        component: SavingCalculatorComponent,
-      },
-      {
-        path: 'EmiCalculator',
-        component: EmiCalculatorComponent,
-      },
-      {
-        path: 'InvestmentCalculator',
-        component: InvestmentCalculatorComponent,
-      },
-      {
-        path: 'MortgageCalculator',
-        component: MortgageCalculatorComponent,
-      },
+      }
     ]
   }
 ];
