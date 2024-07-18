@@ -60,7 +60,7 @@ const routes: Routes = [
         component: EmergencyFundComponent,
       },
       {
-        path: 'CreditCardPayoffCalculator',
+        path: 'Credit-Card-Payoff-Calculator',
         component: CreditCardPayoffCalculatorComponent,
       },
       {
@@ -68,11 +68,11 @@ const routes: Routes = [
         component: compoundIntresetComponent,
       },
       {
-        path: 'SavingCalculator',
+        path: 'saving-calculator',
         component: SavingCalculatorComponent,
       },
       {
-        path: 'EmiCalculator',
+        path: 'emi-calculator',
         component: EmiCalculatorComponent,
       },
       {
