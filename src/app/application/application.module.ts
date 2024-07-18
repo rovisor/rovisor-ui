@@ -17,7 +17,7 @@ import { AccountMappingComponent } from './account-mapping/account-mapping.compo
 import { AddAccountComponent } from './add-account/add-account.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
-import { SimpleInterestCalculatorComponent } from './si-calculator/si-calculator.component';import { LeaseVsBuyComponent } from './Lease-vs-Buy Calculator/Lease-vs-Buy.component';
+import { DebttoIncomeRatioCalculatorComponent } from './diratio-calculator/diratio-calculator.component';import { SimpleInterestCalculatorComponent } from './si-calculator/si-calculator.component';import { LeaseVsBuyComponent } from './Lease-vs-Buy Calculator/Lease-vs-Buy.component';
 import { EmergencyFundComponent } from './Emergency-Fund/Emergency-Fund.component';
 import { CreditCardPayoffCalculatorComponent } from './Credit-Card-Payoff-Calculator/Credit-Card-Payoff-Calculator.component';
 import { SavingCalculatorComponent } from './saving-calculator/saving-calculator.component';import { MortgageCalculatorComponent } from './MortgageCalculator/MortgageCalculator.component';
@@ -38,6 +38,7 @@ import { CalculatorComponent } from './calculator/calculator.component';
     AddAccountComponent,
     DashboardComponent,
     AccountDetailsComponent,
+   DebttoIncomeRatioCalculatorComponent,
     CalculatorComponent,
     AccountDetailsComponent,
     SimpleInterestCalculatorComponent,
