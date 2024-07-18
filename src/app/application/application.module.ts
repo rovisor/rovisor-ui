@@ -43,6 +43,10 @@ import { CalculatorComponent } from './calculator/calculator.component';
     EmiCalculatorComponent,
     AccountDetailsComponent,
     LeaseVsBuyComponent,
+    SavingCalculatorComponent,
+    MortgageCalculatorComponent,
+    EmiCalculatorComponent,
+    compoundIntresetComponent,
   ],
   imports: [
     NgbDatepickerModule,

@@ -64,7 +64,31 @@ const routes: Routes = [
       {
         path: 'Lease-vs-Buy',
         component: LeaseVsBuyComponent,
-      }
+      },
+      {
+        path: 'CreditCardPayoffCalculator',
+        component: CreditCardPayoffCalculatorComponent,
+      },
+      {
+        path: 'compoundIntreset',
+        component: compoundIntresetComponent,
+      },
+      {
+        path: 'SavingCalculator',
+        component: SavingCalculatorComponent,
+      },
+      {
+        path: 'EmiCalculator',
+        component: EmiCalculatorComponent,
+      },
+      {
+        path: 'InvestmentCalculator',
+        component: InvestmentCalculatorComponent,
+      },
+      {
+        path: 'MortgageCalculator',
+        component: MortgageCalculatorComponent,
+      },
     ]
   }
 ];
