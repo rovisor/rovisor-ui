@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-12">
+    <h1 class="emi text-bold">Savings Calculator</h1>
+    <h4 class="page_subtitle">Calculate your future savings</h4>
+    <form [formGroup]="savingsCalculatorForm">
+      <div class="form-group col-6">
+        <div>
+          <label for="principal" class="label col-sm-6 col-form-label mt-5">Principal:</label>
+          <input type="number" class="ms-5 input " formControlName="principal" required />
+          <div *ngIf="savingsCalculatorForm.controls['principal'].invalid && (savingsCalculatorForm.controls['principal'].dirty || savingsCalculatorForm.controls['principal'].touched)" class="text-danger mt-2">
+            Principal is required and must be greater than zero
+          </div>
+        </div>
+        <div>
+          <label for="monthlyContribution" class="label col-sm-6 col-form-label mt-5">Monthly Contribution:</label>
+          <input type="number" class="ms-5 input " formControlName="monthlyContribution" required />
+          <div *ngIf="savingsCalculatorForm.controls['monthlyContribution'].invalid && (savingsCalculatorForm.controls['monthlyContribution'].dirty || savingsCalculatorForm.controls['monthlyContribution'].touched)" class="text-danger mt-2">
+            Monthly Contribution is required and must be greater than zero
+          </div>
+        </div>
+        <div>
+          <label for="interestRate" class="label col-sm-6 col-form-label mt-5">Interest Rate (%):</label>
+          <input type="number" class="ms-5 input " formControlName="interestRate" step="1" required />
+          <div *ngIf="savingsCalculatorForm.controls['interestRate'].invalid && (savingsCalculatorForm.controls['interestRate'].dirty || savingsCalculatorForm.controls['interestRate'].touched)" class="text-danger mt-2">
+            Interest Rate is required and must be greater than zero
+          </div>
+        </div>
+        <div>
+          <label for="compoundingFrequency" class="label col-sm-6 col-form-label mt-5">Compounding Frequency:</label>
+          <input type="number" class="ms-5 input " formControlName="compoundingFrequency" step="1" required />
+          <div *ngIf="savingsCalculatorForm.controls['compoundingFrequency'].invalid && (savingsCalculatorForm.controls['compoundingFrequency'].dirty || savingsCalculatorForm.controls['compoundingFrequency'].touched)" class="text-danger mt-2">
+            Compounding Frequency is required and must be greater than zero
+          </div>
+        </div>
+        <div>
+          <label for="savingsPeriod" class="label col-sm-6 col-form-label mt-5">Savings Period (Years):</label>
+          <input type="number" class="ms-5 input " formControlName="savingsPeriod" required />
+          <div *ngIf="savingsCalculatorForm.controls['savingsPeriod'].invalid && (savingsCalculatorForm.controls['savingsPeriod'].dirty || savingsCalculatorForm.controls['savingsPeriod'].touched)" class="text-danger mt-2">
+            Savings Period is required and must be greater than zero
+          </div>
+        </div>
+        <div class="buttons mt-5">
+          <button type="reset" class="resetButton btn btn-secondary text-white" (click)="resetForm()">Reset</button>
+          <button type="button" class="ms-3 calculateButton btn btn-primary" (click)="calculateSavings()" [disabled]="savingsCalculatorForm.invalid">Calculate</button>
+        </div>
+      </div>
+      <div *ngIf="errorMessage" class="alert alert-danger label col-6 mt-3">{{ errorMessage }}</div>
+    </form>
+    <div class="result mt-3 col-6">
+      <div class="result-item">
+        <label for="totalAmount" class="label col-sm-6 col-form-label mt-4">Future Savings:</label>
+        <input type="text" class="input ms-3 " [value]="futureValue | number : '1.2-2'" readonly />
+      </div>
+      <div class="result-item">
+        <label for="monthlyEMI" class="label col-sm-6 col-form-label mt-4">Total Contributions:</label>
+        <input type="text" class="input ms-3 " [value]="totalContributions | number : '1.2-2'" readonly />
+      </div>
+      <div class="result-item">
+        <label for="totalInterestPaid" class="label col-sm-6 col-form-label mt-4">Total Interest Earned:</label>
+        <input type="text" class="input ms-3 " [value]="totalInterest | number : '1.2-2'" readonly />
+      </div>
+    </div>
+  </div>
+</div>

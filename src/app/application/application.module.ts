@@ -17,7 +17,14 @@ import { AccountMappingComponent } from './account-mapping/account-mapping.compo
 import { AddAccountComponent } from './add-account/add-account.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
-import { DebttoIncomeRatioCalculatorComponent } from './diratio-calculator/diratio-calculator.component';
+import { DebttoIncomeRatioCalculatorComponent } from './diratio-calculator/diratio-calculator.component';import { SimpleInterestCalculatorComponent } from './si-calculator/si-calculator.component';import { LeaseVsBuyComponent } from './Lease-vs-Buy Calculator/Lease-vs-Buy.component';
+import { EmergencyFundComponent } from './Emergency-Fund/Emergency-Fund.component';
+import { CreditCardPayoffCalculatorComponent } from './Credit-Card-Payoff-Calculator/Credit-Card-Payoff-Calculator.component';
+import { SavingCalculatorComponent } from './saving-calculator/saving-calculator.component';import { MortgageCalculatorComponent } from './MortgageCalculator/MortgageCalculator.component';
+import { EmiCalculatorComponent } from './emi-calculator/emi-calculator.component';import { compoundIntresetComponent } from './compoundIntreset/compoundIntreset.component';
+import { InvestmentCalculatorComponent } from './InvestmentCalculator/InvestmentCalculator.component';
+import { CalculatorComponent } from './calculator/calculator.component';
+
 @NgModule({
   declarations: [
     ApplicationComponent,
@@ -25,11 +32,22 @@ import { DebttoIncomeRatioCalculatorComponent } from './diratio-calculator/dirat
     RegistrationV2Component,
     UploadStatementComponent,
     ConsolidateStatementComponent,
+    CreditCardPayoffCalculatorComponent,
+    InvestmentCalculatorComponent,
     AccountMappingComponent,
     AddAccountComponent,
     DashboardComponent,
     AccountDetailsComponent,
-   DebttoIncomeRatioCalculatorComponent
+   DebttoIncomeRatioCalculatorComponent,
+    CalculatorComponent,
+    AccountDetailsComponent,
+    SimpleInterestCalculatorComponent,
+    LeaseVsBuyComponent,
+    EmergencyFundComponent,
+    SavingCalculatorComponent,
+    MortgageCalculatorComponent,
+    EmiCalculatorComponent,
+    compoundIntresetComponent,
   ],
   imports: [
     NgbDatepickerModule,
