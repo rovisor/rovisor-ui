@@ -77,6 +77,18 @@ const routes: Routes = [
       {
         path: 'Lease-vs-Buy',
         component: LeaseVsBuyComponent,
+      },
+      {
+        path: 'MortgageCalculator',
+        component: MortgageCalculatorComponent,
+      },
+      {
+        path: 'compoundIntreset',
+        component: compoundIntresetComponent,
+      },
+      {
+        path: 'calculator',
+        component: CalculatorComponent,
       }
     ]
   }

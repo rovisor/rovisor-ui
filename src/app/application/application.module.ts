@@ -53,10 +53,8 @@ import { EmergencyFundComponent } from './Emergency-Fund/Emergency-Fund.componen
     MortgageCalculatorComponent,
     EmiCalculatorComponent,
     compoundIntresetComponent,
-    EmergencyFundComponent
     EmergencyFundComponent,
     SavingCalculatorComponent,
-    MortgageCalculatorComponent,
     EmiCalculatorComponent,
     compoundIntresetComponent,
   ],
