@@ -11,6 +11,7 @@ import { SimpleInterestCalculatorComponent } from './si-calculator/si-calculator
 import { CreditCardPayoffCalculatorComponent } from './Credit-Card-Payoff-Calculator/Credit-Card-Payoff-Calculator.component';import { SavingCalculatorComponent } from './saving-calculator/saving-calculator.component';import { EmiCalculatorComponent } from './emi-calculator/emi-calculator.component';import { compoundIntresetComponent } from './compoundIntreset/compoundIntreset.component';
 import { InvestmentCalculatorComponent } from './InvestmentCalculator/InvestmentCalculator.component';
 import { CalculatorComponent } from './calculator/calculator.component';
+import { BreakEvenCalculatorComponent } from './BreakEvenCalculator/BreakEvenCalculator.component';
 import { MortgageCalculatorComponent } from './MortgageCalculator/MortgageCalculator.component';
 import { EmergencyFundComponent } from './Emergency-Fund/Emergency-Fund.component';
 const routes: Routes = [
@@ -89,7 +90,11 @@ const routes: Routes = [
       {
         path: 'calculator',
         component: CalculatorComponent,
-      }
+      },
+      {
+        path : 'BreakEvenCalculator',
+        component: BreakEvenCalculatorComponent,
+      },
     ]
   }
 ];
