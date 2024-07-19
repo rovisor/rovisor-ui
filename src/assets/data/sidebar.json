@@ -28,6 +28,7 @@
     { "label": "Compound Interest Calculator", "route": "/app/compoundIntreset", "icon": "bi bi-calculator-fill","expanded": false },
     { "label": "Investment Calculator", "route": "/app/InvestmentCalculator", "icon": "bi bi-calculator","expanded": false },
     { "label": "Retirement Calculator ", "route": "/app/calculator", "icon": "bi bi-calculator","expanded": false },
+    { "label": "Home Affordability Calculator", "route": "/app/homeaffordability-calculator", "icon": "bi bi-calculator","expanded": false },
     { "label": "Settings", "route": "/app/settings", "icon": "bi bi-gear","expanded": false }
     
     
