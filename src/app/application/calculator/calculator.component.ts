@@ -32,7 +32,7 @@ export class CalculatorComponent {
       const monthlyContribution = this.retirementForm.value.monthlyContribution;
       const saving = this.retirementForm.value.saving;
 
-      if (currentAge <= 0 || annualRate <= 0 || retirementAge <= 0 || monthlyContribution <= 0 || saving <= 0) {
+      if (currentAge <= 0 || annualRate <= 0 || retirementAge <= 0 || monthlyContribution <= 0) {
         this.errorMessage = " All values must be greater than zero.";
         return; 
       }
