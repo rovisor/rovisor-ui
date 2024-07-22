@@ -9,9 +9,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class EmiCalculatorComponent {
     emiCalculatorForm: FormGroup;
 
-    principal: number | null = null;
-    interestRate: number | null = null;
-    time: number | null = null;
+    principal: number = 0;
+    interestRate: number = 0;
+    time: number = 0;
     monthlyEMI: number = 0;
     totalAmount: number = 0;
     totalInterestPaid: number = 0;
@@ -19,9 +19,13 @@ export class EmiCalculatorComponent {
 
     constructor(private fb: FormBuilder) {
         this.emiCalculatorForm = this.fb.group({
-            principal: [null, Validators.required],
-            interestRate: [null, Validators.required],
-            time: [null, Validators.required],
+            principal: [null, [Validators.required, Validators.min(0.01)]],
+            interestRate: [null, [Validators.required, Validators.min(0.01)]],
+            time: [null, [Validators.required, Validators.min(0.01)]]
+        });
+
+        this.emiCalculatorForm.valueChanges.subscribe(() => {
+            this.resetCalculations();
         });
     }
 
@@ -33,13 +37,11 @@ export class EmiCalculatorComponent {
 
             if (principal <= 0 || interestRate <= 0 || time <= 0) {
                 this.errorMessage = 'All values must be greater than zero.';
-                this.totalAmount = 0;
-                this.monthlyEMI = 0;
-                this.totalInterestPaid = 0;
+                this.resetCalculations();
                 return;
             }
 
-            const monthlyInterestRate = interestRate / 12 ;
+            const monthlyInterestRate = interestRate / 1200;
             const numberOfMonths = time * 12;
 
             this.errorMessage = '';
@@ -53,21 +55,20 @@ export class EmiCalculatorComponent {
     }
 
     calculatePMT(principal: number, monthlyInterestRate: number, numberOfMonths: number): number {
-        const rate = monthlyInterestRate;
-        const presentValue = principal;
-        const numPeriods = numberOfMonths;
-        const numerator = rate * Math.pow(1 + rate, numPeriods);
-        const denominator = Math.pow(1 + rate, numPeriods) - 1;
-        const pmt = presentValue * (numerator / denominator);
-
-        return pmt;
+        const numerator = monthlyInterestRate * Math.pow(1 + monthlyInterestRate, numberOfMonths);
+        const denominator = Math.pow(1 + monthlyInterestRate, numberOfMonths) - 1;
+        return principal * (numerator / denominator);
     }
 
     resetForm() {
         this.emiCalculatorForm.reset();
-        this.principal = null;
-        this.interestRate = null;
-        this.time = null;
+        this.resetCalculations();
+    }
+
+    resetCalculations() {
+        this.principal = 0;
+        this.interestRate = 0;
+        this.time = 0;
         this.monthlyEMI = 0;
         this.totalAmount = 0;
         this.totalInterestPaid = 0;
