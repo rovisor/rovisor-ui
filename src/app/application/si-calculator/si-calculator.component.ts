@@ -18,6 +18,10 @@ export class SimpleInterestCalculatorComponent {
             AnnualInterestRate: [null, [Validators.required, Validators.min(0.01), Validators.max(100)]],
             time: [null, [Validators.required, Validators.min(0.01)]]
         });
+
+        this.payoffCalculatorForm.valueChanges.subscribe(() => {
+            this.resetCalculations();
+        });
     }
 
     calculate() {
@@ -28,6 +32,8 @@ export class SimpleInterestCalculatorComponent {
 
             if (Principal <= 0 || annualInterestRate <= 0 || time <= 0) {
                 this.errorMessage = "All values must be greater than zero.";
+                this.simpleInterest = 0;
+                this.totalAmount = 0;
                 return;
             }
 
@@ -36,11 +42,17 @@ export class SimpleInterestCalculatorComponent {
             this.errorMessage = '';
         } else {
             this.errorMessage = "Please fill out all required fields.";
+            this.simpleInterest = 0;
+            this.totalAmount = 0;
         }
     }
 
     resetForm() {
         this.payoffCalculatorForm.reset();
+        this.resetCalculations();
+    }
+
+    resetCalculations() {
         this.simpleInterest = 0;
         this.totalAmount = 0;
         this.errorMessage = '';
