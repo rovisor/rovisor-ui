@@ -64,7 +64,6 @@ export class LoanCalculatorComponent implements OnInit {
             const totalPayment = this.monthlyPayment! + additionalMonthlyPayment;
             remainingBalance -= principal + additionalMonthlyPayment;
 
-            // Ensure no negative values
             const adjustedRemainingBalance = Math.max(0, remainingBalance);
 
             this.amortizationSchedule.push({
@@ -78,7 +77,7 @@ export class LoanCalculatorComponent implements OnInit {
                 endingBalance: adjustedRemainingBalance
             });
 
-            // Ensure remaining balance is reset to zero if negative
+            
             if (remainingBalance < 0) remainingBalance = 0;
             if (adjustedRemainingBalance === 0) break;
         }

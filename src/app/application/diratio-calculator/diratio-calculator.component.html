@@ -3,7 +3,7 @@
         <h1>Debt to Income Ratio Calculator</h1>
         <form [formGroup]="DebttoIncomeRatioCalculatorForm">
             <div class="form-group col-6">
-                <h2 class="mt-5">Debt Payments</h2>
+                <h2 class="mt-5">Debt Payments(Monthly)</h2>
                 <div>
                     <label for="mortgagePayments" class="label col-sm-6 col-form-label mt-4">Mortgage/Rent Payments</label>
                     <input type="number" class="ms-5 input" formControlName="mortgagePayments" required (input)="checkForNegativeValues()" />
@@ -64,7 +64,7 @@
                         Other Debt Payments are required
                     </div>
                 </div>
-                <h2 class="mt-5">Income Sources</h2>
+                <h2 class="mt-5">Income Sources(Monthly)</h2>
                 <div>
                     <label for="salaryWages" class="label col-sm-6 col-form-label mt-4">Salary/Wages</label>
                     <input type="number" class="ms-5 input" formControlName="salaryWages" required (input)="checkForNegativeValues()" />
