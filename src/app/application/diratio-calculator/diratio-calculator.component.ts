@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors }
     templateUrl: './diratio-calculator.component.html',
     styleUrls: ['./diratio-calculator.component.css']
 })
-export class DebttoIncomeRatioCalculatorComponent {
+export class DebttoIncomeRatioCalculatorComponent implements OnInit {
     DebttoIncomeRatioCalculatorForm: FormGroup;
     dtiRatio: number = 0;
     errorMessage: string = '';
@@ -28,6 +28,13 @@ export class DebttoIncomeRatioCalculatorComponent {
         });
     }
 
+    ngOnInit(): void {
+       
+        this.DebttoIncomeRatioCalculatorForm.valueChanges.subscribe(() => {
+            this.resetOutputs();
+        });
+    }
+
     calculate() {
         if (this.DebttoIncomeRatioCalculatorForm.valid && !this.hasNegativeValue) {
             const formValues = this.DebttoIncomeRatioCalculatorForm.value;
@@ -40,7 +47,7 @@ export class DebttoIncomeRatioCalculatorComponent {
 
             if (totalDebtPayments <= 0 || totalMonthlyIncome <= 0) {
                 this.errorMessage = "All values must be greater than zero.";
-                this.dtiRatio = 0; // Reset the output to 0
+                this.dtiRatio = 0; 
                 return;
             }
 
@@ -49,13 +56,13 @@ export class DebttoIncomeRatioCalculatorComponent {
 
         } else {
             this.errorMessage = "Please fill out all required fields.";
-            this.dtiRatio = 0; 
+            this.dtiRatio = 0;
         }
     }
 
     resetForm() {
         this.DebttoIncomeRatioCalculatorForm.reset();
-        this.dtiRatio = 0;
+        this.resetOutputs();
         this.errorMessage = '';
         this.hasNegativeValue = false;
     }
@@ -64,7 +71,7 @@ export class DebttoIncomeRatioCalculatorComponent {
         const formValues = this.DebttoIncomeRatioCalculatorForm.value;
         this.hasNegativeValue = Object.keys(formValues).some(key => formValues[key] < 0);
         if (this.hasNegativeValue) {
-            this.dtiRatio = 0; // Reset the output to 0 if any value is negative
+            this.dtiRatio = 0; 
         }
     }
 
@@ -73,5 +80,9 @@ export class DebttoIncomeRatioCalculatorComponent {
             return { negativeValue: true };
         }
         return null;
+    }
+
+    private resetOutputs(): void {
+        this.dtiRatio = 0;
     }
 }
