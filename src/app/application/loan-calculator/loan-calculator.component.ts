@@ -77,7 +77,6 @@ export class LoanCalculatorComponent implements OnInit {
                 endingBalance: adjustedRemainingBalance
             });
 
-            
             if (remainingBalance < 0) remainingBalance = 0;
             if (adjustedRemainingBalance === 0) break;
         }

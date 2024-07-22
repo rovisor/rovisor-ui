@@ -7,17 +7,20 @@
         <div>
           <label for="principal" class="label col-sm-6 col-form-label mt-5">Principal:</label>
           <input type="number" formControlName="principal" class="ms-5 input" required />
-          <div *ngIf="loanCalculatorForm.controls['principal'].invalid && (loanCalculatorForm.controls['principal'].dirty || loanCalculatorForm.controls['principal'].touched)" class="text-danger">Principal is required</div>
+          <div *ngIf="loanCalculatorForm.controls['principal'].hasError('required') && (loanCalculatorForm.controls['principal'].dirty || loanCalculatorForm.controls['principal'].touched)" class="text-danger">Principal is required</div>
+          <div *ngIf="loanCalculatorForm.controls['principal'].hasError('min') && loanCalculatorForm.controls['principal'].dirty" class="text-danger">Value must be greater than 0</div>
         </div>
         <div>
           <label for="interestRate" class="label col-sm-6 col-form-label mt-5">Interest Rate (%):</label>
           <input type="number" formControlName="interestRate" class="ms-5 input" step="0.01" required />
-          <div *ngIf="loanCalculatorForm.controls['interestRate'].invalid && (loanCalculatorForm.controls['interestRate'].dirty || loanCalculatorForm.controls['interestRate'].touched)" class="text-danger">Interest Rate is required</div>
+          <div *ngIf="loanCalculatorForm.controls['interestRate'].hasError('required') && (loanCalculatorForm.controls['interestRate'].dirty || loanCalculatorForm.controls['interestRate'].touched)" class="text-danger">Interest Rate is required</div>
+          <div *ngIf="loanCalculatorForm.controls['interestRate'].hasError('min') && loanCalculatorForm.controls['interestRate'].dirty" class="text-danger">Value must be greater than 0</div>
         </div>
         <div>
           <label for="loanTerm" class="label col-sm-6 col-form-label mt-5">Loan Term (years):</label>
           <input type="number" formControlName="loanTerm" class="ms-5 input" step="1" required />
-          <div *ngIf="loanCalculatorForm.controls['loanTerm'].invalid && (loanCalculatorForm.controls['loanTerm'].dirty || loanCalculatorForm.controls['loanTerm'].touched)" class="text-danger">Loan Term is required</div>
+          <div *ngIf="loanCalculatorForm.controls['loanTerm'].hasError('required') && (loanCalculatorForm.controls['loanTerm'].dirty || loanCalculatorForm.controls['loanTerm'].touched)" class="text-danger">Loan Term is required</div>
+          <div *ngIf="loanCalculatorForm.controls['loanTerm'].hasError('min') && loanCalculatorForm.controls['loanTerm'].dirty" class="text-danger">Value must be greater than 0</div>
         </div>
         <div>
           <label for="additionalMonthlyPayment" class="label col-sm-6 col-form-label mt-5">Additional Monthly Payment:</label>

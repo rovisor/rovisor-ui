@@ -28,7 +28,7 @@ export class EmergencyFundComponent {
             const CurrentSavings = this.EmergencyFundCalculatorForm.value.CurrentSavings;
 
             if (MonthlyExpenses <= 0 || CoveragePeriod <= 0 || CurrentSavings < 0) {
-                this.errorMessage = "All values must be greater than zero, and savings cannot be negative.";
+                this.errorMessage = "All values must be greater than zero.";
                 return;
             }
 
