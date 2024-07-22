@@ -4,7 +4,7 @@
         <form [formGroup]="EmergencyFundCalculatorForm">
             <div class="form-group col-6">
                 <div>
-                    <label for="MonthlyExpenses" class="label col-sm-6 col-form-label mt-5">Monthly Expenses
+                    <label for="MonthlyExpenses" class="label col-sm-6 col-form-label mt-5">Monthly Expenses:
                     </label>
                     <input type="number" class="ms-5 input" formControlName="MonthlyExpenses" required />
                     <div *ngIf="EmergencyFundCalculatorForm.controls['MonthlyExpenses'].invalid && (EmergencyFundCalculatorForm.controls['MonthlyExpenses'].dirty || EmergencyFundCalculatorForm.controls['MonthlyExpenses'].touched)" class="text-danger">
@@ -12,14 +12,14 @@
                     </div>
                 </div>
                 <div>
-                    <label for="CoveragePeriod" class="label col-sm-6 col-form-label mt-5">Coverage Period (months)</label>
+                    <label for="CoveragePeriod" class="label col-sm-6 col-form-label mt-5">Coverage Period (months):</label>
                     <input type="number" class="ms-5 input" formControlName="CoveragePeriod" required />
                     <div *ngIf="EmergencyFundCalculatorForm.controls['CoveragePeriod'].invalid && (EmergencyFundCalculatorForm.controls['CoveragePeriod'].dirty || EmergencyFundCalculatorForm.controls['CoveragePeriod'].touched)" class="text-danger">
                         Coverage Period (months) is required 
                     </div>
                 </div>
                 <div>
-                    <label for="CurrentSavings" class="label col-sm-6 col-form-label mt-5">Current Savings</label>
+                    <label for="CurrentSavings" class="label col-sm-6 col-form-label mt-5">Current Savings:</label>
                     <input type="number" class="ms-5 input" formControlName="CurrentSavings" required />
                     <div *ngIf="EmergencyFundCalculatorForm.controls['CurrentSavings'].invalid && (EmergencyFundCalculatorForm.controls['CurrentSavings'].dirty || EmergencyFundCalculatorForm.controls['CurrentSavings'].touched)" class="text-danger">
                         Current Savings is required 
@@ -34,11 +34,11 @@
         </form>
         <div class="result mt-3 col-6">
             <div class="result-item">
-                <label for="TotalAmount" class="label col-sm-6 col-form-label mt-4">Total Required Amount </label>
+                <label for="TotalAmount" class="label col-sm-6 col-form-label mt-4">Total Required Amount:</label>
                 <input type="text" class="input ms-3" [value]="TotalAmount | number : '1.2-2'" readonly />
             </div>
             <div class="result-item">
-                <label for="GapToGoal" class="label col-sm-6 col-form-label mt-5">Gap to Goal</label>
+                <label for="GapToGoal" class="label col-sm-6 col-form-label mt-5">Gap to Goal:</label>
                 <input type="text" class="input ms-3" [value]="GapToGoal | number : '1.2-2'" readonly />
             </div>
         </div>

@@ -3,9 +3,9 @@
         <h1>Debt to Income Ratio Calculator</h1>
         <form [formGroup]="DebttoIncomeRatioCalculatorForm">
             <div class="form-group col-6">
-                <h2 class="mt-5">Debt Payments(Monthly)</h2>
+                <h2 class="mt-5">Debt Payments (Monthly)</h2>
                 <div>
-                    <label for="mortgagePayments" class="label col-sm-6 col-form-label mt-4">Mortgage/Rent Payments</label>
+                    <label for="mortgagePayments" class="label col-sm-6 col-form-label mt-4">Mortgage/Rent Payments:</label>
                     <input type="number" class="ms-5 input" formControlName="mortgagePayments" required (input)="checkForNegativeValues()" />
                     <div *ngIf="DebttoIncomeRatioCalculatorForm.controls['mortgagePayments'].hasError('negativeValue')" class="text-danger">
                         Negative values are not allowed
@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div>
-                    <label for="carLoanPayments" class="label col-sm-6 col-form-label mt-4">Car Loan Payments</label>
+                    <label for="carLoanPayments" class="label col-sm-6 col-form-label mt-4">Car Loan Payments:</label>
                     <input type="number" class="ms-5 input" formControlName="carLoanPayments" required (input)="checkForNegativeValues()" />
                     <div *ngIf="DebttoIncomeRatioCalculatorForm.controls['carLoanPayments'].hasError('negativeValue')" class="text-danger">
                         Negative values are not allowed
@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <div>
-                    <label for="studentLoanPayments" class="label col-sm-6 col-form-label mt-4">Student Loan Payments</label>
+                    <label for="studentLoanPayments" class="label col-sm-6 col-form-label mt-4">Student Loan Payments:</label>
                     <input type="number" class="ms-5 input" formControlName="studentLoanPayments" required (input)="checkForNegativeValues()" />
                     <div *ngIf="DebttoIncomeRatioCalculatorForm.controls['studentLoanPayments'].hasError('negativeValue')" class="text-danger">
                         Negative values are not allowed
@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div>
-                    <label for="creditCardPayments" class="label col-sm-6 col-form-label mt-4">Credit Card Payments</label>
+                    <label for="creditCardPayments" class="label col-sm-6 col-form-label mt-4">Credit Card Payments:</label>
                     <input type="number" class="ms-5 input" formControlName="creditCardPayments" required (input)="checkForNegativeValues()" />
                     <div *ngIf="DebttoIncomeRatioCalculatorForm.controls['creditCardPayments'].hasError('negativeValue')" class="text-danger">
                         Negative values are not allowed
@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div>
-                    <label for="personalLoanPayments" class="label col-sm-6 col-form-label mt-4">Personal Loan Payments</label>
+                    <label for="personalLoanPayments" class="label col-sm-6 col-form-label mt-4">Personal Loan Payments:</label>
                     <input type="number" class="ms-5 input" formControlName="personalLoanPayments" required (input)="checkForNegativeValues()" />
                     <div *ngIf="DebttoIncomeRatioCalculatorForm.controls['personalLoanPayments'].hasError('negativeValue')" class="text-danger">
                         Negative values are not allowed
@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div>
-                    <label for="otherDebtPayments" class="label col-sm-6 col-form-label mt-4">Other Debt Payments</label>
+                    <label for="otherDebtPayments" class="label col-sm-6 col-form-label mt-4">Other Debt Payments:</label>
                     <input type="number" class="ms-5 input" formControlName="otherDebtPayments" required (input)="checkForNegativeValues()" />
                     <div *ngIf="DebttoIncomeRatioCalculatorForm.controls['otherDebtPayments'].hasError('negativeValue')" class="text-danger">
                         Negative values are not allowed
@@ -64,9 +64,9 @@
                         Other Debt Payments are required
                     </div>
                 </div>
-                <h2 class="mt-5">Income Sources(Monthly)</h2>
+                <h2 class="mt-5">Income Sources (Monthly)</h2>
                 <div>
-                    <label for="salaryWages" class="label col-sm-6 col-form-label mt-4">Salary/Wages</label>
+                    <label for="salaryWages" class="label col-sm-6 col-form-label mt-4">Salary/Wages:</label>
                     <input type="number" class="ms-5 input" formControlName="salaryWages" required (input)="checkForNegativeValues()" />
                     <div *ngIf="DebttoIncomeRatioCalculatorForm.controls['salaryWages'].hasError('negativeValue')" class="text-danger">
                         Negative values are not allowed
@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 <div>
-                    <label for="bonusesCommissions" class="label col-sm-6 col-form-label mt-4">Bonuses/Commissions</label>
+                    <label for="bonusesCommissions" class="label col-sm-6 col-form-label mt-4">Bonuses/Commissions:</label>
                     <input type="number" class="ms-5 input" formControlName="bonusesCommissions" required (input)="checkForNegativeValues()" />
                     <div *ngIf="DebttoIncomeRatioCalculatorForm.controls['bonusesCommissions'].hasError('negativeValue')" class="text-danger">
                         Negative values are not allowed
@@ -86,7 +86,7 @@
                     </div>
                 </div>
                 <div>
-                    <label for="rentalIncome" class="label col-sm-6 col-form-label mt-4">Rental Income</label>
+                    <label for="rentalIncome" class="label col-sm-6 col-form-label mt-4">Rental Income:</label>
                     <input type="number" class="ms-5 input" formControlName="rentalIncome" required (input)="checkForNegativeValues()" />
                     <div *ngIf="DebttoIncomeRatioCalculatorForm.controls['rentalIncome'].hasError('negativeValue')" class="text-danger">
                         Negative values are not allowed
@@ -96,7 +96,7 @@
                     </div>
                 </div>
                 <div>
-                    <label for="investmentIncome" class="label col-sm-6 col-form-label mt-4">Investment Income</label>
+                    <label for="investmentIncome" class="label col-sm-6 col-form-label mt-4">Investment Income:</label>
                     <input type="number" class="ms-5 input" formControlName="investmentIncome" required (input)="checkForNegativeValues()" />
                     <div *ngIf="DebttoIncomeRatioCalculatorForm.controls['investmentIncome'].hasError('negativeValue')" class="text-danger">
                         Negative values are not allowed
@@ -106,7 +106,7 @@
                     </div>
                 </div>
                 <div>
-                    <label for="otherIncomeSources" class="label col-sm-6 col-form-label mt-4">Other Income Sources</label>
+                    <label for="otherIncomeSources" class="label col-sm-6 col-form-label mt-4">Other Income Sources:</label>
                     <input type="number" class="ms-5 input" formControlName="otherIncomeSources" required (input)="checkForNegativeValues()" />
                     <div *ngIf="DebttoIncomeRatioCalculatorForm.controls['otherIncomeSources'].hasError('negativeValue')" class="text-danger">
                         Negative values are not allowed
@@ -125,7 +125,7 @@
         </form>
         <div class="result mt-3 col-6">
             <div class="result-item">
-                <label for="dtiRatio" class="label col-sm-6 col-form-label mt-4">Debt-to-Income Ratio (%)</label>
+                <label for="dtiRatio" class="label col-sm-6 col-form-label mt-4">Debt-to-Income Ratio:</label>
                 <input type="text" class="input ms-3" [value]="dtiRatio | number : '1.2-2'" readonly />
             </div>
         </div>

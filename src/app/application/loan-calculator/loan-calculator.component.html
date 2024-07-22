@@ -1,26 +1,26 @@
 <div class="row">
   <div class="col-12">
     <h1>Loan Calculator</h1>
-    <h4 class="page_subtitle">Calculate monthly EMI</h4>
+    <h4 class="page_subtitle">Calculate monthly Payment</h4>
     <form [formGroup]="loanCalculatorForm">
       <div class="form-group col-6">
         <div>
-          <label for="principal" class="label col-sm-6 col-form-label mt-5">Principal</label>
+          <label for="principal" class="label col-sm-6 col-form-label mt-5">Principal:</label>
           <input type="number" formControlName="principal" class="ms-5 input" required />
           <div *ngIf="loanCalculatorForm.controls['principal'].invalid && (loanCalculatorForm.controls['principal'].dirty || loanCalculatorForm.controls['principal'].touched)" class="text-danger">Principal is required</div>
         </div>
         <div>
-          <label for="interestRate" class="label col-sm-6 col-form-label mt-5">Interest Rate (%)</label>
+          <label for="interestRate" class="label col-sm-6 col-form-label mt-5">Interest Rate (%):</label>
           <input type="number" formControlName="interestRate" class="ms-5 input" step="0.01" required />
           <div *ngIf="loanCalculatorForm.controls['interestRate'].invalid && (loanCalculatorForm.controls['interestRate'].dirty || loanCalculatorForm.controls['interestRate'].touched)" class="text-danger">Interest Rate is required</div>
         </div>
         <div>
-          <label for="loanTerm" class="label col-sm-6 col-form-label mt-5">Loan Term (years)</label>
+          <label for="loanTerm" class="label col-sm-6 col-form-label mt-5">Loan Term (years):</label>
           <input type="number" formControlName="loanTerm" class="ms-5 input" step="1" required />
           <div *ngIf="loanCalculatorForm.controls['loanTerm'].invalid && (loanCalculatorForm.controls['loanTerm'].dirty || loanCalculatorForm.controls['loanTerm'].touched)" class="text-danger">Loan Term is required</div>
         </div>
         <div>
-          <label for="additionalMonthlyPayment" class="label col-sm-6 col-form-label mt-5">Additional Monthly Payment</label>
+          <label for="additionalMonthlyPayment" class="label col-sm-6 col-form-label mt-5">Additional Monthly Payment:</label>
           <input type="number" formControlName="additionalMonthlyPayment" class="ms-5 input" step="1" required />
           <div *ngIf="loanCalculatorForm.controls['additionalMonthlyPayment'].invalid && (loanCalculatorForm.controls['additionalMonthlyPayment'].dirty || loanCalculatorForm.controls['additionalMonthlyPayment'].touched)" class="text-danger">Additional Monthly Payment is required</div>
         </div>
@@ -33,11 +33,11 @@
     </form>
     <div class="result mt-3 col-6">
       <div class="result-item">
-        <label for="monthlyPayment" class="label col-sm-6 col-form-label mt-4">Monthly Payment</label>
+        <label for="monthlyPayment" class="label col-sm-6 col-form-label mt-4">Monthly Payment:</label>
         <input type="text" class="input ms-3" [value]="monthlyPayment | number:'1.2-2'" readonly />
       </div>
       <div class="result-item">
-        <label for="totalMonthlyPayment" class="label col-sm-6 col-form-label mt-5">Total Monthly Payment</label>
+        <label for="totalMonthlyPayment" class="label col-sm-6 col-form-label mt-5">Total Monthly Payment:</label>
         <input type="text" class="input ms-3" [value]="totalMonthlyPayment | number:'1.2-2'" readonly />
       </div>
     </div>
