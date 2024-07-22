@@ -15,7 +15,6 @@
     { "label": "DebtToIncome Calculator", "route": "/app/diratio-calculator", "icon": "bi bi-calculator","expanded": false },
         { "label": "S.I Calculator", "route": "/app/si-calculator", "icon": "bi bi-calculator","expanded": false },
     { "label": "Lease vs. Buys Calculator", "route": "/app/Lease-vs-Buy", "icon": "bi bi-calculator","expanded": false },
-    { "label": "Emergency Fund Calculator", "route": "/app/Emergency-Fund", "icon": "bi bi-calculator","expanded": false },
     {"label": "Credit Card Payoff Calculator", "route": "/app/Credit-Card-Payoff-Calculator", "icon":"bi bi-calculator", "expanded":false},
     { "label": "Savings Calculator", 
         "route": "/app/saving-calculator",
