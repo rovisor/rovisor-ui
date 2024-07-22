@@ -1,35 +1,111 @@
 [
-    { "label": "Home", 
-        "route": "/app/dashboard",
-         "icon": "bi bi-house","expanded": false },
-    {
-        "label": "Accounts",
-        "icon": "bi bi-bank",
-        "expanded": false, 
-        "children": []
-    },
-    { "label": "Consolidated Statement", "route": "/app/consolidate-statement", "icon": "bi bi-files","expanded": false },
-    { "label": "Break Even Calculator Calculator ", "route": "/app/BreakEvenCalculator", "icon": "bi bi-calculator","expanded": false },
-       { "label": "Loan Calculator", "route": "/app/loan-calculator", "icon": "bi bi-calculator","expanded": false },
+  {
+    "label": "Home",
+    "route": "/app/dashboard",
+    "icon": "bi bi-house",
+    "expanded": false
+  },
+  {
+    "label": "Accounts",
+    "icon": "bi bi-bank",
+    "expanded": false,
+    "children": []
+  },
+  {
+    "label": "Consolidated Statement",
+    "route": "/app/consolidate-statement",
+    "icon": "bi bi-files",
+    "expanded": false
+  },
+  {
+    "label": "Break Even Calculator Calculator ",
+    "route": "/app/BreakEvenCalculator",
+    "icon": "bi bi-calculator",
+    "expanded": false
+  },
+  {
+    "label": "Loan Calculator",
+    "route": "/app/loan-calculator",
+    "icon": "bi bi-calculator",
+    "expanded": false
+  },
 
-    { "label": "DebtToIncome Calculator", "route": "/app/diratio-calculator", "icon": "bi bi-calculator","expanded": false },
-        { "label": "S.I Calculator", "route": "/app/si-calculator", "icon": "bi bi-calculator","expanded": false },
-    { "label": "Lease vs. Buys Calculator", "route": "/app/Lease-vs-Buy", "icon": "bi bi-calculator","expanded": false },
-    {"label": "Credit Card Payoff Calculator", "route": "/app/Credit-Card-Payoff-Calculator", "icon":"bi bi-calculator", "expanded":false},
-    { "label": "Savings Calculator", 
-        "route": "/app/saving-calculator",
-         "icon": "bi bi-calculator","expanded": false },
-    { "label": "Mortage Calculator", "route": "/app/MortgageCalculator", "icon": "bi bi-calculator","expanded": false },
-    { "label": "Emi-Calculator", 
-        "route": "/app/emi-calculator",
-         "icon": "bi bi-calculator","expanded": false },
-         { "label": "Emergency Fund Calculator", "route": "/app/Emergency-Fund", "icon": "bi bi-calculator","expanded": false },
-    { "label": "Compound Interest Calculator", "route": "/app/compoundIntreset", "icon": "bi bi-calculator-fill","expanded": false },
-    { "label": "Investment Calculator", "route": "/app/InvestmentCalculator", "icon": "bi bi-calculator","expanded": false },
-    { "label": "Retirement Calculator ", "route": "/app/calculator", "icon": "bi bi-calculator","expanded": false },
-    { "label": "Home Affordability Calculator", "route": "/app/homeaffordability-calculator", "icon": "bi bi-calculator","expanded": false },
-    { "label": "Settings", "route": "/app/settings", "icon": "bi bi-gear","expanded": false }
-    
-    
-    
-  ]
+  {
+    "label": "DebtToIncome Calculator",
+    "route": "/app/diratio-calculator",
+    "icon": "bi bi-calculator",
+    "expanded": false
+  },
+  {
+    "label": "S.I Calculator",
+    "route": "/app/si-calculator",
+    "icon": "bi bi-calculator",
+    "expanded": false
+  },
+  {
+    "label": "Lease vs. Buys Calculator",
+    "route": "/app/Lease-vs-Buy",
+    "icon": "bi bi-calculator",
+    "expanded": false
+  },
+  {
+    "label": "Credit Card Payoff Calculator",
+    "route": "/app/Credit-Card-Payoff-Calculator",
+    "icon": "bi bi-calculator",
+    "expanded": false
+  },
+  {
+    "label": "Savings Calculator",
+    "route": "/app/saving-calculator",
+    "icon": "bi bi-calculator",
+    "expanded": false
+  },
+  {
+    "label": "Mortage Calculator",
+    "route": "/app/MortgageCalculator",
+    "icon": "bi bi-calculator",
+    "expanded": false
+  },
+  {
+    "label": "Emi-Calculator",
+    "route": "/app/emi-calculator",
+    "icon": "bi bi-calculator",
+    "expanded": false
+  },
+  {
+    "label": "Emergency Fund Calculator",
+    "route": "/app/Emergency-Fund",
+    "icon": "bi bi-calculator",
+    "expanded": false
+  },
+  {
+    "label": "Compound Interest Calculator",
+    "route": "/app/compoundIntreset",
+    "icon": "bi bi-calculator-fill",
+    "expanded": false
+  },
+  {
+    "label": "Investment Calculator",
+    "route": "/app/InvestmentCalculator",
+    "icon": "bi bi-calculator",
+    "expanded": false
+  },
+  {
+    "label": "Retirement Calculator ",
+    "route": "/app/retirement-calculator",
+    "icon": "bi bi-calculator",
+    "expanded": false
+  },
+  {
+    "label": "Home Affordability Calculator",
+    "route": "/app/homeaffordability-calculator",
+    "icon": "bi bi-calculator",
+    "expanded": false
+  },
+  {
+    "label": "Settings",
+    "route": "/app/settings",
+    "icon": "bi bi-gear",
+    "expanded": false
+  }
+]

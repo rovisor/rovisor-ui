@@ -26,7 +26,7 @@ import { MortgageCalculatorComponent } from './MortgageCalculator/MortgageCalcul
 import { EmiCalculatorComponent } from './emi-calculator/emi-calculator.component';
 import { compoundIntresetComponent } from './compoundIntreset/compoundIntreset.component';
 import { InvestmentCalculatorComponent } from './InvestmentCalculator/InvestmentCalculator.component';
-import { CalculatorComponent } from './calculator/calculator.component';
+import { RetirementCalculatorComponent } from './retirement-calculator/retirement-calculator.component';
 import { HomeAffordabilityComponent } from './homeaffordability-calculator/homeaffordability-calculator.component';
 import { BreakEvenCalculatorComponent } from './BreakEvenCalculator/BreakEvenCalculator.component';
 import { EmergencyFundComponent } from './Emergency-Fund/Emergency-Fund.component';
@@ -44,7 +44,7 @@ import { EmergencyFundComponent } from './Emergency-Fund/Emergency-Fund.componen
     AddAccountComponent,
     DashboardComponent,
     DebttoIncomeRatioCalculatorComponent,
-    CalculatorComponent,
+    RetirementCalculatorComponent,
     AccountDetailsComponent,
     HomeAffordabilityComponent,
     LoanCalculatorComponent,
