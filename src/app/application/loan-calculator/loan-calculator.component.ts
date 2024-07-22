@@ -32,6 +32,11 @@ export class LoanCalculatorComponent implements OnInit {
             loanTerm: ['', [Validators.required, Validators.min(1)]],
             additionalMonthlyPayment: ['', [Validators.required, Validators.min(0)]]
         });
+
+        
+        this.loanCalculatorForm.valueChanges.subscribe(() => {
+            this.resetOutputs();
+        });
     }
 
     calculateMonthlyPayment(): void {
@@ -84,9 +89,13 @@ export class LoanCalculatorComponent implements OnInit {
 
     resetForm(): void {
         this.loanCalculatorForm.reset();
-        this.monthlyPayment = null;
-        this.totalMonthlyPayment = null;
+        this.resetOutputs();
         this.errorMessage = null;
         this.amortizationSchedule = [];
+    }
+
+    private resetOutputs(): void {
+        this.monthlyPayment = 0;
+        this.totalMonthlyPayment = 0;
     }
 }
