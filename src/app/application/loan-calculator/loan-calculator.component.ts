@@ -30,18 +30,19 @@ export class LoanCalculatorComponent implements OnInit {
             principal: ['', [Validators.required, Validators.min(1)]],
             interestRate: ['', [Validators.required, Validators.min(0.01)]],
             loanTerm: ['', [Validators.required, Validators.min(1)]],
-            additionalMonthlyPayment: ['', [Validators.required, Validators.min(0)]]
+            additionalMonthlyPayment: ['', [Validators.min(0)]]
         });
 
-        
+
         this.loanCalculatorForm.valueChanges.subscribe(() => {
             this.resetOutputs();
         });
     }
 
     calculateMonthlyPayment(): void {
-        if (this.loanCalculatorForm.invalid) {
-            this.errorMessage = 'All fields are required to fill.';
+        if (this.loanCalculatorForm.controls['principal'].invalid ||
+            this.loanCalculatorForm.controls['interestRate'].invalid ||
+            this.loanCalculatorForm.controls['loanTerm'].invalid) {
             return;
         }
 
@@ -49,7 +50,7 @@ export class LoanCalculatorComponent implements OnInit {
         const annualRate = this.loanCalculatorForm.value.interestRate / 100;
         const r = annualRate / 12;
         const n = this.loanCalculatorForm.value.loanTerm * 12;
-        const additionalMonthlyPayment = this.loanCalculatorForm.value.additionalMonthlyPayment;
+        const additionalMonthlyPayment = this.loanCalculatorForm.value.additionalMonthlyPayment || 0;
 
         const M = P * r * Math.pow((1 + r), n) / (Math.pow((1 + r), n) - 1);
         this.monthlyPayment = M;
