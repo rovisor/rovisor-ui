@@ -28,17 +28,11 @@
                 </div>
                 <div>
                     <label for="ResidualValue" class="label col-sm-6 col-form-label mt-5">Lease Residual Value</label>
-                    <input type="number" class="ms-5 input" formControlName="ResidualValue" required />
-                    <div *ngIf="payoffCalculatorForm.controls['ResidualValue'].invalid && (payoffCalculatorForm.controls['ResidualValue'].dirty || payoffCalculatorForm.controls['ResidualValue'].touched)" class="text-danger">
-                        Lease Residua lValue is required 
-                    </div>
+                    <input type="number" class="ms-5 input" formControlName="ResidualValue" />
                 </div>
                 <div>
                     <label for="AdditionalFees" class="label col-sm-6 col-form-label mt-5">Lease Additional Fees</label>
-                    <input type="number" class="ms-5 input" formControlName="AdditionalFees" required />
-                    <div *ngIf="payoffCalculatorForm.controls['AdditionalFees'].invalid && (payoffCalculatorForm.controls['AdditionalFees'].dirty || payoffCalculatorForm.controls['AdditionalFees'].touched)" class="text-danger">
-                        Lease Additional Fees is required 
-                    </div>
+                    <input type="number" class="ms-5 input" formControlName="AdditionalFees" />
                 </div>
             </div>
             <div class="form-group col-6">
@@ -76,18 +70,12 @@
                 </div>
                 <div>
                     <label for="BuyAdditional" class="label col-sm-6 col-form-label mt-5">Buy Additional Fees</label>
-                    <input type="number" class="ms-5 input" formControlName="BuyAdditional" required />
-                    <div *ngIf="payoffCalculatorForm.controls['BuyAdditional'].invalid && (payoffCalculatorForm.controls['BuyAdditional'].dirty || payoffCalculatorForm.controls['BuyAdditional'].touched)" class="text-danger">
-                        Buy Additional Fees is required 
-                    </div>
+                    <input type="number" class="ms-5 input" formControlName="BuyAdditional"  />
                 </div> 
                 <div>
                     <label for="TaxRate" class="label col-sm-6 col-form-label mt-5">Property Tax Rate
                     </label>
-                    <input type="number" class="ms-5 input" formControlName="TaxRate" required />
-                    <div *ngIf="payoffCalculatorForm.controls['TaxRate'].invalid && (payoffCalculatorForm.controls['TaxRate'].dirty || payoffCalculatorForm.controls['TaxRate'].touched)" class="text-danger">
-                        Property Tax Rate is required 
-                    </div>
+                    <input type="number" class="ms-5 input" formControlName="TaxRate" />
                 </div>
             </div>
                 <div class="buttons mt-5">
