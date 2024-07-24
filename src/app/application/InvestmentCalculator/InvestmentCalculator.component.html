@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div>
-                    <label for="Time" class="label col-sm-6 col-form-label mt-5">Time period </label>
+                    <label for="Time" class="label col-sm-6 col-form-label mt-5">Time period (year) </label>
                     <input type="number" class="ms-5 input" formControlName="Time" required />
                     <div *ngIf="InvestmentCalculatorForm.controls['Time'].invalid && (InvestmentCalculatorForm.controls['Time'].dirty || InvestmentCalculatorForm.controls['Time'].touched)" class="text-danger">
                         Time Period is required 
