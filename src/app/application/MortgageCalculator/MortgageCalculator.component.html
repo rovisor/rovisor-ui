@@ -7,14 +7,14 @@
                     <label for="loanAmount" class="label col-sm-6 col-form-label mt-5">Loan Amount</label>
                     <input type="number" class="ms-5 input" formControlName="loanAmount" required />
                     <div *ngIf="MortageCalculatorForm.controls['loanAmount'].invalid && (MortageCalculatorForm.controls['loanAmount'].dirty || MortageCalculatorForm.controls['loanAmount'].touched)" class="text-danger">
-                        Current Age is required.
+                        Loan Amount  is required.
                     </div>
                 </div>
                 <div>
-                    <label for="annualRate" class="label col-sm-6 col-form-label mt-5">Annual Interest Rate </label>
+                    <label for="annualRate" class="label col-sm-6 col-form-label mt-5">Annual Interest Rate  (10% as 0.10)</label>
                     <input type="number" class="ms-5 input" formControlName="annualRate" required />
                     <div *ngIf="MortageCalculatorForm.controls['annualRate'].invalid && (MortageCalculatorForm.controls['annualRate'].dirty || MortageCalculatorForm.controls['annualRate'].touched)" class="text-danger">
-                        Retirement Age is required.
+                        Annual Intereset rate  is required.
                     </div>
                 </div>
                 <div>
@@ -22,7 +22,7 @@
                     </label>
                     <input type="number" class="ms-5 input" formControlName="time" required />
                     <div *ngIf="MortageCalculatorForm.controls['time'].invalid && (MortageCalculatorForm.controls['time'].dirty || MortageCalculatorForm.controls['time'].touched)" class="text-danger">
-                        Monthly Contribution is required.
+                       Loan Term is required.
                     </div>
                 </div>
                 <div class="buttons mt-5">

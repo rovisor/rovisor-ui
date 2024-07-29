@@ -17,7 +17,7 @@ export class EmergencyFundComponent {
         this.EmergencyFundCalculatorForm = this.fb.group({
             MonthlyExpenses: [null, Validators.required],
             CoveragePeriod: [null, Validators.required],
-            CurrentSavings: [null, Validators.required],
+            CurrentSavings: [null,Validators.min(0)],
         });
     }
 
@@ -25,7 +25,7 @@ export class EmergencyFundComponent {
         if (this.EmergencyFundCalculatorForm.valid) {
             const MonthlyExpenses = this.EmergencyFundCalculatorForm.value.MonthlyExpenses;
             const CoveragePeriod = this.EmergencyFundCalculatorForm.value.CoveragePeriod;
-            const CurrentSavings = this.EmergencyFundCalculatorForm.value.CurrentSavings;
+            const CurrentSavings = this.EmergencyFundCalculatorForm.value.CurrentSavings ;
 
             if (MonthlyExpenses <= 0 || CoveragePeriod <= 0 || CurrentSavings < 0) {
                 this.errorMessage = "All values must be greater than zero, and savings cannot be negative.";

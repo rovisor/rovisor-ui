@@ -11,7 +11,7 @@
                         </div>
                     </div>
                     <div>
-                        <label for="annualIntrest" class="label col-sm-6 col-form-label mt-5">Annual Intrest</label>
+                        <label for="annualIntrest" class="label col-sm-6 col-form-label mt-5">Annual Intreset(10% as 0.10)</label>
                         <input type="number" class="ms-5 input" formControlName="annualIntrest" required />
                         <div *ngIf="intrestForm.controls['annualIntrest'].invalid && (intrestForm.controls['annualIntrest'].dirty || intrestForm.controls['annualIntrest'].touched)" class="text-danger">
                             Annual Intrest Age is required.
@@ -25,7 +25,7 @@
                         </div>
                     </div>
                     <div>
-                        <label for="investmentPeriod" class="label col-sm-6 col-form-label mt-5">Investment Period </label>
+                        <label for="investmentPeriod" class="label col-sm-6 col-form-label mt-5">Investment Period (years) </label>
                         <input type="number" class="ms-5 input" formControlName="investmentPeriod" required />
                         <div *ngIf="intrestForm.controls['investmentPeriod'].invalid && (intrestForm.controls['investmentPeriod'].dirty || intrestForm.controls['investmentPeriod'].touched)" class="text-danger">
                             Investment Period is required and must be greater than 0.

@@ -20,10 +20,7 @@
                 </div>
                 <div>
                     <label for="CurrentSavings" class="label col-sm-6 col-form-label mt-5">Current Savings</label>
-                    <input type="number" class="ms-5 input" formControlName="CurrentSavings" required />
-                    <div *ngIf="EmergencyFundCalculatorForm.controls['CurrentSavings'].invalid && (EmergencyFundCalculatorForm.controls['CurrentSavings'].dirty || EmergencyFundCalculatorForm.controls['CurrentSavings'].touched)" class="text-danger">
-                        Current Savings is required 
-                    </div>
+                    <input type="number" class="ms-5 input" formControlName="CurrentSavings"  />
                 </div>
                 <div class="buttons mt-5">
                     <button type="reset" class="resetButton btn btn-secondary text-white" (click)="resetForm()">Reset</button>
