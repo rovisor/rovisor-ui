@@ -35,12 +35,6 @@ export class EmiCalculatorComponent {
             const interestRate = this.emiCalculatorForm.value.interestRate;
             const time = this.emiCalculatorForm.value.time;
 
-            if (principal <= 0 || interestRate <= 0 || time <= 0) {
-                this.errorMessage = 'All values must be greater than zero.';
-                this.resetCalculations();
-                return;
-            }
-
             const monthlyInterestRate = interestRate / 1200;
             const numberOfMonths = time * 12;
 
@@ -66,9 +60,6 @@ export class EmiCalculatorComponent {
     }
 
     resetCalculations() {
-        this.principal = 0;
-        this.interestRate = 0;
-        this.time = 0;
         this.monthlyEMI = 0;
         this.totalAmount = 0;
         this.totalInterestPaid = 0;
