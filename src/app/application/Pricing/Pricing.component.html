@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-12">
+      <h1>Pricing Calculator</h1>
+      <form [formGroup]="pricingForm">
+        <div class="form-group col-6">
+          <div>
+            <label for="productionCost" class="label col-sm-6 col-form-label mt-5">Cost to produce item</label>
+            <input type="number" class="ms-5 input" formControlName="productionCost" required />
+            <div *ngIf="pricingForm.controls['productionCost'].invalid && (pricingForm.controls['productionCost'].dirty || pricingForm.controls['productionCost'].touched)" class="text-danger">
+              Cost to produce item is required.
+            </div>
+          </div>
+          <div>
+            <label for="fulfillmentCost" class="label col-sm-6 col-form-label mt-5">Cost to pack & fulfill order</label>
+            <input type="number" class="ms-5 input" formControlName="fulfillmentCost" required />
+            <div *ngIf="pricingForm.controls['fulfillmentCost'].invalid && (pricingForm.controls['fulfillmentCost'].dirty || pricingForm.controls['fulfillmentCost'].touched)" class="text-danger">
+              Cost to pack & fulfill order is required.
+            </div>
+          </div>
+          <div>
+            <label for="customerAcquisitionCost" class="label col-sm-6 col-form-label mt-5">Cost to acquire a customer</label>
+            <input type="number" class="ms-5 input" formControlName="customerAcquisitionCost" required />
+            <div *ngIf="pricingForm.controls['customerAcquisitionCost'].invalid && (pricingForm.controls['customerAcquisitionCost'].dirty || pricingForm.controls['customerAcquisitionCost'].touched)" class="text-danger">
+              Cost to acquire a customer is required.
+            </div>
+          </div>
+          <div>
+            <label for="averageSubscriptionMonths" class="label col-sm-6 col-form-label mt-5">Average months subscribed</label>
+            <input type="number" class="ms-5 input" formControlName="averageSubscriptionMonths" required />
+            <div *ngIf="pricingForm.controls['averageSubscriptionMonths'].invalid && (pricingForm.controls['averageSubscriptionMonths'].dirty || pricingForm.controls['averageSubscriptionMonths'].touched)" class="text-danger">
+              Average months subscribed is required.
+            </div>
+          </div>
+          <div class="buttons mt-5">
+            <button type="reset" class="resetButton text-white" (click)="resetForm()">Reset</button>
+            <button type="button" class="ms-3 calculateButton text-white" (click)="calculate()" [disabled]="pricingForm.invalid">Calculate</button>
+          </div>
+        </div>
+        <div *ngIf="errorMessage" class="alert alert-danger label col-6 mt-3">{{errorMessage}}</div>
+      </form>
+      <div class="result mt-3 col-6">
+        <div class="result-item">
+          <label for="cost" class="label col-sm-6 col-form-label mt-4">Total Monthly Cost</label>
+          <input type="text" class="input ms-3" [value]="cost | number : '1.2-2'" readonly />
+        </div>
+        <div class="result-item">
+          <label for="price" class="label col-sm-6 col-form-label mt-4">Suggested Subscription Price</label>
+          <input type="text" class="input ms-3" [value]="price | number : '1.2-2'" readonly />
+        </div>
+      </div>
+    </div>
+  </div>
+  
