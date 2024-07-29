@@ -20,7 +20,7 @@ export class CalculatorComponent {
       annualRate: [null, [Validators.required, Validators.min(0)]],
       retirementAge: [null, Validators.required],
       monthlyContribution: [null, Validators.required],
-      saving: [null,]
+      saving: [null, Validators.min(0)],
     });
   }
 
@@ -30,7 +30,7 @@ export class CalculatorComponent {
       const annualRate = this.retirementForm.value.annualRate / 100;
       const retirementAge = this.retirementForm.value.retirementAge;
       const monthlyContribution = this.retirementForm.value.monthlyContribution;
-      const saving = this.retirementForm.value.saving || 0 ;
+      const saving = this.retirementForm.value.saving;
 
       if (currentAge <= 0 || annualRate <= 0 || retirementAge <= 0 || monthlyContribution <= 0) {
         this.errorMessage = " All values must be greater than zero.";

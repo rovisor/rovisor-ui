@@ -19,14 +19,14 @@ export class LeaseVsBuyComponent {
         LeasePayment: [null, Validators.required],	
         LeaseTerm: [null, Validators.required],
         LeaseDown: [null, Validators.required],
-        ResidualValue : [ null],
-        AdditionalFees: [ null],
+        ResidualValue : [ null, Validators.min(0)],
+        AdditionalFees: [ null, Validators.min(0)],
         PurchasePrice: [ null,Validators.required],
         Term:[ null,Validators.required],
         InterestRate: [ null,Validators.required],
         DownPayment: [ null,Validators.required],
-        BuyAdditional: [null],
-        TaxRate: [null]
+        BuyAdditional: [null, Validators.min(0)],
+        TaxRate: [null, Validators.min(0)]
       });
     }
   
@@ -35,8 +35,8 @@ export class LeaseVsBuyComponent {
         const LeasePayment = this.payoffCalculatorForm.value.LeasePayment;
         const LeaseTerm = this.payoffCalculatorForm.value.LeaseTerm;
         const LeaseDown = this.payoffCalculatorForm.value.LeaseDown;
-        const ResidualValue = this.payoffCalculatorForm.value.ResidualValue || 0 ;
-        const AdditionalFees = this.payoffCalculatorForm.value.AdditionalFees ||0 ;
+        const ResidualValue = this.payoffCalculatorForm.value.ResidualValue  ;
+        const AdditionalFees = this.payoffCalculatorForm.value.AdditionalFees ;
   
         if (LeasePayment <= 0 || LeaseTerm <= 0 || LeaseDown <= 0 || ResidualValue<0 || AdditionalFees<0) {
           this.errorMessage = "All values must be greater than zero.";
@@ -50,8 +50,8 @@ export class LeaseVsBuyComponent {
         const Term = this.payoffCalculatorForm.value.Term;
         const InterestRate = this.payoffCalculatorForm.value.InterestRate;
         const DownPayment = this.payoffCalculatorForm.value.DownPayment;
-        const BuyAdditional = this.payoffCalculatorForm.value.BuyAdditional || 0;
-        const TaxRate = this.payoffCalculatorForm.value.TaxRate || 0;
+        const BuyAdditional = this.payoffCalculatorForm.value.BuyAdditional ;
+        const TaxRate = this.payoffCalculatorForm.value.TaxRate ;
 
         if ( PurchasePrice <=0 || Term <=0 || InterestRate <=0 || DownPayment<=0 || BuyAdditional<0 || TaxRate <0){
           this.errorMessage = "All value must be greater than zero ";
