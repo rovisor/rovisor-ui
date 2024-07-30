@@ -30,6 +30,7 @@ import { CalculatorComponent } from './calculator/calculator.component';
 import { HomeAffordabilityComponent } from './homeaffordability-calculator/homeaffordability-calculator.component';
 import { BreakEvenCalculatorComponent } from './BreakEvenCalculator/BreakEvenCalculator.component';
 import { EmergencyFundComponent } from './Emergency-Fund/Emergency-Fund.component';
+import { NetWorthComponent } from './net-worth/net-worth.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { EmergencyFundComponent } from './Emergency-Fund/Emergency-Fund.componen
     compoundIntresetComponent,
     EmergencyFundComponent,
     BreakEvenCalculatorComponent,
+    NetWorthComponent,
   ],
   imports: [
     NgbDatepickerModule,
