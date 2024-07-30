@@ -60,6 +60,12 @@ export class DebttoIncomeRatioCalculatorComponent implements OnInit {
 
             const totalMonthlyIncome = formValues.salaryWages + formValues.bonusesCommissions + formValues.rentalIncome +
                 formValues.investmentIncome + formValues.otherIncomeSources;
+            
+            if (totalDebtPayments <= 0 || totalMonthlyIncome <= 0) {
+                this.errorMessage = "Total debt payments and total monthly income must be greater than zero.";
+                this.dtiRatio = 0;
+                return;
+            }
 
             this.dtiRatio = (totalDebtPayments / totalMonthlyIncome);
             this.errorMessage = '';

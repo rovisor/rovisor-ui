@@ -43,13 +43,13 @@ export class HomeAffordabilityComponent {
             const loanTerm = this.homeAffordabilityForm.value.loanTerm;
             const annualInterestRate = this.homeAffordabilityForm.value.annualInterestRate;
 
-            // Calculations
+           
             this.monthlyGrossIncome = annualIncome / 12;
             this.maxMonthlyPayment = this.monthlyGrossIncome * this.debtToIncomeRatio;
             this.monthlyInterestRate = annualInterestRate / (12 * 100);
             this.numberOfPayments = loanTerm * 12;
 
-            // Loan Amount Calculation
+            
             const r = this.monthlyInterestRate;
             const n = this.numberOfPayments;
             const M = this.maxMonthlyPayment;

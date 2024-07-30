@@ -23,7 +23,7 @@ export class SavingCalculatorComponent {
             savingsPeriod: [null, [Validators.required, Validators.min(0.01)]]
         });
 
-        // Subscribe to value changes
+        
         this.savingsCalculatorForm.valueChanges.subscribe(() => {
             this.resetCalculations();
         });
