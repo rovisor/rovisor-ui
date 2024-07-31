@@ -44,7 +44,7 @@ export class NetWorthComponent {
       const Vehicles = this.netWorthForm.value.Vehicles; 
       const Other = this.netWorthForm.value.Other; 
 
-      if (Cash <= 0 || CheckingAccount <= 0 || SavingsAccount <= 0 || RetirementAccounts < 0 || RealEstate < 0 || Vehicles<=0 || Other<=0) {
+      if (Cash < 0 || CheckingAccount < 0 || SavingsAccount < 0 || RetirementAccounts < 0 || RealEstate < 0 || Vehicles<0 || Other<0) {
         this.errorMessage = "All values must be greater than zero.";
         return;
       }
@@ -57,7 +57,7 @@ export class NetWorthComponent {
       const CarLoan = this.netWorthForm.value.CarLoan; 
       const OtherLiabilities = this.netWorthForm.value.OtherLiabilities; 
 
-      if (CreditCardDebt <= 0 || StudentLoans <= 0 || Mortgage <= 0 || CarLoan <= 0 || OtherLiabilities < 0) {
+      if (CreditCardDebt < 0 || StudentLoans <0 || Mortgage < 0 || CarLoan < 0 || OtherLiabilities < 0) {
         this.errorMessage = "All values must be greater than zero.";
         return;
       }
