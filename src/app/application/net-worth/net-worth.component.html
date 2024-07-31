@@ -1,0 +1,126 @@
+<div class="row">
+    <div class="col-12">
+      <h1>Lease vs. Buy Calculator</h1>
+      <form [formGroup]="netWorthForm"> 
+        <div class="form-group col-6">
+          <h2 class="mt-3">Input for the Assets</h2>
+          <div>
+            <label for="Cash" class="label col-sm-6 col-form-label mt-5">Cash</label>
+            <input type="number" class="ms-5 input" formControlName="Cash" required />
+            <div *ngIf="netWorthForm.controls['Cash'].invalid && (netWorthForm.controls['Cash'].dirty || netWorthForm.controls['Cash'].touched)" class="text-danger"> 
+              Cash is required
+            </div>
+          
+          <div>
+            <label for="CheckingAccount" class="label col-sm-6 col-form-label mt-5">Checking Account</label>
+            <input type="number" class="ms-5 input" formControlName="CheckingAccount" required />
+            <div *ngIf="netWorthForm.controls['CheckingAccount'].invalid && (netWorthForm.controls['CheckingAccount'].dirty || netWorthForm.controls['CheckingAccount'].touched)" class="text-danger"> 
+              Checking Account is required
+            </div>
+          </div>
+          <div>
+            <label for="SavingsAccount" class="label col-sm-6 col-form-label mt-5">Savings Account</label>
+            <input type="number" class="ms-5 input" formControlName="SavingsAccount" required />
+            <div *ngIf="netWorthForm.controls['SavingsAccount'].invalid && (netWorthForm.controls['SavingsAccount'].dirty || netWorthForm.controls['SavingsAccount'].touched)" class="text-danger">
+              Savings Account Payment is required
+            </div>
+          </div>
+          <div>
+            <label for="RetirementAccounts" class="label col-sm-6 col-form-label mt-5">Retirement Accounts</label>
+            <input type="number" class="ms-5 input" formControlName="RetirementAccounts" required />
+            <div *ngIf="netWorthForm.controls['RetirementAccounts'].invalid && (netWorthForm.controls['RetirementAccounts'].dirty || netWorthForm.controls['RetirementAccounts'].touched)" class="text-danger"> 
+              Retirement Accounts is required
+            </div>
+            <div>
+              <label for="InvestmentAccounts" class="label col-sm-6 col-form-label mt-5">Investment Accounts              </label>
+              <input type="number" class="ms-5 input" formControlName="InvestmentAccounts" required />
+              <div *ngIf="netWorthForm.controls['InvestmentAccounts'].invalid && (netWorthForm.controls['InvestmentAccounts'].dirty || netWorthForm.controls['InvestmentAccounts'].touched)" class="text-danger"> 
+                Investment Accounts is required
+              </div>
+          </div>
+          <div>
+            <label for="RealEstate" class="label col-sm-6 col-form-label mt-5">Real Estate</label>
+            <input type="number" class="ms-5 input" formControlName="RealEstate" required />
+            <div *ngIf="netWorthForm.controls['RealEstate'].invalid && (netWorthForm.controls['RealEstate'].dirty || netWorthForm.controls['RealEstate'].touched)" class="text-danger"> 
+              Real Estate is required
+            </div>
+          </div>
+          <div>
+            <label for="Vehicles" class="label col-sm-6 col-form-label mt-5">Vehicles</label>
+            <input type="number" class="ms-5 input" formControlName="Vehicles" required />
+            <div *ngIf="netWorthForm.controls['Vehicles'].invalid && (netWorthForm.controls['Vehicles'].dirty || netWorthForm.controls['Vehicles'].touched)" class="text-danger"> 
+              Vehicles Accounts is required
+            </div>
+          </div>
+          <div>
+            <label for="Other" class="label col-sm-6 col-form-label mt-5">Other Assets</label>
+            <input type="number" class="ms-5 input" formControlName="Other" required />
+            <div *ngIf="netWorthForm.controls['Other'].invalid && (netWorthForm.controls['Other'].dirty || netWorthForm.controls['Other'].touched)" class="text-danger"> 
+              Other  is required
+            </div>
+          </div>
+          </div>
+        </div>
+        </div>
+        <div class="form-group col-6">
+          <h2 class="mt-5">Input for the Other</h2>
+          <div>
+            <label for="CreditCardDebt" class="label col-sm-6 col-form-label mt-5">Credit Card Debt</label>
+            <input type="number" class="ms-5 input" formControlName="CreditCardDebt" required />
+            <div *ngIf="netWorthForm.controls['CreditCardDebt'].invalid && (netWorthForm.controls['CreditCardDebt'].dirty || netWorthForm.controls['CreditCardDebt'].touched)" class="text-danger"> 
+              Credit Card Debt is required
+            </div>
+          </div>
+          <div>
+            <label for="StudentLoans" class="label col-sm-6 col-form-label mt-5">Student Loans</label>
+            <input type="number" class="ms-5 input" formControlName="StudentLoans" required />
+            <div *ngIf="netWorthForm.controls['StudentLoans'].invalid && (netWorthForm.controls['StudentLoans'].dirty || netWorthForm.controls['StudentLoans'].touched)" class="text-danger">
+              Student Loans is required
+            </div>
+          </div>
+          <div>
+            <label for="Mortgage" class="label col-sm-6 col-form-label mt-5">Mortgage</label>
+            <input type="number" class="ms-5 input" formControlName="Mortgage" required />
+            <div *ngIf="netWorthForm.controls['Mortgage'].invalid && (netWorthForm.controls['Mortgage'].dirty || netWorthForm.controls['Mortgage'].touched)" class="text-danger"> 
+              Mortgage is required
+            </div>
+          </div>
+          <div>
+            <label for="CarLoan" class="label col-sm-6 col-form-label mt-5">Car Loan</label>
+            <input type="number" class="ms-5 input" formControlName="CarLoan" required />
+            <div *ngIf="netWorthForm.controls['CarLoan'].invalid && (netWorthForm.controls['CarLoan'].dirty || netWorthForm.controls['CarLoan'].touched)" class="text-danger"> 
+              Car Loan is required
+            </div>
+          </div>
+          <div>
+            <label for="OtherLiabilities" class="label col-sm-6 col-form-label mt-5">Other Liabilities</label>
+            <input type="number" class="ms-5 input" formControlName="OtherLiabilities" required />
+            <div *ngIf="netWorthForm.controls['OtherLiabilities'].invalid && (netWorthForm.controls['OtherLiabilities'].dirty || netWorthForm.controls['OtherLiabilities'].touched)" class="text-danger"> 
+              Other Liabilities Fees is required
+            </div>
+          </div>
+        </div>
+        
+        <div class="buttons mt-5">
+          <button type="reset" class="resetButton btn btn-secondary text-white" (click)="resetForm()">Reset</button>
+          <button type="button" class="ms-3 calculateButton btn btn-primary" (click)="calculate()" [disabled]="netWorthForm.invalid">Calculate</button> 
+        </div>
+        <div *ngIf="errorMessage" class="alert alert-danger label col-6 mt-3">{{errorMessage}}</div>
+      </form>
+      <div class="result mt-3 col-6">
+        <div class="result-item">
+          <label for="worth" class="label col-sm-6 col-form-label mt-4">Net Worth </label>
+          <input type="text" class="input ms-3" [value]="worth | number : '1.2-2'" readonly />
+        </div>
+        <div class="result-item">
+          <label for="Liabilities" class="label col-sm-6 col-form-label mt-4">Total Liabilities </label>
+          <input type="text" class="input ms-3" [value]="Liabilities | number : '1.2-2'" readonly />
+        </div>
+        <div class="result-item">
+          <label for="buy" class="label col-sm-6 col-form-label mt-4">Total Assets </label>
+          <input type="text" class="input ms-3" [value]="assets| number : '1.2-2'" readonly />
+        </div>
+      </div>
+    </div>
+  </div>
+  
