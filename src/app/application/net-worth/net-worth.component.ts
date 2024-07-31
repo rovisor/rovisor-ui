@@ -58,7 +58,7 @@ export class NetWorthComponent {
       const OtherLiabilities = this.netWorthForm.value.OtherLiabilities; 
 
       if (CreditCardDebt < 0 || StudentLoans <0 || Mortgage < 0 || CarLoan < 0 || OtherLiabilities < 0) {
-        this.errorMessage = "All values must be greater than zero.";
+        this.errorMessage = "All values must be non-negative.";
         return;
       }
 
