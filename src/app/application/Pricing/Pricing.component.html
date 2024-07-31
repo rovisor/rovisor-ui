@@ -32,7 +32,7 @@
             </div>
           </div>
           <div>
-            <label for="ProfitMargin" class="label col-sm-6 col-form-label mt-5">Profit Margin</label>
+            <label for="ProfitMargin" class="label col-sm-6 col-form-label mt-5">Profit Margin (10% as 0.10) </label>
             <input type="number" class="ms-5 input" formControlName="ProfitMargin" required />
             <div *ngIf="pricingForm.controls['ProfitMargin'].invalid && (pricingForm.controls['ProfitMargin'].dirty || pricingForm.controls['ProfitMargin'].touched)" class="text-danger">
               Profit Margin is required.
