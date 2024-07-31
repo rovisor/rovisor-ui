@@ -65,9 +65,10 @@ export class NetWorthComponent {
     
       this.assets = (Cash+CheckingAccount+SavingsAccount+RetirementAccounts+ InvestmentAccounts+RealEstate+Vehicles+Other);
 
+      this.Liabilities = (CreditCardDebt+StudentLoans+Mortgage+CarLoan+OtherLiabilities);
+
       this.worth  = (this.assets-this.Liabilities);
 
-      this.Liabilities = (CreditCardDebt+StudentLoans+Mortgage+CarLoan+OtherLiabilities);
 
       this.errorMessage = '';
     } else {
