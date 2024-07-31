@@ -4,25 +4,33 @@
         <form [formGroup]="EmergencyFundCalculatorForm">
             <div class="form-group col-6">
                 <div>
-                    <label for="MonthlyExpenses" class="label col-sm-6 col-form-label mt-5">Monthly Expenses
-                    </label>
-                    <input type="number" class="ms-5 input" formControlName="MonthlyExpenses" required />
-                    <div *ngIf="EmergencyFundCalculatorForm.controls['MonthlyExpenses'].invalid && (EmergencyFundCalculatorForm.controls['MonthlyExpenses'].dirty || EmergencyFundCalculatorForm.controls['MonthlyExpenses'].touched)" class="text-danger">
-                        Monthly Expenses is required 
+                    <label for="MonthlyExpenses" class="label col-sm-6 col-form-label mt-5">Monthly Expenses:</label>
+                    <input type="number" class="ms-5 input" formControlName="MonthlyExpenses" (ngModelChange)="resetResults()" required />
+                    <div *ngIf="EmergencyFundCalculatorForm.controls['MonthlyExpenses'].hasError('required') && (EmergencyFundCalculatorForm.controls['MonthlyExpenses'].dirty || EmergencyFundCalculatorForm.controls['MonthlyExpenses'].touched)" class="text-danger">
+                        Monthly Expenses is required
+                    </div>
+                    <div *ngIf="EmergencyFundCalculatorForm.controls['MonthlyExpenses'].hasError('min') && EmergencyFundCalculatorForm.controls['MonthlyExpenses'].dirty" class="text-danger">
+                        Monthly Expenses must be greater than zero
                     </div>
                 </div>
                 <div>
-                    <label for="CoveragePeriod" class="label col-sm-6 col-form-label mt-5">Coverage Period (months)</label>
-                    <input type="number" class="ms-5 input" formControlName="CoveragePeriod" required />
-                    <div *ngIf="EmergencyFundCalculatorForm.controls['CoveragePeriod'].invalid && (EmergencyFundCalculatorForm.controls['CoveragePeriod'].dirty || EmergencyFundCalculatorForm.controls['CoveragePeriod'].touched)" class="text-danger">
-                        Coverage Period (months) is required 
+                    <label for="CoveragePeriod" class="label col-sm-6 col-form-label mt-5">Coverage Period (months):</label>
+                    <input type="number" class="ms-5 input" formControlName="CoveragePeriod" (ngModelChange)="resetResults()" required />
+                    <div *ngIf="EmergencyFundCalculatorForm.controls['CoveragePeriod'].hasError('required') && (EmergencyFundCalculatorForm.controls['CoveragePeriod'].dirty || EmergencyFundCalculatorForm.controls['CoveragePeriod'].touched)" class="text-danger">
+                        Coverage Period (months) is required
+                    </div>
+                    <div *ngIf="EmergencyFundCalculatorForm.controls['CoveragePeriod'].hasError('min') && EmergencyFundCalculatorForm.controls['CoveragePeriod'].dirty" class="text-danger">
+                        Coverage Period must be greater than zero
                     </div>
                 </div>
                 <div>
-                    <label for="CurrentSavings" class="label col-sm-6 col-form-label mt-5">Current Savings</label>
-                    <input type="number" class="ms-5 input" formControlName="CurrentSavings" required />
-                    <div *ngIf="EmergencyFundCalculatorForm.controls['CurrentSavings'].invalid && (EmergencyFundCalculatorForm.controls['CurrentSavings'].dirty || EmergencyFundCalculatorForm.controls['CurrentSavings'].touched)" class="text-danger">
-                        Current Savings is required 
+                    <label for="CurrentSavings" class="label col-sm-6 col-form-label mt-5">Current Savings:</label>
+                    <input type="number" class="ms-5 input" formControlName="CurrentSavings" (ngModelChange)="resetResults()" required />
+                    <div *ngIf="EmergencyFundCalculatorForm.controls['CurrentSavings'].hasError('required') && (EmergencyFundCalculatorForm.controls['CurrentSavings'].dirty || EmergencyFundCalculatorForm.controls['CurrentSavings'].touched)" class="text-danger">
+                        Current Savings is required
+                    </div>
+                    <div *ngIf="EmergencyFundCalculatorForm.controls['CurrentSavings'].hasError('min') && EmergencyFundCalculatorForm.controls['CurrentSavings'].dirty" class="text-danger">
+                        Current Savings must be greater than zero
                     </div>
                 </div>
                 <div class="buttons mt-5">
@@ -34,11 +42,11 @@
         </form>
         <div class="result mt-3 col-6">
             <div class="result-item">
-                <label for="TotalAmount" class="label col-sm-6 col-form-label mt-4">Total Required Amount </label>
+                <label for="TotalAmount" class="label col-sm-6 col-form-label mt-4">Total Required Amount:</label>
                 <input type="text" class="input ms-3" [value]="TotalAmount | number : '1.2-2'" readonly />
             </div>
             <div class="result-item">
-                <label for="GapToGoal" class="label col-sm-6 col-form-label mt-5">Gap to Goal</label>
+                <label for="GapToGoal" class="label col-sm-6 col-form-label mt-5">Gap to Goal:</label>
                 <input type="text" class="input ms-3" [value]="GapToGoal | number : '1.2-2'" readonly />
             </div>
         </div>

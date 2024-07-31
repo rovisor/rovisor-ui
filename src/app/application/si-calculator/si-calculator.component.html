@@ -4,21 +4,21 @@
     <form [formGroup]="payoffCalculatorForm">
       <div class="form-group col-6">
         <div>
-          <label for="Principal" class="label col-sm-6 col-form-label mt-5">Principal</label>
+          <label for="Principal" class="label col-sm-6 col-form-label mt-5">Principal:</label>
           <input type="number" class="ms-5 input" formControlName="Principal" required />
           <div *ngIf="payoffCalculatorForm.controls['Principal'].invalid && (payoffCalculatorForm.controls['Principal'].dirty || payoffCalculatorForm.controls['Principal'].touched)" class="text-danger">
             Principal is required and must be greater than zero
           </div>
         </div>
         <div>
-          <label for="AnnualInterestRate" class="label col-sm-6 col-form-label mt-5">Annual Interest Rate (%)</label>
+          <label for="AnnualInterestRate" class="label col-sm-6 col-form-label mt-5">Annual Interest Rate (%):</label>
           <input type="number" class="ms-5 input" formControlName="AnnualInterestRate" required />
           <div *ngIf="payoffCalculatorForm.controls['AnnualInterestRate'].invalid && (payoffCalculatorForm.controls['AnnualInterestRate'].dirty || payoffCalculatorForm.controls['AnnualInterestRate'].touched)" class="text-danger">
             Annual Interest Rate is required and must be between 0 and 100
           </div>
         </div>
         <div>
-          <label for="time" class="label col-sm-6 col-form-label mt-5">Time (years)</label>
+          <label for="time" class="label col-sm-6 col-form-label mt-5">Time (years):</label>
           <input type="number" class="ms-5 input" formControlName="time" required />
           <div *ngIf="payoffCalculatorForm.controls['time'].invalid && (payoffCalculatorForm.controls['time'].dirty || payoffCalculatorForm.controls['time'].touched)" class="text-danger">
             Time is required and must be greater than zero
@@ -33,11 +33,11 @@
     </form>
     <div class="result mt-3 col-6">
       <div class="result-item">
-        <label for="simpleInterest" class="label col-sm-6 col-form-label mt-4">Simple Interest</label>
+        <label for="simpleInterest" class="label col-sm-6 col-form-label mt-4">Simple Interest:</label>
         <input type="text" class="input ms-3" [value]="simpleInterest | number : '1.2-2'" readonly />
       </div>
       <div class="result-item">
-        <label for="totalAmount" class="label col-sm-6 col-form-label mt-4">Total Amount</label>
+        <label for="totalAmount" class="label col-sm-6 col-form-label mt-4">Total Amount:</label>
         <input type="text" class="input ms-3" [value]="totalAmount | number : '1.2-2'" readonly />
       </div>
     </div>

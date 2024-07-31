@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-    selector: 'app-calculator',
+    selector: 'app-emergency-fund',
     templateUrl: './Emergency-Fund.component.html',
     styleUrls: ['./Emergency-Fund.component.css']
 })
@@ -15,10 +15,12 @@ export class EmergencyFundComponent {
 
     constructor(private fb: FormBuilder) {
         this.EmergencyFundCalculatorForm = this.fb.group({
-            MonthlyExpenses: [null, Validators.required],
-            CoveragePeriod: [null, Validators.required],
-            CurrentSavings: [null, Validators.required],
+            MonthlyExpenses: [null, [Validators.required, Validators.min(0.01)]],
+            CoveragePeriod: [null, [Validators.required, Validators.min(1)]],
+            CurrentSavings: [null, [Validators.required, Validators.min(0)]],
         });
+
+        this.EmergencyFundCalculatorForm.valueChanges.subscribe(() => this.resetResults());
     }
 
     calculate() {
@@ -28,16 +30,22 @@ export class EmergencyFundComponent {
             const CurrentSavings = this.EmergencyFundCalculatorForm.value.CurrentSavings;
 
             if (MonthlyExpenses <= 0 || CoveragePeriod <= 0 || CurrentSavings < 0) {
-                this.errorMessage = "All values must be greater than zero, and savings cannot be negative.";
+                this.errorMessage = "All values must be greater than zero.";
                 return;
             }
 
             this.TotalAmount = MonthlyExpenses * CoveragePeriod;
             this.GapToGoal = this.TotalAmount - CurrentSavings;
-
             this.errorMessage = '';
         } else {
             this.errorMessage = "Please fill out all required fields.";
+        }
+    }
+
+    resetResults() {
+        if (this.EmergencyFundCalculatorForm.dirty) {
+            this.TotalAmount = 0;
+            this.GapToGoal = 0;
         }
     }
 

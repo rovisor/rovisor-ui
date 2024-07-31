@@ -1,85 +1,102 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-loan-calculator',
     templateUrl: './loan-calculator.component.html',
     styleUrls: ['./loan-calculator.component.css']
 })
-export class LoanCalculatorComponent {
-    principal: number | null = null;
-    interestRate: number | null = null;
-    loanTerm: number | null = null;
-    additionalMonthlyPayment: number | null = null;
-
+export class LoanCalculatorComponent implements OnInit {
+    loanCalculatorForm!: FormGroup;
     monthlyPayment: number | null = null;
     totalMonthlyPayment: number | null = null;
     errorMessage: string | null = null;
 
-    amortizationSchedule: { paymentNumber: number; beginningBalance: number; scheduledPayment: number; additionalPayment: number; totalPayment: number; interestPayment: number; principalPayment: number; endingBalance: number; }[] = [];
+    amortizationSchedule: {
+        paymentNumber: number;
+        beginningBalance: number;
+        scheduledPayment: number;
+        additionalPayment: number;
+        totalPayment: number;
+        interestPayment: number;
+        principalPayment: number;
+        endingBalance: number;
+    }[] = [];
 
-    calculateMonthlyPayment() {
-        if (this.principal == null || this.loanTerm == null || this.interestRate == null || this.additionalMonthlyPayment == null) {
-            this.errorMessage = 'All fields are required to fill.';
+    constructor(private fb: FormBuilder) { }
+
+    ngOnInit(): void {
+        this.loanCalculatorForm = this.fb.group({
+            principal: ['', [Validators.required, Validators.min(1)]],
+            interestRate: ['', [Validators.required, Validators.min(0.01)]],
+            loanTerm: ['', [Validators.required, Validators.min(1)]],
+            additionalMonthlyPayment: ['', [Validators.min(0)]]
+        });
+
+
+        this.loanCalculatorForm.valueChanges.subscribe(() => {
+            this.resetOutputs();
+        });
+    }
+
+    calculateMonthlyPayment(): void {
+        if (this.loanCalculatorForm.controls['principal'].invalid ||
+            this.loanCalculatorForm.controls['interestRate'].invalid ||
+            this.loanCalculatorForm.controls['loanTerm'].invalid) {
             return;
         }
 
-        if (this.principal <= 0 || this.interestRate <= 0 || this.loanTerm <= 0 || this.additionalMonthlyPayment <= 0) {
-            this.errorMessage = 'Please enter positive values for all fields.';
-            return;
-        }
-
-        const P = this.principal;
-        const annualRate = this.interestRate / 100;
+        const P = this.loanCalculatorForm.value.principal;
+        const annualRate = this.loanCalculatorForm.value.interestRate / 100;
         const r = annualRate / 12;
-        const n = this.loanTerm * 12;
+        const n = this.loanCalculatorForm.value.loanTerm * 12;
+        const additionalMonthlyPayment = this.loanCalculatorForm.value.additionalMonthlyPayment || 0;
 
         const M = P * r * Math.pow((1 + r), n) / (Math.pow((1 + r), n) - 1);
         this.monthlyPayment = M;
-        this.totalMonthlyPayment = M + this.additionalMonthlyPayment;
+        this.totalMonthlyPayment = M + additionalMonthlyPayment;
         this.errorMessage = null;
 
-        this.generateAmortizationSchedule(P, r, n);
+        this.generateAmortizationSchedule(P, r, n, additionalMonthlyPayment);
     }
 
-    generateAmortizationSchedule(P: number, r: number, n: number) {
+    generateAmortizationSchedule(P: number, r: number, n: number, additionalMonthlyPayment: number): void {
         this.amortizationSchedule = [];
         let remainingBalance = P;
 
         for (let month = 1; month <= n; month++) {
             const interest = remainingBalance * r;
             const principal = this.monthlyPayment! - interest;
-            const additionalPayment = this.additionalMonthlyPayment!;
-            const totalPayment = this.monthlyPayment! + additionalPayment;
-            remainingBalance -= principal + additionalPayment;
+            const totalPayment = this.monthlyPayment! + additionalMonthlyPayment;
+            remainingBalance -= principal + additionalMonthlyPayment;
 
-            // Ensure no negative values
             const adjustedRemainingBalance = Math.max(0, remainingBalance);
 
             this.amortizationSchedule.push({
                 paymentNumber: month,
-                beginningBalance: Math.max(0, remainingBalance + principal + additionalPayment),
+                beginningBalance: Math.max(0, remainingBalance + principal + additionalMonthlyPayment),
                 scheduledPayment: this.monthlyPayment!,
-                additionalPayment: additionalPayment,
+                additionalPayment: additionalMonthlyPayment,
                 totalPayment: totalPayment,
                 interestPayment: Math.max(0, interest),
-                principalPayment: Math.max(0, principal + additionalPayment),
+                principalPayment: Math.max(0, principal + additionalMonthlyPayment),
                 endingBalance: adjustedRemainingBalance
             });
 
-            // Ensure remaining balance is reset to zero if negative
             if (remainingBalance < 0) remainingBalance = 0;
+            if (adjustedRemainingBalance === 0) break;
         }
     }
 
-    resetForm() {
-        this.principal = null;
-        this.interestRate = null;
-        this.loanTerm = null;
-        this.additionalMonthlyPayment = null;
-
-        this.monthlyPayment = null;
-        this.totalMonthlyPayment = null;
+    resetForm(): void {
+        this.loanCalculatorForm.reset();
+        this.resetOutputs();
         this.errorMessage = null;
         this.amortizationSchedule = [];
+    }
+
+    private resetOutputs(): void {
+        this.monthlyPayment = 0;
+        this.totalMonthlyPayment = 0;
     }
 }

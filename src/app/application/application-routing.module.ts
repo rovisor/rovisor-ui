@@ -15,7 +15,7 @@ import { SavingCalculatorComponent } from './saving-calculator/saving-calculator
 import { EmiCalculatorComponent } from './emi-calculator/emi-calculator.component';
 import { compoundIntresetComponent } from './compoundIntreset/compoundIntreset.component';
 import { InvestmentCalculatorComponent } from './InvestmentCalculator/InvestmentCalculator.component';
-import { CalculatorComponent } from './calculator/calculator.component';
+import { RetirementCalculatorComponent } from './retirement-calculator/retirement-calculator.component';
 import { HomeAffordabilityComponent } from './homeaffordability-calculator/homeaffordability-calculator.component';
 import { BreakEvenCalculatorComponent } from './BreakEvenCalculator/BreakEvenCalculator.component';
 import { MortgageCalculatorComponent } from './MortgageCalculator/MortgageCalculator.component';
@@ -91,8 +91,8 @@ const routes: Routes = [
         component: compoundIntresetComponent,
       },
       {
-        path: 'calculator',
-        component: CalculatorComponent,
+        path: 'retirement-calculator',
+        component: RetirementCalculatorComponent,
       },
       {
         path: 'BreakEvenCalculator',

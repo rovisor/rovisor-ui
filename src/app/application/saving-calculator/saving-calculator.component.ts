@@ -9,18 +9,23 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class SavingCalculatorComponent {
     savingsCalculatorForm: FormGroup;
 
-    futureValue: number | null = null;
-    totalContributions: number | null = null;
-    totalInterest: number | null = null;
-    errorMessage: string | null = null;
+    futureValue: number = 0;
+    totalContributions: number = 0;
+    totalInterest: number = 0;
+    errorMessage: string = '';
 
     constructor(private fb: FormBuilder) {
         this.savingsCalculatorForm = this.fb.group({
-            principal: [null, Validators.required],
-            monthlyContribution: [null, Validators.required],
-            interestRate: [null, Validators.required],
-            compoundingFrequency: [null, Validators.required],
-            savingsPeriod: [null, Validators.required],
+            principal: [null, [Validators.required, Validators.min(0.01)]],
+            monthlyContribution: [null, [Validators.required, Validators.min(0.01)]],
+            interestRate: [null, [Validators.required, Validators.min(0.01)]],
+            compoundingFrequency: [null, [Validators.required, Validators.min(0.01)]],
+            savingsPeriod: [null, [Validators.required, Validators.min(0.01)]]
+        });
+
+        
+        this.savingsCalculatorForm.valueChanges.subscribe(() => {
+            this.resetCalculations();
         });
     }
 
@@ -37,7 +42,7 @@ export class SavingCalculatorComponent {
                 return;
             }
 
-            const r = interestRate;
+            const r = interestRate / 100;
             const n = compoundingFrequency;
             const t = savingsPeriod;
 
@@ -45,14 +50,9 @@ export class SavingCalculatorComponent {
 
             this.futureValue = FV;
             this.totalContributions = principal + monthlyContribution * t * 12;
+            this.totalInterest = FV - this.totalContributions;
 
-            if (this.totalContributions !== null) {
-                this.totalInterest = FV - this.totalContributions;
-            } else {
-                this.totalInterest = 0;
-            }
-
-            this.errorMessage = null;
+            this.errorMessage = '';
         } else {
             this.errorMessage = 'Please fill out all required fields.';
         }
@@ -60,9 +60,13 @@ export class SavingCalculatorComponent {
 
     resetForm() {
         this.savingsCalculatorForm.reset();
-        this.futureValue = null;
-        this.totalContributions = null;
-        this.totalInterest = null;
-        this.errorMessage = null;
+        this.resetCalculations();
+    }
+
+    resetCalculations() {
+        this.futureValue = 0;
+        this.totalContributions = 0;
+        this.totalInterest = 0;
+        this.errorMessage = '';
     }
 }
