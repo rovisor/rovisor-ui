@@ -18,7 +18,8 @@ export class PricingComponent {
       productionCost: [null, Validators.required],
       fulfillmentCost: [null, Validators.required],
       customerAcquisitionCost: [null, Validators.required],
-      averageSubscriptionMonths: [null, Validators.required]
+      averageSubscriptionMonths: [null, Validators.required],
+      ProgitMargin: [null, Validators.required],
     });
   }
 
@@ -28,8 +29,9 @@ export class PricingComponent {
       const fulfillmentCost = this.pricingForm.value.fulfillmentCost;
       const customerAcquisitionCost = this.pricingForm.value.customerAcquisitionCost;
       const averageSubscriptionMonths = this.pricingForm.value.averageSubscriptionMonths;
+      const ProgitMargin = this.pricingForm.value.ProgitMargin;
 
-      if (productionCost <= 0 || fulfillmentCost <= 0 || customerAcquisitionCost <= 0 || averageSubscriptionMonths <= 0) {
+      if (productionCost <= 0 || fulfillmentCost <= 0 || customerAcquisitionCost <= 0 || averageSubscriptionMonths <= 0 || ProgitMargin<=0) {
         this.errorMessage = "All values must be greater than zero.";
         return; 
       }
@@ -38,7 +40,7 @@ export class PricingComponent {
 
       this.cost = (productionCost+ fulfillmentCost+(customerAcquisitionCost/averageSubscriptionMonths));
       
-      this.price = (this.cost*1.2);
+      this.price = ((this.cost)/(1-ProgitMargin));
 
 
       this.errorMessage = '';

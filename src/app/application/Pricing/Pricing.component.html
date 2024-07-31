@@ -31,6 +31,13 @@
               Average months subscribed is required.
             </div>
           </div>
+          <div>
+            <label for="ProgitMargin" class="label col-sm-6 col-form-label mt-5">Progit Margin</label>
+            <input type="number" class="ms-5 input" formControlName="ProgitMargin" required />
+            <div *ngIf="pricingForm.controls['ProgitMargin'].invalid && (pricingForm.controls['ProgitMargin'].dirty || pricingForm.controls['ProgitMargin'].touched)" class="text-danger">
+              Progit Margin is required.
+            </div>
+          </div>
           <div class="buttons mt-5">
             <button type="reset" class="resetButton text-white" (click)="resetForm()">Reset</button>
             <button type="button" class="ms-3 calculateButton text-white" (click)="calculate()" [disabled]="pricingForm.invalid">Calculate</button>
