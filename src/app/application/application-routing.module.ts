@@ -20,6 +20,7 @@ import { HomeAffordabilityComponent } from './homeaffordability-calculator/homea
 import { BreakEvenCalculatorComponent } from './BreakEvenCalculator/BreakEvenCalculator.component';
 import { MortgageCalculatorComponent } from './MortgageCalculator/MortgageCalculator.component';
 import { EmergencyFundComponent } from './Emergency-Fund/Emergency-Fund.component';
+import { NetWorthComponent } from './net-worth/net-worth.component';
 
 const routes: Routes = [
   {
@@ -101,6 +102,10 @@ const routes: Routes = [
       {
         path: 'homeaffordability-calculator',
         component: HomeAffordabilityComponent,
+      },
+      {
+        path: 'net-worth',
+        component: NetWorthComponent
       },
     ]
   }
