@@ -31,9 +31,12 @@ export class PricingComponent {
       const averageSubscriptionMonths = this.pricingForm.value.averageSubscriptionMonths;
       const ProfitMargin = this.pricingForm.value.ProfitMargin/100;
 
-      if (productionCost <= 0 ||  averageSubscriptionMonths <= 0 || fulfillmentCost < 0 || customerAcquisitionCost <0 || ProfitMargin <0)  {
-        this.errorMessage = "All values must be  non-negative";
+      if (productionCost <= 0 ||  averageSubscriptionMonths <= 0)  {
+        this.errorMessage = "All values must be  greater than zero";
         return; 
+      }
+      if (fulfillmentCost < 0 || customerAcquisitionCost <0 || ProfitMargin <0){
+        this.errorMessage = "All values must be  non-negative";
       }
       if (ProfitMargin >= 1) {
         this.errorMessage = "Profit margin must be less than 100%.";
