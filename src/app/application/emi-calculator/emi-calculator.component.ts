@@ -35,14 +35,22 @@ export class EmiCalculatorComponent {
             const interestRate = this.emiCalculatorForm.value.interestRate;
             const time = this.emiCalculatorForm.value.time;
 
+            // Additional check to ensure values are not zero
+            if (principal <= 0 || interestRate <= 0 || time <= 0) {
+                this.errorMessage = 'All values must be greater than zero.';
+                this.resetCalculations();
+                return;
+            }
+
             const monthlyInterestRate = interestRate / 1200;
             const numberOfMonths = time * 12;
 
-            this.errorMessage = '';
             const monthlyPayment = this.calculatePMT(principal, monthlyInterestRate, numberOfMonths);
             this.monthlyEMI = monthlyPayment;
             this.totalAmount = monthlyPayment * numberOfMonths;
             this.totalInterestPaid = this.totalAmount - principal;
+
+            this.errorMessage = '';
         } else {
             this.errorMessage = 'Please fill out all required fields.';
         }
