@@ -35,9 +35,10 @@ export class PricingComponent {
         this.errorMessage = "All values must be greater than zero.";
         return; 
       }
-
-    
-
+      if (ProgitMargin >= 1) {
+        this.errorMessage = "Profit margin must be less than 100%.";
+        return;
+      }
       this.cost = (productionCost+ fulfillmentCost+(customerAcquisitionCost/averageSubscriptionMonths));
       
       this.price = ((this.cost)/(1-ProgitMargin));
