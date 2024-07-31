@@ -37,6 +37,7 @@ export class PricingComponent {
       }
       if (fulfillmentCost < 0 || customerAcquisitionCost <0 || ProfitMargin <0){
         this.errorMessage = "All values must be  non-negative";
+        return;
       }
       if (ProfitMargin >= 1) {
         this.errorMessage = "Profit margin must be less than 100%.";
