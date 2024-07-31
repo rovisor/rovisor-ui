@@ -19,7 +19,7 @@ export class PricingComponent {
       fulfillmentCost: [null, Validators.required],
       customerAcquisitionCost: [null, Validators.required],
       averageSubscriptionMonths: [null, Validators.required],
-      ProgitMargin: [null, Validators.required],
+      ProfitMargin: [null, Validators.required],
     });
   }
 
@@ -29,19 +29,16 @@ export class PricingComponent {
       const fulfillmentCost = this.pricingForm.value.fulfillmentCost;
       const customerAcquisitionCost = this.pricingForm.value.customerAcquisitionCost;
       const averageSubscriptionMonths = this.pricingForm.value.averageSubscriptionMonths;
-      const ProgitMargin = this.pricingForm.value.ProgitMargin;
+      const ProfitMargin = this.pricingForm.value.ProfitMargin/100;
 
-      if (productionCost <= 0 || fulfillmentCost <= 0 || customerAcquisitionCost <= 0 || averageSubscriptionMonths <= 0 || ProgitMargin<=0) {
+      if (productionCost <= 0 ||  averageSubscriptionMonths <= 0) {
         this.errorMessage = "All values must be greater than zero.";
         return; 
       }
-      if (ProgitMargin >= 1) {
-        this.errorMessage = "Profit margin must be less than 100%.";
-        return;
-      }
+    
       this.cost = (productionCost+ fulfillmentCost+(customerAcquisitionCost/averageSubscriptionMonths));
       
-      this.price = ((this.cost)/(1-ProgitMargin));
+      this.price = ((this.cost)/(1-ProfitMargin));
 
 
       this.errorMessage = '';
