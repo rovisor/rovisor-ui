@@ -32,7 +32,7 @@ export class PricingComponent {
       const ProfitMargin = this.pricingForm.value.ProfitMargin/100;
 
       if (productionCost <= 0 ||  averageSubscriptionMonths <= 0)  {
-        this.errorMessage = "All values must be  greater than zero";
+        this.errorMessage = " Cost to produce item and Average months subscribed values must be  greater than zero";
         return; 
       }
       if (fulfillmentCost < 0 || customerAcquisitionCost <0 || ProfitMargin <0){
